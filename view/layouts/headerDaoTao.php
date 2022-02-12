@@ -2051,7 +2051,10 @@
     <!-- Center COntent -->
     <div class="center">
       <!-- Logo -->
-      <div class="logo"></div>
+      <div class="logo">
+      <img width=" 150px";
+    height= "150px" src="./App_Themes/abrasive/logo.PNG" alt="">
+      </div>
       <!-- End Logo -->
       <!-- User Info -->
       <div class="right">

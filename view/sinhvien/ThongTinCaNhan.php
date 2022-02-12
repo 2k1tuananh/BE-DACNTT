@@ -76,36 +76,36 @@
           <table width="100%">
             <tbody class="table">
               <tr>
-                <td style="padding: 20px;" width="30%">Ảnh:</td>
-                <td style="padding: 20px;"> <input value="<?= $data['image']?>" name="image" type="text" id="" placeholder="Ảnh"></td>
+                <td style="padding: 10px;font-size: 16px;" width="30%">Ảnh:</td>
+                <td style="padding: 10px;font-size: 16px;"> <input value="<?= $data['image']?>" name="image" type="text" id="" placeholder="Ảnh"></td>
               </tr>
               <tr>
-                <td style="padding: 20px;" width="30%">Giới tính:</td>
-                <td style="padding: 20px;"> <input value="<?= $data['gioitinh']?>" name="gioitinh" type="text" id="" placeholder="Giới tính"></td>
+                <td style="padding: 10px;font-size: 16px;" width="30%">Giới tính:</td>
+                <td style="padding: 10px;font-size: 16px;"> <input value="<?= $data['gioitinh']?>" name="gioitinh" type="text" id="" placeholder="Giới tính"></td>
               </tr>
               <tr>
-                <td style="padding: 20px;" width="30%">Số CMND/CCCD:</td>
-                <td style="padding: 20px;"> <input value="<?= $data['cmnd']?>" name="cmnd" type="number" id="" placeholder="Số CMND/CCCD"></td>
+                <td style="padding: 10px;font-size: 16px;" width="30%">Số CMND/CCCD:</td>
+                <td style="padding: 10px;font-size: 16px;"> <input value="<?= $data['cmnd']?>" name="cmnd" type="text" id="" placeholder="Số CMND/CCCD"></td>
               </tr>
               <tr>
-                <td style="padding: 20px;">Điện thoại:</td>
-                <td style="padding: 20px;"> <input value="<?= $data['dienthoai']?>" name="dienthoai" type="number" id="" placeholder="Điện thoại"></td>
+                <td style="padding: 10px;font-size: 16px;">Điện thoại:</td>
+                <td style="padding: 10px;font-size: 16px;"> <input value="<?= $data['dienthoai']?>" name="dienthoai" type="text" id="" placeholder="Điện thoại"></td>
               </tr>
               <tr>
-                <td style="padding: 20px;">Email SV:</td>
-                <td style="padding: 20px;"> <input value="<?= $data['email']?>" name="email" type="text" id="" placeholder="Email SV"></td>
+                <td style="padding: 10px;font-size: 16px;">Email SV:</td>
+                <td style="padding: 10px;font-size: 16px;"> <input value="<?= $data['email']?>" name="email" type="email" id="" placeholder="Email SV" ></td>
               </tr>
               <tr>
-                <td style="padding: 20px;">Chỗ ở hiện nay:</td>
-                <td style="padding: 20px;"> <input value="<?= $data['diachi']?>" name="diachi" type="text" id="" placeholder="Chỗ ở hiện nay"></td>
+                <td style="padding: 10px;font-size: 16px;">Chỗ ở hiện nay:</td>
+                <td style="padding: 10px;font-size: 16px;"> <input value="<?= $data['diachi']?>" name="diachi" id="" placeholder="Chỗ ở hiện nay"></td>
               </tr>
             </tbody>
           </table>
         </div>
         
         <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-          <button  class="btn btn-success" name="edit_sv">OK</button>
+          <button type="button" class="btn btn-error" data-dismiss="modal">Close</button>
+          <button  class="btn btn-primary" name="edit_sv">OK</button>
         </div>
       </form>
     </div>
