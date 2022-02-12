@@ -1,5 +1,6 @@
 <?php
 // commment tesst git
+// Dương dang làm đào tạo
     class database{
         private $hostname = 'localhost';
         private $username = 'root';
