@@ -1,5 +1,5 @@
 
-<?php require_once ('./view/layouts/header.php');?>
+<?php require_once ('./view/layouts/headerGiaoVien.php');?>
 
 <!-- Right -->
 <div id="right">

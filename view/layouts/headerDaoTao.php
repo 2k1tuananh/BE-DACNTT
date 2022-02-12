@@ -2103,113 +2103,41 @@
                   Thời khóa biểu toàn trường</a
                 >
               </li>
-
-              <li>
-                <a href="#">
-                  Lịch thi lại toàn trường</a
-                >
-              </li>
-
-              <li>
-                <a href="#">
-                  Chương trình đào tạo</a
-                >
-              </li>
             </ul>
           </li>
 
           <li>
+            <h3 class="title">Góc giáo viên</h3>
+
+            <ul class="sub-menu" style="display: block">
+
+              <li><a href="#">Quản lý giáo viên</a></li>
+              
+            </ul>
+          </li>
+          <li>
             <h3 class="title">Góc sinh viên</h3>
 
             <ul class="sub-menu" style="display: block">
-              <li>
-                <a href="?controller=personal_information">
-                  Thông tin cá nhân</a
-                >
-              </li>
 
-              <li><a href="#"> Đăng ký học</a></li>
+              <li><a href="#">Quản lý sinh viên</a></li>
+              <li><a href="#">Tổ chức đăng ký học</a></li>
+              <li><a href="#"> Xếp lịch thi</a></li>
+              
+            </ul>
+          </li>
+          <li>
+            <h3 class="title">Góc môn học</h3>
 
-              <li>
-                <a href="#"> Đăng ký thi lại</a>
-              </li>
+            <ul class="sub-menu" style="display: block">
 
-              <li>
-                <a href="#"> Thời khóa biểu</a>
-              </li>
-
-              <li>
-                <a href="http://hocphi.thanglong.edu.vn"> Phiếu báo thu tiền</a>
-              </li>
-
-              <li><a href="?controller=personal_information&action=bangdiem"> Bảng điểm</a></li>
-
-              <li>
-                <a href="/SinhVien/LichThiSV.aspx"> Lịch thi chính thức</a>
-              </li>
-
-              <li>
-                <a href="/SinhVien/LichThiDuKien.aspx"> Lịch thi dự kiến</a>
-              </li>
+              <li><a href="#">Quản lý môn học</a></li>
+              <li><a href="#">Quản lý chuyên ngành</a></li>
+              
             </ul>
           </li>
 
           <li></li>
         </ul>
       </div>
-      <!-- <div id="left">
-        <ul>
-          <li>
-            <h3 class="title">Toàn trường</h3>
-            <ul class="sub-menu" style="display: block">
-              <li>
-                <a href="#">
-                  Thời khóa biểu toàn trường</a>
-              </li>
-              <li>
-                <a href="#">
-                  Lịch thi lại toàn trường</a>
-              </li>
-              <li>
-                <a href="#">
-                  Chương trình đào tạo</a>
-              </li>
-            </ul>
-          </li>
-          <li>
-            <h3 class="title">Góc sinh viên</h3>
-            <ul class="sub-menu" style="display: block">
-              <li>
-                <a href="./ThongTinCaNhan.html"> Thông tin cá nhân</a>
-              </li>
-              <li><a href="#"> Đăng ký học</a></li>
-              <li>
-                <a href="#"> Đăng ký thi lại</a>
-              </li>
-              <li>
-                <a href="#">
-                  Thời khóa biểu</a>
-              </li>
-              <li>
-                <a href="http://hocphi.thanglong.edu.vn"> Phiếu báo thu tiền</a>
-              </li>
-              <li><a href="./BangDiemSinhVien.html"> Bảng điểm</a></li>
-              <li>
-                <a href="/SinhVien/LichThiSV.aspx"> Lịch thi chính thức</a>
-              </li>
-              <li>
-                <a href="/SinhVien/LichThiDuKien.aspx"> Lịch thi dự kiến</a>
-              </li>
-              <li>
-                <a href="http://sinhvien.thanglong.edu.vn/"> Phiếu báo điểm</a>
-              </li>
-              <li>
-                <a href="http://sinhvien.thanglong.edu.vn"> Lịch ký sổ gốc</a>
-              </li>
-            </ul>
-          </li>
-          <li></li>
-        </ul>
-      </div> -->
-
-      <!-- Right -->
+      

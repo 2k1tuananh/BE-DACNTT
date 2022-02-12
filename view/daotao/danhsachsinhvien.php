@@ -1,4 +1,4 @@
-<?php require_once ('./view/layouts/header.php');?>
+<?php require_once ('./view/layouts/headerDaoTao.php');?>
 <style>
   .glot-sub-active {
     color: #1296ba !important;
