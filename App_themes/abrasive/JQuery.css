@@ -1,0 +1,17 @@
+#tooltip
+{
+    position: absolute;
+    border: 1px solid #ccc;
+    background: #333;
+    padding: 5px;
+    color: #fff;
+}
+.loading
+{
+    background: url('/js/progress-indicator.gif') no-repeat center;
+}
+
+.test
+{
+	font-weight:bold;
+}

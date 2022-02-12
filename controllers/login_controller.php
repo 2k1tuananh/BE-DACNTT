@@ -1,0 +1,116 @@
+<?php
+require_once("./models/dbconfig.php");
+class login_controller {
+    public function run(){
+        $this->db=new database();
+        $this->db->connect();
+        $action= filter_input(INPUT_GET,"action");
+        if(method_exists($this,$action))
+        {
+            $this->$action();
+        }
+        else{
+            $this->login();
+        }
+    }
+    function login(){
+        if(isset($_POST['login'])){
+            $tk = $_POST['tk'];
+            $mk = $_POST['mk'];
+            $check = $tk[0];
+            if($check == "A")
+            {
+                $user =$this->db->mkchecksinhvien($tk,$mk);
+                if(mysqli_num_rows($user)>0){
+                        $info=$this->db->getinfosinhvien1($tk);
+                        $_SESSION['name']=$info['hovaten'];
+                        $_SESSION['msv']=$info['masinhvien'];
+                        $_SESSION['ngaysinh']=$info['ngaysinh'];
+                        $_SESSION['lop']=$info['lop'];
+                        $_SESSION['start'] = time(); 
+                        $_SESSION['expire'] = $_SESSION['start'] + (30*60);
+                        header('location:index.php?controller=personal_information');
+                }
+            }
+            else
+            {
+                $user =$this->db->mkcheckgiangvien($tk,$mk);
+                if(mysqli_num_rows($user)>0){
+                        $info=$this->db->getinfogiangvien($tk);
+                        $_SESSION['name']=$info['hovaten'];
+                        $_SESSION['mgv']=$info['magiangvien'];
+                        $_SESSION['ngaysinh']=$info['ngaysinh'];
+                        $_SESSION['email']=$info['email'];
+                        $_SESSION['start'] = time(); 
+                        $_SESSION['expire'] = $_SESSION['start'] + (30*60);
+                        header('location:index.php?controller=personal_information');
+                }
+               
+            }
+            // 
+        }
+        
+        require_once('./view/index.php');
+    }
+    function logout(){
+        session_destroy();
+        header('location:index.php?controller=login&action=login');
+    }
+    function doimk(){
+        if(isset($_SESSION['msv']))
+        {
+            $data=$this->db->getinfosinhvien($_SESSION['msv']);
+            require_once("./view/DoiMatKhau.php");
+            if( isset($_POST['doimk']) ){
+                $mkc = $_POST['mkc'];
+                $mkm = $_POST['mkm'];
+                $nhaplaimk = $_POST['nhaplaimk'];
+                $check=$this->db->mkchecksinhvien($_SESSION['msv'],$mkc);
+                if(mysqli_num_rows($check)!=0){
+                    if($mkm==$nhaplaimk){
+                        $this->db->updatemksinhvien($_SESSION['msv'],$mkm);
+                        $msg="Đổi lại mật khẩu thành công";
+                        echo "<script type='text/javascript'>alert('$msg');</script>";
+                    }
+                    else{
+                        $message = "Mật khẩu mới và nhập lại mật khẩu không đúng!!!";
+                        echo "<script type='text/javascript'>alert('$message');</script>";
+                    }
+                }
+                else
+                {
+                    $message = "Mật khẩu không đúng";
+                    echo "<script type='text/javascript'>alert('$message');</script>";
+                }
+            }
+        }
+        else
+        {
+            $data=$this->db->getinfogiangvien($_SESSION['mgv']);
+            require_once("./view/DoiMatKhau.php");
+            if( isset($_POST['doimk']) ){
+                $mkc = $_POST['mkc'];
+                $mkm = $_POST['mkm'];
+                $nhaplaimk = $_POST['nhaplaimk'];
+                $check=$this->db->mkcheckgiangvien($_SESSION['mgv'],$mkc);
+                if(mysqli_num_rows($check)!=0){
+                    if($mkm==$nhaplaimk){
+                        $this->db->updatemkgiangvien($_SESSION['mgv'],$mkm);
+                        $msg="Đổi lại mật khẩu thành công";
+                        echo "<script type='text/javascript'>alert('$msg');</script>";
+                    }
+                    else{
+                        $message = "Mật khẩu mới và nhập lại mật khẩu không đúng!!!";
+                        echo "<script type='text/javascript'>alert('$message');</script>";
+                    }
+                }
+                else
+                {
+                    $message = "Mật khẩu không đúng";
+                    echo "<script type='text/javascript'>alert('$message');</script>";
+                }
+            }
+        }
+       
+    }
+}
