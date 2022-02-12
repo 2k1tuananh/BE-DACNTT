@@ -406,6 +406,20 @@
                 <td class="modal-td"><input type="text" class="form-control" value="A<?=$getmasv+1?>@thanglong.edu.vn" name="email" id="email" readonly></td>
               </tr>
               <tr>
+                <td class="modal-td">Lớp:</td>
+                <td class="modal-td">
+                  <select class="form-control" id="lop" name="lop">
+                  <option value="">Chọn lớp</option>
+                  <?php foreach ($listLopCN as $infoCN)
+                    {
+                      echo '<option value="'.$infoCN['malop'].'">'.$infoCN['tenlop'].'</option>'; 
+
+                    }
+                  ?>
+                  </select>
+                </td>
+              </tr>
+              <tr>
                 <td class="modal-td">Chuyên Ngành:</td>
                 <td class="modal-td">
                   <select class="form-control" id="chuyennganh" name="chuyennganh">
@@ -464,7 +478,7 @@
           </table>
 
         </div>
-        <div id="bangdiem"></div>
+        <div id="bangdiem1"></div>
         <div class="modal-footer">
           <button type="button"  class="btn btn-default" data-dismiss="modal">Close</button>
           <button type="button" id="create" class="btn btn-success" data-dismiss="modal">OK</button>
@@ -484,12 +498,12 @@
                             var chuyennganh=$('#chuyennganh').val();
                             var giaovien=$('#giaovien').val();
                             var diachi=$('#diachi').val();
-                           
+                            var lop=$('#lop').val();
                             
                             $.get("./index.php",{controller:"daotao",action:"createstudent", masinhvien:masinhvien, hovaten:hovaten,
                               gioitinh:gioitinh, CMND:CMND, ngaysinh:ngaysinh, phone:phone, email:email, chuyennganh:chuyennganh, 
-                              giaovien:giaovien,diachi:diachi}, function(data) {
-                                $("#bangdiem").html(data);
+                              giaovien:giaovien,diachi:diachi,lop:lop}, function(data) {
+                                $("#bangdiem1").html(data);
                             })   
                         });
                     });

@@ -229,11 +229,21 @@
              </script>
         </div>
           <div class="tim-kiem">
-            <input type="text" placeholder="Nhập mã môn,tên môn">
+            <input type="text" id="timkiem" name="timkiem" placeholder="Nhập mã môn,tên môn">
             <button class="btnTimKiem">Tìm kiếm</button>
           </div>
         </div>
-       
+        <script>
+                $(function(){
+                    $('#timkiem').trigger('change'); //This event will fire the change event. 
+                        $('#timkiem').change(function(){
+                            var data= $(this).val();
+                            $.get("./index.php",{controller:"daotao",action:"timkiemmonhoc", info:data}, function(data) {
+                            $("#bangdiem1").html(data);
+                        })                                                                                     
+                    });
+                });
+                </script>
         
             <table cellspacing="3" cellpadding="0" border="0px" width="100%">
               <tbody>
@@ -266,7 +276,15 @@
                             <td ><?= $info['tenmon']?></td>
                             <td >
                               <select class="form-control" style="width: 50%">
-                              
+                                <?php
+                                  foreach($listGiangVien as $info1)
+                                  {
+                                    if($info['chuyennganh']== $info1['chuyennganh'])
+                                    {
+                                      echo '<option value="'.$info1['magiangvien'].'">'.$info1['hovaten'].'</option>';
+                                    }
+                                  }
+                                ?>  
                               </select>
                             </td>
                             <td><Button class="btnTimKiem">Cập nhập</Button></td>
