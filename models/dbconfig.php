@@ -1,7 +1,8 @@
 <?php
-// commment tesst git
+
     class database{
         private $hostname = 'localhost';
+        
         private $username = 'root';
         private $pass = '';
         private $dbname = 'pointmanagement';
