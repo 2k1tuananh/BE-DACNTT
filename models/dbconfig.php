@@ -452,7 +452,7 @@
 
         public function getGiaoVienCN($machuyennganh)
         {
-            $sql = "select magiangvien,hovaten from giangvien where machuyennganh = '$machuyennganh'";
+            $sql = "select magiangvien,hovaten from giangvien where chuyennganh = '$machuyennganh'";
             $this->execute($sql);
             if($this->dem()==0){
                 $data=0;
