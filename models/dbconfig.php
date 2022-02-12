@@ -1,4 +1,5 @@
 <?php
+// commment tesst git
     class database{
         private $hostname = 'localhost';
         private $username = 'root';
@@ -298,6 +299,7 @@
             }
             return $data;
         }
+        
         public function getinfo_caothap($mgv,$mamon){
             if($mamon=="Tất cả")
             {
