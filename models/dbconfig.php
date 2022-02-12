@@ -1,8 +1,7 @@
 <?php
-// commment tesst git
-// Dương dang làm đào tạo
+
     class database{
-        private $hostname = 'localhostttt';
+        private $hostname = 'localhost';
         
         private $username = 'root';
         private $pass = '';
@@ -454,7 +453,7 @@
 
         public function getGiaoVienCN($machuyennganh)
         {
-            $sql = "select magiangvien,hovaten from giangvien where machuyennganh = '$machuyennganh'";
+            $sql = "select magiangvien,hovaten from giangvien where chuyennganh = '$machuyennganh'";
             $this->execute($sql);
             if($this->dem()==0){
                 $data=0;

@@ -24,7 +24,7 @@
                         </script>
                         <option class="a" id="Tất cả">Tất cả</option>
                         <?php foreach ($mon as $monhoc){ ?>
-                            <option class="a" id="<?= $monhoc['mamon']?>"><?php echo $monhoc['tenmon'];?></option>
+                            <option class="a"><?php echo $monhoc['tenmon'];?></option>
                         <?php } ?>
                         </select>
                     </td>

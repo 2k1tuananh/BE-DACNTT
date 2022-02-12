@@ -2,7 +2,11 @@
 <div id="right">
   <div class="title">Thông tin sinh viên</div>
   <div class="entry flex">
-    <img src="<?= $data['image']; ?>" class="avatar" alt="Girl in a jacket" width="200" height="200">
+  <?php if ($data['image']) { ?>
+    <img src="<?= $data['image']; ?>" class="avatar" alt="Avatar" width="200" height="200">
+<?php } else { ?>
+    <img src="https://img.wattpad.com/8f19b412f2223afe4288ed0904120a48b7a38ce1/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f776174747061642d6d656469612d736572766963652f53746f7279496d6167652f5650722d38464e2d744a515349673d3d2d3234323931353831302e313434336539633161633764383437652e6a7067?s=fit&w=720&h=720" class="avatar" alt="Avatar" width="200" height="200">
+    <?php } ?>
     <div class="information">
     <table width="100%">
       <tbody class="table">
