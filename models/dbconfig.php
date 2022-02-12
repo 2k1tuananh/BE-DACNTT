@@ -2,7 +2,8 @@
 // commment tesst git
 // Dương dang làm đào tạo
     class database{
-        private $hostname = 'localhost';
+        private $hostname = 'localhostttt';
+        
         private $username = 'root';
         private $pass = '';
         private $dbname = 'pointmanagement';
