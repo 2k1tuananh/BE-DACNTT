@@ -25,7 +25,7 @@
                            
                           </tr>
                           <tr>
-                          <?php if($listGiangVien != 0) 
+                          <?php if($listGiangVien!= '') 
                           {
                             $stt=0; foreach ($listGiangVien as $info){ $stt++;?>
                               <td class="text-center"><?= $stt?></td>
