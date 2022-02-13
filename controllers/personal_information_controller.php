@@ -65,4 +65,8 @@ class personal_information_controller
         $data = $this->db->getinfosinhvien($_SESSION['msv']);
         require_once("./view/sinhvien/lichthi.php");
     }
+    function dangkyhoc()
+    {
+        require_once("./view/sinhvien/DangKyHoc.php");
+    }
 }

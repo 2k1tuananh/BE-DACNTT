@@ -2119,7 +2119,7 @@
                   Thông tin cá nhân</a>
               </li>
 
-              <li><a href="#"> Đăng ký học</a></li>
+              <li><a href="?controller=personal_information&action=DangKyHoc"> Đăng ký học</a></li>
 
               <li><a href="?controller=personal_information&action=bangdiem"> Bảng điểm</a></li>
 
