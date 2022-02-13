@@ -2127,10 +2127,10 @@
 
             <ul class="sub-menu" style="display: block">
 
-              <li><a href="#">Quản lý sinh viên</a></li>
+              <li><a href="?controller=point&action=QLHocSinhTheoMonHoc">Quản lý sinh viên</a></li>
 
               <li>
-                <a href="#">Quản lý điểm</a>
+                <a href="?controller=point">Quản lý điểm</a>
               </li>
 
             </ul>
