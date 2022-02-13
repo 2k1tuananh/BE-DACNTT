@@ -379,8 +379,164 @@
   </div>
   <!-- End Page -->
   <!-- Modal -->
-  <div class="modal fade" id="myModal1" role="dialog">
+    <div class="modal fade " id="myModal" role="dialog">
+    <div class="modal-dialog">
+
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Thêm Sinh Viên</h4>
+        </div>
+       
+        <div class="modal-body">
+          <!-- <p>Some text in the modal.</p> -->
+          <table width="100%">
+            <tbody class="table">
+              <tr>
+              <tr>
+                <td class="modal-td" width="30%">Mã Sinh Viên:</td>
+                <td class="modal-td">
+                  <input  id="masinhvien" name="masinhvien" class="form-control" type="text" value="A<?=$getmasv+1?>" readonly/>
+                </td>
+              </tr>
+              <tr>
+                <td class="modal-td" width="30%">Họ và tên:</td>
+                <td class="modal-td">
+                  <input  id="hovaten" name="hovaten" class="form-control" type="text" />
+                </td>
+              </tr>
+              <td class="modal-td" width="30%">Giới tính:</td>
+              <td class="modal-td">
+                <select class="form-control" id="gioitinh" name="gioitinh">
+                  <option value="Nam">Nam</option>
+                  <option value="Nữ">Nữ</option>
+                </select>
+              </td>
+              </tr>
+              <tr>
+                <td class="modal-td" width="30%">Số CMND/CCCD:</td>
+                <td class="modal-td"><input type="text" class="form-control" name="CMND" id="CMND"></td>
+              </tr>
+              <tr>
+                <td class="modal-td" width="30%">Ngày sinh:</td>
+                <td class="modal-td">
+                  <input class="form-control" type="date" id="ngaysinh" name="ngaysinh"/>
+                </td>
+              </tr>
+              <tr>
+                <td class="modal-td">Điện thoại:</td>
+                <td class="modal-td"><input type="text" class="form-control" id="phone" name="phone"></td>
+              </tr>
+              <tr>
+                <td class="modal-td">Email SV:</td>
+                <td class="modal-td"><input type="text" class="form-control" value="A<?=$getmasv+1?>@thanglong.edu.vn" name="email" id="email" readonly></td>
+              </tr>
+              <tr>
+                <td class="modal-td">Lớp:</td>
+                <td class="modal-td">
+                  <select class="form-control" id="lop" name="lop">
+                  <option value="">Chọn lớp</option>
+                  <?php foreach ($listLopCN as $infoCN)
+                    {
+                      echo '<option value="'.$infoCN['malop'].'">'.$infoCN['tenlop'].'</option>'; 
+
+                    }
+                  ?>
+                  </select>
+                </td>
+              </tr>
+              <tr>
+                <td class="modal-td">Chuyên Ngành:</td>
+                <td class="modal-td">
+                  <select class="form-control" id="chuyennganh" name="chuyennganh">
+                  <option value="">Chọn chuyên ngành</option>
+                  <?php foreach ($listCN as $infoCN)
+                    {
+                      echo '<option value="'.$infoCN['machuyennganh'].'">'.$infoCN['tenchuyennganh'].'</option>'; 
+
+                    }
+                  ?>
+                  </select>
+                </td>
+              </tr>
+              <tr>
+                <td class="modal-td">Giáo viên CN:</td>
+                <td class="modal-td">
+                  <select class="form-control" id="giaovien" name="giaovien">
+                    <option value="">Chọn giáo viên</option>
+                  
+                  
+                  </select>
+                </td>
+              </tr>
+              <script>
+              $(document).ready(function(){
+                  $('#chuyennganh').on('change', function(){
+                      var machuyennganh = $(this).val();
+                      const url = $(this).attr("action");
+                      if(machuyennganh){
+                          $.ajax({
+                              type:'POST',
+                              url,
+                              data:'machuyennganh='+machuyennganh,
+                              success:function(html){
+                                  $('#giaovien').html(html);
+                              }
+                          }); 
+                      }else{
+                          $('#giaovien').html('<option value="">Chọn giáo viên </option>');
+                          
+                      }
+                  });
+                  
+                 
+              });
+              </script>
+              <tr>
+                <td class="modal-td">Địa chỉ hộ khẩu:</td>
+                <td class="modal-td">
+                  <input type="text" class="form-control" name="diachi" id="diachi">
+
+                </td>
+              </tr>
+              
+            </tbody>
+          </table>
+
+        </div>
+        <div id="bangdiem1"></div>
+        <div class="modal-footer">
+          <button type="button"  class="btn btn-default" data-dismiss="modal">Close</button>
+          <button type="button" id="create" class="btn btn-success" data-dismiss="modal">OK</button>
+          
+        </div>
+      </div>
+      <script>
+                    $(document).ready(function(){
+                        $("#create").click(function(){
+                            var masinhvien=$('#masinhvien').val();
+                            var hovaten=$('#hovaten').val();
+                            var gioitinh=$('#gioitinh').val();
+                            var CMND=$('#CMND').val();
+                            var ngaysinh=$('#ngaysinh').val();
+                            var phone=$('#phone').val();
+                            var email=$('#email').val();
+                            var chuyennganh=$('#chuyennganh').val();
+                            var giaovien=$('#giaovien').val();
+                            var diachi=$('#diachi').val();
+                            var lop=$('#lop').val();
+                            
+                            $.get("./index.php",{controller:"daotao",action:"createstudent", masinhvien:masinhvien, hovaten:hovaten,
+                              gioitinh:gioitinh, CMND:CMND, ngaysinh:ngaysinh, phone:phone, email:email, chuyennganh:chuyennganh, 
+                              giaovien:giaovien,diachi:diachi,lop:lop}, function(data) {
+                                $("#bangdiem1").html(data);
+                            })   
+                        });
+                    });
+                </script>
     </div>
+  </div>
             
 
 
