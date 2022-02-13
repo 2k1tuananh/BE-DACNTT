@@ -78,7 +78,7 @@ class daotao_controller {
         }
     }
 
-    //phanconggiangday
+    //phanconggiangdayy
     function giangday()
     {
         $listMonHoc = $this->db->getAllData('monhoc');
