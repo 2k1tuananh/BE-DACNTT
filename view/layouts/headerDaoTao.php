@@ -2123,9 +2123,9 @@
 
             <ul class="sub-menu" style="display: block">
 
-              <li><a href="#">Quản lý sinh viên</a></li>
-              <li><a href="#">Tổ chức đăng ký học</a></li>
-              <li><a href="#"> Xếp lịch thi</a></li>
+              <li><a href="?controller=daotao">Quản lý sinh viên</a></li>
+              <li><a href="?controller=daotao&action=lichdangkyhoc">Tổ chức đăng ký học</a></li>
+              <li><a href="?controller=daotao&action=xeplichthi"> Xếp lịch thi</a></li>
               
             </ul>
           </li>
@@ -2134,8 +2134,8 @@
 
             <ul class="sub-menu" style="display: block">
 
-              <li><a href="#">Quản lý môn học</a></li>
-              <li><a href="#">Quản lý chuyên ngành</a></li>
+              <li><a href="?controller=daotao&action=danhsachmonhoc">Quản lý môn học</a></li>
+              <li><a href="?controller=daotao&action=">Quản lý chuyên ngành</a></li>
               
             </ul>
           </li>
