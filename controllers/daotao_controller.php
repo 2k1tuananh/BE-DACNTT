@@ -220,4 +220,11 @@ class daotao_controller {
         
         require_once("./view/daotao/Danhsachmonhoc.php");
     }
+
+    //xeplichthi
+    function xeplichthi()
+    {
+        
+        require_once("./view/daotao/xeplichthi.php");
+    }
 }

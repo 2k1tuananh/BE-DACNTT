@@ -1,4 +1,4 @@
-<?php require_once ('./view/layouts/header.php');?>
+<?php require_once ('./view/layouts/headerDaoTao.php');?>
     <script src="chrome-extension://mooikfkahbdckldjjndioackbalphokd/assets/prompt.js"></script>
     <style>
       .glot-sub-active {
