@@ -1,4 +1,4 @@
-<?php if(!isset($_SESSION['name'])){
+<?php if (!isset($_SESSION['name'])) {
   header('location:index.php?controller=login&action=login');
 } ?>
 <html>
@@ -6,16 +6,16 @@
 <head>
   <title> </title>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-  
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
   <script type="text/javascript" src="./view/js/tooltip.js"></script>
   <script type="text/javascript" src="./view/js/thickbox-compressed.js"></script>
   <script src="./view/js/java.js" type="text/javascript"></script>
   <script type="text/javascript">
-    $(document).ready(function () {
-      $('input.number').keypress(function (e) {
+    $(document).ready(function() {
+      $('input.number').keypress(function(e) {
         if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
           return false;
         }
@@ -28,8 +28,7 @@
   <link href="./App_Themes/abrasive/jQuery.css" type="text/css" rel="stylesheet" />
   <link href="./App_Themes/abrasive/style.css" type="text/css" rel="stylesheet" />
   <link href="./App_Themes/abrasive/thickbox.css" type="text/css" rel="stylesheet" />
-  <style type="text/css" data-styled-components="FiaaB gTcftA caPIRE"
-    data-styled-components-is-local="true">
+  <style type="text/css" data-styled-components="FiaaB gTcftA caPIRE" data-styled-components-is-local="true">
     /* sc-component-id: sc-keyframes-FiaaB */
     @-webkit-keyframes FiaaB {
       100% {
@@ -1878,10 +1877,11 @@
   </style>
   <script src="chrome-extension://mooikfkahbdckldjjndioackbalphokd/assets/prompt.js"></script>
   <style>
-    .flex{
-      display:flex;
+    .flex {
+      display: flex;
       justify-content: space-between;
     }
+
     .glot-sub-active {
       color: #1296ba !important;
     }
@@ -2020,33 +2020,37 @@
       line-height:
         21.6px;
     }
-    .btnUpdate{
+
+    .btnUpdate {
       color: #fff;
-      margin-top:15px;
+      margin-top: 15px;
       margin-left: 2px;
-      padding:8px 15px;
+      padding: 8px 15px;
       border: none;
-      border-radius:5px;
-      background-color:rgb(15, 141, 3);
+      border-radius: 5px;
+      background-color: rgb(15, 141, 3);
     }
-    .btnUpdate:hover{
+
+    .btnUpdate:hover {
       /* color: #ccc; */
       cursor: pointer;
       opacity: 0.7;
     }
-    .avatar{
-      flex:1;
+
+    .avatar {
+      flex: 1;
     }
-    .information{
+
+    .information {
       margin-left: 20px;
-      flex:2;
+      flex: 2;
     }
-    .modal-td{
-      padding:20px;
+
+    .modal-td {
+      padding: 20px;
     }
-    
   </style>
-  
+
 </head>
 
 <body>
@@ -2056,24 +2060,20 @@
     <div class="center">
       <!-- Logo -->
       <div class="logo">
-        <img width=" 150px";
-    height= "150px" src="./App_Themes/abrasive/logo.PNG" alt="">
+        <img width=" 150px" ; height="150px" src="./App_Themes/abrasive/logo.PNG" alt="">
       </div>
       <!-- End Logo -->
       <!-- User Info -->
       <div class="right">
         <b>Chào
-          <span id="ctl00_lbUser" style="color: Red"><?php  echo $_SESSION['name'];?> (<?php 
-          if(isset($_SESSION['msv']))
-          {
-            echo $_SESSION['msv'];
-          }
-          else
-          {
-            echo $_SESSION['mgv'];
-          }
-          
-          ?>)</span></b>
+          <span id="ctl00_lbUser" style="color: Red"><?php echo $_SESSION['name']; ?> (<?php
+                                                                                        if (isset($_SESSION['msv'])) {
+                                                                                          echo $_SESSION['msv'];
+                                                                                        } else {
+                                                                                          echo $_SESSION['mgv'];
+                                                                                        }
+
+                                                                                        ?>)</span></b>
         | <a href="?controller=login&action=doimk">Đổi mật khẩu</a> |
         <a href="?controller=login&action=logout">Đăng xuất</a><br />
 
@@ -2105,8 +2105,7 @@
             <ul class="sub-menu" style="display: block">
               <li>
                 <a href="#">
-                  Thời khóa biểu toàn trường</a
-                >
+                  Thời khóa biểu toàn trường</a>
               </li>
             </ul>
           </li>
@@ -2117,8 +2116,7 @@
             <ul class="sub-menu" style="display: block">
               <li>
                 <a href="?controller=personal_information">
-                  Thông tin cá nhân</a
-                >
+                  Thông tin cá nhân</a>
               </li>
 
               <li><a href="#"> Đăng ký học</a></li>
@@ -2126,14 +2124,13 @@
               <li><a href="?controller=personal_information&action=bangdiem"> Bảng điểm</a></li>
 
               <li>
-                <a href="/SinhVien/LichThiSV.aspx"> Lịch thi chính thức</a>
+                <a href="?controller=personal_information&action=lichthisinhvien"> Lịch thi chính thức</a>
               </li>
 
-             
+
             </ul>
           </li>
 
           <li></li>
         </ul>
       </div>
-      
