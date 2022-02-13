@@ -62,7 +62,8 @@
             ><span id="ctl00_c_lblTongSoTinChiTichLuy"><?php echo $tongtin['tongtin']; ?></span>
             <br />
             <b>Trung bình chung tích lũy: </b
-            ><span id="ctl00_c_lblTrungBinhTrungTichLuy"><?php echo $tongdiem['tongdiem']/$tongtin['tongtin']; ?></span>
+            ><span id="ctl00_c_lblTrungBinhTrungTichLuy"><?php echo round($tongdiem['tongdiem']/$tongtin['tongtin'],2); ?></span>
+           
             <br />
 
         </div>

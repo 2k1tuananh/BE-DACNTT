@@ -2044,6 +2044,10 @@
     .modal-td{
       padding:20px;
     }
+    input:hover{
+      /* border:none; */
+      /* padding:5px; */
+    }
     
   </style>
   
