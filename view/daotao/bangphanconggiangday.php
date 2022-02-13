@@ -23,16 +23,21 @@
                             <th scope="col"></th>
                           </tr>
                           <tr>
-                          <?php $stt=0; foreach ($listMonHoc as $info){ $stt++;?>
+                          <?php $stt=0; foreach ($listGiangVien as $info){ $stt++;?>
                             <td><?= $stt?></td>
                             <td ><?= $info['mamon']?></td>
                             <td ><?= $info['tenmon']?></td>
                             <td >
                               <select class="form-control" style="width: 50%">
-                                <option value="">Giáo Viên A</option>
-                                <option value="">Giáo Viên B</option>
-                                <option value="">Giáo Viên C</option>
-                                <option value="">Giáo Viên D</option>
+                              <?php
+                                  foreach($listGiangVien as $info1)
+                                  {
+                                    if($info['chuyennganh']== $info1['chuyennganh'])
+                                    {
+                                      echo '<option value="'.$info1['magiangvien'].'">'.$info1['hovaten'].'</option>';
+                                    }
+                                  }
+                                ?>  
                               </select>
                             </td>
                             <td><Button class="btnTimKiem">Cập nhập</Button></td>

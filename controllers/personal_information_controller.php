@@ -29,6 +29,7 @@ class personal_information_controller {
 
 
             }
+
             require_once("./view/sinhvien/ThongTinCaNhan.php");
           }
          else{
@@ -45,7 +46,9 @@ class personal_information_controller {
     
     
             }
+
            require_once("./view/giangvien/ThongTinCaNhanGiaoVien.php");
+
          }
         
         
@@ -56,6 +59,7 @@ class personal_information_controller {
         $data=$this->db->getinfopoint($_SESSION['msv']);
         $tongtin=$this->db->tongtin($_SESSION['msv']);
         $tongdiem=$this->db->tongdiem($_SESSION['msv']);
+
         require_once("./view/sinhvien/BangDiemSinhVien.php");
     }
 

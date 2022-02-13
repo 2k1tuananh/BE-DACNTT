@@ -474,9 +474,9 @@
             return $data;;
         }
 
-        public function createstudent($masinhvien,$hovaten,$gioitinh,$CMND,$ngaysinh,$phone,$email,$chuyennganh,$giaovien,$diachi){
-            $sql="INSERT INTO `sinhvien`(`masinhvien`, `hovaten`, `gioitinh`, `diachi`, `email`, `dienthoai`, `cmnd`, `ngaysinh`, `GVCN`, `chuyennganh`,  `password`) 
-            VALUES ('$masinhvien','$hovaten','$gioitinh','$diachi','$email','$phone','$CMND','$ngaysinh','$giaovien','$chuyennganh','$masinhvien')";
+        public function createstudent($masinhvien,$hovaten,$gioitinh,$CMND,$ngaysinh,$phone,$email,$chuyennganh,$giaovien,$diachi,$lop){
+            $sql="INSERT INTO `sinhvien`(`masinhvien`, `hovaten`, `gioitinh`, `diachi`, `email`, `dienthoai`, `cmnd`, `ngaysinh`, `GVCN`, `chuyennganh`,  `password`,`lop`) 
+            VALUES ('$masinhvien','$hovaten','$gioitinh','$diachi','$email','$phone','$CMND','$ngaysinh','$giaovien','$chuyennganh','$masinhvien','$lop')";
             
             return $this->execute($sql);
         }
@@ -523,6 +523,107 @@
             }
             return $data;
         }
+
+
+        public function giaovienmonhoc()
+        {
+            $sql="SELECT DISTINCT(giangvien.hovaten) FROM `giangvien` INNER JOIN chuyennganh on giangvien.chuyennganh=chuyennganh.machuyennganh INNER JOIN `gv-sv-lop` as gv on giangvien.magiangvien=gv.magiangvien INNER JOIN monhoc on gv.mamon=monhoc.mamon";
+            $this->execute($sql);
+            if($this->dem()==0){
+                $data=0;
+            }
+            else{
+                while($datas = $this->getData()) {
+                    $data[] = $datas;
+                }
+            }
+            return $data;
+        }
+
+        public function timkiemmonhoc($timkiem)
+        {
+            $sql = "select * from  `monhoc`  where  (mamon like '%$timkiem%' or tenmon like '%$timkiem%') ";
+           
+            $this->execute($sql);
+            if($this->dem()==0){
+                $data=0;
+            }
+            else{
+                while($datas = $this->getData()) {
+                    $data[] = $datas;
+                }
+            }
+            return $data;
+        }
+
+        public function timkiemgiangvientheochuyennganh($timkiem)
+        {
+            $sql = "select * from  `giangvien`  where  chuyennganh = '$timkiem' ";
+           
+            $this->execute($sql);
+            if($this->dem()==0){
+                $data=0;
+            }
+            else{
+                while($datas = $this->getData()) {
+                    $data[] = $datas;
+                }
+            }
+            return $data;
+        }
+
+        public function timkiemgiangvien($timkiem)
+        {
+            $sql = "select * from  `giangvien`  where  (magiangvien like '%$timkiem%' or hovaten like '%$timkiem%') ";
+           
+            $this->execute($sql);
+            if($this->dem()==0){
+                $data=0;
+            }
+            else{
+                while($datas = $this->getData()) {
+                    $data[] = $datas;
+                }
+            }
+            return $data;
+        }
+
+        public function magiangvien()
+        {
+            $sql = "SELECT  magiangvien FROM `giangvien` where id=(select MAX(id) from `giangvien`)";
+            $data=$this->execute($sql);
+            if($this->dem()!=0){
+                $data = mysqli_fetch_array($this->result);
+            }
+            else{
+                $data = 0;
+            }
+            return $data;
+        }
+
+        public function getLop($machuyennganh)
+        {
+            $sql = "select * from lopcn where chuyennganh = '$machuyennganh'";
+            $this->execute($sql);
+            if($this->dem()==0){
+                $data=0;
+            }
+            else{
+                while($datas = $this->getData()) {
+                    $data[] = $datas;
+                }
+            }
+            return $data;;
+        }
+
+        public function creategiangvien($magiangvien,$hovaten,$gioitinh,$CMND,$ngaysinh,$phone,$email,$chuyennganh,$diachi,$lop){
+            $sql="INSERT INTO `giangvien`(`magiangvien`, `hovaten`, `gioitinh`, `diachi`, `email`, `dienthoai`, `cmnd`, `ngaysinh`, `chuyennganh`,  `password`,`ChuNhiem`) 
+            VALUES ('$magiangvien','$hovaten','$gioitinh','$diachi','$email','$phone','$CMND','$ngaysinh','$chuyennganh','$magiangvien','$lop')";
+           
+            return $this->execute($sql);
+        }
+        
+
         public function capnhattt($msv,$mm,$tt){
             if($tt=='Đang học')
             {
@@ -534,4 +635,5 @@
 
             return $this->execute($sql);
         } 
+
     }
