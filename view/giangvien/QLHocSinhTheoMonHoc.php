@@ -288,7 +288,7 @@ button:hover::before {
                         <?php }?>
                         <script>
                         $(document).ready(function(){
-                            $("button").click(function(){
+                            $("button.chitiet").click(function(){
                                     var masinhvien=$(this).attr("id")
                                     $.get("./index.php",{controller:"point",action:"QLHocSinhTheoMonHoc", msv:masinhvien}, function(data) {
                                     $("#myModal1").html(data);

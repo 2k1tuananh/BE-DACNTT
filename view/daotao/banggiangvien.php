@@ -33,9 +33,27 @@
                               
                               <td class="text-center"><?= $info['hovaten']?></td>
                               <td class="text-center">
-                                <select name="" id="">
-                                  <option value="">Đang dạy</option>
-                                  <option value="">Đã nghỉ</option>
+                              <script>
+                                $(function(){
+                                    $('#trangthai<?= $stt?>').trigger('change'); //This event will fire the change event. 
+                                        $('#sapxep<?= $stt?>').change(function(){
+                                            var data="<?= $info['magiangvien']?>";
+                                            var data2= $(this).val();
+                                            var thongbao="Cập nhật thành công";
+                                            alert(thongbao);
+                                            $.get("./index.php",{controller:"daotao",action:"capnhattheotrangthai1", magiangvien:data, trangthai:data2}, function(data) {
+                                        })                                                                                     
+                                    });
+                                });
+                                </script>
+                                <select id="trangthai<?= $stt?>">
+                                    <?php if($info['trangthai']==1){?>
+                                    <option>Đang dạy</option>
+                                    <option>Đã nghỉ</option>
+                                    <?php } else{?>
+                                    <option>Đã nghỉ</option>
+                                    <option>Đang dạy</option>
+                                    <?php } ?> 
                                 </select>
                               </td>
                               <td class="text-center">

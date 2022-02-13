@@ -2114,7 +2114,7 @@
 
             <ul class="sub-menu" style="display: block">
 
-              <li><a href="#">Quản lý giáo viên</a></li>
+              <li><a href="?controller=daotao&action=giangvien">Quản lý giáo viên</a></li>
               
             </ul>
           </li>
