@@ -1,7 +1,4 @@
-<?php require_once ('./view/layouts/header.php');?>
-
-
-      
+<?php require_once ('./view/layouts/headerGiaoVien.php');?>
 
         <!-- Right -->
         <div id="right" style="width: 75%">
@@ -26,7 +23,7 @@
                             </script>
                             <option class="a" id="Tất cả">Tất cả</option>
                             <?php foreach ($mon as $monhoc){ ?>
-                                <option class="a" id="<?= $monhoc['mamon']?>"><?php echo $monhoc['tenmon'];?></option>
+                                <option class="a" id="<?= $monhoc['tenmon']?>"><?php echo $monhoc['tenmon'];?></option>
                             <?php } ?>
                             </select>
                             </td>
@@ -40,11 +37,7 @@
               align-items: flex-end;
               margin-top: 20px;
             ">
-                    <button style="border: 1px solid #222121; border-radius: 2px" type="button" data-toggle="modal"
-                        data-target="#myModal">
-                        <span style="padding: 5px; font-family: arial, sans-serif"><i class="fas fa-plus"></i>&ensp;Thêm
-                            học sinh</span>
-                    </button>
+                   
                     <script>
                     $(function(){
                         $('#timkiem').trigger('change'); //This event will fire the change event. 
@@ -99,7 +92,7 @@
                                 $('#sapxep').trigger('change'); //This event will fire the change event. 
                                     $('#sapxep').change(function(){
                                         var data= $(this).val();
-                                        $.get("./index.php",{controller:"point",action:"sxtheotrangthai", info:data}, function(data) {
+                                        $.get("./index.php",{controller:"point",action:"sxtheotrangthai", info1:data}, function(data) {
                                         $("#bangdiem").html(data);
                                     })                                                                                     
                                 });
@@ -253,9 +246,7 @@
                                     <span style="padding: 5px; ">Chi Tiêt</span>
                                 </Button>
 
-                                <button style="margin-left: 5px;">
-                                    <span style="padding: 5px; "><i class="fas fa-trash-alt"></i>&ensp;Xóa</span>
-                                </button>
+                               
                             </td>
                         </tr>
                         <?php }?>

@@ -198,20 +198,29 @@
             {
                 $sql = "select DISTINCT * from  `gv-sv-lop` as gv INNER join sinhvien sv on gv.masinhvien = sv.masinhvien INNER JOIN monhoc on gv.mamon=monhoc.mamon where gv.`magiangvien`='$mgv' ";
             }
-            else{
+            if($tt=="Tất cả" && $mm!="Tất cả")
+            {
+                $sql = "select DISTINCT * from  `gv-sv-lop` as gv INNER join sinhvien sv on gv.masinhvien = sv.masinhvien INNER JOIN monhoc on gv.mamon=monhoc.mamon where gv.`magiangvien`='$mgv' and gv.mamon='$mm'";
+            }
+            if($tt!="Tất cả" && $mm=="Tất cả")
+            {
                 if($tt=="Đang Học"){
-                    echo "aa";
                     $sql = "select DISTINCT * from  `gv-sv-lop` as gv INNER join sinhvien sv on gv.masinhvien = sv.masinhvien INNER JOIN monhoc on gv.mamon=monhoc.mamon where gv.`magiangvien`='$mgv' and gv.trangthai=1 and gv.mamon='$mm'";
                 }
                 else{
-                    if($tt=="Tất cả"){
-                        $sql = "select DISTINCT * from  `gv-sv-lop` as gv INNER join sinhvien sv on gv.masinhvien = sv.masinhvien INNER JOIN monhoc on gv.mamon=monhoc.mamon where gv.`magiangvien`='$mgv' and gv.mamon='$mm' ";
-                    }
-                    else{
-                        $sql = "select DISTINCT * from  `gv-sv-lop` as gv INNER join sinhvien sv on gv.masinhvien = sv.masinhvien INNER JOIN monhoc on gv.mamon=monhoc.mamon where gv.`magiangvien`='$mgv' and gv.trangthai=0 and gv.mamon='$mm' ";
-                    }
+                    $sql = "select DISTINCT * from  `gv-sv-lop` as gv INNER join sinhvien sv on gv.masinhvien = sv.masinhvien INNER JOIN monhoc on gv.mamon=monhoc.mamon where gv.`magiangvien`='$mgv' and gv.trangthai=0 and gv.mamon='$mm' ";
                 }
             }
+            if($tt!="Tất cả" && $mm!="Tất cả")
+            {
+                if($tt=="Đang Học"){
+                    $sql = "select DISTINCT * from  `gv-sv-lop` as gv INNER join sinhvien sv on gv.masinhvien = sv.masinhvien INNER JOIN monhoc on gv.mamon=monhoc.mamon where gv.`magiangvien`='$mgv' and gv.trangthai=1 and gv.mamon='$mm'";
+                }
+                else{
+                    $sql = "select DISTINCT * from  `gv-sv-lop` as gv INNER join sinhvien sv on gv.masinhvien = sv.masinhvien INNER JOIN monhoc on gv.mamon=monhoc.mamon where gv.`magiangvien`='$mgv' and gv.trangthai=0 and gv.mamon='$mm' ";
+                }
+            }
+
             $this->execute($sql);
             if($this->dem()==0){
                 $data=0;
@@ -453,7 +462,7 @@
 
         public function getGiaoVienCN($machuyennganh)
         {
-            $sql = "select magiangvien,hovaten from giangvien where machuyennganh = '$machuyennganh'";
+            $sql = "select magiangvien,hovaten from giangvien where chuyennganh = '$machuyennganh'";
             $this->execute($sql);
             if($this->dem()==0){
                 $data=0;

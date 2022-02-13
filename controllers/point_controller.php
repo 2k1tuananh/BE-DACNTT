@@ -31,6 +31,7 @@ class point_controller {
             }
             else{
                 $mon=$this->db->getinfo_mon($_SESSION['mgv']);
+                
                 require_once("./view/giangvien/NhapDiemSinhVien.php");
             }
         }
@@ -124,7 +125,7 @@ class point_controller {
     function sxtheomon()
     {
         if( $_GET['info']=="Tất cả"){
-            $data1=$this->db->getinfo_svl_tt($_SESSION['mgv'],$_SESSION['mamon'],$_SESSION['trangthai']);
+            $data1=$this->db->getinfo_svl_tt($_SESSION['mgv'],$_GET['info'],$_SESSION['trangthai']);
             require_once("./view/giangvien/QLHocSinhTheoMonHoc1.php");
         }
         else{
@@ -136,15 +137,9 @@ class point_controller {
     }
     function sxtheotrangthai()
     {
-        $_SESSION['trangthai']=$_GET['info'];
-        if( $_GET['info']=="Tất cả"){
-            $data1=$this->db->getinfo_all($_SESSION['mgv'],$_SESSION['mamon'],$_GET['info']);
-            require_once("./view/giangvien/QLHocSinhTheoMonHoc1.php");
-        }
-        else{
-            $data1=$this->db->getinfo_all($_SESSION['mgv'],$_SESSION['mamon'],$_GET['info']);
-            require_once("./view/giangvien/QLHocSinhTheoMonHoc1.php");
-        }
+        $_SESSION['trangthai']=$_GET['info1'];
+        $data1=$this->db->getinfo_all($_SESSION['mgv'],$_SESSION['mamon'],$_GET['info1']);
+        require_once("./view/giangvien/QLHocSinhTheoMonHoc1.php");
     }
     function timkiem1()
     {
