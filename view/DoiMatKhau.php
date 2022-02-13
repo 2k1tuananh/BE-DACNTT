@@ -1,5 +1,5 @@
 
-<?php require_once ('./view/layouts/header.php');?>
+<?php require_once ('./view/layouts/headerSinhVien.php');?>
       <!-- Right -->
       <div id="right">
         <div class="title">Đổi mật khẩu</div>
