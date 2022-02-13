@@ -125,6 +125,7 @@ class point_controller {
     function sxtheomon()
     {
         if( $_GET['info']=="Tất cả"){
+            $_SESSION['mamon']="Tất cả";
             $data1=$this->db->getinfo_svl_tt($_SESSION['mgv'],$_GET['info'],$_SESSION['trangthai']);
             require_once("./view/giangvien/QLHocSinhTheoMonHoc1.php");
         }
@@ -138,7 +139,7 @@ class point_controller {
     function sxtheotrangthai()
     {
         $_SESSION['trangthai']=$_GET['info1'];
-        $data1=$this->db->getinfo_all($_SESSION['mgv'],$_SESSION['mamon'],$_GET['info1']);
+        $data1=$this->db->getinfo_svl_tt($_SESSION['mgv'],$_SESSION['mamon'],$_GET['info1']);
         require_once("./view/giangvien/QLHocSinhTheoMonHoc1.php");
     }
     function timkiem1()
