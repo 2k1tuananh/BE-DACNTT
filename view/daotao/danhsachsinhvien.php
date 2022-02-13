@@ -317,26 +317,53 @@
                       <td class="item-monhoc"><?= $info['hovaten']?></td>
                       
                       <td class="item-monhoc">
-                        <select name="" id="">
-                          <option value="">Đang học</option>
-                          <option value="">Đã tốt nghiệp</option>
-                          <option value="">Đang bảo lưu</option>
-                          <option value="">Đã thôi học</option>
-                        </select>
+                      <script>
+                      $(function(){
+                          $('#sapxep<?= $stt?>').trigger('change'); //This event will fire the change event. 
+                              $('#sapxep<?= $stt?>').change(function(){
+                                  var data="<?= $info['masinhvien']?>";
+                                  var data2= $(this).val();
+                                  var thongbao="Cập nhật thành công";
+                                  alert(thongbao);
+                                  $.get("./index.php",{controller:"daotao",action:"uptrangththai", masinhvien:data, trangthai:data2}, function(data) {
+
+                              })                                                                                     
+                          });
+                      });
+                      </script>
+                      <select id="sapxep<?= $stt?>">
+                        <option ><?= $info['trangthai_sv']?></option>
+                        <option >Đang học</option>
+                        <option >Đã tốt nghiệp</option>
+                        <option >Đang bảo lưu</option>
+                        <option >Đã thôi học</option>
+                      </select>
                       </td>
 
 
                       <td class="item-monhoc">
-                        <Button class="btnTimKiem" type="button" data-toggle="modal"
-                          data-target="#myModal1">Xem Chi Tiêt</Button>
+                      <Button class="chitiet btnTimKiem" id="<?= $info['masinhvien']?>" style="margin-left: 5px;" type="button" data-toggle="modal"
+                                    data-target="#myModal1">
+                                    <span">Chi Tiêt</span>
+                                </Button>
                         &nbsp;
-                        <Button class="btnTimKiem" type="button" data-toggle="modal"
+                        <Button id="<?= $value['masinhvien']?>"class="btnTimKiem" type="button" data-toggle="modal"
                           data-target="#myModal2">Đánh Giá</Button>
                           <Button class="btnTimKiem" type="button" data-toggle="modal"
                           data-target="#myModal2">Cập Nhật</Button>
                       </td>
                     </tr>
                     <?php } ?>
+                    <script>
+                        $(document).ready(function(){
+                            $("button.chitiet").click(function(){
+                                    var masinhvien=$(this).attr("id")
+                                    $.get("./index.php",{controller:"point",action:"QLHocSinhTheoMonHoc", msv:masinhvien}, function(data) {
+                                    $("#myModal1").html(data);
+                                })                                                                                     
+                            });
+                        });
+                        </script>
                   </tbody>
                 </table>
               </div>
@@ -352,7 +379,7 @@
   </div>
   <!-- End Page -->
   <!-- Modal -->
-  <div class="modal fade " id="myModal" role="dialog">
+    <div class="modal fade " id="myModal" role="dialog">
     <div class="modal-dialog">
 
       <!-- Modal content-->
@@ -503,7 +530,7 @@
                             $.get("./index.php",{controller:"daotao",action:"createstudent", masinhvien:masinhvien, hovaten:hovaten,
                               gioitinh:gioitinh, CMND:CMND, ngaysinh:ngaysinh, phone:phone, email:email, chuyennganh:chuyennganh, 
                               giaovien:giaovien,diachi:diachi,lop:lop}, function(data) {
-                                $("#bangdiem1").html(data);
+                                $("#bangdiem").html(data);
                             })   
                         });
                     });
@@ -514,227 +541,7 @@
 
 
   <div class="modal fade" id="myModal1" role="dialog">
-    <div class="modal-dialog" style="width: 60%;">
 
-      <!-- Modal content-->
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">Chi Tiết Sinh Viên</h4>
-        </div>
-        <div class="modal-body">
-          <!-- <p>Some text in the modal.</p> -->
-          <table width="50%">
-            <tbody class="table">
-              <tr>
-                <td class="modal-td" width="50%">Mã Sinh Viên:</td>
-                <td class="modal-td">
-                  <p>Hahahah</p>
-                </td>
-              </tr>
-              <td class="modal-td" width="50%">Giới tính:</td>
-              <td class="modal-td">
-                <p>Hahahah</p>
-              </td>
-              </tr>
-              <tr>
-                <td class="modal-td" width="50%">Số CMND/CCCD:</td>
-                <td class="modal-td">
-                  <p>Hahahah</p>
-                </td>
-              </tr>
-              <tr>
-                <td class="modal-td" width="50%">Ngày sinh:</td>
-                <td class="modal-td">
-                  <p>Hahahah</p>
-                </td>
-              </tr>
-              <tr>
-                <td class="modal-td">Điện thoại:</td>
-                <td class="modal-td">
-                  <p>Hahahah</p>
-                </td>
-              </tr>
-              <tr>
-                <td class="modal-td">Email SV:</td>
-                <td class="modal-td">
-                  <p>Hahahah</p>
-                </td>
-              </tr>
-              <tr>
-                <td class="modal-td">Chuyên Ngành:</td>
-                <td class="modal-td">
-                  <p>Hahahah</p>
-                </td>
-              </tr>
-              <tr>
-                <td class="modal-td">Giáo viên CN:</td>
-                <td class="modal-td">
-                  <p>Hahahah</p>
-                </td>
-              </tr>
-
-              <tr>
-                <td class="modal-td">Địa chỉ hộ khẩu:</td>
-                <td class="modal-td">
-                  <p>Hahahah</p>
-
-                </td>
-              </tr>
-              <tr>
-                <td class="modal-td">Chỗ ở hiện nay:</td>
-                <td class="modal-td">
-                  <p>Hahahah</p>
-
-                </td>
-              </tr>
-            </tbody>
-          </table>
-          <table cellspacing="3" cellpadding="0" border="0px" width="100%">
-            <tbody>
-              <tr valign="top">
-                <td style="width: 100%">
-                  <div>
-                    <table class="grid" cellspacing="0" border="0" id="ctl00_c_GridDC" style="
-                        border-style: None;
-                        width: 100%;
-                        border-collapse: collapse;
-                      ">
-                      <tbody>
-                        <tr>
-                          <th scope="col">STT</th>
-                          <th scope="col" style="white-space: nowrap">
-                            Mã HP
-                          </th>
-                          <th scope="col">Tên HP</th>
-                          <th scope="col" style="white-space: nowrap">
-                            Số TC
-                          </th>
-                          <th scope="col">Điểm quá trình</th>
-                          <th scope="col">Điểm thi</th>
-                          <th scope="col">Điểm tổng</th>
-                        </tr>
-                        <tr>
-                          <td>1</td>
-                          <td>CF212</td>
-                          <td>Cấu trúc dữ liệu</td>
-                          <td align="center">3</td>
-                          <td align="center">10</td>
-                          <td align="center">10</td>
-                          <td align="center">10</td>
-                        </tr>
-                        <tr>
-                          <td>2</td>
-                          <td>CS100</td>
-                          <td>Tin đại cương</td>
-                          <td align="center">2</td>
-                          <td align="center">10</td>
-                          <td align="center">10</td>
-                          <td align="center">10</td>
-                        </tr>
-                        <tr>
-                          <td>3</td>
-                          <td>CS110</td>
-                          <td>Kỹ thuật số</td>
-                          <td align="center">2</td>
-                          <td align="center">10</td>
-                          <td align="center">10</td>
-                          <td align="center">10</td>
-                        </tr>
-                        <tr>
-                          <td>4</td>
-                          <td>CS121</td>
-                          <td>Ngôn ngữ lập trình</td>
-                          <td align="center">3</td>
-                          <td align="center">10</td>
-                          <td align="center">10</td>
-                          <td align="center">10</td>
-                        </tr>
-                        <tr>
-                          <td>5</td>
-                          <td>CS122</td>
-                          <td>Lập trình hướng đối tượng</td>
-                          <td align="center">3</td>
-                          <td align="center">10</td>
-                          <td align="center">10</td>
-                          <td align="center">10</td>
-                        </tr>
-
-
-
-                      </tbody>
-                    </table>
-                  </div>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-success" data-dismiss="modal">OK</button>
-        </div>
-      </div>
-
-    </div>
-  </div>
-
-
-
-  <div class="modal fade" id="myModal2" role="dialog">
-    <div class="modal-dialog">
-
-      <!-- Modal content-->
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">Đánh Giá Sinh Viên</h4>
-        </div>
-        <div class="modal-body">
-          <!-- <p>Some text in the modal.</p> -->
-          <table width="100%">
-            <tbody class="table">
-              <tr>
-                <td class="modal-td">Kết Quả HT</td>
-                <td class="modal-td">
-                  <select class="form-control">
-                    <option value="">Giỏi</option>
-                    <option value="">Khá</option>
-                    <option value="">Trung Bình</option>
-                    <option value="">Kém</option>
-                  </select>
-
-                </td>
-              </tr>
-              <tr>
-                <td class="modal-td">Ý Thức</td>
-                <td class="modal-td">
-                  <select class="form-control">
-                    <option value="">Giỏi</option>
-                    <option value="">Khá</option>
-                    <option value="">Trung Bình</option>
-                    <option value="">Kém</option>
-                  </select>
-
-                </td>
-              </tr>
-              <tr>
-                <td class="modal-td">Lời văn</td>
-                <td class="modal-td">
-                  <textarea name="" id="" class="form-control"></textarea>
-
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-success" data-dismiss="modal">OK</button>
-        </div>
-      </div>
-
-    </div>
   </div>
 </body>
 

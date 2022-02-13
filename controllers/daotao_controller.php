@@ -33,7 +33,11 @@ class daotao_controller {
         $listLopCN = $this->db->getAllData('lopcn');
         require_once("./view/daotao/danhsachsinhvien.php");
     }
-
+    function uptrangththai()
+    {
+        $listStudent=$this->db->uptrangthai($_GET['masinhvien'],$_GET['trangthai']);
+        // require_once("./view/daotao/PDTTimKiemSinhVien.php");
+    }
     function createstudent()
     {
        
@@ -74,7 +78,7 @@ class daotao_controller {
         }
     }
 
-    //phanconggiangday
+    //phanconggiangdayy
     function giangday()
     {
         $listMonHoc = $this->db->getAllData('monhoc');
@@ -165,11 +169,17 @@ class daotao_controller {
                 $listlopCN = $this->db->getAllData('lopcn');
                 require_once("./view/daotao/DanhSachGiaoVien.php");
             }
-        }
-        
-        
+        }    
     }
-
+    function capnhattheotrangthai1()
+    {
+        $this->db->capnhattt_gv($_GET['magiangvien'],$_GET['trangthai']);
+    }
+    function sxtheotrangthai()
+    {
+        $listGiangVien =$this->db->getinfo_gvtt($_GET['info1']);
+        require_once("./view/daotao/banggiangvien.php");
+    }
     function banggiangvien()
     {
         if($_GET['info'] != "Tất cả")
@@ -210,7 +220,7 @@ class daotao_controller {
     {
         $data=$this->db->creategiangvien($_GET['magiangvien'], $_GET['hovaten'], $_GET['gioitinh'], $_GET['CMND'], $_GET['ngaysinh'], $_GET['phone'], $_GET['email'], $_GET['chuyennganh'], $_GET['diachi'], $_GET['lop']);
         
-        require_once("./view/daotao/DanhSachGiaoVien.php");
+        require_once("./view/daotao/PDTTimKiemSinhVien.php");
         
     }
 
@@ -227,4 +237,5 @@ class daotao_controller {
         
         require_once("./view/daotao/xeplichthi.php");
     }
+
 }

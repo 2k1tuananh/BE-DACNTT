@@ -53,7 +53,7 @@
 
 
 
-        /// Sinh vien
+        // / Sinh vien
         public function getinfosinhvien($msv){
             $sql = "select `sinhvien`.*, `giangvien`.hovaten as `hvt` from `sinhvien` inner join `giangvien` on `sinhvien`.GVCN=`giangvien`.magiangvien WHERE masinhvien='$msv'";
             $this->execute($sql);
@@ -64,8 +64,7 @@
                 $data = 0;
             }
             return $data;
-        }
-        
+        }       
         public function updatesinhvien($msv,$img,$gioitinh,$cmnd,$dienthoai,$email,$diachi){
             $sql="UPDATE sinhvien SET `image`='$img', gioitinh='$gioitinh', cmnd='$cmnd', dienthoai='$dienthoai', email='$email', diachi='$diachi' WHERE masinhvien='$msv'";
             return $this->execute($sql);
@@ -361,7 +360,17 @@
             $sql="UPDATE `sinhvien-diemmon` SET `diemquatrinh`='$dqt',`diemcuoiky`='$dck',`diemtongket`='$dtk' WHERE `masinhvien`='$msv'and `mamon`='$mm'";
             return $this->execute($sql);
         }
+        public function capnhattt($msv,$mm,$tt){
+            if($tt=='Đang học')
+            {
+                $sql="UPDATE `gv-sv-lop` SET `trangthai`=1 WHERE masinhvien='$msv'and mamon='$mm'";
+            }
+            else{
+                $sql="UPDATE `gv-sv-lop` SET `trangthai`=0 WHERE masinhvien='$msv'and mamon='$mm'";
+            }
 
+            return $this->execute($sql);
+        } 
         // public function getinfo_all($mgv,$mamon,$info){
         //     if($info=="Tất cả" && $mamon=="Tất cả")
         //     {
@@ -624,17 +633,35 @@
             return $this->execute($sql);
         }
         
-
-        public function capnhattt($msv,$mm,$tt){
-            if($tt=='Đang học')
+        public function capnhattt_gv($mgv,$tt){
+            if($tt=='Đang dạy')
             {
-                $sql="UPDATE `gv-sv-lop` SET `trangthai`=1 WHERE masinhvien='$msv'and mamon='$mm'";
+                $sql="UPDATE `giangvien` SET `trangthai`=1 WHERE magiangvien='$mgv'";
             }
             else{
-                $sql="UPDATE `gv-sv-lop` SET `trangthai`=0 WHERE masinhvien='$msv'and mamon='$mm'";
+                $sql="UPDATE `giangvien` SET `trangthai`=0 WHERE magiangvien='$mgv'";
             }
-
+            echo  $sql;
             return $this->execute($sql);
-        } 
-
+        }
+        public function getinfo_gvtt($tt){
+            if($tt=="Tất cả"){
+                $sql = "select * from giangvien";
+            }
+            else{
+                if($tt=="Đang dạy"){
+                    $sql = "select * from giangvien where trangthai=1";
+                }
+                else{
+                    $sql = "select * from giangvien where trangthai=0";
+                }
+            }
+            return $this->execute($sql);
+        }
+        
+        public function uptrangthai($msv,$tt){
+            $sql="UPDATE `sinhvien` SET `trangthai_sv`='$tt' WHERE masinhvien='$msv'";
+            echo $sql;
+            return $this->execute($sql);
+        }
     }
