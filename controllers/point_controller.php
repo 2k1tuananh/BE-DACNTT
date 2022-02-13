@@ -31,6 +31,7 @@ class point_controller {
             }
             else{
                 $mon=$this->db->getinfo_mon($_SESSION['mgv']);
+                
                 require_once("./view/giangvien/NhapDiemSinhVien.php");
             }
         }
