@@ -541,10 +541,6 @@
             </tbody>
           </table>
         </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-success" data-dismiss="modal">OK</button>
-        </div>
       </div>
 
     </div>

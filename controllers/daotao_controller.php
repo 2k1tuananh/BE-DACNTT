@@ -220,7 +220,7 @@ class daotao_controller {
     {
         $data=$this->db->creategiangvien($_GET['magiangvien'], $_GET['hovaten'], $_GET['gioitinh'], $_GET['CMND'], $_GET['ngaysinh'], $_GET['phone'], $_GET['email'], $_GET['chuyennganh'], $_GET['diachi'], $_GET['lop']);
         
-        require_once("./view/daotao/DanhSachGiaoVien.php");
+        require_once("./view/daotao/PDTTimKiemSinhVien.php");
         
     }
 
