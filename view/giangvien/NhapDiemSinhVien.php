@@ -157,7 +157,7 @@
                         });
                     });
                 </script>
-                <?php $stt=0; foreach ($svl as $info){ $stt++;?>
+                <?php if($svl!="0"){ $stt=0; foreach ($svl as $info){ $stt++;?>
                     <tr>
                     <td class="hovaten<?= $stt?>" id="<?= $info['hovaten']?>"name="hovaten" style="border: 1px solid #dddddd;
                 text-align: left;
@@ -198,7 +198,10 @@
                                 <i class="fas fa-upload"></i>&ensp;Upload</span></button>
                     </td>
                 </tr>      
-                <?php } ?>
+                <?php }}
+                else{
+                    echo "<td >Dữ liệu Rỗng </td> ";
+                } ?>
                 </div>
                 
             </table>

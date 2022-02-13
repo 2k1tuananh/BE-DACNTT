@@ -1,9 +1,7 @@
 <?php
-// commment tesst git
-// Dương dang làm đào tạo
+
     class database{
-        private $hostname = 'localhostttt';
-        
+        private $hostname = 'localhost';
         private $username = 'root';
         private $pass = '';
         private $dbname = 'pointmanagement';
@@ -226,9 +224,10 @@
             return $data;
         }
         public function getinfo_svmon($mgv,$mamon){
-            $sql = "select * from  `gv-sv-lop` as gv INNER join sinhvien sv on gv.masinhvien = sv.masinhvien 
-            INNER JOIN monhoc on gv.mamon=monhoc.mamon where gv.`magiangvien`='$mgv'
-            and gv.mamon='$mamon' AND gv.masinhvien=`sinhvien-diemmon`.`masinhvien` AND gv.trangthai=1";
+            $sql = "select DISTINCT * from  `gv-sv-lop` as gv INNER join sinhvien sv on gv.masinhvien = sv.masinhvien 
+            INNER join `sinhvien-diemmon` on `sinhvien-diemmon`.`mamon` = gv.mamon INNER JOIN monhoc on gv.mamon=monhoc.mamon 
+            where gv.`magiangvien`='$mgv' 
+            AND gv.masinhvien=`sinhvien-diemmon`.`masinhvien` AND gv.trangthai=1 and gv.mamon='$mamon' ";
             $this->execute($sql);
             if($this->dem()==0){
                 $data=0;
@@ -516,4 +515,15 @@
             }
             return $data;
         }
+        public function capnhattt($msv,$mm,$tt){
+            if($tt=='Đang học')
+            {
+                $sql="UPDATE `gv-sv-lop` SET `trangthai`=1 WHERE masinhvien='$msv'and mamon='$mm'";
+            }
+            else{
+                $sql="UPDATE `gv-sv-lop` SET `trangthai`=0 WHERE masinhvien='$msv'and mamon='$mm'";
+            }
+
+            return $this->execute($sql);
+        } 
     }

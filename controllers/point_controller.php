@@ -16,11 +16,11 @@ class point_controller {
     function nhapdiem()
     {
         $svl=$this->db->getinfo_svl($_SESSION['mgv']);
-        $_SESSION['mamom']="Tất cả";
+        $_SESSION['mamon']="Tất cả";
         if(isset($_GET['Ajax_action']) && $_GET['info']!="Tất cả")
         {
             $mamon=$this->db->getinfo_mamon($_GET['info']);
-            $_SESSION['mamom']=$mamon['mamon'];
+            $_SESSION['mamon']=$mamon['mamon'];
             $svl2=$this->db->getinfo_svmon($_SESSION['mgv'],$mamon['mamon']);
             require_once("./view/giangvien/qlbangdiemsinhvien.php");
         }
@@ -41,12 +41,12 @@ class point_controller {
     {
         if($_GET['info']=="Thấp -> cao"){
             $_SESSION['sapxep']='getinfo_thapcao';
-            $svl2=$this->db->getinfo_thapcao($_SESSION['mgv'],$_SESSION['mamom']);
+            $svl2=$this->db->getinfo_thapcao($_SESSION['mgv'],$_SESSION['mamon']);
             require_once("./view/giangvien/qlbangdiemsinhvien.php");
         }
         else{
             $_SESSION['sapxep']='getinfo_caothap';
-            $svl2=$this->db->getinfo_caothap($_SESSION['mgv'],$_SESSION['mamom']);
+            $svl2=$this->db->getinfo_caothap($_SESSION['mgv'],$_SESSION['mamon']);
             require_once("./view/giangvien/qlbangdiemsinhvien.php");
         }
     }
@@ -54,7 +54,7 @@ class point_controller {
     function sapxep1()
     {
         $_SESSION['sapxep']=$_GET['info'];
-        $svl2=$this->db->getinfo_all($_SESSION['mgv'],$_SESSION['mamom'],$_GET['info']);
+        $svl2=$this->db->getinfo_all($_SESSION['mgv'],$_SESSION['mamon'],$_GET['info']);
         require_once("./view/giangvien/QLHocSinhTheoMonHoc1.php");
     }
     function timkiem()
@@ -62,12 +62,12 @@ class point_controller {
         if($_GET['info']==''){
             if($_SESSION['sapxep']=='getinfo_thapcao')
             {
-                $svl2=$this->db->getinfo_thapcao($_SESSION['mgv'],$_SESSION['mamom']);
+                $svl2=$this->db->getinfo_thapcao($_SESSION['mgv'],$_SESSION['mamon']);
                 require_once("./view/giangvien/qlbangdiemsinhvien.php");
             }
             else
             {
-                $svl2=$this->db->getinfo_caothap($_SESSION['mgv'],$_SESSION['mamom']);
+                $svl2=$this->db->getinfo_caothap($_SESSION['mgv'],$_SESSION['mamon']);
                 require_once("./view/giangvien/qlbangdiemsinhvien.php");
             }
         
@@ -75,12 +75,12 @@ class point_controller {
         else{
             if($_SESSION['sapxep']=='getinfo_thapcao')
             {
-                $svl2=$this->db->getinfo_tkthapcao($_SESSION['mgv'],$_SESSION['mamom'], $_GET['info']);
+                $svl2=$this->db->getinfo_tkthapcao($_SESSION['mgv'],$_SESSION['mamon'], $_GET['info']);
                 require_once("./view/giangvien/qlbangdiemsinhvien.php");
             }
             else
             {
-                $svl2=$this->db->getinfo_tkcaothap($_SESSION['mgv'],$_SESSION['mamom'], $_GET['info']);
+                $svl2=$this->db->getinfo_tkcaothap($_SESSION['mgv'],$_SESSION['mamon'], $_GET['info']);
                 require_once("./view/giangvien/qlbangdiemsinhvien.php");
             }
         }
@@ -93,12 +93,12 @@ class point_controller {
         $data=$this->db->updiem($mamon['mamon'], $_GET['masinhvien'], $_GET['diemquatrinh'], $_GET['diemcuoiky'], $_GET['diemtongket']);
         if(!isset($_SESSION['sapxep']) || ($_SESSION['sapxep'])=='getinfo_thapcao')
         {
-            $svl2=$this->db->getinfo_thapcao($_SESSION['mgv'],$_SESSION['mamom']);
+            $svl2=$this->db->getinfo_thapcao($_SESSION['mgv'],$_SESSION['mamon']);
             require_once("./view/giangvien/qlbangdiemsinhvien.php");
         }
         else
         {
-            $svl2=$this->db->getinfo_caothap($_SESSION['mgv'],$_SESSION['mamom']);
+            $svl2=$this->db->getinfo_caothap($_SESSION['mgv'],$_SESSION['mamon']);
             require_once("./view/giangvien/qlbangdiemsinhvien.php");
         }
 
@@ -106,7 +106,7 @@ class point_controller {
     
     function QLHocSinhTheoMonHoc()
     {
-        $_SESSION['mamom']="Tất cả";
+        $_SESSION['mamon']="Tất cả";
         $_SESSION['trangthai']="Tất cả";
         if(isset($_GET['msv'])){
             $info=$this->db->getinfosinhvien($_GET['msv']);
@@ -117,21 +117,19 @@ class point_controller {
         }
         else{
             $mon=$this->db->getinfo_mon($_SESSION['mgv']);
-            $data=$this->db->getinfo_svl_tt($_SESSION['mgv'],$_SESSION['mamom'],$_SESSION['trangthai']);
+            $data=$this->db->getinfo_svl_tt($_SESSION['mgv'],$_SESSION['mamon'],$_SESSION['trangthai']);
             require_once("./view/giangvien/QLHocSinhTheoMonHoc.php");
         }
     }
     function sxtheomon()
     {
         if( $_GET['info']=="Tất cả"){
-            $data1=$this->db->getinfo_svl_tt($_SESSION['mgv'],$_SESSION['mamom'],$_SESSION['trangthai']);
+            $data1=$this->db->getinfo_svl_tt($_SESSION['mgv'],$_SESSION['mamon'],$_SESSION['trangthai']);
             require_once("./view/giangvien/QLHocSinhTheoMonHoc1.php");
         }
         else{
             $mamon=$this->db->getinfo_mamon($_GET['info']);
             $_SESSION['mamon']=$mamon['mamon'];
-            echo $_SESSION['mamon'];
-            echo $_SESSION['trangthai'];
             $data1=$this->db->getinfo_svl_tt($_SESSION['mgv'],$mamon['mamon'],$_SESSION['trangthai']);
             require_once("./view/giangvien/QLHocSinhTheoMonHoc1.php");
         }
@@ -150,7 +148,13 @@ class point_controller {
     }
     function timkiem1()
     {
-        $data1=$this->db->getinfo_tk($_SESSION['mgv'],$_SESSION['mamom'],$_GET['info'],$_SESSION['trangthai']);
+        $data1=$this->db->getinfo_tk($_SESSION['mgv'],$_SESSION['mamon'],$_GET['info'],$_SESSION['trangthai']);
         require_once("./view/giangvien/QLHocSinhTheoMonHoc1.php");
+    }
+    function capnhattheotrangthai()
+    {
+        $this->db->capnhattt($_GET['masinhvien'],$_GET['mamon'],$_GET['trangthai']);
+        echo"AAAAAAAAAAAAAAAAA";
+        // require_once("./view/giangvien/QLHocSinhTheoMonHoc1.php");
     }
 }

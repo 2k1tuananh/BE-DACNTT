@@ -119,7 +119,6 @@
                         Xuất file
                     </button>
                 </div>
-
                 <div class="modal fade" id="myModal" role="dialog">
                     <div class="modal-dialog">
                         <!-- Modal content-->
@@ -193,7 +192,7 @@
                     padding: 8px;
                   "></th>
                         </tr>
-                    <?php foreach($data as $value){ ?>
+                    <?php $i=0; foreach($data as $value){ $i++; ?>
                         <tr>
                             <td style="
                     border: 1px solid #dddddd;
@@ -214,7 +213,22 @@
                     text-align: left;
                     padding: 8px;
                   ">
-                                <select>
+                                <script>
+                                $(function(){
+                                    $('#sapxep<?= $i?>').trigger('change'); //This event will fire the change event. 
+                                        $('#sapxep<?= $i?>').change(function(){
+                                            var data="<?= $value['masinhvien']?>";
+                                            var data1="<?= $value['mamon']?>";
+                                            var data2= $(this).val();
+                                            var thongbao="Cập nhật thành công";
+                                            alert(thongbao);
+                                            $.get("./index.php",{controller:"point",action:"capnhattheotrangthai", masinhvien:data, mamon:data1, trangthai:data2}, function(data) {
+                                            
+                                        })                                                                                     
+                                    });
+                                });
+                                </script>
+                                <select id="sapxep<?= $i?>">
                                     <?php if($value['trangthai']==1){?>
                                     <option>Đang học</option>
                                     <option>Cấm thi</option>
