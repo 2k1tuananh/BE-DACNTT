@@ -53,7 +53,7 @@
 
 
 
-        /// Sinh vien
+        // / Sinh vien
         public function getinfosinhvien($msv){
             $sql = "select `sinhvien`.*, `giangvien`.hovaten as `hvt` from `sinhvien` inner join `giangvien` on `sinhvien`.GVCN=`giangvien`.magiangvien WHERE masinhvien='$msv'";
             $this->execute($sql);
@@ -64,8 +64,7 @@
                 $data = 0;
             }
             return $data;
-        }
-        
+        }       
         public function updatesinhvien($msv,$img,$gioitinh,$cmnd,$dienthoai,$email,$diachi){
             $sql="UPDATE sinhvien SET `image`='$img', gioitinh='$gioitinh', cmnd='$cmnd', dienthoai='$dienthoai', email='$email', diachi='$diachi' WHERE masinhvien='$msv'";
             return $this->execute($sql);

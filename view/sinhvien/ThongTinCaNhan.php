@@ -112,5 +112,3 @@
     
   </div>
 </div>
-<!-- End Right -->
-    <?php require_once ('./view/layouts/footer.php');?>
