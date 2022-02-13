@@ -64,7 +64,7 @@ class personal_information_controller {
         $tongtin=$this->db->tongtin($_SESSION['msv']);
         $tongdiem=$this->db->tongdiem($_SESSION['msv']);
 
-=======
+
         // require_once("./view/BangDiemSinhVien.php");
 
         require_once("./view/sinhvien/BangDiemSinhVien.php");
