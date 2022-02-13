@@ -382,7 +382,7 @@
                 </tr>
                 <tr>
                   <td class= "modal-td" width="30%">Tên giáo viên:</td>
-                  <td class= "modal-td"><input type="text"  id="hovaten" name="hovaten" class="form-control" ></td>
+                  <td class= "modal-td"><input type="text"  id="hovaten" name="hovaten" class="form-control" autocomplete="off"></td>
                 </tr>
                 
                 <tr>
@@ -396,7 +396,7 @@
                 </tr>
                 <tr>
                   <td class= "modal-td" width="30%">Số CMND/CCCD:</td>
-                  <td class= "modal-td"><input type="text" class="form-control" name="CMND" id="CMND" ></td>
+                  <td class= "modal-td"><input autocomplete="off" type="text" class="form-control" name="CMND" id="CMND" ></td>
                 </tr>
                 <tr>
                   <td class= "modal-td" width="30%">Ngày sinh:</td>
@@ -406,7 +406,7 @@
                 </tr>
                 <tr>
                   <td class= "modal-td">Điện thoại:</td>
-                  <td class= "modal-td"><input type="text" id="phone" name="phone" class="form-control" ></td>
+                  <td class= "modal-td"><input autocomplete="off" type="text" id="phone" name="phone" class="form-control" ></td>
                 </tr>
                 <tr>
                   <td class= "modal-td">Email SV:</td>
@@ -415,7 +415,7 @@
                 <tr>
                   <td class= "modal-td">Địa chỉ hộ khẩu:</td>
                   <td class= "modal-td">
-                    <input type="text" class="form-control"  name="diachi" id="diachi" >
+                    <input type="text" class="form-control" autocomplete="off" name="diachi" id="diachi" >
 
                   </td>
                 </tr>
