@@ -227,10 +227,24 @@ class daotao_controller {
     //danhsachmonhoc
     function danhsachmonhoc()
     {
-        
+        $chuyennganh=$this->db->getAllData("chuyennganh");
+        $mon=$this->db->getAllData("monhoc");
         require_once("./view/daotao/Danhsachmonhoc.php");
     }
-
+    function themmon()
+    {
+        $mamon=$_GET['mamon'];
+        $tenmon=$_GET['tenmon'];
+        $sotinchi=$_GET['sotinchi'];
+        $chuyennganh=$_GET['chuyennganh'];
+        //$machuyennganh=$_POST['machuyennganh'];
+        $thu=$_GET['thu'];
+        $ca=$_GET['ca'];
+        $macn=$this->db->getmcn($chuyennganh);
+        $this->db->themmon($mamon,$tenmon,$sotinchi,$thu,$ca,$macn['machuyennganh']);
+        $mon=$this->db->getAllData("monhoc");
+        require_once("./view/daotao/bangdssv.php");
+    }
     //xeplichthi
     function xeplichthi()
     {

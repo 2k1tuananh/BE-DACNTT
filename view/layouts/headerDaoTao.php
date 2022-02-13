@@ -1,4 +1,4 @@
-<?php if(!isset($_SESSION['name'])){
+<?php if(!isset($_SESSION['role_id']) or $_SESSION['role_id']!="3"){
   header('location:index.php?controller=login&action=login');
 } ?>
 <html>
@@ -2102,7 +2102,7 @@
 
             <ul class="sub-menu" style="display: block">
               <li>
-                <a href="#">
+                <a href="?controller=tkb">
                   Thời khóa biểu toàn trường</a
                 >
               </li>
@@ -2115,6 +2115,7 @@
             <ul class="sub-menu" style="display: block">
 
               <li><a href="?controller=daotao&action=giangvien">Quản lý giáo viên</a></li>
+              <li><a href="?controller=daotao&action=giangday">Phân công giảng dạy</a></li>
               
             </ul>
           </li>
