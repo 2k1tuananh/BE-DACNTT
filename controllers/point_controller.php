@@ -150,7 +150,6 @@ class point_controller {
     function capnhattheotrangthai()
     {
         $this->db->capnhattt($_GET['masinhvien'],$_GET['mamon'],$_GET['trangthai']);
-        echo"AAAAAAAAAAAAAAAAA";
         // require_once("./view/giangvien/QLHocSinhTheoMonHoc1.php");
     }
 }

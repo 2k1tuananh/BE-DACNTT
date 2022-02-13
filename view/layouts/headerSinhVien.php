@@ -1,4 +1,4 @@
-<?php if (!isset($_SESSION['name'])) {
+<?php if(!isset($_SESSION['role_id']) or $_SESSION['role_id']!="1"){
   header('location:index.php?controller=login&action=login');
 } ?>
 <html>
@@ -267,7 +267,7 @@
 
             <ul class="sub-menu" style="display: block">
               <li>
-                <a href="#">
+                <a href="?controller=tkb">
                   Thời khóa biểu toàn trường</a>
               </li>
             </ul>

@@ -27,6 +27,7 @@ class login_controller {
                         $_SESSION['msv']=$info['masinhvien'];
                         $_SESSION['ngaysinh']=$info['ngaysinh'];
                         $_SESSION['lop']=$info['lop'];
+                        $_SESSION['role_id'] = $info['role_id'];
                         $_SESSION['start'] = time(); 
                         $_SESSION['expire'] = $_SESSION['start'] + (30*60);
                         header('location:index.php?controller=personal_information');
@@ -43,6 +44,7 @@ class login_controller {
                         $_SESSION['email']=$info['email'];
                         $_SESSION['start'] = time(); 
                         $_SESSION['expire'] = $_SESSION['start'] + (30*60);
+                        $_SESSION['role_id'] = $info['role_id']; 
                         header('location:index.php?controller=personal_information');
                 }
                
