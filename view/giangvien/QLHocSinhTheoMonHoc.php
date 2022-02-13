@@ -1,5 +1,40 @@
 <?php require_once ('./view/layouts/headerGiaoVien.php');?>
+<style>
+    button {
+  z-index: 1;
+  position: relative;
+  font-size: inherit;
+  font-family: inherit;
+  color: white;
+  padding: 0.5em 1em;
+  outline: none;
+  border: none;
+  background-color: hsl(236, 32%, 26%);
+}
 
+button::before {
+  content: '';
+  z-index: -1;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: #fc2f70;
+  transform-origin: center bottom;
+  transform: scaleY(0);
+  transition: transform 0.25s ease-in-out;
+}
+
+button:hover {
+  cursor: pointer;
+}
+
+button:hover::before {
+  transform-origin: center top;
+  transform: scaleY(1);
+}
+    </style>
         <!-- Right -->
         <div id="right" style="width: 75%">
             <div class="title">Quản lý học sinh </div>
@@ -73,18 +108,19 @@
                   height: 25px;
                   bottom: 0px;
                   top: 0px;
-                  padding: 0 3px 0 3px;
+                  padding: 0 8px 0 8px;
                 ">
                             Tìm
                         </button>
                     </div>
-
+                    Chọn tình trạng
                     <div style="
                 background-color: #e4e8e9;
                 border: 1px solid #545454;
                 border-radius: 2px;
                 width: 110px;
               ">
+              
                         <i style="padding-left: 5px" class="fas fa-sort"></i>
                         <select id="sapxep" style="border: none; background-color: #e4e8e9;">
                             <script>
@@ -238,12 +274,12 @@
                                 ">
 
                                 <Button type="button" data-toggle="modal" data-target="#myModal2">
-                                    <span style="padding: 5px; ">Đánh Giá</span>
+                                    <span">Đánh Giá</span>
                                 </Button>
 
                                 <Button class="chitiet" id="<?= $value['masinhvien']?>" style="margin-left: 5px;" type="button" data-toggle="modal"
                                     data-target="#myModal1">
-                                    <span style="padding: 5px; ">Chi Tiêt</span>
+                                    <span">Chi Tiêt</span>
                                 </Button>
 
                                
@@ -328,29 +364,7 @@
                 </div>
             </div>
 
-
-
-
-            <!-- Footer -->
-            <div id="footer">
-                Địa chỉ: Đường Nghiêm Xuân Yêm - Đại Kim - Hoàng Mai - Hà Nội<br />
-                Điện thoại hỗ trợ kỹ thuật:(04) 355 92 678 website
-                <a href="http://www.thanglong.edu.vn">http://www.thanglong.edu.vn</a>
-                mail:<a href="mailto:p.cntt@thanglong.edu.vn">p.cntt@thanglong.edu.vn</a><a
-                    href="http://atgo.vn/member/svgo/QTM2NjQzfDExLzEyLzIwMDF8TkdVWeG7hE4gVEnhur5OfFTDgEl8fGFuaHRhaWJudm4xMjExMjAwMUBnbWFpbC5jb218Q2jGsGEgY8OzfENoxrBhIGPDsw==">.</a>
-            </div>
-            <!-- End Footer -->
-
-            <div id="eJOY__extension_root" class="eJOY__extension_root_class" style="all: unset"></div>
-            <iframe id="nr-ext-rsicon" style="
-        position: absolute;
-        display: none;
-        width: 50px;
-        height: 50px;
-        z-index: 2147483647;
-        border-style: none;
-        background: transparent;
-      "></iframe>
+            
 </body>
 
 </html>
