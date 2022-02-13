@@ -2081,7 +2081,7 @@
               <a class="active" href="#">Trang chủ sinh viên</a>
             </li>
             <li><a href="http://thanglong.edu.vn/">Trang chủ nhà trường</a></li>
-            <li><a href="#">Trang chủ quản lý đào tạo</a></li>
+            
 
             <li>
               <b><a class="msg" href="#"> Có 0 tin báo mới </a></b>

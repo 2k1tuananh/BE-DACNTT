@@ -114,4 +114,3 @@
 
 
 
-    <?php require_once ('./view/layouts/footer.php');?>
