@@ -1,4 +1,4 @@
-<?php require_once ('./view/layouts/header.php');?>
+<?php require_once ('./view/layouts/headerDaoTao.php');?>
 
     <script src="chrome-extension://mooikfkahbdckldjjndioackbalphokd/assets/prompt.js"></script>
     <style>
@@ -253,12 +253,23 @@
               });
         </script>
         </div>
+        <script>
+        $(function(){
+            $('#chontrangthai').trigger('change'); //This event will fire the change event. 
+                $('#chontrangthai').change(function(){
+                    var data= $(this).val();
+                    $.get("./index.php",{controller:"daotao",action:"sxtheotrangthai", info1:data}, function(data) {
+                    $("#bangdiem1").html(data);
+                })                                                                                     
+            });
+        });
+        </script>
         <div class="trang-thai">
           <p>Chọn trạng thái:</p>
-          <select>
-            <option value="">Tất cả</option>
-            <option value="">Đang dạy</option>
-            <option value="">Đã nghỉ</option>
+          <select id="chontrangthai" style="border: none; background-color: #e4e8e9;">
+            <option >Tất cả</option>
+            <option >Đang dạy</option>
+            <option >Đã nghỉ</option>
           </select>
         </div>
         
@@ -295,10 +306,28 @@
                             
                             <td class="text-center"><?= $info['hovaten']?></td>
                             <td class="text-center">
-                              <select name="" id="">
-                                <option value="">Đang dạy</option>
-                                <option value="">Đã nghỉ</option>
-                              </select>
+                            <script>
+                                $(function(){
+                                    $('#sapxep<?= $stt?>').trigger('change'); //This event will fire the change event. 
+                                        $('#sapxep<?= $stt?>').change(function(){
+                                            var data="<?= $info['magiangvien']?>";
+                                            var data2= $(this).val();
+                                            var thongbao="Cập nhật thành công";
+                                            alert(thongbao);
+                                            $.get("./index.php",{controller:"daotao",action:"capnhattheotrangthai1", magiangvien:data, trangthai:data2}, function(data) {
+                                        })                                                                                     
+                                    });
+                                });
+                                </script>
+                                <select id="sapxep<?= $stt?>">
+                                    <?php if($info['trangthai']==1){?>
+                                    <option>Đang dạy</option>
+                                    <option>Đã nghỉ</option>
+                                    <?php } else{?>
+                                    <option>Đã nghỉ</option>
+                                    <option>Đang dạy</option>
+                                    <?php } ?> 
+                                </select>
                             </td>
                             <td class="text-center">
                             

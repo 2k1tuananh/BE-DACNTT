@@ -361,7 +361,17 @@
             $sql="UPDATE `sinhvien-diemmon` SET `diemquatrinh`='$dqt',`diemcuoiky`='$dck',`diemtongket`='$dtk' WHERE `masinhvien`='$msv'and `mamon`='$mm'";
             return $this->execute($sql);
         }
+        public function capnhattt($msv,$mm,$tt){
+            if($tt=='Đang học')
+            {
+                $sql="UPDATE `gv-sv-lop` SET `trangthai`=1 WHERE masinhvien='$msv'and mamon='$mm'";
+            }
+            else{
+                $sql="UPDATE `gv-sv-lop` SET `trangthai`=0 WHERE masinhvien='$msv'and mamon='$mm'";
+            }
 
+            return $this->execute($sql);
+        } 
         // public function getinfo_all($mgv,$mamon,$info){
         //     if($info=="Tất cả" && $mamon=="Tất cả")
         //     {
@@ -624,17 +634,35 @@
             return $this->execute($sql);
         }
         
-
-        public function capnhattt($msv,$mm,$tt){
-            if($tt=='Đang học')
+        public function capnhattt_gv($mgv,$tt){
+            if($tt=='Đang dạy')
             {
-                $sql="UPDATE `gv-sv-lop` SET `trangthai`=1 WHERE masinhvien='$msv'and mamon='$mm'";
+                $sql="UPDATE `giangvien` SET `trangthai`=1 WHERE magiangvien='$mgv'";
             }
             else{
-                $sql="UPDATE `gv-sv-lop` SET `trangthai`=0 WHERE masinhvien='$msv'and mamon='$mm'";
+                $sql="UPDATE `giangvien` SET `trangthai`=0 WHERE magiangvien='$mgv'";
             }
-
+            echo  $sql;
             return $this->execute($sql);
-        } 
-
+        }
+        public function getinfo_gvtt($tt){
+            if($tt=="Tất cả"){
+                $sql = "select * from giangvien";
+            }
+            else{
+                if($tt=="Đang dạy"){
+                    $sql = "select * from giangvien where trangthai=1";
+                }
+                else{
+                    $sql = "select * from giangvien where trangthai=0";
+                }
+            }
+            return $this->execute($sql);
+        }
+        
+        public function uptrangthai($msv,$tt){
+            $sql="UPDATE `sinhvien` SET `trangthai_sv`='$tt' WHERE masinhvien='$msv'";
+            echo $sql;
+            return $this->execute($sql);
+        }
     }

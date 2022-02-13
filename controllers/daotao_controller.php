@@ -33,7 +33,11 @@ class daotao_controller {
         $listLopCN = $this->db->getAllData('lopcn');
         require_once("./view/daotao/danhsachsinhvien.php");
     }
-
+    function uptrangththai()
+    {
+        $listStudent=$this->db->uptrangthai($_GET['masinhvien'],$_GET['trangthai']);
+        // require_once("./view/daotao/PDTTimKiemSinhVien.php");
+    }
     function createstudent()
     {
        
@@ -165,11 +169,17 @@ class daotao_controller {
                 $listlopCN = $this->db->getAllData('lopcn');
                 require_once("./view/daotao/DanhSachGiaoVien.php");
             }
-        }
-        
-        
+        }    
     }
-
+    function capnhattheotrangthai1()
+    {
+        $this->db->capnhattt_gv($_GET['magiangvien'],$_GET['trangthai']);
+    }
+    function sxtheotrangthai()
+    {
+        $listGiangVien =$this->db->getinfo_gvtt($_GET['info1']);
+        require_once("./view/daotao/banggiangvien.php");
+    }
     function banggiangvien()
     {
         if($_GET['info'] != "Tất cả")
@@ -227,4 +237,5 @@ class daotao_controller {
         
         require_once("./view/daotao/xeplichthi.php");
     }
+
 }
