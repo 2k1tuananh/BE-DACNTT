@@ -739,4 +739,107 @@
             $sql=" SELECT DISTINCT(monhoc.mamon), monhoc.tenmon, monhoc.sotinchi, monhoc.thu, monhoc.ca, giangvien.hovaten FROM monhoc INNER JOIN `gv-sv-lop` as gv on monhoc.mamon=gv.mamon INNER JOIN giangvien on gv.magiangvien= giangvien.magiangvien where ( monhoc.tenmon like '%$key%' or monhoc.mamon like '%$key%' ) and monhoc.chuyennganh='$machuyennganh' ";
             return $this->execute($sql);
         }
+
+        public function countsSV(){
+            $sql = 'SELECT count(*) as sl  from sinhvien';
+            return $this->executeResult($sql);
+        }
+        public function countsGV(){
+            $sql = 'SELECT count(*) as sl  from giangvien where role_id = 2';
+            return $this->executeResult($sql);
+        }
+        public function countsNV(){
+            $sql = 'SELECT count(*) as sl  from giangvien where role_id = 3';
+            return $this->executeResult($sql);
+        }
+        public function countsSVNam(){
+            $sql = 'SELECT count(*) as sl  from sinhvien  where gioitinh = "Nam"';
+            return $this->executeResult($sql);
+        }
+        public function countsGVNam(){
+            $sql = 'SELECT count(*) as sl  from giangvien where gioitinh = "Nam"';
+            return $this->executeResult($sql);
+        }
+        public function monhocSL(){
+            $sql = 'SELECT count(*) as sl  from monhoc';
+            return $this->executeResult($sql);
+        }
+        public function chuyennganhSL(){
+            $sql = 'SELECT count(*) as sl  from chuyennganh';
+            return $this->executeResult($sql);
+        }
+        public function giangvienSL(){
+            $sql = 'SELECT count(*) as sl  from giangvien';
+            return $this->executeResult($sql);
+        }
+        public function countsSVNu(){
+            $sql = 'SELECT count(*) as sl  from sinhvien  where gioitinh = "Nữ"';
+            return $this->executeResult($sql);
+        }
+        public function countsGVNu(){
+            $sql = 'SELECT count(*) as sl  from giangvien  where gioitinh = "Nữ"';
+            return $this->executeResult($sql);
+        }
+        function executeResult($sql){
+            $conn = mysqli_connect($this->hostname, $this->username, $this->pass, $this->dbname);
+            
+            $result = mysqli_query($conn, $sql);
+            $list = [];
+            while ($row = mysqli_fetch_array($result, 1)) {
+                $list[] = $row;
+            }
+            mysqli_close($conn);
+            
+            return $list;
+        }
+
+        public function updatestudent($masinhvien,$hovaten,$gioitinh,$CMND,$ngaysinh,$phone,$email,$chuyennganh,$giaovien,$diachi,$lop,$id){
+            $sql="UPDATE `sinhvien` SET `masinhvien` = '$masinhvien', `hovaten` = '$hovaten', `gioitinh`= '$gioitinh', `diachi` ='$diachi', `email`='$email', `dienthoai`= '$phone', 
+            `cmnd` ='$CMND', `ngaysinh` ='$ngaysinh', `GVCN` ='$giaovien', `chuyennganh`= '$chuyennganh' ,`lop`='$lop' WHERE id='$id'";
+            
+            return $this->execute($sql);
+        }
+        public function editgiangvienid($id){
+            $sql = "select * from giangvien where `id`='$id' ";
+            $data=$this->execute($sql);
+            if($this->dem()!=0){
+                $data = mysqli_fetch_array($this->result);
+            }
+            else{
+                $data = 0;
+            }
+            return $data;
+        }
+
+        public function editgiangvien($mgv,$hovaten,$gioitinh,$cmnd,$ngaysinh,$dienthoai,$email,$cn,$diachi,$id){
+            $sql="UPDATE `giangvien` SET `magiangvien` = '$mgv' ,`hovaten`='$hovaten' , gioitinh='$gioitinh', chuyennganh = '$cn' ,ngaysinh = '$ngaysinh', cmnd='$cmnd', dienthoai='$dienthoai', email='$email', diachi='$diachi' WHERE id='$id'";
+            return $this->execute($sql);
+        }
+        public function deletestudent($id){
+            $sql="DELETE FROM sinhvien WHere id = '$id'";
+            
+            return $this->execute($sql);
+        }
+        public function deletegiangvien($id){
+            $sql="DELETE FROM giangvien WHere id = '$id'";
+            
+            return $this->execute($sql);
+        }
+        public function createnhanvien($magiangvien,$hovaten, $role_id,$gioitinh,$CMND,$ngaysinh,$phone,$email,$chuyennganh,$diachi,$lop){
+            $sql="INSERT INTO `giangvien`(`magiangvien`, `hovaten`,`role_id`, `gioitinh`, `diachi`, `email`, `dienthoai`, `cmnd`, `ngaysinh`, `chuyennganh`,  `password`,`ChuNhiem`) 
+            VALUES ('$magiangvien','$hovaten', $role_id,'$gioitinh','$diachi','$email','$phone','$CMND','$ngaysinh','$chuyennganh','$magiangvien','$lop')";
+           
+            return $this->execute($sql);
+        }
+        public function editsvid($id){
+            $sql = "select * from sinhvien where `id`='$id' ";
+            $data=$this->execute($sql);
+            if($this->dem()!=0){
+                $data = mysqli_fetch_array($this->result);
+            }
+            else{
+                $data = 0;
+            }
+            return $data;
+        }
     }

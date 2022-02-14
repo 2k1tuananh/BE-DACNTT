@@ -42,7 +42,6 @@ class daotao_controller {
     {
        
         $data=$this->db->createstudent($_GET['masinhvien'], $_GET['hovaten'], $_GET['gioitinh'], $_GET['CMND'], $_GET['ngaysinh'], $_GET['phone'], $_GET['email'], $_GET['chuyennganh'], $_GET['giaovien'], $_GET['diachi'], $_GET['lop']);
-        header('location:index.php?controller=daotao');
         require_once("./view/daotao/danhsachsinhvien.php");
 
     }
