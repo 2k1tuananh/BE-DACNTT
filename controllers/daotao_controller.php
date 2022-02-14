@@ -81,7 +81,7 @@ class daotao_controller {
     //phanconggiangdayy
     function giangday()
     {
-        $listMonHoc = $this->db->getAllData('monhoc');
+        $listMonHoc = $this->db->monhocgiangvien();
         $listChuyenNganh = $this->db->getAllData('chuyennganh');
         $listGiangVien = $this->db->getAllData('giangvien');
         //$listGiangVien = $this->db->giaovienmonhoc();
@@ -109,7 +109,7 @@ class daotao_controller {
         else{
             if( $_GET['info'] == "Tất cả"){
                 
-                $listMonHoc = $this->db->getAllData('monhoc');
+                $listMonHoc = $this->db->monhocgiangvien();
                 $listGiangVien = $this->db->getAllData('giangvien');
                 require_once("./view/daotao/bangphanconggiangday.php");
             }
@@ -264,7 +264,7 @@ class daotao_controller {
     //xeplichthi
     function xeplichthi()
     {
-        $_SESSION['chuyennganh']=="Tất cả";
+        $_SESSION['chuyennganh']="Tất cả";
         $mon=$this->db->getAllData("monhoc");
         $datacn=$this->db->getAllData("chuyennganh");
         require_once("./view/daotao/xeplichthi.php");

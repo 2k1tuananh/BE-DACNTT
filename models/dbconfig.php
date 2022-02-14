@@ -520,7 +520,7 @@
         }
 
         public function timkiemmonhoctheomachuyennganh($machuyennganh){
-            $sql = "select * from  `monhoc`  where  chuyennganh = '$machuyennganh' ";
+            $sql = "SELECT DISTINCT(giangvien.hovaten) as hovaten ,gv.mamon as mamon,giangvien.magiangvien as magiangvien ,monhoc.tenmon,monhoc.chuyennganh as chuyennganh FROM `giangvien` INNER JOIN chuyennganh on giangvien.chuyennganh=chuyennganh.machuyennganh INNER JOIN `gv-sv-lop` as gv on giangvien.magiangvien=gv.magiangvien INNER JOIN monhoc on gv.mamon=monhoc.mamon WHERE monhoc.chuyennganh  = '$machuyennganh' ";
            
             $this->execute($sql);
             if($this->dem()==0){
@@ -552,7 +552,7 @@
 
         public function timkiemmonhoc($timkiem)
         {
-            $sql = "select * from  `monhoc`  where  (mamon like '%$timkiem%' or tenmon like '%$timkiem%') ";
+            $sql = "SELECT DISTINCT(giangvien.hovaten) as hovaten ,gv.mamon as mamon,giangvien.magiangvien as magiangvien ,monhoc.tenmon,monhoc.chuyennganh as chuyennganh FROM `giangvien` INNER JOIN chuyennganh on giangvien.chuyennganh=chuyennganh.machuyennganh INNER JOIN `gv-sv-lop` as gv on giangvien.magiangvien=gv.magiangvien INNER JOIN monhoc on gv.mamon=monhoc.mamon WHERE  (monhoc.mamon like '%$timkiem%' or monhoc.tenmon like '%$timkiem%') ";
            
             $this->execute($sql);
             if($this->dem()==0){
@@ -623,9 +623,22 @@
                     $data[] = $datas;
                 }
             }
-            return $data;;
+            return $data;
         }
-
+        public function monhocgiangvien()
+        {
+            $sql = "SELECT DISTINCT(giangvien.hovaten) as hovaten ,gv.mamon as mamon,giangvien.magiangvien as magiangvien ,monhoc.tenmon,monhoc.chuyennganh FROM `giangvien` INNER JOIN chuyennganh on giangvien.chuyennganh=chuyennganh.machuyennganh INNER JOIN `gv-sv-lop` as gv on giangvien.magiangvien=gv.magiangvien INNER JOIN monhoc on gv.mamon=monhoc.mamon";
+            $this->execute($sql);
+            if($this->dem()==0){
+                $data=0;
+            }
+            else{
+                while($datas = $this->getData()) {
+                    $data[] = $datas;
+                }
+            }
+            return $data;
+        }
         public function creategiangvien($magiangvien,$hovaten,$gioitinh,$CMND,$ngaysinh,$phone,$email,$chuyennganh,$diachi,$lop){
             $sql="INSERT INTO `giangvien`(`magiangvien`, `hovaten`, `gioitinh`, `diachi`, `email`, `dienthoai`, `cmnd`, `ngaysinh`, `chuyennganh`,  `password`,`ChuNhiem`) 
             VALUES ('$magiangvien','$hovaten','$gioitinh','$diachi','$email','$phone','$CMND','$ngaysinh','$chuyennganh','$magiangvien','$lop')";
@@ -641,7 +654,7 @@
             else{
                 $sql="UPDATE `giangvien` SET `trangthai`=0 WHERE magiangvien='$mgv'";
             }
-            echo  $sql;
+            
             return $this->execute($sql);
         }
         public function getinfo_gvtt($tt){

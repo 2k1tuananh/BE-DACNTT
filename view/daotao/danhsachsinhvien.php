@@ -447,6 +447,13 @@
                 </td>
               </tr>
               <tr>
+                <td class="modal-td">Địa chỉ hộ khẩu:</td>
+                <td class="modal-td">
+                  <input type="text" class="form-control" name="diachi" id="diachi">
+
+                </td>
+              </tr>
+              <tr>
                 <td class="modal-td">Chuyên Ngành:</td>
                 <td class="modal-td">
                   <select class="form-control" id="chuyennganh" name="chuyennganh">
@@ -470,6 +477,7 @@
                   </select>
                 </td>
               </tr>
+              
               <script>
               $(document).ready(function(){
                   $('#chuyennganh').on('change', function(){
@@ -493,13 +501,7 @@
                  
               });
               </script>
-              <tr>
-                <td class="modal-td">Địa chỉ hộ khẩu:</td>
-                <td class="modal-td">
-                  <input type="text" class="form-control" name="diachi" id="diachi">
-
-                </td>
-              </tr>
+             
               
             </tbody>
           </table>
@@ -523,11 +525,13 @@
                             var ngaysinh=$('#ngaysinh').val();
                             var phone=$('#phone').val();
                             var email=$('#email').val();
-                            var chuyennganh=$('#chuyennganh').val();
-                            var giaovien=$('#giaovien').val();
                             var diachi=$('#diachi').val();
                             var lop=$('#lop').val();
-                            alert(diachi);
+                            var chuyennganh=$('#chuyennganh').val();
+                            var giaovien=$('#giaovien').val();
+                            
+                            
+                            
                             if(hovaten == null || hovaten == "")
                             {
                               $("#alert").html('<strong class="text-danger">Họ và tên không được để trống</strong>'); 
@@ -608,14 +612,9 @@
                               $("select[name='giaovien']").focus();
                               return;
                             }
-                            else if(diachi == null || diachi == "")
-                            {
-                              $("#alert").html('<strong class="text-danger">Địa chỉ không được để trống</strong>'); 
-                              $("input[name='diachi']").focus();
-                              return;
-                            }
+                           
                             else{
-                              $('#myModal').modal('hide');
+                                $('#myModal').modal('hide');
                                 $.get("./index.php",{controller:"daotao",action:"createstudent", masinhvien:masinhvien, hovaten:hovaten,
                                 gioitinh:gioitinh, CMND:CMND, ngaysinh:ngaysinh, phone:phone, email:email, chuyennganh:chuyennganh, 
                                 giaovien:giaovien,diachi:diachi,lop:lop}, function(data) {
