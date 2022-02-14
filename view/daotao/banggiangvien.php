@@ -36,7 +36,7 @@
                               <script>
                                 $(function(){
                                     $('#trangthai<?= $stt?>').trigger('change'); //This event will fire the change event. 
-                                        $('#sapxep<?= $stt?>').change(function(){
+                                        $('#trangthai<?= $stt?>').change(function(){
                                             var data="<?= $info['magiangvien']?>";
                                             var data2= $(this).val();
                                             var thongbao="Cập nhật thành công";

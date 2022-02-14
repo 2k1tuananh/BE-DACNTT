@@ -137,11 +137,15 @@
   }
 
   .chuyen-nganh {
-    display: flex;
-    gap: 5px;
-    font-size: 16px;
-    align-items: flex-start;
-  }
+      display: flex;
+      gap: 5px;
+      font-size: 16px;
+      align-items: baseline;
+      
+    }
+    .chuyen-nganh select{
+      border-radius:5px;
+    }
 
   .tim-kiem {
     display: flex;
@@ -459,6 +463,13 @@
                 </td>
               </tr>
               <tr>
+                <td class="modal-td">Địa chỉ hộ khẩu:</td>
+                <td class="modal-td">
+                  <input type="text" class="form-control" name="diachi" id="diachi">
+
+                </td>
+              </tr>
+              <tr>
                 <td class="modal-td">Chuyên Ngành:</td>
                 <td class="modal-td">
                   <select class="form-control" id="chuyennganh" name="chuyennganh">
@@ -471,6 +482,10 @@
                 </td>
               </tr>
               <tr>
+                <td class="modal-td">Điện thoại:</td>
+                <td class="modal-td"><input type="text" class="form-control" id="phone" name="phone"></td>
+              </tr>
+              <tr>
                 <td class="modal-td">Giáo viên CN:</td>
                 <td class="modal-td">
                   <select class="form-control" id="giaovien" name="giaovien">
@@ -480,6 +495,7 @@
                   </select>
                 </td>
               </tr>
+              
               <script>
                 $(document).ready(function() {
                   $('#chuyennganh').on('change', function() {
@@ -503,6 +519,7 @@
 
                 });
               </script>
+<<<<<<< HEAD
               <tr>
                 <td class="modal-td">Địa chỉ hộ khẩu:</td>
                 <td class="modal-td">
@@ -511,12 +528,18 @@
                 </td>
               </tr>
 
+=======
+             
+              
+>>>>>>> 94e2239f934109208d194fb8579449fbe41f450d
             </tbody>
           </table>
 
         </div>
         <div id="bangdiem1"></div>
+        <div id="alert"></div>	 
         <div class="modal-footer">
+<<<<<<< HEAD
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
           <button type="button" id="create" class="btn btn-success" data-dismiss="modal">OK</button>
 
@@ -558,6 +581,129 @@
         });
       </script>
       >>>>>>> 05297d8ad24b7664a1c811390862b572a49ae85e
+=======
+          <button type="button"  class="btn btn-default" data-dismiss="modal">Close</button>
+          <button type="button" id="create" class="btn btn-success" >OK</button>
+          
+        </div>
+      </div>
+      <script>
+                    $(document).ready(function(){
+                        $("#create").click(function(){
+                            var masinhvien=$('#masinhvien').val();
+                            var hovaten=$('#hovaten').val();
+                            var gioitinh=$('#gioitinh').val();
+                            var CMND=$('#CMND').val();
+                            var ngaysinh=$('#ngaysinh').val();
+                            var phone=$('#phone').val();
+                            var email=$('#email').val();
+                            var diachi=$('#diachi').val();
+                            var lop=$('#lop').val();
+                            var chuyennganh=$('#chuyennganh').val();
+                            var giaovien=$('#giaovien').val();
+                            
+                            
+                            
+                            if(hovaten == null || hovaten == "")
+                            {
+                              $("#alert").html('<strong class="text-danger">Họ và tên không được để trống</strong>'); 
+                              $("input[name='hovaten']").focus();
+                              return;
+                            }
+                            
+                            else if(hovaten.length  < 6 )
+                            {
+                              $("#alert").html('<strong class="text-danger">Tối thiểu là 6 kí tự</strong>'); 
+                              $("input[name='hovaten']").focus();
+                              return;
+                            }
+                            else if(CMND == null || CMND == "")
+                            {
+                              $("#alert").html('<strong class="text-danger">CMND không được để trống</strong>'); 
+                              $("input[name='CMND']").focus();
+                              return;
+                            }
+                            else if(CMND.length  < 12 ||  CMND.length  > 12)
+                            {
+                              $("#alert").html('<strong class="text-danger">CMND bao gồm 12 kí tự</strong>'); 
+                              $("input[name='CMND']").focus();
+                              return;
+                            }
+                            else if(isNaN(CMND))
+                            {
+                              $("#alert").html('<strong class="text-danger">CMND phải là số</strong>'); 
+                              $("input[name='CMND']").focus();
+                              return;
+                            }
+                            else if(ngaysinh == null || ngaysinh == "")
+                            {
+                              $("#alert").html('<strong class="text-danger">Ngày sinh không được để trống</strong>'); 
+                              $("input[name='ngaysinh']").focus();
+                              return;
+                            }
+                            else if(ngaysinh == null || ngaysinh == "")
+                            {
+                              $("#alert").html('<strong class="text-danger">CMND không được để trống</strong>'); 
+                              $("input[name='ngaysinh']").focus();
+                              return;
+                            }
+                            else if(phone == null || phone == "")
+                            {
+                              $("#alert").html('<strong class="text-danger">Số điện thoại không được để trống</strong>'); 
+                              $("input[name='phone']").focus();
+                              return;
+                              
+                            }
+                            else if(phone.length  != 10)
+                            {
+                              $("#alert").html('<strong class="text-danger">Độ dài của số điện thoại là 10 ký tự</strong>'); 
+                              $("input[name='phone']").focus();
+                              return;
+                            }
+                            else if(isNaN(phone))
+                            {
+                              $("#alert").html('<strong class="text-danger">Số điện thoại phải là số</strong>'); 
+                              $("input[name='phone']").focus();
+                              return;
+                            }
+                            else if(lop == null || lop == "")
+                            {
+                              $("#alert").html('<strong class="text-danger">Lớp không được để trống</strong>'); 
+                              $("select[name='lop']").focus();
+                              return;
+                            }
+                            else if(chuyennganh == null || chuyennganh == "")
+                            {
+                              $("#alert").html('<strong class="text-danger">Chuyên ngành không được để trống</strong>'); 
+                              $("select[name='chuyennganh']").focus();
+                              return;
+                            }
+                            else if(giaovien == null || giaovien == "")
+                            {
+                              $("#alert").html('<strong class="text-danger">Giáo viên không được để trống</strong>'); 
+                              $("select[name='giaovien']").focus();
+                              return;
+                            }
+                           
+                            else{
+                                $('#myModal').modal('hide');
+                                $.get("./index.php",{controller:"daotao",action:"createstudent", masinhvien:masinhvien, hovaten:hovaten,
+                                gioitinh:gioitinh, CMND:CMND, ngaysinh:ngaysinh, phone:phone, email:email, chuyennganh:chuyennganh, 
+                                giaovien:giaovien,diachi:diachi,lop:lop}, function(data) {
+                                  $("#bangdiem").html(data);
+                                  location.reload();
+                              })   
+                            }
+                            
+                            
+                            
+                              
+                            
+                            
+                        });
+                    });
+                </script>
+>>>>>>> 94e2239f934109208d194fb8579449fbe41f450d
     </div>
 
   </div>

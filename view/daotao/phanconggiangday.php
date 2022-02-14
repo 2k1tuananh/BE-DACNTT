@@ -1,4 +1,4 @@
-<?php require_once ('./view/layouts/headerDaoTao.php');?>
+<?php require_once ('./view/layouts/headerdaotao.php');?>
 
     <script src="chrome-extension://mooikfkahbdckldjjndioackbalphokd/assets/prompt.js"></script>
     <style>
@@ -129,7 +129,11 @@
       display: flex;
       gap: 5px;
       font-size: 16px;
-      align-items: flex-start;
+      align-items: baseline;
+      
+    }
+    .chuyen-nganh select{
+      border-radius:5px;
     }
 
     .tim-kiem {
@@ -234,16 +238,16 @@
           </div>
         </div>
         <script>
-                $(function(){
-                    $('#timkiem').trigger('change'); //This event will fire the change event. 
-                        $('#timkiem').change(function(){
-                            var data= $(this).val();
-                            $.get("./index.php",{controller:"daotao",action:"timkiemmonhoc", info:data}, function(data) {
-                            $("#bangdiem1").html(data);
-                        })                                                                                     
-                    });
-                });
-                </script>
+              $(function(){
+                  $('#timkiem').trigger('change'); //This event will fire the change event. 
+                      $('#timkiem').change(function(){
+                          var data= $(this).val();
+                          $.get("./index.php",{controller:"daotao",action:"timkiemmonhoc", info:data}, function(data) {
+                          $("#bangdiem1").html(data);
+                      })                                                                                     
+                  });
+              });
+        </script>
         
             <table cellspacing="3" cellpadding="0" border="0px" width="100%">
               <tbody>
@@ -272,25 +276,54 @@
                           <tr>
                           <?php $stt=0; foreach ($listMonHoc as $info){ $stt++;?>
                             <td><?= $stt?></td>
-                            <td ><?= $info['mamon']?></td>
-                            <td ><?= $info['tenmon']?></td>
+                            <td class="mamon<?= $stt ?>" id="<?= $info['mamon'] ?>" name="mamon"><?= $info['mamon']?></td>
+                            <td class="tenmon<?= $stt ?>" id="<?= $info['tenmon'] ?>" name="tenmon"><?= $info['tenmon']?></td>
                             <td >
-                              <select class="form-control" style="width: 50%">
+                              <select class="form-control" style="width: 50%"  id="magiangvien<?= $stt?>"  >
+                              <option value="<?= $info['magiangvien'] ?>"><?= $info['hovaten']?></option>
                                 <?php
                                   foreach($listGiangVien as $info1)
                                   {
-                                    if($info['chuyennganh']== $info1['chuyennganh'])
+                                    if($info['chuyennganh'] == $info1['chuyennganh'])
                                     {
                                       echo '<option value="'.$info1['magiangvien'].'">'.$info1['hovaten'].'</option>';
+
                                     }
+                                    
                                   }
                                 ?>  
                               </select>
                             </td>
-                            <td><Button class="btnTimKiem">Cập nhập</Button></td>
+                            <td><Button id="<?= $stt ?>" class="btnTimKiem">Cập nhập</Button></td>
                           </tr>
+                          <script>
+                    $(document).ready(function() {
+                        $("#<?= $stt ?>").click(function() {
+                            var mamon = ".mamon" + $(this).attr("id");
+                            var tenmon = ".tenmon" + $(this).attr("id");
+                            var magiangvien=$('#magiangvien<?= $stt?>').val();
+                           
+                            var infomamon = $(`${mamon}`).attr('id');
+                            var infotenmon = $(`${tenmon}`).attr('id');
+                           
+                            
+                            
+                            $.get("./index.php", {
+                                controller: "daotao",
+                                action: "capnhatmonhoc",
+                                magiangvien: magiangvien,
+                                mamon: infomamon,
+                                tenmon: infotenmon
+                            }, function(data) {
+                                $("#bangdiem").html(data);
+                                alert("Cập nhật thành công");
+                            })
+                        });
+                    });
+                </script>
                           <?php } ?>
                         </tbody>
+                        
                       </table>
                     </div>
                   </td>
