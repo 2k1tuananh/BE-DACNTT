@@ -558,14 +558,12 @@
         {
             $sql = "SELECT DISTINCT(giangvien.hovaten) as hovaten ,gv.mamon as mamon,giangvien.magiangvien as magiangvien ,monhoc.tenmon,monhoc.chuyennganh as chuyennganh FROM `giangvien` INNER JOIN chuyennganh on giangvien.chuyennganh=chuyennganh.machuyennganh INNER JOIN `gv-sv-lop` as gv on giangvien.magiangvien=gv.magiangvien INNER JOIN monhoc on gv.mamon=monhoc.mamon WHERE  (monhoc.mamon like '%$timkiem%' or monhoc.tenmon like '%$timkiem%') ";
            
-            $this->execute($sql);
-            if($this->dem()==0){
-                $data=0;
+            $data=$this->execute($sql);
+            if($this->dem() != 0){
+                $data = mysqli_fetch_array($this->result);
             }
             else{
-                while($datas = $this->getData()) {
-                    $data[] = $datas;
-                }
+                $data = 0;
             }
             return $data;
         }
