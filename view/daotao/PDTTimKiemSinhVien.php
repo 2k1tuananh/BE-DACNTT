@@ -51,6 +51,7 @@
                               
                               <td class="item-monhoc">
                                 <select name="" id="">
+                                  <option ><?= $info['trangthai_sv']?></option>
                                   <option value="">Đang học</option>
                                   <option value="">Đã tốt nghiệp</option>
                                   <option value="">Đang bảo lưu</option>
