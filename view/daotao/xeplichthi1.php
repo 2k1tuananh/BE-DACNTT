@@ -1,4 +1,21 @@
-<tr>
+<table id="info" cellspacing="3" cellpadding="0" border="0px" width="100%">
+              <tbody>
+                <tr valign="top">
+                  <td style="width: 100%">
+                    <div>
+                      <table
+                        class="grid"
+                        cellspacing="0"
+                        border="0"
+                        id="ctl00_c_GridDC"
+                        style="
+                          border-style: None;
+                          width: 100%;
+                          border-collapse: collapse;
+                        "
+                      >
+                        <tbody>
+                          <tr>
                             <th scope="col">STT</th>
                             <th scope="col" style="white-space: nowrap">
                               Mã Môn
@@ -43,3 +60,10 @@
                     
                           </tr>
                           <?php } ?>
+                        </tbody>
+                      </table>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>

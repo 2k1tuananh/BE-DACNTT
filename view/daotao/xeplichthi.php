@@ -42,7 +42,7 @@
         </div>
        
         
-            <table cellspacing="3" cellpadding="0" border="0px" width="100%">
+            <table id="info" cellspacing="3" cellpadding="0" border="0px" width="100%">
               <tbody>
                 <tr valign="top">
                   <td style="width: 100%">
@@ -58,7 +58,7 @@
                           border-collapse: collapse;
                         "
                       >
-                        <tbody id="info">
+                        <tbody>
                           <tr>
                             <th scope="col">STT</th>
                             <th scope="col" style="white-space: nowrap">
