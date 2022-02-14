@@ -48,9 +48,11 @@
                                 $(document).ready(function(){
                                     $("#xoa<?= $stt ?>").click(function(){
                                         var mamon="<?= $info['mamon'] ?>";
-                                        $.get("./index.php",{controller:"daotao",action:"xoamon", info:mamon}, function(data) {
+                                        if (confirm("Bạn chắc chắn muốn xóa ???") == true) {
+                                          $.get("./index.php",{controller:"daotao",action:"xoamon", info:mamon}, function(data) {
                                           $("#info").html(data);
                                         })  
+                                        }
                                     });
                                 });
                             </script>

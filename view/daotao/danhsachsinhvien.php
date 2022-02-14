@@ -137,11 +137,15 @@
   }
 
   .chuyen-nganh {
-    display: flex;
-    gap: 5px;
-    font-size: 16px;
-    align-items: flex-start;
-  }
+      display: flex;
+      gap: 5px;
+      font-size: 16px;
+      align-items: baseline;
+      
+    }
+    .chuyen-nganh select{
+      border-radius:5px;
+    }
 
   .tim-kiem {
     display: flex;
@@ -466,6 +470,10 @@
                   ?>
                   </select>
                 </td>
+              </tr>
+              <tr>
+                <td class="modal-td">Điện thoại:</td>
+                <td class="modal-td"><input type="text" class="form-control" id="phone" name="phone"></td>
               </tr>
               <tr>
                 <td class="modal-td">Giáo viên CN:</td>

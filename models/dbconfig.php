@@ -674,7 +674,7 @@
         
         public function uptrangthai($msv,$tt){
             $sql="UPDATE `sinhvien` SET `trangthai_sv`='$tt' WHERE masinhvien='$msv'";
-            echo $sql;
+            
             return $this->execute($sql);
         }
         public function getmcn($tcn){
@@ -713,7 +713,7 @@
         }
         public function timlichthi_loccn($key,$machuyennganh){
             $sql=" SELECT * FROM monhoc where (monhoc.tenmon like '%$key%' or monhoc.mamon like '%$key%') and monhoc.chuyennganh='$machuyennganh' ";
-            echo $sql;
+            
             return $this->execute($sql);
         }
 

@@ -129,7 +129,11 @@
       display: flex;
       gap: 5px;
       font-size: 16px;
-      align-items: flex-start;
+      align-items: baseline;
+      
+    }
+    .chuyen-nganh select{
+      border-radius:5px;
     }
 
     .tim-kiem {
