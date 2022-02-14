@@ -1,48 +1,5 @@
-<?php require_once ('./view/layouts/headerDaoTao.php');?>
-      <div id="right">
-        <div class="title">
-          Xếp Lịch Thi
-
-        </div>
-        <div class="form">
-          <div class="chuyen-nganh">
-            <p>Chọn chuyên ngành:</p>
-            <select id="sapxep_loclt" style="border: none; background-color: #e4e8e9;">
-              <script>
-              $(function(){
-                  $('#sapxep_loclt').trigger('change'); //This event will fire the change event. 
-                      $('#sapxep_loclt').change(function(){
-                          var data= $(this).val();
-                          $.get("./index.php",{controller:"daotao",action:"xeplichthi_loccn", info1:data}, function(data) {
-                          $("#info").html(data);
-                      })                                                                                     
-                  });
-              });
-              </script>
-              <option>Tất cả</option>
-              <?php foreach($datacn as $cn){?>
-                <option><?= $cn['tenchuyennganh']?></option>
-              <?php }?>
-          </select>
-          </div>
-          <div class="tim-kiem">
-          <input id="timkiem" type="text" placeholder="Nhập mã môn,tên môn">
-            <button id="timkiemlich" class="btnTimKiem">Tìm kiếm</button>
-            <script>
-                $(document).ready(function(){
-                    $("#timkiemlich").click(function(){
-                    var data= $('#timkiem').val();
-                    $.get("./index.php",{controller:"daotao",action:"lichthi_timkiem", key:data}, function(data) {
-                    $("#info").html(data);
-                    })                                                                                     
-                  });
-                });
-              </script>
-          </div>
-        </div>
-       
-        
-            <table id="info" cellspacing="3" cellpadding="0" border="0px" width="100%">
+<div id="info">
+<table id="info" cellspacing="3" cellpadding="0" border="0px" width="100%">
               <tbody>
                 <tr valign="top">
                   <td style="width: 100%">
@@ -97,6 +54,7 @@
                                       var thongbao="Cập nhật thành công";
                                       alert(thongbao );
                                       $.get("./index.php",{controller:"daotao",action:"capnhatlichthi", mamon:data,ngaythi:data1, cathi:data2}, function(data) {
+                                      
                                   })  
                                 });
                                 });
@@ -111,12 +69,4 @@
                 </tr>
               </tbody>
             </table>
-            
-        </div>
-      </div>
-
-      <!-- End Right -->
-    </div>
-  
-  </body>
-</html>
+</div>

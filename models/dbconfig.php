@@ -686,6 +686,28 @@
 
             return $this->execute($sql);
         }
+        public function xeplichthi_loccn($cn){
+            $sql = "select * from monhoc where chuyennganh='$cn'";
+            return $this->execute($sql);
+        }
+        public function capnhatlichthi($mm,$nt,$ct){
+            $sql = "UPDATE `monhoc` SET `ngaythi`='$nt',`cathi`='$ct' WHERE mamon='$mm'";
+            return $this->execute($sql);
+        }
+        public function timlichthi($key){
+            $sql=" SELECT * FROM monhoc where monhoc.tenmon like '%$key%' or monhoc.mamon like '%$key%' ";
+            return $this->execute($sql);
+        }
+        public function timlichthi_loccn($key,$machuyennganh){
+            $sql=" SELECT * FROM monhoc where (monhoc.tenmon like '%$key%' or monhoc.mamon like '%$key%') and monhoc.chuyennganh='$machuyennganh' ";
+            echo $sql;
+            return $this->execute($sql);
+        }
+
+
+
+
+        ///tkb
         public function tkb(){
             $sql=" SELECT DISTINCT(monhoc.mamon), monhoc.tenmon, monhoc.sotinchi, monhoc.thu, monhoc.ca, giangvien.hovaten FROM monhoc INNER JOIN `gv-sv-lop` as gv on monhoc.mamon=gv.mamon INNER JOIN giangvien on gv.magiangvien= giangvien.magiangvien ";
             return $this->execute($sql);

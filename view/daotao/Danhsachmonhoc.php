@@ -213,8 +213,8 @@
               </script>
         </div>
         </div>
-        
-            <table cellspacing="3" cellpadding="0" border="0px" width="100%">
+        <div id="info">
+        <table  cellspacing="3" cellpadding="0" border="0px" width="100%">
               <tbody>
                 <tr valign="top">
                   <td style="width: 100%">
@@ -230,7 +230,7 @@
                           border-collapse: collapse;
                         "
                       >
-                        <tbody id="info">
+                        <tbody>
                           <tr>
                             <th scope="col">STT</th>
                             <th scope="col" style="white-space: nowrap">
@@ -264,7 +264,7 @@
                                     $("#xoa<?= $stt ?>").click(function(){
                                         var mamon="<?= $info['mamon'] ?>";
                                         $.get("./index.php",{controller:"daotao",action:"xoamon", info:mamon}, function(data) {
-                                          
+                                          $("#info").html(data);
                                         })  
                                     });
                                 });
@@ -279,6 +279,8 @@
                 </tr>
               </tbody>
             </table>
+        </div>
+            
             
         </div>
       </div>
