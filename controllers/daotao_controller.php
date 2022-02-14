@@ -231,6 +231,11 @@ class daotao_controller {
         $mon=$this->db->getAllData("monhoc");
         require_once("./view/daotao/Danhsachmonhoc.php");
     }
+    function timkiemmm()
+    {
+        $mon=$this->db->tkb_timkiem($_GET['key']);
+        require_once("./view/daotao/bangdssv.php");
+    }
     function themmon()
     {
         $mamon=$_GET['mamon'];
@@ -244,6 +249,14 @@ class daotao_controller {
         $this->db->themmon($mamon,$tenmon,$sotinchi,$thu,$ca,$macn['machuyennganh']);
         $mon=$this->db->getAllData("monhoc");
         require_once("./view/daotao/bangdssv.php");
+    }
+    function xoamon()
+    {
+        $mamon=$_GET['info'];
+        $this->db->xoamon($mamon);
+        // $mon=$this->db->getAllData("monhoc");
+        // require_once("./view/daotao/bangdssv.php");
+        // header("Refresh:0");
     }
     //xeplichthi
     function xeplichthi()

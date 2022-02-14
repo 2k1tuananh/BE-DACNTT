@@ -1,3 +1,4 @@
+
 <tr>
     <th scope="col">STT</th>
     <th scope="col" style="white-space: nowrap">
@@ -25,7 +26,8 @@
     
     <td class="item-monhoc">
         <button class="btnTimKiem" type="button" data-toggle="modal" data-target="#SuaMonHoc">Update</button>
-        <button type="button" data-toggle="modal" data-target="#XoaMonHoc" class="btnTimKiem" >Delete</button>
-    </td>
+        <button id="xoa<?= $stt ?>"type="button"  class="btnTimKiem" >Delete</button>
+        
+</td>
 </tr>
 <?php }?>

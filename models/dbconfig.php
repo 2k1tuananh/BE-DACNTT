@@ -681,6 +681,11 @@
             VALUES ('$mm','$tm','$stc','$cn','$thu','$ca')";
             return $this->execute($sql);
         }
+        public function xoamon($mm){
+            $sql="DELETE FROM `monhoc` WHERE mamon='$mm'";
+
+            return $this->execute($sql);
+        }
         public function tkb(){
             $sql=" SELECT DISTINCT(monhoc.mamon), monhoc.tenmon, monhoc.sotinchi, monhoc.thu, monhoc.ca, giangvien.hovaten FROM monhoc INNER JOIN `gv-sv-lop` as gv on monhoc.mamon=gv.mamon INNER JOIN giangvien on gv.magiangvien= giangvien.magiangvien ";
             return $this->execute($sql);
