@@ -219,17 +219,31 @@ class daotao_controller {
     {
         $data=$this->db->creategiangvien($_GET['magiangvien'], $_GET['hovaten'], $_GET['gioitinh'], $_GET['CMND'], $_GET['ngaysinh'], $_GET['phone'], $_GET['email'], $_GET['chuyennganh'], $_GET['diachi'], $_GET['lop']);
         
-        require_once("./view/daotao/DanhSachGiaoVien.php");
+        require_once("./view/daotao/PDTTimKiemSinhVien.php");
         
     }
 
     //danhsachmonhoc
     function danhsachmonhoc()
     {
-        
+        $chuyennganh=$this->db->getAllData("chuyennganh");
+        $mon=$this->db->getAllData("monhoc");
         require_once("./view/daotao/Danhsachmonhoc.php");
     }
-
+    function themmon()
+    {
+        $mamon=$_GET['mamon'];
+        $tenmon=$_GET['tenmon'];
+        $sotinchi=$_GET['sotinchi'];
+        $chuyennganh=$_GET['chuyennganh'];
+        //$machuyennganh=$_POST['machuyennganh'];
+        $thu=$_GET['thu'];
+        $ca=$_GET['ca'];
+        $macn=$this->db->getmcn($chuyennganh);
+        $this->db->themmon($mamon,$tenmon,$sotinchi,$thu,$ca,$macn['machuyennganh']);
+        $mon=$this->db->getAllData("monhoc");
+        require_once("./view/daotao/bangdssv.php");
+    }
     //xeplichthi
     function xeplichthi()
     {

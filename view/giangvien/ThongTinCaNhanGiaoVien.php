@@ -1,4 +1,9 @@
-<?php require_once ('./view/layouts/headerGiaoVien.php');?>
+<?php if($_SESSION['role_id']=="2"){ require_once ('./view/layouts/headerGiaoVien.php');}
+else{
+  require_once ('./view/layouts/headerDaoTao.php');
+}
+if($_SESSION['role_id']=="1"){
+  require_once("./view/sinhvien/ThongTinCaNhan.php");} ?>
 
 
       <!-- Right -->

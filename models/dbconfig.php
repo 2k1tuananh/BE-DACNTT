@@ -664,4 +664,26 @@
             echo $sql;
             return $this->execute($sql);
         }
+        public function getmcn($tcn){
+            $sql="select * from chuyennganh where tenchuyennganh='$tcn'";
+            $data=$this->execute($sql);
+            if($this->dem()!=0){
+                $data = mysqli_fetch_array($this->result);
+            }
+            else{
+                $data = 0;
+            }
+            return $data;
+        }
+
+        public function themmon($mm,$tm,$stc,$ca,$thu,$cn){
+            $sql="INSERT INTO `monhoc`( `mamon`, `tenmon`, `sotinchi`, `chuyennganh`, `thu`, `ca`) 
+            VALUES ('$mm','$tm','$stc','$cn','$thu','$ca')";
+            return $this->execute($sql);
+        }
+        public function tkb(){
+            $sql=" SELECT DISTINCT(monhoc.mamon), monhoc.tenmon, monhoc.sotinchi, monhoc.thu, monhoc.ca, giangvien.hovaten FROM monhoc INNER JOIN `gv-sv-lop` as gv on monhoc.mamon=gv.mamon INNER JOIN giangvien on gv.magiangvien= giangvien.magiangvien ";
+            return $this->execute($sql);
+        }
+        
     }
