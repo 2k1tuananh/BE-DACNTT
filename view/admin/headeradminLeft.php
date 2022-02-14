@@ -10,8 +10,8 @@
 
   <!-- Nav Item - Dashboard -->
   <li class="nav-item  <?php 
-        if(!empty($_GET))
-        if($_GET['action'] == 'dashboardadmin' ){echo 'active';}
+        if(isset($_GET['action']))
+        if($_GET['action'] == 'dashboardadmin'  ){echo 'active';}
         
     ?>">
     <a class="nav-link" href="?controller=admin&action=dashboardadmin">
@@ -22,19 +22,19 @@
 
   <hr class="sidebar-divider">
   <!-- Nav Item - Tables -->
-  <li class="nav-item  <?php  if(!empty($_GET)) if($_GET['action'] == 'danhsachgiangvien'){echo ' active';}?>">
+  <li class="nav-item  <?php  if(isset($_GET['action'])) if($_GET['action'] == 'danhsachgiangvien'){echo ' active';}?>">
     <a class="nav-link" href="?controller=admin&action=danhsachgiangvien">
       <i class="fas fa-fw fa-table"></i>
       <span>Danh sách giảng viên</span></a>
   </li>
   <hr class="sidebar-divider">
-  <li class="nav-item <?php  if(!empty($_GET)) if($_GET['action'] == 'danhsachnhanvien'){echo ' active';}?>">
+  <li class="nav-item <?php  if(isset($_GET['action'])) if($_GET['action'] == 'danhsachnhanvien'){echo ' active';}?>">
     <a class="nav-link" href="?controller=admin&action=danhsachnhanvien">
       <i class="fas fa-fw fa-table"></i>
       <span>Danh sách nhân viên</span></a>
   </li>
   <hr class="sidebar-divider">
-  <li class="nav-item  <?php  if(!empty($_GET)) if($_GET['action'] == 'danhsachsinhvien'){echo ' active';}?>">
+  <li class="nav-item  <?php  if(isset($_GET['action'])) if($_GET['action'] == 'danhsachsinhvien'){echo ' active';}?>">
     <a class="nav-link" href="?controller=admin&action=danhsachsinhvien">
       <i class="fas fa-fw fa-table"></i>
       <span>Danh sách sinh viên</span></a>
