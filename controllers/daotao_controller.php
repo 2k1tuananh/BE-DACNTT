@@ -127,7 +127,10 @@ class daotao_controller {
     function timkiemmonhoc()
     {
         $listMonHoc=$this->db->timkiemmonhoc($_GET['info']);
-        
+        if($listMonHoc == 0)
+        {
+            $listMonHoc = '';
+        }
         $listGiangVien = $this->db->getAllData('giangvien');
         require_once("./view/daotao/bangphanconggiangday.php");
     }
