@@ -70,7 +70,7 @@
         <div class="form form-tkb">
           <div class="chuyen-nganh">
             <p>Chọn chuyên ngành:</p>
-            <select id="sapxep_loclt" style="border: none; background-color: #e4e8e9;">
+            <select id="sapxep_loclt">
               <script>
               $(function(){
                   $('#sapxep_loclt').trigger('change'); //This event will fire the change event. 
@@ -105,7 +105,7 @@
         </div>
        
         
-            <table id="info" cellspacing="3" cellpadding="0" border="0px" width="100%">
+            <table id="info" cellspacing="3" cellpadding="0"  width="100%">
               <tbody>
                 <tr valign="top">
                   <td style="width: 100%">
@@ -113,7 +113,7 @@
                       <table
                         class="grid"
                         cellspacing="0"
-                        border="0"
+                       
                         id="ctl00_c_GridDC"
                         style="
                           border-style: None;
