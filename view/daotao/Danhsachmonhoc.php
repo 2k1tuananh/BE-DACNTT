@@ -198,8 +198,19 @@
 
           <button type="button" data-toggle="modal" data-target="#ThemMonHoc" class = "btnUpdate btn" style="margin-bottom: 10px;">Thêm môn Học &nbsp;<span class="glyphicon glyphicon-plus"></span></button>
           <div class="tim-kiem">
-            <input type="text" placeholder="Nhập mã môn,tên môn">
-            <button class="btnTimKiem">Tìm kiếm</button>
+            <input id="timkiem" type="text" placeholder="Nhập mã môn,tên môn">
+            <button id="tntimkiem" class="btnTimKiem">Tìm kiếm</button>
+            <script>
+                $(function(){
+                    $('#tntimkiem').trigger('click'); //This event will fire the change event. 
+                        $('#tntimkiem').click(function(){
+                            var data= $('#timkiem').val();
+                            $.get("./index.php",{controller:"daotao",action:"timkiemmm", key:data}, function(data) {
+                            $("#info").html(data);
+                        })                                                                                     
+                    });
+                });
+              </script>
         </div>
         </div>
         
@@ -238,7 +249,7 @@
                           <?php $stt=0; foreach($mon as $info){ $stt++; ?>
                           <tr>
                             <td><?= $stt ?></td>
-                            <td><?= $info['mamon'] ?></td>
+                            <td ><?= $info['mamon'] ?></td>
                             <td><?= $info['tenmon'] ?></td>
                             <td class="item-monhoc"><?= $info['sotinchi'] ?></td>
                             
@@ -247,7 +258,17 @@
                             
                             <td class="item-monhoc">
                               <button class="btnTimKiem" type="button" data-toggle="modal" data-target="#SuaMonHoc">Update</button>
-                              <button type="button" data-toggle="modal" data-target="#XoaMonHoc" class="btnTimKiem" >Delete</button>
+                              <button type="button" id="xoa<?= $stt ?>" class="btnTimKiem" >Delete</button>
+                              <script>
+                                $(document).ready(function(){
+                                    $("#xoa<?= $stt ?>").click(function(){
+                                        var mamon="<?= $info['mamon'] ?>";
+                                        $.get("./index.php",{controller:"daotao",action:"xoamon", info:mamon}, function(data) {
+                                          
+                                        })  
+                                    });
+                                });
+                            </script>
                             </td>
                           </tr>
                           <?php }?>
@@ -448,7 +469,8 @@
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-danger" data-dismiss="modal">OK</button>
+            <button id="xacnhan" type="button" class="btn btn-danger" data-dismiss="modal">OK</button>
+
           </div>
         </div>
         
