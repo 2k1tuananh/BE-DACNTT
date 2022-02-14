@@ -700,6 +700,7 @@
         }
         public function timlichthi_loccn($key,$machuyennganh){
             $sql=" SELECT * FROM monhoc where (monhoc.tenmon like '%$key%' or monhoc.mamon like '%$key%') and monhoc.chuyennganh='$machuyennganh' ";
+            echo $sql;
             return $this->execute($sql);
         }
 

@@ -261,6 +261,7 @@ class daotao_controller {
     //xeplichthi
     function xeplichthi()
     {
+        $_SESSION['chuyennganh']=="Tất cả";
         $mon=$this->db->getAllData("monhoc");
         $datacn=$this->db->getAllData("chuyennganh");
         require_once("./view/daotao/xeplichthi.php");
@@ -287,6 +288,7 @@ class daotao_controller {
             $mon=$this->db->timlichthi($_GET['key']);
         }
         else{
+            echo $_SESSION['chuyennganh'];
             $macn=$this->db->getmcn($_SESSION['chuyennganh']);
             $mon=$this->db->timlichthi_loccn($_GET['key'],$macn['machuyennganh']);
         }
