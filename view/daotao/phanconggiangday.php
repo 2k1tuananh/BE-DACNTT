@@ -248,7 +248,7 @@
                   });
               });
         </script>
-        
+        <div id="capnhat">
             <table cellspacing="3" cellpadding="0" border="0px" width="100%">
               <tbody>
                 <tr valign="top">
@@ -330,7 +330,7 @@
                 </tr>
               </tbody>
             </table>
-            
+                  </div>  
         </div>
       </div>
 
