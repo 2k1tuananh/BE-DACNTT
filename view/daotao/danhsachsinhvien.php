@@ -465,6 +465,10 @@
                 </td>
               </tr>
               <tr>
+                <td class="modal-td">Điện thoại:</td>
+                <td class="modal-td"><input type="text" class="form-control" id="phone" name="phone"></td>
+              </tr>
+              <tr>
                 <td class="modal-td">Giáo viên CN:</td>
                 <td class="modal-td">
                   <select class="form-control" id="giaovien" name="giaovien">
