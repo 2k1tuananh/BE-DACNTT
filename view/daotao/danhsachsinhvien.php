@@ -1,4 +1,4 @@
-<?php require_once('./view/layouts/headerDaoTao.php'); ?>
+<?php require_once ('./view/layouts/headerDaoTao.php');?>
 <style>
   .glot-sub-active {
     color: #1296ba !important;
@@ -205,199 +205,185 @@
   .item-monhoc {
     text-align: center;
   }
-
-  .scroll {
-    height: 80%;
-    overflow: scroll;
+  .scroll{
+    height:80%;
+    overflow:scroll;
   }
 </style>
 
 
 
 
-<!-- Right -->
-<div id="right">
-  <div class="title">
-    Quản lý sinh viên
+    <!-- Right -->
+    <div id="right">
+      <div class="title">
+        Quản lý sinh viên
 
-  </div>
-  <div>
-    <button type="button" data-toggle="modal" data-target="#myModal" class="btnUpdate btn" style="margin-bottom: 10px">Thêm Sinh Viên &nbsp;<span class="glyphicon glyphicon-plus"></span></button>
-  </div>
-  <div class="form">
-    <script>
-      $(function() {
-        $('#chuyennganh1').trigger('change'); //This event will fire the change event. 
-        $('#chuyennganh1').change(function() {
-          var data = $(this).val();
-
-          $.get("./index.php", {
-            controller: "daotao",
-            action: "select",
-            info: data
-          }, function(data) {
-            $("#bangdiem1").html(data);
-          })
+      </div>
+      <div>
+        <button type="button" data-toggle="modal" data-target="#myModal" class="btnUpdate btn"
+          style="margin-bottom: 10px">Thêm Sinh Viên &nbsp;<span
+            class="glyphicon glyphicon-plus"></span></button>
+      </div>
+      <div class="form">
+      <script>
+           
+        $(function(){
+            $('#chuyennganh1').trigger('change'); //This event will fire the change event. 
+                $('#chuyennganh1').change(function(){
+                    var data= $(this).val();
+                    
+                    $.get("./index.php",{controller:"daotao",action:"select", info:data}, function(data) {
+                    $("#bangdiem1").html(data);
+                })                                                                                     
+            });
         });
-      });
-    </script>
-    <div class="chuyen-nganh">
-      <p>Chọn chuyên ngành:</p>
-      <select id="chuyennganh1">
-        <option class="a" id="Tất cả">Tất cả</option>
-        <?php
+                            
+          </script>
+        <div class="chuyen-nganh">
+          <p>Chọn chuyên ngành:</p>
+          <select id="chuyennganh1">
+          <option class="a" id="Tất cả">Tất cả</option>
+            <?php 
+              
+              foreach($listCN as $CN)
+              {
+                echo '<option value="'.$CN['machuyennganh'].'">'.$CN['tenchuyennganh'].'</option>'; 
+              }
+            ?>
+          
+          </select>
+        
+        </div>
+        <div class="tim-kiem">
+          <input type="text" id="timkiem" name="timkiem" placeholder="Nhập mã sinh viên">
+          <button class="btnTimKiem">Tìm kiếm</button>
+        </div>
+        <script>
+                $(function(){
+                    $('#timkiem').trigger('change'); //This event will fire the change event. 
+                        $('#timkiem').change(function(){
+                            var data= $(this).val();
+                            $.get("./index.php",{controller:"daotao",action:"timkiem", info:data}, function(data) {
+                            $("#bangdiem1").html(data);
+                        })                                                                                     
+                    });
+                });
+                </script>
+      </div>
 
-        foreach ($listCN as $CN) {
-          echo '<option value="' . $CN['machuyennganh'] . '">' . $CN['tenchuyennganh'] . '</option>';
-        }
-        ?>
-
-      </select>
-
-    </div>
-    <div class="tim-kiem">
-      <input type="text" id="timkiem" name="timkiem" placeholder="Nhập mã sinh viên">
-      <button class="btnTimKiem">Tìm kiếm</button>
-    </div>
-    <script>
-      $(function() {
-        $('#timkiem').trigger('change'); //This event will fire the change event. 
-        $('#timkiem').change(function() {
-          var data = $(this).val();
-          $.get("./index.php", {
-            controller: "daotao",
-            action: "timkiem",
-            info: data
-          }, function(data) {
-            $("#bangdiem1").html(data);
-          })
-        });
-      });
-    </script>
-  </div>
-
-  <table cellspacing="3" cellpadding="0" border="0px" width="100%">
-    <tbody>
-      <tr valign="top">
-        <td style="width: 100%">
-          <div id="bangdiem1">
-            <table class="grid" cellspacing="0" border="0" id="ctl00_c_GridDC" style="
+      <table cellspacing="3" cellpadding="0" border="0px" width="100%">
+        <tbody>
+          <tr valign="top">
+            <td style="width: 100%">
+              <div id="bangdiem1">
+                <table class="grid" cellspacing="0" border="0" id="ctl00_c_GridDC" style="
                           border-style: None;
                           width: 100%;
                           border-collapse: collapse;
                         ">
-              <tbody>
-
-                <tr>
-                  <th scope="col" style="
+                  <tbody>
+                  
+                    <tr>
+                      <th scope="col" style="
                       
                       font-size: 15px;
                       
                     ">STT</th>
-                  <th style="
+                      <th style="
                       
                       font-size: 15px;
                       
-                    " scope="col">Mã SV</th>
-                  <th style="
+                    "scope="col">Mã SV</th>
+                      <th style="
                       
                       font-size: 15px;
                       
-                    " scope="col">Tên Sinh Viên</th>
-                  <th style="
+                    "scope="col">Tên Sinh Viên</th>
+                      <th style="
                       
                       font-size: 15px;
                       
                     
                       
-                    " scope="col">Trạng thái</th>
-                  <th style="
+                    "scope="col">Trạng thái</th>
+                      <th style="
                       
                       font-size: 15px;
                       
-                    " scope="col"></th>
+                    "scope="col"></th>
 
-                </tr>
-                <?php $stt = 0;
-                foreach ($listStudent as $info) {
-                  $stt++; ?>
-                  <tr>
-                    <td><?= $stt ?></td>
-                    <td class="item-monhoc"><?= $info['masinhvien'] ?></td>
-                    <td class="item-monhoc"><?= $info['hovaten'] ?></td>
-
-                    <td class="item-monhoc">
+                    </tr>
+                    <?php $stt=0; foreach ($listStudent as $info){ $stt++;?>
+                    <tr>
+                      <td><?= $stt?></td>
+                      <td class="item-monhoc"><?= $info['masinhvien']?></td>
+                      <td class="item-monhoc"><?= $info['hovaten']?></td>
+                      
+                      <td class="item-monhoc">
                       <script>
-                        $(function() {
-                          $('#sapxep<?= $stt ?>').trigger('change'); //This event will fire the change event. 
-                          $('#sapxep<?= $stt ?>').change(function() {
-                            var data = "<?= $info['masinhvien'] ?>";
-                            var data2 = $(this).val();
-                            var thongbao = "Cập nhật thành công";
-                            alert(thongbao);
-                            $.get("./index.php", {
-                              controller: "daotao",
-                              action: "uptrangththai",
-                              masinhvien: data,
-                              trangthai: data2
-                            }, function(data) {
+                      $(function(){
+                          $('#sapxep<?= $stt?>').trigger('change'); //This event will fire the change event. 
+                              $('#sapxep<?= $stt?>').change(function(){
+                                  var data="<?= $info['masinhvien']?>";
+                                  var data2= $(this).val();
+                                  var thongbao="Cập nhật thành công";
+                                  alert(thongbao);
+                                  $.get("./index.php",{controller:"daotao",action:"uptrangththai", masinhvien:data, trangthai:data2}, function(data) {
 
-                            })
+                              })                                                                                     
                           });
-                        });
+                      });
                       </script>
-                      <select id="sapxep<?= $stt ?>">
-                        <option><?= $info['trangthai_sv'] ?></option>
-                        <option>Đang học</option>
-                        <option>Đã tốt nghiệp</option>
-                        <option>Đang bảo lưu</option>
-                        <option>Đã thôi học</option>
+                      <select id="sapxep<?= $stt?>">
+                        <option ><?= $info['trangthai_sv']?></option>
+                        <option >Đang học</option>
+                        <option >Đã tốt nghiệp</option>
+                        <option >Đang bảo lưu</option>
+                        <option >Đã thôi học</option>
                       </select>
-                    </td>
+                      </td>
 
 
-                    <td class="item-monhoc">
-                      <Button class="chitiet btnTimKiem" id="<?= $info['masinhvien'] ?>" style="margin-left: 5px;" type="button" data-toggle="modal" data-target="#myModal1">
-                        <span">Chi Tiêt</span>
-                      </Button>
-                      &nbsp;
-                      <Button id="<?= $value['masinhvien'] ?>" class="btnTimKiem" type="button" data-toggle="modal" data-target="#myModal2">Đánh Giá</Button>
-                      <Button class="btnTimKiem" type="button" data-toggle="modal" data-target="#myModal2">Cập Nhật</Button>
-                    </td>
-                  </tr>
-                <?php } ?>
-                <script>
-                  $(document).ready(function() {
-                    $("button.chitiet").click(function() {
-                      var masinhvien = $(this).attr("id")
-                      $.get("./index.php", {
-                        controller: "point",
-                        action: "QLHocSinhTheoMonHoc",
-                        msv: masinhvien
-                      }, function(data) {
-                        $("#myModal1").html(data);
-                      })
-                    });
-                  });
-                </script>
-              </tbody>
-            </table>
-          </div>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+                      <td class="item-monhoc">
+                      <Button class="chitiet btnTimKiem" id="<?= $info['masinhvien']?>" style="margin-left: 5px;" type="button" data-toggle="modal"
+                                    data-target="#myModal1">
+                                    <span">Chi Tiêt</span>
+                                </Button>
+                        &nbsp;
+                        <Button id="<?= $value['masinhvien']?>"class="btnTimKiem" type="button" data-toggle="modal"
+                          data-target="#myModal2">Đánh Giá</Button>
+                          <Button class="btnTimKiem" type="button" data-toggle="modal"
+                          data-target="#myModal2">Cập Nhật</Button>
+                      </td>
+                    </tr>
+                    <?php } ?>
+                    <script>
+                        $(document).ready(function(){
+                            $("button.chitiet").click(function(){
+                                    var masinhvien=$(this).attr("id")
+                                    $.get("./index.php",{controller:"point",action:"QLHocSinhTheoMonHoc", msv:masinhvien}, function(data) {
+                                    $("#myModal1").html(data);
+                                })                                                                                     
+                            });
+                        });
+                        </script>
+                  </tbody>
+                </table>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
 
-</div>
-</div>
+    </div>
+  </div>
 
-<!-- End Right -->
-</div>
-<!-- End Page -->
-<!-- Modal -->
-<<<<<<< HEAD <div class="modal fade" id="myModal1" role="dialog">
-  =======
-  <div class="modal fade " id="myModal" role="dialog">
+  <!-- End Right -->
+  </div>
+  <!-- End Page -->
+  <!-- Modal -->
+    <div class="modal fade " id="myModal" role="dialog">
     <div class="modal-dialog">
 
       <!-- Modal content-->
@@ -406,7 +392,7 @@
           <button type="button" class="close" data-dismiss="modal">&times;</button>
           <h4 class="modal-title">Thêm Sinh Viên</h4>
         </div>
-
+       
         <div class="modal-body">
           <!-- <p>Some text in the modal.</p> -->
           <table width="100%">
@@ -415,13 +401,13 @@
               <tr>
                 <td class="modal-td" width="30%">Mã Sinh Viên:</td>
                 <td class="modal-td">
-                  <input id="masinhvien" name="masinhvien" class="form-control" type="text" value="A<?= $getmasv + 1 ?>" readonly />
+                  <input  id="masinhvien" name="masinhvien" class="form-control" type="text" value="A<?=$getmasv+1?>" readonly/>
                 </td>
               </tr>
               <tr>
                 <td class="modal-td" width="30%">Họ và tên:</td>
                 <td class="modal-td">
-                  <input id="hovaten" name="hovaten" class="form-control" type="text" />
+                  <input  id="hovaten" name="hovaten" class="form-control" type="text" />
                 </td>
               </tr>
               <td class="modal-td" width="30%">Giới tính:</td>
@@ -439,7 +425,7 @@
               <tr>
                 <td class="modal-td" width="30%">Ngày sinh:</td>
                 <td class="modal-td">
-                  <input class="form-control" type="date" id="ngaysinh" name="ngaysinh" />
+                  <input class="form-control" type="date" id="ngaysinh" name="ngaysinh"/>
                 </td>
               </tr>
               <tr>
@@ -448,17 +434,19 @@
               </tr>
               <tr>
                 <td class="modal-td">Email SV:</td>
-                <td class="modal-td"><input type="text" class="form-control" value="A<?= $getmasv + 1 ?>@thanglong.edu.vn" name="email" id="email" readonly></td>
+                <td class="modal-td"><input type="text" class="form-control" value="A<?=$getmasv+1?>@thanglong.edu.vn" name="email" id="email" readonly></td>
               </tr>
               <tr>
                 <td class="modal-td">Lớp:</td>
                 <td class="modal-td">
                   <select class="form-control" id="lop" name="lop">
-                    <option value="">Chọn lớp</option>
-                    <?php foreach ($listLopCN as $infoCN) {
-                      echo '<option value="' . $infoCN['malop'] . '">' . $infoCN['tenlop'] . '</option>';
+                  <option value="">Chọn lớp</option>
+                  <?php foreach ($listLopCN as $infoCN)
+                    {
+                      echo '<option value="'.$infoCN['malop'].'">'.$infoCN['tenlop'].'</option>'; 
+
                     }
-                    ?>
+                  ?>
                   </select>
                 </td>
               </tr>
@@ -473,65 +461,53 @@
                 <td class="modal-td">Chuyên Ngành:</td>
                 <td class="modal-td">
                   <select class="form-control" id="chuyennganh" name="chuyennganh">
-                    <option value="">Chọn chuyên ngành</option>
-                    <?php foreach ($listCN as $infoCN) {
-                      echo '<option value="' . $infoCN['machuyennganh'] . '">' . $infoCN['tenchuyennganh'] . '</option>';
+                  <option value="">Chọn chuyên ngành</option>
+                  <?php foreach ($listCN as $infoCN)
+                    {
+                      echo '<option value="'.$infoCN['machuyennganh'].'">'.$infoCN['tenchuyennganh'].'</option>'; 
+
                     }
-                    ?>
+                  ?>
                   </select>
                 </td>
               </tr>
-              <tr>
-                <td class="modal-td">Điện thoại:</td>
-                <td class="modal-td"><input type="text" class="form-control" id="phone" name="phone"></td>
-              </tr>
+             
               <tr>
                 <td class="modal-td">Giáo viên CN:</td>
                 <td class="modal-td">
                   <select class="form-control" id="giaovien" name="giaovien">
                     <option value="">Chọn giáo viên</option>
-
-
+                  
+                  
                   </select>
                 </td>
               </tr>
               
               <script>
-                $(document).ready(function() {
-                  $('#chuyennganh').on('change', function() {
-                    var machuyennganh = $(this).val();
-                    const url = $(this).attr("action");
-                    if (machuyennganh) {
-                      $.ajax({
-                        type: 'POST',
-                        url,
-                        data: 'machuyennganh=' + machuyennganh,
-                        success: function(html) {
-                          $('#giaovien').html(html);
-                        }
-                      });
-                    } else {
-                      $('#giaovien').html('<option value="">Chọn giáo viên </option>');
-
-                    }
+              $(document).ready(function(){
+                  $('#chuyennganh').on('change', function(){
+                      var machuyennganh = $(this).val();
+                      const url = $(this).attr("action");
+                      if(machuyennganh){
+                          $.ajax({
+                              type:'POST',
+                              url,
+                              data:'machuyennganh='+machuyennganh,
+                              success:function(html){
+                                  $('#giaovien').html(html);
+                              }
+                          }); 
+                      }else{
+                          $('#giaovien').html('<option value="">Chọn giáo viên </option>');
+                          
+                      }
                   });
-
-
-                });
+                  
+                 
+              });
               </script>
-<<<<<<< HEAD
-              <tr>
-                <td class="modal-td">Địa chỉ hộ khẩu:</td>
-                <td class="modal-td">
-                  <input type="text" class="form-control" name="diachi" id="diachi">
-
-                </td>
-              </tr>
-
-=======
              
               
->>>>>>> 94e2239f934109208d194fb8579449fbe41f450d
             </tbody>
           </table>
 
@@ -539,49 +515,6 @@
         <div id="bangdiem1"></div>
         <div id="alert"></div>	 
         <div class="modal-footer">
-<<<<<<< HEAD
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-          <button type="button" id="create" class="btn btn-success" data-dismiss="modal">OK</button>
-
-        </div>
-      </div>
-      <script>
-        $(document).ready(function() {
-          $("#create").click(function() {
-            var masinhvien = $('#masinhvien').val();
-            var hovaten = $('#hovaten').val();
-            var gioitinh = $('#gioitinh').val();
-            var CMND = $('#CMND').val();
-            var ngaysinh = $('#ngaysinh').val();
-            var phone = $('#phone').val();
-            var email = $('#email').val();
-            var chuyennganh = $('#chuyennganh').val();
-            var giaovien = $('#giaovien').val();
-            var diachi = $('#diachi').val();
-            var lop = $('#lop').val();
-
-            $.post("./index.php", {
-              controller: "daotao",
-              action: "createstudent",
-              masinhvien: masinhvien,
-              hovaten: hovaten,
-              gioitinh: gioitinh,
-              CMND: CMND,
-              ngaysinh: ngaysinh,
-              phone: phone,
-              email: email,
-              chuyennganh: chuyennganh,
-              giaovien: giaovien,
-              diachi: diachi,
-              lop: lop
-            }, function(data) {
-              $("#bangdiem").html(data);
-            })
-          });
-        });
-      </script>
-      >>>>>>> 05297d8ad24b7664a1c811390862b572a49ae85e
-=======
           <button type="button"  class="btn btn-default" data-dismiss="modal">Close</button>
           <button type="button" id="create" class="btn btn-success" >OK</button>
           
@@ -703,15 +636,14 @@
                         });
                     });
                 </script>
->>>>>>> 94e2239f934109208d194fb8579449fbe41f450d
     </div>
-
   </div>
+            
+
 
   <div class="modal fade" id="myModal1" role="dialog">
 
   </div>
+</body>
 
-  </body>
-
-  </html>
+</html>
