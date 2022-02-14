@@ -685,5 +685,16 @@
             $sql=" SELECT DISTINCT(monhoc.mamon), monhoc.tenmon, monhoc.sotinchi, monhoc.thu, monhoc.ca, giangvien.hovaten FROM monhoc INNER JOIN `gv-sv-lop` as gv on monhoc.mamon=gv.mamon INNER JOIN giangvien on gv.magiangvien= giangvien.magiangvien ";
             return $this->execute($sql);
         }
-        
+        public function tkb_loccn($machuyennganh){
+            $sql=" SELECT DISTINCT(monhoc.mamon), monhoc.tenmon, monhoc.sotinchi, monhoc.thu, monhoc.ca, giangvien.hovaten FROM monhoc INNER JOIN `gv-sv-lop` as gv on monhoc.mamon=gv.mamon INNER JOIN giangvien on gv.magiangvien= giangvien.magiangvien where monhoc.chuyennganh='$machuyennganh'";
+            return $this->execute($sql);
+        }
+        public function tkb_timkiem($key){
+            $sql=" SELECT DISTINCT(monhoc.mamon), monhoc.tenmon, monhoc.sotinchi, monhoc.thu, monhoc.ca, giangvien.hovaten FROM monhoc INNER JOIN `gv-sv-lop` as gv on monhoc.mamon=gv.mamon INNER JOIN giangvien on gv.magiangvien= giangvien.magiangvien where monhoc.tenmon like '%$key%' or monhoc.mamon like '%$key%' ";
+            return $this->execute($sql);
+        }
+        public function tkb_timkiemtheocn($key,$machuyennganh){
+            $sql=" SELECT DISTINCT(monhoc.mamon), monhoc.tenmon, monhoc.sotinchi, monhoc.thu, monhoc.ca, giangvien.hovaten FROM monhoc INNER JOIN `gv-sv-lop` as gv on monhoc.mamon=gv.mamon INNER JOIN giangvien on gv.magiangvien= giangvien.magiangvien where ( monhoc.tenmon like '%$key%' or monhoc.mamon like '%$key%' ) and monhoc.chuyennganh='$machuyennganh' ";
+            return $this->execute($sql);
+        }
     }
