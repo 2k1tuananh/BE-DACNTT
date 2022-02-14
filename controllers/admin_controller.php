@@ -44,6 +44,19 @@ class admin_controller
 
         //     require_once("./view/giangvien/ThongTinCaNhanGiaoVien.php");
         // }
+        $countsSV =$this->db->countsSV();
+        $countsGV =$this->db->countsGV();
+        $countsNV =$this->db->countsNV();
+        $countsSVNam =$this->db->countsSVNam();
+        $countsGVNam =$this->db->countsGVNam();
+        $countsGVNu =$this->db->countsGVNu();
+        $countsSVNu =$this->db->countsSVNu();
+        
+
+
+        $giangvienSL =$this->db->giangvienSL();
+        $chuyennganhSL =$this->db->chuyennganhSL();
+        $monhocSL =$this->db->monhocSL();
         require_once("./view/admin/dashboardadmin.php");
     }
 
