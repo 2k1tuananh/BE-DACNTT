@@ -56,20 +56,7 @@
     <!--===============================================================================================-->
     <link href="css-1?family=Roboto" rel="stylesheet" />
 
-    <script type="text/javascript" language="javascript">
-      function OpenGoogleLoginPopup() {
-        var url = 'https://accounts.google.com/o/oauth2/auth?';
-        url +=
-          'scope=https://www.googleapis.com/auth/userinfo.profile https://www.googleapis.com/auth/userinfo.email&';
-        url += 'state=%2Fprofile&';
-        url +=
-          'redirect_uri=https://login.thanglong.edu.vn/LoginWithGoogle.aspx&';
-        url += 'response_type=token&';
-        url +=
-          'client_id=699195590018-m5fdktcqohcfregj9lp3kq1q6hidbu35.apps.googleusercontent.com';
-        window.location = url;
-      }
-    </script>
+    
   </head>
   <body>
     <div class="limiter">
