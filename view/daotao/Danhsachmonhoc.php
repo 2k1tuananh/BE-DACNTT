@@ -1,230 +1,253 @@
-<?php require_once ('./view/layouts/headerDaoTao.php');?>
-    <script src="chrome-extension://mooikfkahbdckldjjndioackbalphokd/assets/prompt.js"></script>
-    <style>
-      .glot-sub-active {
-        color: #1296ba !important;
-      }
-      .modal-td{
-        padding: 10px;
-      }
-      .glot-sub-hovered {
-        color: #1296ba !important;
-      }
-      .glot-sub-clzz {
-        cursor: pointer;
+<?php require_once('./view/layouts/headerDaoTao.php'); ?>
+<script src="chrome-extension://mooikfkahbdckldjjndioackbalphokd/assets/prompt.js"></script>
+<style>
+  .glot-sub-active {
+    color: #1296ba !important;
+  }
 
-        lineheight: 1.2;
-        font-size: 28px;
-        color: #ffcc00;
-        background: rgba(17, 17, 17, 0.7);
-      }
-      .glot-sub-clzz:hover {
-        color: #1296ba !important;
-      }
-      .ej-trans-sub {
-        position: absolute;
-        width: 100%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        z-index: 9999999;
-        cursor: move;
-      }
-      .ej-trans-sub > span {
-        color: #3cf9ed;
-        font-size: 18px;
-        text-align: center;
-        padding: 0 16px;
-        line-height: 1.5;
-        background: rgba(32, 26, 25, 0.8);
-        /* // text-shadow: 0px 1px 4px black; */
-        padding: 0 8px;
+  .modal-td {
+    padding: 10px;
+  }
 
-        /* lineheight: 1.2; */
-        font-size: 16px;
-        color: #0cb1c7;
-        background: rgba(67, 65, 65, 0.7);
-      }
-      .ej-main-sub {
-        position: absolute;
-        width: 100%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        z-index: 99999999;
-        cursor: move;
-        padding: 0 8px;
-      }
-      .ej-main-sub > span {
-        color: white;
-        font-size: 20px;
-        line-height: 1.5;
-        text-align: center;
-        background: rgba(32, 26, 25, 0.8);
-        /* // text-shadow: 0px 1px 4px black; */
-        padding: 2px 8px;
+  .glot-sub-hovered {
+    color: #1296ba !important;
+  }
 
-        /* lineheight: 1.2; */
-        font-size: 28px;
-        color: #ffcc00;
-        background: rgba(17, 17, 17, 0.7);
-      }
+  .glot-sub-clzz {
+    cursor: pointer;
 
-      .ej-main-sub .glot-sub-clzz {
-        background: transparent !important;
-      }
+   
+    font-size: 28px;
+    color: #ffcc00;
+    background: rgba(17, 17, 17, 0.7);
+  }
 
-      .tran-subtitle > span {
-        cursor: pointer;
-        padding-left: 10px;
-        top: 2px;
-        position: relative;
-      }
+  .glot-sub-clzz:hover {
+    color: #1296ba !important;
+  }
 
-      .tran-subtitle > span > span {
-        position: absolute;
-        top: -170%;
-        background: rgba(0, 0, 0, 0.5);
-        font-size: 13px;
-        line-height: 20px;
-        padding: 2px 8px;
-        color: white;
-        display: none;
-        border-radius: 4px;
-        white-space: nowrap;
-        left: -50%;
-        font-weight: normal;
-      }
+  .ej-trans-sub {
+    position: absolute;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999999;
+    cursor: move;
+  }
 
-      .view-icon-copy-main-sub:hover > span,
-      .view-icon-edit-sub:hover > span,
-      .view-icon-copy-tran-sub:hover > span {
-        display: block;
-      }
+  .ej-trans-sub>span {
+    color: #3cf9ed;
+    font-size: 18px;
+    text-align: center;
+    padding: 0 16px;
+    line-height: 1.5;
+    background: rgba(32, 26, 25, 0.8);
+    /* // text-shadow: 0px 1px 4px black; */
+    padding: 0 8px;
 
-      .tran-subtitle > span > svg {
-        width: 16px;
-        height: 16px;
-        pointer-events: none;
-        display: inline-flex !important;
-        vertical-align: baseline !important;
-      }
+    /* lineheight: 1.2; */
+    font-size: 16px;
+    color: #0cb1c7;
+    background: rgba(67, 65, 65, 0.7);
+  }
 
-      .view-icon-copy-main-sub > svg {
-        pointer-events: none;
-        color: #ffcc00;
-      }
+  .ej-main-sub {
+    position: absolute;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 99999999;
+    cursor: move;
+    padding: 0 8px;
+  }
 
-      .view-icon-copy-tran-sub {
-        padding-left: 0 !important;
-        padding-right: 8px !important;
-      }
-      .view-icon-copy-tran-sub > svg {
-        pointer-events: none;
-        color: #0cb1c7;
-      }
-      a{
-          text-decoration: none;
-      }
-      .item-monhoc{
-        align-items:center;
-      }
-      .chuyen-nganh{
-          display:flex;
-          gap:5px;
-          font-size: 16px;
-          align-items:flex-start;
-      }
-      .tim-kiem{
-        display:flex;
-          /* gap:10px; */
-      }
-      .tim-kiem input{
-          padding:5px 8px;
-          font-size:15px;
-      }
-      .form{
-          display:flex;
-          gap:10px;
-          justify-content: space-between;
-          margin-bottom: 2rem;
-      }
-      .btnTimKiem {
-  z-index: 1;
-  position: relative;
-  font-size: inherit;
-  font-family: inherit;
-  color: white;
-  padding: 0.5em 1em;
-  outline: none;
-  border: none;
-  background-color: hsl(236, 32%, 26%);
-  overflow: hidden;
-  transition: color 0.4s ease-in-out;
-}
+  .ej-main-sub>span {
+    color: white;
+    font-size: 20px;
+    line-height: 1.5;
+    text-align: center;
+    background: rgba(32, 26, 25, 0.8);
+    /* // text-shadow: 0px 1px 4px black; */
+    padding: 2px 8px;
 
-.btnTimKiem::before {
-  content: '';
-  z-index: -1;
-  position: absolute;
-  top: 100%;
-  right: 100%;
-  width: 1em;
-  height: 1em;
-  border-radius: 50%;
-  background-color: #05c20f;
-  transform-origin: center;
-  transform: translate3d(50%, -50%, 0) scale3d(0, 0, 0);
-  transition: transform 0.45s ease-in-out;
-}
+    /* lineheight: 1.2; */
+    font-size: 28px;
+    color: #ffcc00;
+    background: rgba(17, 17, 17, 0.7);
+  }
 
-.btnTimKiem:hover {
-  cursor: pointer;
-  color: #161616;
-}
+  .ej-main-sub .glot-sub-clzz {
+    background: transparent !important;
+  }
 
-.btnTimKiem:hover::before {
-  transform: translate3d(50%, -50%, 0) scale3d(15, 15, 15);
-}
-    </style>
-  
-      <!-- Right -->
-      <div id="right">
-        <div class="title">
-          Quản lý môn học 
+  .tran-subtitle>span {
+    cursor: pointer;
+    padding-left: 10px;
+    top: 2px;
+    position: relative;
+  }
 
-        </div>
-        <div class="form">
+  .tran-subtitle>span>span {
+    position: absolute;
+    top: -170%;
+    background: rgba(0, 0, 0, 0.5);
+    font-size: 13px;
+    line-height: 20px;
+    padding: 2px 8px;
+    color: white;
+    display: none;
+    border-radius: 4px;
+    white-space: nowrap;
+    left: -50%;
+    font-weight: normal;
+  }
 
-          <button type="button" data-toggle="modal" data-target="#ThemMonHoc" class = "btnUpdate btn" style="margin-bottom: 10px;">Thêm môn Học &nbsp;<span class="glyphicon glyphicon-plus"></span></button>
-          <div class="tim-kiem">
-            <input id="timkiem" type="text" placeholder="Nhập mã môn,tên môn">
-            <button id="tntimkiem" class="btnTimKiem">Tìm kiếm</button>
-            <script>
-                $(function(){
-                    $('#tntimkiem').trigger('click'); //This event will fire the change event. 
-                        $('#tntimkiem').click(function(){
-                            var data= $('#timkiem').val();
-                            $.get("./index.php",{controller:"daotao",action:"timkiemmm", key:data}, function(data) {
-                            $("#info").html(data);
-                        })                                                                                     
-                    });
-                });
-              </script>
-        </div>
-        </div>
-        <div id="info">
-        <table  cellspacing="3" cellpadding="0" border="0px" width="100%">
-              <tbody>
-                <tr valign="top">
-                  <td style="width: 100%">
-                    <div>
-                      <table
-                        class="grid"
-                        cellspacing="0"
-                        border="0"
-                        id="ctl00_c_GridDC"
-                        style="
+  .view-icon-copy-main-sub:hover>span,
+  .view-icon-edit-sub:hover>span,
+  .view-icon-copy-tran-sub:hover>span {
+    display: block;
+  }
+
+  .tran-subtitle>span>svg {
+    width: 16px;
+    height: 16px;
+    pointer-events: none;
+    display: inline-flex !important;
+    vertical-align: baseline !important;
+  }
+
+  .view-icon-copy-main-sub>svg {
+    pointer-events: none;
+    color: #ffcc00;
+  }
+
+  .view-icon-copy-tran-sub {
+    padding-left: 0 !important;
+    padding-right: 8px !important;
+  }
+
+  .view-icon-copy-tran-sub>svg {
+    pointer-events: none;
+    color: #0cb1c7;
+  }
+
+  a {
+    text-decoration: none;
+  }
+
+  .item-monhoc {
+    align-items: center;
+  }
+
+  .chuyen-nganh {
+    display: flex;
+    gap: 5px;
+    font-size: 16px;
+    align-items: flex-start;
+  }
+
+  .tim-kiem {
+    display: flex;
+    /* gap:10px; */
+  }
+
+  .tim-kiem input {
+    padding: 5px 8px;
+    font-size: 15px;
+  }
+
+  .form {
+    display: flex;
+    gap: 10px;
+    justify-content: space-between;
+    margin-bottom: 2rem;
+  }
+
+  .btnTimKiem {
+    z-index: 1;
+    position: relative;
+    font-size: inherit;
+    font-family: inherit;
+    color: white;
+    padding: 0.5em 1em;
+    outline: none;
+    border: none;
+    background-color: hsl(236, 32%, 26%);
+    overflow: hidden;
+    transition: color 0.4s ease-in-out;
+  }
+
+  .btnTimKiem::before {
+    content: '';
+    z-index: -1;
+    position: absolute;
+    top: 100%;
+    right: 100%;
+    width: 1em;
+    height: 1em;
+    border-radius: 50%;
+    background-color: #05c20f;
+    transform-origin: center;
+    transform: translate3d(50%, -50%, 0) scale3d(0, 0, 0);
+    transition: transform 0.45s ease-in-out;
+  }
+
+  .btnTimKiem:hover {
+    cursor: pointer;
+    color: #161616;
+  }
+
+  .btnTimKiem:hover::before {
+    transform: translate3d(50%, -50%, 0) scale3d(15, 15, 15);
+  }
+</style>
+
+<!-- Right -->
+<div id="right">
+  <div class="title">
+    Quản lý môn học
+
+  </div>
+  <div class="form">
+
+    <button type="button" class="btn btn-success "data-toggle="modal" data-target="#ThemMonHoc" style="margin-bottom: 10px;">Thêm môn Học &nbsp;<span class="glyphicon glyphicon-plus"></span></button>
+
+    <div style="position: relative;">
+      <input style="padding-right: 100px;height: 40px;" id="timkiem" type="text" placeholder="Nhập mã môn, tên môn">
+      <button style="
+                  position: absolute;
+                  right: 0px;
+                  height: 40px;
+                  bottom: 0px;
+                  top: 0px;
+                  padding: 0 8px 0 8px;
+                " id="tntimkiem" class="btnTimKiem">Tìm kiếm</button>
+      <script>
+        $(function() {
+          $('#tntimkiem').trigger('click'); //This event will fire the change event. 
+          $('#tntimkiem').click(function() {
+            var data = $('#timkiem').val();
+            $.get("./index.php", {
+              controller: "daotao",
+              action: "timkiemmm",
+              key: data
+            }, function(data) {
+              $("#info").html(data);
+            })
+          });
+        });
+      </script>
+    </div>
+  </div>
+
+  <table cellspacing="3" cellpadding="0" border="0px" width="100%">
+    <tbody>
+      <tr valign="top">
+        <td style="width: 100%">
+          <div>
+            <table class="grid" cellspacing="0" border="0" id="ctl00_c_GridDC" style="
                           border-style: None;
                           width: 100%;
                           border-collapse: collapse;
