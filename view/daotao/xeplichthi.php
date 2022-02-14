@@ -70,11 +70,11 @@
         <div class="form form-tkb">
           <div class="chuyen-nganh">
             <p>Chọn chuyên ngành:</p>
-            <select id="sapxep" style="border: none; background-color: #e4e8e9;">
+            <select id="sapxep_loclt" style="border: none; background-color: #e4e8e9;">
               <script>
               $(function(){
-                  $('#sapxep').trigger('change'); //This event will fire the change event. 
-                      $('#sapxep').change(function(){
+                  $('#sapxep_loclt').trigger('change'); //This event will fire the change event. 
+                      $('#sapxep_loclt').change(function(){
                           var data= $(this).val();
                           $.get("./index.php",{controller:"daotao",action:"xeplichthi_loccn", info1:data}, function(data) {
                           $("#info").html(data);
@@ -90,23 +90,22 @@
           </div>
           <div class="tim-kiem">
           <input id="timkiem" type="text" placeholder="Nhập mã môn,tên môn">
-            <button class="btnTimKiem">Tìm kiếm</button>
+            <button id="timkiemlich" class="btnTimKiem">Tìm kiếm</button>
             <script>
-                $(function(){
-                    $('.btnTimKiem').trigger('click'); //This event will fire the change event. 
-                        $('.btnTimKiem').click(function(){
-                            var data= $('#timkiem').val();
-                            $.get("./index.php",{controller:"daotao",action:"lichthi_timkiem", key:data}, function(data) {
-                            $("#info").html(data);
-                        })                                                                                     
-                    });
+                $(document).ready(function(){
+                    $("#timkiemlich").click(function(){
+                    var data= $('#timkiem').val();
+                    $.get("./index.php",{controller:"daotao",action:"lichthi_timkiem", key:data}, function(data) {
+                    $("#info").html(data);
+                    })                                                                                     
+                  });
                 });
               </script>
           </div>
         </div>
        
         
-            <table cellspacing="3" cellpadding="0" border="0px" width="100%">
+            <table id="info" cellspacing="3" cellpadding="0" border="0px" width="100%">
               <tbody>
                 <tr valign="top">
                   <td style="width: 100%">
@@ -122,7 +121,7 @@
                           border-collapse: collapse;
                         "
                       >
-                        <tbody id="info">
+                        <tbody>
                           <tr>
                             <th scope="col">STT</th>
                             <th scope="col" style="white-space: nowrap">
@@ -151,21 +150,21 @@
                               <option >6-9</option>
                               <option >6-10</option>
                                 </select></td>
-                            <td ><Button id="btcapnhat<?= $i?>" class="btnTimKiem">Cập Nhập</Button></td>
+                            <td ><Button id="btcapnhalichthi<?= $i?>" class="btnTimKiem">Cập Nhập</Button></td>
                             <script>
-                              $(function(){
-                                  $('#btcapnhat<?= $i?>').trigger('click'); //This event will fire the change event. 
-                                      $('#btcapnhat<?= $i?>').click(function(){
-                                          var data="<?= $value['mamon']?>";
-                                          var data1= $(ngaythi<?= $i?>).val();
-                                          var data2= $(ca<?= $i?>).val();
-                                          var thongbao="Cập nhật thành công";
-                                          alert(thongbao );
-                                          $.get("./index.php",{controller:"daotao",action:"capnhatlichthi", mamon:data,ngaythi:data1, cathi:data2}, function(data) {
-                                      })                                                                                     
-                                  });
-                              });
+                                $(document).ready(function(){
+                                    $("#btcapnhalichthi<?= $i?>").click(function(){
+                                      var data="<?= $value['mamon']?>";
+                                      var data1= $(ngaythi<?= $i?>).val();
+                                      var data2= $(ca<?= $i?>).val();
+                                      var thongbao="Cập nhật thành công";
+                                      alert(thongbao );
+                                      $.get("./index.php",{controller:"daotao",action:"capnhatlichthi", mamon:data,ngaythi:data1, cathi:data2}, function(data) {
+                                  })  
+                                });
+                                });
                             </script>
+                    
                           </tr>
                           <?php } ?>
                         </tbody>

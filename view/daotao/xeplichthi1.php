@@ -1,4 +1,22 @@
-<tr>
+<div id="info">
+<table id="info" cellspacing="3" cellpadding="0" border="0px" width="100%">
+              <tbody>
+                <tr valign="top">
+                  <td style="width: 100%">
+                    <div>
+                      <table
+                        class="grid"
+                        cellspacing="0"
+                        border="0"
+                        id="ctl00_c_GridDC"
+                        style="
+                          border-style: None;
+                          width: 100%;
+                          border-collapse: collapse;
+                        "
+                      >
+                        <tbody>
+                          <tr>
                             <th scope="col">STT</th>
                             <th scope="col" style="white-space: nowrap">
                               Mã Môn
@@ -26,20 +44,29 @@
                               <option >6-9</option>
                               <option >6-10</option>
                                 </select></td>
-                            <td ><Button id="btcapnhat<?= $i?>" class="btnTimKiem">Cập Nhập</Button></td>
+                            <td ><Button id="btcapnhalichthi<?= $i?>" class="btnTimKiem">Cập Nhập</Button></td>
                             <script>
-                              $(function(){
-                                  $('#btcapnhat<?= $i?>').trigger('click'); //This event will fire the change event. 
-                                      $('#btcapnhat<?= $i?>').click(function(){
-                                          var data="<?= $value['mamon']?>";
-                                          var data1= $(ngaythi<?= $i?>).val();
-                                          var data2= $(ca<?= $i?>).val();
-                                          var thongbao="Cập nhật thành công";
-                                          alert(thongbao );
-                                          $.get("./index.php",{controller:"daotao",action:"capnhatlichthi", mamon:data,ngaythi:data1, cathi:data2}, function(data) {
-                                      })                                                                                     
-                                  });
-                              });
+                                $(document).ready(function(){
+                                    $("#btcapnhalichthi<?= $i?>").click(function(){
+                                      var data="<?= $value['mamon']?>";
+                                      var data1= $(ngaythi<?= $i?>).val();
+                                      var data2= $(ca<?= $i?>).val();
+                                      var thongbao="Cập nhật thành công";
+                                      alert(thongbao );
+                                      $.get("./index.php",{controller:"daotao",action:"capnhatlichthi", mamon:data,ngaythi:data1, cathi:data2}, function(data) {
+                                      
+                                  })  
+                                });
+                                });
                             </script>
+                    
                           </tr>
                           <?php } ?>
+                        </tbody>
+                      </table>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+</div>

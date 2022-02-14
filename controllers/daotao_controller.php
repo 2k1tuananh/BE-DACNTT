@@ -246,7 +246,7 @@ class daotao_controller {
         $thu=$_GET['thu'];
         $ca=$_GET['ca'];
         $macn=$this->db->getmcn($chuyennganh);
-        $this->db->themmon($mamon,$tenmon,$sotinchi,$thu,$ca,$macn['machuyennganh']);
+        $this->db->themmon($mamon,$tenmon,$sotinchi,$ca,$thu,$macn['machuyennganh']);
         $mon=$this->db->getAllData("monhoc");
         require_once("./view/daotao/bangdssv.php");
     }
@@ -254,13 +254,14 @@ class daotao_controller {
     {
         $mamon=$_GET['info'];
         $this->db->xoamon($mamon);
-        // $mon=$this->db->getAllData("monhoc");
-        // require_once("./view/daotao/bangdssv.php");
+        $mon=$this->db->getAllData("monhoc");
+        require_once("./view/daotao/bangdssv.php");
         // header("Refresh:0");
     }
     //xeplichthi
     function xeplichthi()
     {
+        $_SESSION['chuyennganh']=="Tất cả";
         $mon=$this->db->getAllData("monhoc");
         $datacn=$this->db->getAllData("chuyennganh");
         require_once("./view/daotao/xeplichthi.php");
@@ -287,6 +288,7 @@ class daotao_controller {
             $mon=$this->db->timlichthi($_GET['key']);
         }
         else{
+            echo $_SESSION['chuyennganh'];
             $macn=$this->db->getmcn($_SESSION['chuyennganh']);
             $mon=$this->db->timlichthi_loccn($_GET['key'],$macn['machuyennganh']);
         }
