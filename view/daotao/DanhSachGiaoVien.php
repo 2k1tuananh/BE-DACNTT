@@ -388,6 +388,7 @@
                               gioitinh:gioitinh, CMND:CMND, ngaysinh:ngaysinh, phone:phone, email:email, chuyennganh:chuyennganh, 
                               diachi:diachi,lop:lop}, function(data) {
                                 $("#bangdiem2").html(data);
+                                location.reload();
                             })   
                         });
                     });

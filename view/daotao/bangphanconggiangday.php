@@ -23,13 +23,16 @@
                             <th scope="col"></th>
                           </tr>
                           <tr>
-                          <?php $stt=0; foreach ($listGiangVien as $info){ $stt++;?>
+                          <?php $stt=0;
+                            if($listMonHoc != '' )
+                            {
+                          foreach ($listMonHoc as $info){ $stt++;?>
                             <td><?= $stt?></td>
                             <td ><?= $info['mamon']?></td>
                             <td ><?= $info['tenmon']?></td>
                             <td >
-                              <select class="form-control" style="width: 50%">
-                              <?php
+                            <select class="form-control" style="width: 50%">
+                                <?php
                                   foreach($listGiangVien as $info1)
                                   {
                                     if($info['chuyennganh']== $info1['chuyennganh'])
@@ -41,7 +44,7 @@
                               </select>
                             </td>
                             <td><Button class="btnTimKiem">Cập nhập</Button></td>
-                          </tr>
+                          </tr><?php } ?>
                           <?php } ?>
                         </tbody>
                       </table>
