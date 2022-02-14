@@ -13,7 +13,7 @@
       .glot-sub-clzz {
         cursor: pointer;
 
-        lineheight: 1.2;
+       
         font-size: 28px;
         color: #ffcc00;
         background: rgba(17, 17, 17, 0.7);
@@ -140,8 +140,8 @@
           /* gap:10px; */
       }
       .tim-kiem input{
-          padding:5px 8px;
-          font-size:15px;
+          /* padding:5px 8px; */
+          font-size:15px; 
       }
       .form{
           display:flex;
@@ -155,7 +155,7 @@
   font-size: inherit;
   font-family: inherit;
   color: white;
-  padding: 0.5em 1em;
+  padding: 0.2em 0.4em;
   outline: none;
   border: none;
   background-color: hsl(236, 32%, 26%);
@@ -199,7 +199,7 @@
           <button type="button" data-toggle="modal" data-target="#ThemMonHoc" class = "btnUpdate btn" style="margin-bottom: 10px;">Thêm môn Học &nbsp;<span class="glyphicon glyphicon-plus"></span></button>
           <div class="tim-kiem">
             <input id="timkiem" type="text" placeholder="Nhập mã môn,tên môn">
-            <button id="tntimkiem" class="btnTimKiem">Tìm kiếm</button>
+            <button id="tntimkiem" class="">Tìm kiếm</button>
             <script>
                 $(function(){
                     $('#tntimkiem').trigger('click'); //This event will fire the change event. 
@@ -214,7 +214,7 @@
         </div>
         </div>
         
-            <table cellspacing="3" cellpadding="0" border="0px" width="100%">
+            <table cellspacing="3" cellpadding="0" width="100%">
               <tbody>
                 <tr valign="top">
                   <td style="width: 100%">
@@ -222,7 +222,7 @@
                       <table
                         class="grid"
                         cellspacing="0"
-                        border="0"
+                       
                         id="ctl00_c_GridDC"
                         style="
                           border-style: None;
