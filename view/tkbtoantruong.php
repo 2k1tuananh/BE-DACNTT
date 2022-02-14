@@ -13,16 +13,38 @@ else{
         <div class="form">
             <div class="chuyen-nganh">
                 <p>Chọn chuyên ngành:</p>
-                <select >
-                    <option value="">Tất cả</option>
-                    <option value="">Công nghệ thông tin</option>
-                    <option value="">Y tế</option>
-                    <option value="">Ngôn ngữ nhật</option>
+                <select id="sapxep" style="border: none; background-color: #e4e8e9;">
+                    <script>
+                    $(function(){
+                        $('#sapxep').trigger('change'); //This event will fire the change event. 
+                            $('#sapxep').change(function(){
+                                var data= $(this).val();
+                                $.get("./index.php",{controller:"tkb",action:"tkb_toantruong_loccn", info1:data}, function(data) {
+                                $("#info").html(data);
+                            })                                                                                     
+                        });
+                    });
+                    </script>
+                    <option>Tất cả</option>
+                    <?php foreach($datacn as $cn){?>
+                      <option><?= $cn['tenchuyennganh']?></option>
+                    <?php }?>
                 </select>
             </div>
             <div class="tim-kiem">
-                <input type="text" placeholder="Nhập mã môn,tên môn">
+                <input id="timkiem" type="text" placeholder="Nhập mã môn,tên môn">
                 <button class="btnTimKiem">Tìm kiếm</button>
+                <script>
+                    $(function(){
+                        $('.btnTimKiem').trigger('click'); //This event will fire the change event. 
+                            $('.btnTimKiem').click(function(){
+                                var data= $('#timkiem').val();
+                                $.get("./index.php",{controller:"tkb",action:"tkb_toantruong_timkiem", key:data}, function(data) {
+                                $("#info").html(data);
+                            })                                                                                     
+                        });
+                    });
+                  </script>
             </div>
         </div>
             <table cellspacing="3" cellpadding="0" border="0px" width="100%">
@@ -41,7 +63,7 @@ else{
                           border-collapse: collapse;
                         "
                       >
-                        <tbody>
+                        <tbody id="info">
                           <tr>
                             <th scope="col">STT</th>
                             <th scope="col" style="white-space: nowrap">
@@ -56,9 +78,9 @@ else{
                             <th scope="col">Ca</th>
                             <th scope="col">Giáo viên</th>
                           </tr>
-                          <?php foreach($data as $info){ $i=0; $i++;?>
+                          <?php $i=0; foreach($data as $info){  $i++;?>
                           <tr>
-                            <td class="text-center">$i</td>
+                            <td class="text-center"><?=$i?></td>
                             <td class="text-center"><?= $info['mamon']?></td>
                             <td class="text-center"><?= $info['tenmon']?></td>
                             <td class="text-center" ><?= $info['sotinchi']?></td>
