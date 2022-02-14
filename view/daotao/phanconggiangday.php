@@ -280,12 +280,12 @@
                             <td class="tenmon<?= $stt ?>" id="<?= $info['tenmon'] ?>" name="tenmon"><?= $info['tenmon']?></td>
                             <td >
                               <select class="form-control" style="width: 50%"  id="magiangvien<?= $stt?>"  >
-                              <option ><?= $info['hovaten']?></option>
+                              <option value="<?= $info['magiangvien'] ?>"><?= $info['hovaten']?></option>
                                 <?php
                                   foreach($listGiangVien as $info1)
                                   {
-                                    if($info['chuyennganh'] == $info1['chuyennganh'])
-                                      echo '<option>'.$info1['hovaten'].'</option>';
+                                    
+                                      echo '<option value="'.$info1['magiangvien'].'">'.$info1['hovaten'].'</option>';
                                     
                                   }
                                 ?>  
@@ -293,14 +293,12 @@
                             </td>
                             <td><Button id="<?= $stt ?>" class="btnTimKiem">Cập nhập</Button></td>
                           </tr>
-                          <?php } ?>
-                        </tbody>
-                        <script>
+                          <script>
                     $(document).ready(function() {
-                        $("button").click(function() {
+                        $("#<?= $stt ?>").click(function() {
                             var mamon = ".mamon" + $(this).attr("id");
                             var tenmon = ".tenmon" + $(this).attr("id");
-                            var magiangvien=$(this).attr("id");
+                            var magiangvien=$('#magiangvien<?= $stt?>').val();
                            
                             var infomamon = $(`${mamon}`).attr('id');
                             var infotenmon = $(`${tenmon}`).attr('id');
@@ -321,6 +319,9 @@
                         });
                     });
                 </script>
+                          <?php } ?>
+                        </tbody>
+                        
                       </table>
                     </div>
                   </td>
