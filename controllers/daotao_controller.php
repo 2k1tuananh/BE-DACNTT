@@ -135,6 +135,11 @@ class daotao_controller {
         require_once("./view/daotao/bangphanconggiangday.php");
     }
 
+    function capnhatmonhoc()
+    {
+        $this->db->capnhatgiaovienmonhoc($_GET['mamon'],$_GET['magiangvien']);
+    }
+
     //danhsachgiangvien
     function giangvien()
     {

@@ -549,7 +549,11 @@
             }
             return $data;
         }
-
+        public function capnhatgiaovienmonhoc($mamon,$magiangvien)
+        {
+            $sql = "UPDATE `gv-sv-lop` SET `magiangvien`='$magiangvien' WHERE mamon = '$mamon'";
+            return $this->execute($sql);
+        }
         public function timkiemmonhoc($timkiem)
         {
             $sql = "SELECT DISTINCT(giangvien.hovaten) as hovaten ,gv.mamon as mamon,giangvien.magiangvien as magiangvien ,monhoc.tenmon,monhoc.chuyennganh as chuyennganh FROM `giangvien` INNER JOIN chuyennganh on giangvien.chuyennganh=chuyennganh.machuyennganh INNER JOIN `gv-sv-lop` as gv on giangvien.magiangvien=gv.magiangvien INNER JOIN monhoc on gv.mamon=monhoc.mamon WHERE  (monhoc.mamon like '%$timkiem%' or monhoc.tenmon like '%$timkiem%') ";
