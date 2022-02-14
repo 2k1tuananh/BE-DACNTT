@@ -49,7 +49,7 @@
                                     $("#xoa<?= $stt ?>").click(function(){
                                         var mamon="<?= $info['mamon'] ?>";
                                         $.get("./index.php",{controller:"daotao",action:"xoamon", info:mamon}, function(data) {
-                                          
+                                          $("#info").html(data);
                                         })  
                                     });
                                 });

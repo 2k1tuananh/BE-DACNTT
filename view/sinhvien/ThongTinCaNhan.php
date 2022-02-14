@@ -1,5 +1,47 @@
 <?php require_once('./view/layouts/headerSinhVien.php'); ?>
+<style>
+  .modal-td {
+    padding: 10px;
+  }
 
+  .btnTimKiem {
+    z-index: 1;
+    position: relative;
+    font-size: inherit;
+    font-family: inherit;
+    color: white;
+    padding: 0.5em 1em;
+    outline: none;
+    border: none;
+    background-color: hsl(236, 32%, 26%);
+    overflow: hidden;
+    transition: color 0.4s ease-in-out;
+  }
+
+  .btnTimKiem::before {
+    content: '';
+    z-index: -1;
+    position: absolute;
+    top: 100%;
+    right: 100%;
+    width: 1em;
+    height: 1em;
+    border-radius: 50%;
+    background-color: #05c20f;
+    transform-origin: center;
+    transform: translate3d(50%, -50%, 0) scale3d(0, 0, 0);
+    transition: transform 0.45s ease-in-out;
+  }
+
+  .btnTimKiem:hover {
+    cursor: pointer;
+    color: #161616;
+  }
+
+  .btnTimKiem:hover::before {
+    transform: translate3d(50%, -50%, 0) scale3d(15, 15, 15);
+  }
+</style>
 
 <div id="right">
   <div class="title">Thông tin sinh viên</div>
@@ -54,7 +96,7 @@
           </tr>
         </tbody>
       </table>
-      <button type="button" data-toggle="modal" data-target="#myModal" class="btnUpdate">Update</button>
+      <button style="margin-top: 10px; color:aliceblue;" type="button" data-toggle="modal" data-target="#myModal" class="btnTimKiem btn">Cập nhật</button>
     </div>
   </div>
 </div>
@@ -76,28 +118,28 @@
           <table width="100%">
             <tbody class="table">
               <tr>
-                <td style="padding: 10px;font-size: 16px;" width="30%">Ảnh:</td>
-                <td style="padding: 10px;font-size: 16px;"> <input value="<?= $data['image'] ?>" name="image" type="text" id="" placeholder="Ảnh"></td>
+                <td class="modal-td" width="30%">Ảnh:</td>
+                <td class="modal-td"> <input class="form-control" value="<?= $data['image'] ?>" name="image" type="text" id="" placeholder="Ảnh"></td>
               </tr>
               <tr>
-                <td style="padding: 10px;font-size: 16px;" width="30%">Giới tính:</td>
-                <td style="padding: 10px;font-size: 16px;"> <input value="<?= $data['gioitinh'] ?>" name="gioitinh" type="text" id="" placeholder="Giới tính"></td>
+                <td class="modal-td" width="30%">Giới tính:</td>
+                <td class="modal-td"> <input class="form-control" value="<?= $data['gioitinh'] ?>" name="gioitinh" type="text" id="" placeholder="Giới tính"></td>
               </tr>
               <tr>
-                <td style="padding: 10px;font-size: 16px;" width="30%">Số CMND/CCCD:</td>
-                <td style="padding: 10px;font-size: 16px;"> <input value="<?= $data['cmnd'] ?>" name="cmnd" type="text" id="" placeholder="Số CMND/CCCD"></td>
+                <td class="modal-td" width="30%">Số CMND/CCCD:</td>
+                <td class="modal-td"> <input class="form-control" value="<?= $data['cmnd'] ?>" name="cmnd" type="text" id="" placeholder="Số CMND/CCCD"></td>
               </tr>
               <tr>
-                <td style="padding: 10px;font-size: 16px;">Điện thoại:</td>
-                <td style="padding: 10px;font-size: 16px;"> <input value="<?= $data['dienthoai'] ?>" name="dienthoai" type="text" id="" placeholder="Điện thoại"></td>
+                <td class="modal-td">Điện thoại:</td>
+                <td class="modal-td"> <input class="form-control" value="<?= $data['dienthoai'] ?>" name="dienthoai" type="text" id="" placeholder="Điện thoại"></td>
               </tr>
               <tr>
-                <td style="padding: 10px;font-size: 16px;">Email SV:</td>
-                <td style="padding: 10px;font-size: 16px;"> <input value="<?= $data['email'] ?>" name="email" type="email" id="" placeholder="Email SV"></td>
+                <td class="modal-td">Email SV:</td>
+                <td class="modal-td"> <input class="form-control" value="<?= $data['email'] ?>" name="email" type="email" id="" placeholder="Email SV"></td>
               </tr>
               <tr>
-                <td style="padding: 10px;font-size: 16px;">Chỗ ở hiện nay:</td>
-                <td style="padding: 10px;font-size: 16px;"> <input value="<?= $data['diachi'] ?>" name="diachi" id="" placeholder="Chỗ ở hiện nay"></td>
+                <td class="modal-td">Chỗ ở hiện nay:</td>
+                <td class="modal-td"> <input class="form-control" value="<?= $data['diachi'] ?>" name="diachi" id="" placeholder="Chỗ ở hiện nay"></td>
               </tr>
             </tbody>
           </table>
@@ -112,4 +154,3 @@
 
   </div>
 </div>
-

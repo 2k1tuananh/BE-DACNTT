@@ -1,3 +1,4 @@
+<div id="info">
 <table id="info" cellspacing="3" cellpadding="0" border="0px" width="100%">
               <tbody>
                 <tr valign="top">
@@ -53,6 +54,7 @@
                                       var thongbao="Cập nhật thành công";
                                       alert(thongbao );
                                       $.get("./index.php",{controller:"daotao",action:"capnhatlichthi", mamon:data,ngaythi:data1, cathi:data2}, function(data) {
+                                      
                                   })  
                                 });
                                 });
@@ -67,3 +69,4 @@
                 </tr>
               </tbody>
             </table>
+</div>
