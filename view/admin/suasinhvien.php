@@ -71,6 +71,10 @@
                                 <td class="modal-td"><input type="text" class="form-control" value="<?= $svid['email'] ?>@thanglong.edu.vn" name="email" id="email" readonly></td>
                             </tr>
                             <tr>
+                                <td class="modal-td">Mật khẩu:</td>
+                                <td class="modal-td"><input type="text" class="form-control" value=" <?= $gvid['password'] ?>" name="password" id="password"></td>
+                            </tr>
+                            <tr>
                                 <td class="modal-td">Lớp:</td>
                                 <td class="modal-td">
                                     <select class="form-control" id="lop" name="lop">

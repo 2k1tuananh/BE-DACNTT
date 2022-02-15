@@ -811,8 +811,8 @@
             return $this->executeResult($sql);
         }
 
-        public function updatestudent($masinhvien,$hovaten,$gioitinh,$CMND,$ngaysinh,$phone,$email,$chuyennganh,$giaovien,$diachi,$lop,$id){
-            $sql="UPDATE `sinhvien` SET `masinhvien` = '$masinhvien', `hovaten` = '$hovaten', `gioitinh`= '$gioitinh', `diachi` ='$diachi', `email`='$email', `dienthoai`= '$phone', 
+        public function updatestudent($masinhvien,$hovaten,$gioitinh,$CMND,$ngaysinh,$phone,$email,$chuyennganh,$giaovien,$diachi,$lop,$pass,$id){
+            $sql="UPDATE `sinhvien` SET `masinhvien` = '$masinhvien', `hovaten` = '$hovaten', `gioitinh`= '$gioitinh', password = $pass,`diachi` ='$diachi', `email`='$email', `dienthoai`= '$phone', 
             `cmnd` ='$CMND', `ngaysinh` ='$ngaysinh', `GVCN` ='$giaovien', `chuyennganh`= '$chuyennganh' ,`lop`='$lop' WHERE id='$id'";
             
             return $this->execute($sql);
@@ -829,13 +829,13 @@
             return $data;
         }
 
-        public function editgiangvien($mgv,$hovaten,$gioitinh,$cmnd,$ngaysinh,$dienthoai,$email,$cn,$diachi,$id){
-            $sql="UPDATE `giangvien` SET `magiangvien` = '$mgv' ,`hovaten`='$hovaten' , gioitinh='$gioitinh', chuyennganh = '$cn' ,ngaysinh = '$ngaysinh', cmnd='$cmnd', dienthoai='$dienthoai', email='$email', diachi='$diachi' WHERE id='$id'";
+        public function editgiangvien($mgv,$hovaten,$gioitinh,$cmnd,$ngaysinh,$dienthoai,$email,$cn,$diachi,$pass,$id){
+            $sql="UPDATE `giangvien` SET `magiangvien` = '$mgv' ,`hovaten`='$hovaten' , gioitinh='$gioitinh',password = $pass, chuyennganh = '$cn' ,ngaysinh = '$ngaysinh', cmnd='$cmnd', dienthoai='$dienthoai', email='$email', diachi='$diachi' WHERE id='$id'";
             return $this->execute($sql);
         }
 
-        public function editadmin($mgv,$hovaten,$gioitinh,$cmnd,$ngaysinh,$dienthoai,$email,$diachi,$id){
-            $sql="UPDATE `admin` SET `maadmin` = '$mgv' ,`hovaten`='$hovaten' , gioitinh='$gioitinh' ,ngaysinh = '$ngaysinh', cmnd='$cmnd', dienthoai='$dienthoai', email='$email', diachi='$diachi' WHERE id='$id'";
+        public function editadmin($mgv,$hovaten,$gioitinh,$cmnd,$ngaysinh,$dienthoai,$email,$diachi,$password,$id){
+            $sql="UPDATE `admin` SET `maadmin` = '$mgv' ,`hovaten`='$hovaten' , gioitinh='$gioitinh',password = $password ,ngaysinh = '$ngaysinh', cmnd='$cmnd', dienthoai='$dienthoai', email='$email', diachi='$diachi' WHERE id='$id'";
             return $this->execute($sql);
         }
         public function deletestudent($id){

@@ -126,7 +126,7 @@ class admin_controller
             $listGVCN = $this->db->getAllData('giangvien');
             if(isset($_POST['suastudent']) ){
                 if(isset($_POST['masinhvien']) && isset($_POST['hovaten'])){
-                    $data=$this->db->updatestudent($_POST['masinhvien'], $_POST['hovaten'], $_POST['gioitinh'], $_POST['CMND'], $_POST['ngaysinh'], $_POST['phone'], $_POST['email'], $_POST['chuyennganh'], $_POST['giaovien'], $_POST['diachi'], $_POST['lop'],$id);
+                    $data=$this->db->updatestudent($_POST['masinhvien'], $_POST['hovaten'], $_POST['gioitinh'], $_POST['CMND'], $_POST['ngaysinh'], $_POST['phone'], $_POST['email'], $_POST['chuyennganh'], $_POST['giaovien'], $_POST['diachi'], $_POST['lop'],$_POST['password'],$id);
                     $listStudent = $this->db->getAllData('sinhvien');
                     header('location: index.php?controller=admin&action=danhsachsinhvien');
                 }
@@ -142,7 +142,7 @@ class admin_controller
             $listChuyenNganh = $this->db->getAllData('chuyennganh');
             if(isset($_POST['suagiangvien'])){
                 if(isset($_POST['magiangvien']) && isset($_POST['hovaten'])){
-                    $data=$this->db->editgiangvien($_POST['magiangvien'], $_POST['hovaten'], $_POST['gioitinh'], $_POST['CMND'], $_POST['ngaysinh'], $_POST['phone'], $_POST['email'], $_POST['chuyennganh'], $_POST['diachi'],$id);
+                    $data=$this->db->editgiangvien($_POST['magiangvien'], $_POST['hovaten'], $_POST['gioitinh'], $_POST['CMND'], $_POST['ngaysinh'], $_POST['phone'], $_POST['email'], $_POST['chuyennganh'], $_POST['diachi'],$_POST['password'],$id);
                     $listNhanVien = $this->db->getAllData('giangvien');
                     header('location: index.php?controller=admin&action=danhsachgiangvien');
                 }
@@ -159,7 +159,7 @@ class admin_controller
             if(isset($_POST['suaadmin'])){
                 if(isset($_POST['maadmin']) && isset($_POST['hovaten'])){
                     $_SESSION['name'] = $_POST['hovaten'];
-                    $data=$this->db->editadmin($_POST['maadmin'], $_POST['hovaten'], $_POST['gioitinh'], $_POST['CMND'], $_POST['ngaysinh'], $_POST['phone'], $_POST['email'], $_POST['diachi'],$id);
+                    $data=$this->db->editadmin($_POST['maadmin'], $_POST['hovaten'], $_POST['gioitinh'], $_POST['CMND'], $_POST['ngaysinh'], $_POST['phone'], $_POST['email'], $_POST['diachi'],$_POST['password'],$id);
                     header('location: index.php?controller=admin&action=dashboardadmin');
                 }
                 
@@ -175,7 +175,7 @@ class admin_controller
             $listChuyenNganh = $this->db->getAllData('chuyennganh');
             if(isset($_POST['suanhanvien'])){
                 if(isset($_POST['magiangvien']) && isset($_POST['hovaten'])){
-                    $data=$this->db->editgiangvien($_POST['magiangvien'], $_POST['hovaten'], $_POST['gioitinh'], $_POST['CMND'], $_POST['ngaysinh'], $_POST['phone'], $_POST['email'], $_POST['chuyennganh'], $_POST['diachi'],$id);
+                    $data=$this->db->editgiangvien($_POST['magiangvien'], $_POST['hovaten'], $_POST['gioitinh'], $_POST['CMND'], $_POST['ngaysinh'], $_POST['phone'], $_POST['email'], $_POST['chuyennganh'], $_POST['diachi'],$_POST['password'],$id);
                     $listNhanVien = $this->db->getAllData('giangvien');
                     header('location: index.php?controller=admin&action=danhsachnhanvien');
                 }
