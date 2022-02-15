@@ -34,58 +34,66 @@
         transform-origin: center top;
         transform: scaleY(1);
     }
+
+    .container_timkiem {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .right_timkiem {
+        position: relative;
+    }
 </style>
 <!-- Right -->
 <div id="right" style="width: 75%">
     <div class="title">Quản lý học sinh </div>
     <div class="entry">
-        <table width="100%">
-            <tbody>
-                <tr style="display: flex; ">
-                    <td>Chọn môn học:</td>
-                    <td>
-                        <select id="mamon">
-                            <script>
-                                $(function() {
-                                    $('#mamon').trigger('change'); //This event will fire the change event. 
-                                    $('#mamon').change(function() {
-                                        var data = $(this).val();
-                                        $.get("./index.php", {
-                                            controller: "point",
-                                            action: "sxtheomon",
-                                            info: data
-                                        }, function(data) {
-                                            $("#bangdiem").html(data);
-                                        })
-                                    });
-                                });
-                            </script>
-                            <?php 
-                                if($mon == []){
-                                    echo '<option class="a" id="">Chưa được phân công</option>';
-                                }
-                                else{
-                                    echo '<option class="a" id="Tất cả">Tất cả</option>';
-                                }
-                             ?>
-                           
-                           
-                            <?php foreach ($mon as $monhoc) { ?>
-                                <option class="a" id="<?= $monhoc['tenmon'] ?>"><?php echo $monhoc['tenmon']; ?></option>
-                            <?php } ?>
-                        </select>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
 
-        <div style="
-              display: flex;
-              justify-content: space-around;
-              align-items: flex-end;
-              margin-top: 20px;
-            ">
 
+        <div class="container_timkiem">
+            <div>
+                <span>Chọn môn học:</span>
+                <select id="mamon">
+                    <script>
+                        $(function() {
+                            $('#mamon').trigger('change'); //This event will fire the change event. 
+                            $('#mamon').change(function() {
+                                var data = $(this).val();
+                                $.get("./index.php", {
+                                    controller: "point",
+                                    action: "sxtheomon",
+                                    info: data
+                                }, function(data) {
+                                    $("#bangdiem").html(data);
+                                })
+                            });
+                        });
+                    </script>
+                    <?php
+                    if ($mon == []) {
+                        echo '<option class="a" id="">Chưa được phân công</option>';
+                    } else {
+                        echo '<option class="a" id="Tất cả">Tất cả</option>';
+                    }
+                    ?>
+
+
+                    <?php foreach ($mon as $monhoc) { ?>
+                        <option class="a" id="<?= $monhoc['tenmon'] ?>"><?php echo $monhoc['tenmon']; ?></option>
+                    <?php } ?>
+                </select>
+            </div>
+
+            <div class="right_timkiem">
+                <i style="position: absolute;left: 4px;bottom: 6px;font-size: 15px;" class="fas fa-search"></i>
+                <input id="timkiem" style="padding-left: 20px" type="text" placeholder="Tìm kiếm" />
+                <button id="bttimkiem" style=" position: absolute;right: 0px; height: 25px;bottom: 0px;top: 0px;padding: 0 8px 0 8px;">
+                    Tìm
+                </button>
+            </div>
+
+        </div>
+        <div>
             <script>
                 $(function() {
                     $('#timkiem').trigger('change'); //This event will fire the change event. 
@@ -114,53 +122,38 @@
                     });
                 });
             </script>
-            <div style="position: relative">
-                <i style="
-                  position: absolute;
-                  left: 4px;
-                  bottom: 6px;
-                  font-size: 15px;
-                  
-                " class="fas fa-search"></i>
-                <input id="timkiem" style="padding-left: 20px" type="text" placeholder="Tìm kiếm" />
-                <button id="bttimkiem" style="
-                  position: absolute;
-                  right: 0px;
-                  height: 25px;
-                  bottom: 0px;
-                  top: 0px;
-                  padding: 0 8px 0 8px;
-                ">
-                    Tìm
+
+
+            <div style="margin-top: 10px;" class="container_timkiem">
+                <div>
+                    <span>Chọn tình trạng:</span>
+                    <select id="sapxep">
+                        <script>
+                            $(function() {
+                                $('#sapxep').trigger('change'); //This event will fire the change event. 
+                                $('#sapxep').change(function() {
+                                    var data = $(this).val();
+                                    $.get("./index.php", {
+                                        controller: "point",
+                                        action: "sxtheotrangthai",
+                                        info1: data
+                                    }, function(data) {
+                                        $("#bangdiem").html(data);
+                                    })
+                                });
+                            });
+                        </script>
+                        <option>Tất cả</option>
+                        <option>Đang Học</option>
+                        <option>Cấm thi</option>
+                    </select>
+                </div>
+                <button>
+                    Xuất file
                 </button>
             </div>
-            <div style="display: flex;">
-                Chọn tình trạng:
-                <select id="sapxep">
-                    <script>
-                        $(function() {
-                            $('#sapxep').trigger('change'); //This event will fire the change event. 
-                            $('#sapxep').change(function() {
-                                var data = $(this).val();
-                                $.get("./index.php", {
-                                    controller: "point",
-                                    action: "sxtheotrangthai",
-                                    info1: data
-                                }, function(data) {
-                                    $("#bangdiem").html(data);
-                                })
-                            });
-                        });
-                    </script>
-                    <option>Tất cả</option>
-                    <option>Đang Học</option>
-                    <option>Cấm thi</option>
-                </select>
-            </div>
 
-            <button>
-                Xuất file
-            </button>
+
         </div>
         <div class="modal fade" id="myModal" role="dialog">
             <div class="modal-dialog">
@@ -323,77 +316,77 @@
                 </script>
             </table>
         </div>
-        <?php if($data==[]) : ?>
+        <?php if ($data == []) : ?>
             <div>Chưa có sinh viên<div>
-        <?php endif; ?>
-        
-    </div>
+                <?php endif; ?>
 
-    <!-- End Right -->
-</div>
-<!-- End Page -->
+                </div>
 
-<!-- Modal chi tiết -->
-<div class="modal fade" id="myModal1" role="dialog">
-</div>
-
-
-
-<!-- Modal đánh giá -->
-<div class="modal fade" id="myModal2" role="dialog">
-    <div class="modal-dialog">
-
-        <!-- Modal content-->
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title">Đánh Giá Sinh Viên</h4>
+                <!-- End Right -->
             </div>
-            <div class="modal-body">
-                <!-- <p>Some text in the modal.</p> -->
-                <table width="100%">
-                    <tbody class="table">
-                        <tr>
-                            <td class="modal-td">Điểm rèn luyện</td>
-                            <td class="modal-td">
-                                <select class="form-control">
-                                    <option value="">Giỏi</option>
-                                    <option value="">Khá</option>
-                                    <option value="">Trung Bình</option>
-                                    <option value="">Kém</option>
-                                </select>
+            <!-- End Page -->
 
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="modal-td">Ý Thức</td>
-                            <td class="modal-td">
-                                <select class="form-control">
-                                    <option value="">Giỏi</option>
-                                    <option value="">Khá</option>
-                                    <option value="">Trung Bình</option>
-                                    <option value="">Kém</option>
-                                </select>
-
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="modal-td">Lời văn</td>
-                            <td class="modal-td">
-                                <textarea name="" id="" class="form-control"></textarea>
-
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
+            <!-- Modal chi tiết -->
+            <div class="modal fade" id="myModal1" role="dialog">
             </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-success" data-dismiss="modal">OK</button>
-            </div>
-        </div>
 
 
-        </body>
 
-        </html>
+            <!-- Modal đánh giá -->
+            <div class="modal fade" id="myModal2" role="dialog">
+                <div class="modal-dialog">
+
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h4 class="modal-title">Đánh Giá Sinh Viên</h4>
+                        </div>
+                        <div class="modal-body">
+                            <!-- <p>Some text in the modal.</p> -->
+                            <table width="100%">
+                                <tbody class="table">
+                                    <tr>
+                                        <td class="modal-td">Điểm rèn luyện</td>
+                                        <td class="modal-td">
+                                            <select class="form-control">
+                                                <option value="">Giỏi</option>
+                                                <option value="">Khá</option>
+                                                <option value="">Trung Bình</option>
+                                                <option value="">Kém</option>
+                                            </select>
+
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="modal-td">Ý Thức</td>
+                                        <td class="modal-td">
+                                            <select class="form-control">
+                                                <option value="">Giỏi</option>
+                                                <option value="">Khá</option>
+                                                <option value="">Trung Bình</option>
+                                                <option value="">Kém</option>
+                                            </select>
+
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="modal-td">Lời văn</td>
+                                        <td class="modal-td">
+                                            <textarea name="" id="" class="form-control"></textarea>
+
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-success" data-dismiss="modal">OK</button>
+                        </div>
+                    </div>
+
+
+                    </body>
+
+                    </html>
