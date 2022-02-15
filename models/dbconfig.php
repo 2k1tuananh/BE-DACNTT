@@ -8,6 +8,19 @@
         private $conn = null;
         private $result = null;
 
+        function executeResult($sql){
+            $conn = mysqli_connect($this->hostname, $this->username, $this->pass, $this->dbname);
+            
+            $result = mysqli_query($conn, $sql);
+            $list = [];
+            while ($row = mysqli_fetch_array($result, 1)) {
+                $list[] = $row;
+            }
+            mysqli_close($conn);
+            
+            return $list;
+        }
+
         public function connect()
         {
            $this->conn = new mysqli($this->hostname, $this->username, $this->pass, $this->dbname);
@@ -110,6 +123,12 @@
 
         
         ///// LOGIN
+        public  function  login($tk,$password)
+        {
+            $sql = "select * from admin where maadmin = '$tk' and password = '$password'";
+            $ListUser = $this->executeResult($sql);    
+            return $ListUser;
+        }
         public function mkchecksinhvien($tk,$pass){
             $sql = "select * from `sinhvien` where `masinhvien`='$tk' and `password`='$pass'";
             $data=$this->execute($sql);
@@ -149,6 +168,18 @@
             return $data;
         }
 
+
+        public function getinfoadmin($tk){
+            $sql = "select * from admin where `maadmin`='$tk' ";
+            $data=$this->execute($sql);
+            if($this->dem()!=0){
+                $data = mysqli_fetch_array($this->result);
+            }
+            else{
+                $data = [];
+            }
+            return $data;
+        }
         public function mkcheckgiangvien($tk,$pass){
             $sql = "select * from `giangvien` where `magiangvien`='$tk' and `password`='$pass'";
             $data=$this->execute($sql);
@@ -779,18 +810,6 @@
             $sql = 'SELECT count(*) as sl  from giangvien  where gioitinh = "Nữ"';
             return $this->executeResult($sql);
         }
-        function executeResult($sql){
-            $conn = mysqli_connect($this->hostname, $this->username, $this->pass, $this->dbname);
-            
-            $result = mysqli_query($conn, $sql);
-            $list = [];
-            while ($row = mysqli_fetch_array($result, 1)) {
-                $list[] = $row;
-            }
-            mysqli_close($conn);
-            
-            return $list;
-        }
 
         public function updatestudent($masinhvien,$hovaten,$gioitinh,$CMND,$ngaysinh,$phone,$email,$chuyennganh,$giaovien,$diachi,$lop,$id){
             $sql="UPDATE `sinhvien` SET `masinhvien` = '$masinhvien', `hovaten` = '$hovaten', `gioitinh`= '$gioitinh', `diachi` ='$diachi', `email`='$email', `dienthoai`= '$phone', 
@@ -814,6 +833,11 @@
             $sql="UPDATE `giangvien` SET `magiangvien` = '$mgv' ,`hovaten`='$hovaten' , gioitinh='$gioitinh', chuyennganh = '$cn' ,ngaysinh = '$ngaysinh', cmnd='$cmnd', dienthoai='$dienthoai', email='$email', diachi='$diachi' WHERE id='$id'";
             return $this->execute($sql);
         }
+
+        public function editadmin($mgv,$hovaten,$gioitinh,$cmnd,$ngaysinh,$dienthoai,$email,$diachi,$id){
+            $sql="UPDATE `admin` SET `maadmin` = '$mgv' ,`hovaten`='$hovaten' , gioitinh='$gioitinh' ,ngaysinh = '$ngaysinh', cmnd='$cmnd', dienthoai='$dienthoai', email='$email', diachi='$diachi' WHERE id='$id'";
+            return $this->execute($sql);
+        }
         public function deletestudent($id){
             $sql="DELETE FROM sinhvien WHere id = '$id'";
             
@@ -829,6 +853,17 @@
             VALUES ('$magiangvien','$hovaten', $role_id,'$gioitinh','$diachi','$email','$phone','$CMND','$ngaysinh','$chuyennganh','$magiangvien','$lop')";
            
             return $this->execute($sql);
+        }
+        public function editadminid($id){
+            $sql = "select * from admin where `id`='$id' ";
+            $data=$this->execute($sql);
+            if($this->dem()!=0){
+                $data = mysqli_fetch_array($this->result);
+            }
+            else{
+                $data = [];
+            }
+            return $data;
         }
         public function editsvid($id){
             $sql = "select * from sinhvien where `id`='$id' ";

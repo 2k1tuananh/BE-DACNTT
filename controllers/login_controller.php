@@ -18,6 +18,22 @@ class login_controller {
             $tk = $_POST['tk'];
             $mk = $_POST['mk'];
             $check = $tk[0];
+            if(!empty($_POST)){
+                $reuslt = $this->db->login($tk,$mk);
+                if($reuslt)
+                {
+                    $info=$this->db->getinfoadmin($tk);
+                    $_SESSION['id']=$info['id'];
+                    $_SESSION['name']=$info['hovaten'];
+                    $_SESSION['admin']=$info['maadmin'];
+                    $_SESSION['ngaysinh']=$info['ngaysinh'];
+                    $_SESSION['email']=$info['email'];
+                    $_SESSION['start'] = time(); 
+                    $_SESSION['expire'] = $_SESSION['start'] + (30*60);
+                    $_SESSION['role_id'] = $info['role_id']; 
+                    header('location:index.php?controller=admin');;
+                }
+            }
             if($check == "A")
             {
                 $user =$this->db->mkchecksinhvien($tk,$mk);

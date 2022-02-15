@@ -358,3 +358,4 @@ var myLineChart = new Chart(ctx, {
     <!-- Page level custom scripts -->
     <script src="js/demo/datatables-demo.js"></script>
     <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+    
