@@ -10,6 +10,11 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+  <script src="https://cdn.datatables.net/1.11.4/js/jquery.dataTables.min.js"></script>
+  <script src="https://cdn.datatables.net/1.11.4/js/dataTables.bootstrap.min.js"></script>
+  
+
   <script type="text/javascript" src="./view/js/tooltip.js"></script>
   <script type="text/javascript" src="./view/js/thickbox-compressed.js"></script>
   <script src="./view/js/java.js" type="text/javascript"></script>
@@ -20,6 +25,8 @@
           return false;
         }
       });
+      $('#example').DataTable();
+
     });
   </script>
 
