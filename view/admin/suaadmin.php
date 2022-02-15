@@ -63,7 +63,7 @@
                                 <td class="modal-td"><input type="text" id="phone"  value="<?= $gvid['dienthoai'] ?>" name="phone" class="form-control"></td>
                             </tr>
                             <tr>
-                                <td class="modal-td">Email SV:</td>
+                                <td class="modal-td">Email AD:</td>
                                 <td class="modal-td"><input type="text" class="form-control" value=" <?= $gvid['maadmin'] ?>@thanglong.edu.vn" name="email" id="email" readonly></td>
                             </tr>
                             <tr>
