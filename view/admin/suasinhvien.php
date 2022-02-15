@@ -72,7 +72,7 @@
                             </tr>
                             <tr>
                                 <td class="modal-td">Mật khẩu:</td>
-                                <td class="modal-td"><input type="text" class="form-control" value=" <?= $gvid['password'] ?>" name="password" id="password"></td>
+                                <td class="modal-td"><input type="text" class="form-control" value=" <?= $svid['password'] ?>" name="password" id="password"></td>
                             </tr>
                             <tr>
                                 <td class="modal-td">Lớp:</td>
