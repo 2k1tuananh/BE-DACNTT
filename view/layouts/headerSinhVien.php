@@ -1,4 +1,4 @@
-<?php if(!isset($_SESSION['role_id']) or $_SESSION['role_id']!="1"){
+<?php if (!isset($_SESSION['role_id']) or $_SESSION['role_id'] != "1") {
   header('location:index.php?controller=login&action=login');
 } ?>
 <html>
@@ -28,8 +28,7 @@
   <link href="./App_Themes/abrasive/jQuery.css" type="text/css" rel="stylesheet" />
   <link href="./App_Themes/abrasive/style.css" type="text/css" rel="stylesheet" />
   <link href="./App_Themes/abrasive/thickbox.css" type="text/css" rel="stylesheet" />
-  <style type="text/css" data-styled-components="FiaaB gTcftA caPIRE"
-    data-styled-components-is-local="true">
+  <style type="text/css" data-styled-components="FiaaB gTcftA caPIRE" data-styled-components-is-local="true">
     /* sc-component-id: sc-keyframes-FiaaB */
     @-webkit-keyframes FiaaB {
       100% {
@@ -2050,18 +2049,25 @@
     .modal-td {
       padding: 20px;
     }
-    .active1{
+
+    .active1 {
       background-color: #ff80c3;
     }
+
     /* .navSV  li:hover  a{
       background-color: #ff80c3;
 
     } */
-    .navSV li a{
+    .navSV li a {
       text-decoration: none;
 
     }
-  </style>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              
+
+    .red-input:focus {
+      background: yellow;
+      color: red;
+    }
+  </style>
 
 </head>
 
@@ -2086,19 +2092,19 @@
                                                                                         }
 
                                                                                         ?>)</span></b>
-        | <a href="?controller=login&action=doimk">Đổi mật khẩu</a> |
-        <a href="?controller=login&action=logout">Đăng xuất</a><br />
+        | <a style=" text-decoration: none;" href="?controller=login&action=doimk">Đổi mật khẩu</a> |
+        <a style=" text-decoration: none;" href="?controller=login&action=logout">Đăng xuất</a><br />
 
         <!-- End User Info -->
         <!-- Menu -->
         <div id="menu">
           <ul class="navSV">
             <li>
-              <a class="active" style="background-color:#6296C5" href="#">Trang chủ sinh viên</a>
+              <a style=" text-decoration: none;" class="active" style="background-color:#6296C5" href="#">Trang chủ sinh viên</a>
             </li>
-            <li><a href="http://thanglong.edu.vn/">Trang chủ nhà trường</a></li>
+            <li><a style=" text-decoration: none;" href="http://thanglong.edu.vn/">Trang chủ nhà trường</a></li>
             <li>
-              <b><a class="msg" href="#"> Có 0 tin báo mới </a></b>
+              <b><a style=" text-decoration: none;" class="msg" href="#"> Có 0 tin báo mới </a></b>
             </li>
           </ul>
         </div>
@@ -2115,9 +2121,12 @@
             <h3 class="title">Toàn trường</h3>
 
             <ul class="sub-menu" style="display: block">
-              <li>
-                <a href="?controller=tkb">
-                  Thời khóa biểu toàn trường</a>
+              <li class="chon">
+
+                <a style=" text-decoration: none;" href="?controller=tkb">
+                  Thời khóa biểu toàn trường
+                </a>
+
               </li>
             </ul>
           </li>
@@ -2126,17 +2135,31 @@
             <h3 class="title">Góc sinh viên</h3>
 
             <ul class="sub-menu" style="display: block">
-              <li>
-                <a  href="?controller=personal_information">
+              <li class="chon">
+
+                <a style="text-decoration: none" href="?controller=personal_information">
                   Thông tin cá nhân</a>
+
+
               </li>
 
-              <li><a href="?controller=personal_information&action=DangKyHoc"> Đăng ký học</a></li>
+              <li>
 
-              <li><a href="?controller=personal_information&action=bangdiem"> Bảng điểm</a></li>
+                <a style=" text-decoration: none;" class="red-input" href="?controller=personal_information&action=DangKyHoc"> Đăng ký học</a>
+
+              </li>
 
               <li>
-                <a href="?controller=personal_information&action=lichthisinhvien"> Lịch thi chính thức</a>
+
+                <a style=" text-decoration: none;" href="?controller=personal_information&action=bangdiem"> Bảng điểm</a>
+
+              </li>
+
+              <li>
+
+                <a style=" text-decoration: none;" href="?controller=personal_information&action=lichthisinhvien"> Lịch thi chính thức</a>
+
+
               </li>
 
 
@@ -2146,4 +2169,3 @@
           <li></li>
         </ul>
       </div>
-      
