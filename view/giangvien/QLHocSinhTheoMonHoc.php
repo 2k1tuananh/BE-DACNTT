@@ -46,10 +46,8 @@
 </style>
 <!-- Right -->
 <div id="right" style="width: 75%">
-    <div class="title">Quản lý học sinh </div>
+    <div class="title">Quản lý lớp học</div>
     <div class="entry">
-
-
         <div class="container_timkiem">
             <div>
                 <span>Chọn môn học:</span>

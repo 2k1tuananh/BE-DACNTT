@@ -277,7 +277,7 @@
 
             <ul class="sub-menu" style="display: block">
 
-              <li><a style=" text-decoration: none;" href="?controller=point&action=QLHocSinhTheoMonHoc">Quản lý sinh viên</a></li>
+              <li><a style=" text-decoration: none;" href="?controller=point&action=QLHocSinhTheoMonHoc">Quản lý lớp học</a></li>
 
               <li>
                 <a style=" text-decoration: none;" href="?controller=point">Quản lý điểm</a>
