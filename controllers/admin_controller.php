@@ -60,7 +60,11 @@ class admin_controller
         require_once("./view/admin/dashboardadmin.php");
     }
 
-
+    function dangxuat()
+    {
+        session_destroy();
+        header('location:index.php?controller=login&action=login');
+    }
     function danhsachsinhvien()
     {
         $listStudent = $this->db->getAllData('sinhvien');
@@ -145,6 +149,22 @@ class admin_controller
                 
             }
             require_once("./view/admin/suagiangvien.php");
+        }
+    }
+    function suaadmin()
+    {   
+        if(isset($_SESSION['id'])){
+            $id = $_SESSION['id'];
+            $gvid = $this->db->editadminid($id);
+            if(isset($_POST['suaadmin'])){
+                if(isset($_POST['maadmin']) && isset($_POST['hovaten'])){
+                    $_SESSION['name'] = $_POST['hovaten'];
+                    $data=$this->db->editadmin($_POST['maadmin'], $_POST['hovaten'], $_POST['gioitinh'], $_POST['CMND'], $_POST['ngaysinh'], $_POST['phone'], $_POST['email'], $_POST['diachi'],$id);
+                    header('location: index.php?controller=admin&action=dashboardadmin');
+                }
+                
+            }
+            require_once("./view/admin/suaadmin.php");
         }
     }
     function suanhanvien()
