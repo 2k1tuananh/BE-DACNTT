@@ -257,8 +257,8 @@
                             <td>Công nghệ thông tin</td>
 
                             <td class="item-monhoc">
-                              <button class="btnTimKiem" type="button" data-toggle="modal" data-target="#SuaMonHoc">Update</button>
-                              <button type="button" id="xoa" class="btnTimKiem" >Delete</button>
+                              <button class="btnTimKiem" type="button" data-toggle="modal" data-target="#SuaMonHoc">Cập nhật</button>
+                              
                              
                             </td>
                           </tr>

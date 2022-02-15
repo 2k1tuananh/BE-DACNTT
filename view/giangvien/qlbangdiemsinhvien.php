@@ -98,12 +98,9 @@
                 padding: 8px;">
                         <p class="text-center" style="background-color: #f3f6f7; border: none;" ><?= $info['diemtongket']?></p>
                     </td>
-                    <td name="" style="border: 1px solid #dddddd;
-                text-align: left;
-                padding: 8px;">
-                        <button class="up" id="<?= $stt++?>"><span style="padding: 5px;">
-                                <i class="fas fa-upload"></i>&ensp;Upload</span></button>
-                    </td>
+                    <td name="">
+                            <button style="margin: 0 2px 0 2px;" class="btn" id="<?= $stt ?>"> Cập nhật</button>
+                        </td>
                 </tr>      
                 <?php }} ?>
                 </div>

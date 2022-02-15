@@ -81,19 +81,4 @@
       </div>
 
     </div>
-    <form action="/" method="post" id="search" role="form">
-                            <select name="type" id="type" class="form-control" >
-                                <option value="">Chọn danh mục</option>
-                                <?php 
-                                foreach ($listType as $ls)
-                                {
-                                    echo '<option value='.$ls['id'].'>'.$ls['name'].'</option>';
-                                }
-                                ?>
-                            </select>
-                            <div class="input-seach">
-                                <input type="text" name="search" id="search" class="form-control">
-                                <button  class="btn-search-pro"><i class="fa fa-search"></i></button>
-                            </div>
-                            <div class="clear"></div>
-                        </form>
+    
