@@ -60,15 +60,16 @@
                                     });
                                 });
                             </script>
-                             <?php 
+                            <?php 
                                 if($mon == []){
-                                    echo '<option class="a" id="">Chưa có môn học</option>';
+                                    echo '<option class="a" id="">Chưa được phân công</option>';
                                 }
                                 else{
                                     echo '<option class="a" id="Tất cả">Tất cả</option>';
                                 }
                              ?>
-                            
+                           
+                           
                             <?php foreach ($mon as $monhoc) { ?>
                                 <option class="a" id="<?= $monhoc['tenmon'] ?>"><?php echo $monhoc['tenmon']; ?></option>
                             <?php } ?>

@@ -231,7 +231,7 @@ class daotao_controller {
         
     }
 
-    //danhsachmonhoc
+    // danhsachmonhoc
     function danhsachmonhoc()
     {
         $chuyennganh=$this->db->getAllData("chuyennganh");
@@ -264,6 +264,13 @@ class daotao_controller {
         $mon=$this->db->getAllData("monhoc");
         require_once("./view/daotao/bangdssv.php");
         // header("Refresh:0");
+    }
+    // Quản lý chuyên ngành
+    function danh_sach_chuyen_nganh()
+    {
+        // $chuyennganh=$this->db->getAllData("chuyennganh");
+        // $mon=$this->db->getAllData("monhoc");
+        require_once("./view/daotao/DanhSachChuyenNganh.php");
     }
     //xeplichthi
     function xeplichthi()
