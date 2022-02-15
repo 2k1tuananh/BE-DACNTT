@@ -132,6 +132,7 @@
                                                             echo ' selected';
                                                         } ?>>Nữ</option>
                                 </select>
+                </td>
               </tr>
               <tr>
                 <td class="modal-td" width="30%">Số CMND/CCCD:</td>
