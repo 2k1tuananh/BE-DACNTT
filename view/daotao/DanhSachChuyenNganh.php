@@ -13,7 +13,7 @@
       .glot-sub-clzz {
         cursor: pointer;
 
-        lineheight: 1.2;
+       
         font-size: 28px;
         color: #ffcc00;
         background: rgba(17, 17, 17, 0.7);
@@ -130,19 +130,31 @@
         align-items:center;
       }
       .chuyen-nganh{
-          display:flex;
-          gap:5px;
-          font-size: 16px;
-          align-items:flex-start;
-      }
-      .tim-kiem{
-        display:flex;
-          /* gap:10px; */
-      }
-      .tim-kiem input{
-          padding:5px 8px;
-          font-size:15px;
-      }
+    display:flex;
+    gap:5px;
+    align-items:baseline;
+  }
+  .chuyen-nganh p{
+   
+    font-size:16px;
+  }
+  .chuyen-nganh select{
+    font-size:16px;
+    border-radius:5px;
+    /* border:none; */
+  }
+  .form-tkb{
+    display:flex;
+    justify-content:space-between;
+    margin-bottom: 20px;
+  }
+  .tim-kiem{
+    font-size:14px;
+  }
+  .tim-kiem input{
+    padding:5px 9px;
+    margin-right:-5px;
+  }
       .form{
           display:flex;
           gap:10px;
@@ -197,21 +209,22 @@
         <div class="form">
 
           <button type="button" data-toggle="modal" data-target="#ThemMonHoc" class = "btnUpdate btn" style="margin-bottom: 10px;">Thêm chuyên ngành &nbsp;<span class="glyphicon glyphicon-plus"></span></button>
+
+        </div>
+        <div class="form-tkb">
+        <div class="chuyen-nganh">
+          <p>Chọn chuyên ngành:</p>
+          <select id="chuyennganh1">
+          <option class="a" id="Tất cả">Tất cả</option>
+          </select>
+        </div>
+        
           <div class="tim-kiem">
             <input id="timkiem" type="text" placeholder="Nhập mã chuyên ngành,tên chuyên ngành">
             <button id="tntimkiem" class="btnTimKiem">Tìm kiếm</button>
-            <script>
-                $(function(){
-                    $('#tntimkiem').trigger('click'); //This event will fire the change event. 
-                        $('#tntimkiem').click(function(){
-                            var data= $('#timkiem').val();
-                            $.get("./index.php",{controller:"daotao",action:"timkiemmm", key:data}, function(data) {
-                            $("#info").html(data);
-                        })                                                                                     
-                    });
-                });
-              </script>
-        </div>
+    
+          </div>
+        
         </div>
         <div id="info">
         <table  cellspacing="3" cellpadding="0"  width="100%">
@@ -237,37 +250,22 @@
                               Mã chuyên ngành
                             </th>
                             <th scope="col">Tên chuyên ngành</th>
-                            
+                            <th scope="col"></th>
+                            <tr>
+                            <td>1</td>
+                            <td >AAA</td>
+                            <td>Công nghệ thông tin</td>
 
-                          </tr>
-                          <?php $stt=0; foreach($mon as $info){ $stt++; ?>
-                          <tr>
-                            <td><?= $stt ?></td>
-                            <td ><?= $info['mamon'] ?></td>
-                            <td><?= $info['tenmon'] ?></td>
-                            <td class="item-monhoc"><?= $info['sotinchi'] ?></td>
-                            
-                            <td class="item-monhoc"><?= $info['thu'] ?></td>
-                            <td class="item-monhoc"><?= $info['ca'] ?></td>
-                            
                             <td class="item-monhoc">
                               <button class="btnTimKiem" type="button" data-toggle="modal" data-target="#SuaMonHoc">Update</button>
-                              <button type="button" id="xoa<?= $stt ?>" class="btnTimKiem" >Delete</button>
-                              <script>
-                                $(document).ready(function(){
-                                    $("#xoa<?= $stt ?>").click(function(){
-                                        var mamon="<?= $info['mamon'] ?>";
-                                        if (confirm("Bạn chắc chắn muốn xóa ???") == true) {
-                                          $.get("./index.php",{controller:"daotao",action:"xoamon", info:mamon}, function(data) {
-                                          $("#info").html(data);
-                                        })  
-                                        } 
-                                    });
-                                });
-                            </script>
+                              <button type="button" id="xoa" class="btnTimKiem" >Delete</button>
+                             
                             </td>
                           </tr>
-                          <?php }?>
+
+                          </tr>
+                          
+                       
                         </tbody>
                       </table>
                     </div>
