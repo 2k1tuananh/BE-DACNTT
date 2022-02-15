@@ -1,5 +1,4 @@
 <?php
-
     class database{
         private $hostname = 'localhost';
         private $username = 'root';
@@ -33,7 +32,7 @@
                 $data = mysqli_fetch_array($this->result);
             }
             else{
-                $data = 0;
+                $data = [];
             }
             return $data;
         }
@@ -61,7 +60,7 @@
                 $data = mysqli_fetch_array($this->result);
             }
             else{
-                $data = 0;
+                $data = [];
             }
             return $data;
         }       
@@ -91,7 +90,7 @@
                 $data = mysqli_fetch_array($this->result);
             }
             else{
-                $data = 0;
+                $data = [];
             }
             return $data;
         }
@@ -103,7 +102,7 @@
                 $data = mysqli_fetch_array($this->result);
             }
             else{
-                $data = 0;
+                $data = [];
             }
             return $data;
         }
@@ -125,7 +124,7 @@
                 $data = mysqli_fetch_array($this->result);
             }
             else{
-                $data = 0;
+                $data = [];
             }
             return $data;
         }
@@ -145,7 +144,7 @@
                 $data = mysqli_fetch_array($this->result);
             }
             else{
-                $data = 0;
+                $data = [];
             }
             return $data;
         }
@@ -170,7 +169,7 @@
             $sql = "select DISTINCT tenmon from `gv-sv-lop` inner join monhoc on `gv-sv-lop`.mamon=monhoc.mamon where `magiangvien`='$mgv' ";
             $this->execute($sql);
             if($this->dem()==0){
-                $data=0;
+                $data=[];
             }
             else{
                 while($datas = $this->getData()) {
@@ -183,7 +182,7 @@
             $sql = "select DISTINCT * from  `gv-sv-lop` as gv INNER join sinhvien sv on gv.masinhvien = sv.masinhvien INNER join `sinhvien-diemmon` on `sinhvien-diemmon`.`mamon` = gv.mamon INNER JOIN monhoc on gv.mamon=monhoc.mamon where gv.`magiangvien`='$mgv' AND gv.masinhvien=`sinhvien-diemmon`.`masinhvien` AND gv.trangthai=1 ORDER BY diemtongket ASC ";
             $this->execute($sql);
             if($this->dem()==0){
-                $data=0;
+                $data=[];
             }
             else{
                 while($datas = $this->getData()) {
@@ -222,7 +221,7 @@
 
             $this->execute($sql);
             if($this->dem()==0){
-                $data=0;
+                $data=[];
             }
             else{
                 while($datas = $this->getData()) {
@@ -284,7 +283,7 @@
                 $data = mysqli_fetch_array($this->result);
             }
             else{
-                $data = 0;
+                $data = [];
             }
             return $data;
         }
@@ -449,7 +448,7 @@
                 $data = mysqli_fetch_array($this->result);
             }
             else{
-                $data = 0;
+                $data = [];
             }
             return $data;
         }
@@ -563,7 +562,7 @@
                 $data = mysqli_fetch_array($this->result);
             }
             else{
-                $data = 0;
+                $data = [];
             }
             return $data;
         }
@@ -608,7 +607,7 @@
                 $data = mysqli_fetch_array($this->result);
             }
             else{
-                $data = 0;
+                $data = [];
             }
             return $data;
         }
@@ -618,7 +617,7 @@
             $sql = "select * from lopcn where chuyennganh = '$machuyennganh'";
             $this->execute($sql);
             if($this->dem()==0){
-                $data=0;
+                $data=[];
             }
             else{
                 while($datas = $this->getData()) {
@@ -686,7 +685,7 @@
                 $data = mysqli_fetch_array($this->result);
             }
             else{
-                $data = 0;
+                $data = [];
             }
             return $data;
         }
@@ -806,7 +805,7 @@
                 $data = mysqli_fetch_array($this->result);
             }
             else{
-                $data = 0;
+                $data = [];
             }
             return $data;
         }
@@ -838,7 +837,7 @@
                 $data = mysqli_fetch_array($this->result);
             }
             else{
-                $data = 0;
+                $data = [];
             }
             return $data;
         }

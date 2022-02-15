@@ -314,6 +314,10 @@
                 </script>
             </table>
         </div>
+        <?php if($data==[]) : ?>
+            <div>Chưa có sinh viên<div>
+        <?php endif; ?>
+        
     </div>
 
     <!-- End Right -->
