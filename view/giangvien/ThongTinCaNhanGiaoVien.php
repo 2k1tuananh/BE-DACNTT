@@ -136,10 +136,10 @@ if ($_SESSION['role_id'] == "1") {
                 <td class="modal-td" width="30%">Giới tính:</td>
                 <td class="modal-td"> 
                 <select class="form-control" id="gioitinh" name="gioitinh">
-                                    <option value="Nam" <?php if ($svid['gioitinh'] == 'Nam') {
+                                    <option value="Nam" <?php if ($data['gioitinh'] == 'Nam') {
                                                             echo ' selected';
                                                         } ?>>Nam</option>
-                                    <option value="Nữ" <?php if ($svid['gioitinh'] == 'Nữ') {
+                                    <option value="Nữ" <?php if ($data['gioitinh'] == 'Nữ') {
                                                             echo ' selected';
                                                         } ?>>Nữ</option>
                                 </select>
