@@ -122,6 +122,7 @@ class point_controller {
             require_once("./view/giangvien/QLHocSinhTheoMonHoc.php");
         }
     }
+
     function sxtheomon()
     {
         if( $_GET['info']=="Tất cả"){
