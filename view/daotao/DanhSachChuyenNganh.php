@@ -220,7 +220,7 @@
 </style>
 
 <!-- Right -->
-<div id="right">
+<div id="right" style="width: 100%; margin-left:10px;">
   <div class="title">
     Quản lý chuyên ngành
 
@@ -406,7 +406,7 @@
               tenchuyennganh: tenchuyennganh
             }, function(data) {
               $("#bangdiem1").html(data);
-              //location.reload();
+              location.reload();
             })
           }
 
@@ -416,8 +416,7 @@
 
   </div>
 </div>
-
-
+<!-- Modal sửa môn học-->
 <div class="modal fade" id="SuaMonHoc" role="dialog">
 
 </div>

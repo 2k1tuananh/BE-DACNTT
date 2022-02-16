@@ -41,9 +41,13 @@
   .btnTimKiem:hover::before {
     transform: translate3d(50%, -50%, 0) scale3d(15, 15, 15);
   }
+
+  td {
+    font-size: 15px;
+  }
 </style>
 
-<div id="right">
+<div id="right" style="width: 100%;margin-left:10px; ">
   <div class="title">Thông tin sinh viên</div>
   <div class="entry flex">
     <?php if ($data['image']) { ?>
@@ -123,15 +127,15 @@
               </tr>
               <tr>
                 <td class="modal-td" width="30%">Giới tính:</td>
-                <td class="modal-td"> 
-                <select class="form-control" id="gioitinh" name="gioitinh">
-                                    <option value="Nam" <?php if ($data['gioitinh'] == 'Nam') {
-                                                            echo ' selected';
-                                                        } ?>>Nam</option>
-                                    <option value="Nữ" <?php if ($data['gioitinh'] == 'Nữ') {
-                                                            echo ' selected';
-                                                        } ?>>Nữ</option>
-                                </select>
+                <td class="modal-td">
+                  <select class="form-control" id="gioitinh" name="gioitinh">
+                    <option value="Nam" <?php if ($data['gioitinh'] == 'Nam') {
+                                          echo ' selected';
+                                        } ?>>Nam</option>
+                    <option value="Nữ" <?php if ($data['gioitinh'] == 'Nữ') {
+                                          echo ' selected';
+                                        } ?>>Nữ</option>
+                  </select>
                 </td>
               </tr>
               <tr>

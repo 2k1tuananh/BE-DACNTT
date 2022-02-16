@@ -199,11 +199,10 @@
       margin-left: 20px;
       flex: 2;
     }
-    .right span,b{
-      font-size:16px;
-    }
-    .right a{
-      font-size:14px;
+
+    body {
+      font-size: 16px;
+      font-family: 'Times New Roman', Times, serif;
     }
   </style>
 </head>
@@ -212,14 +211,14 @@
   <!-- Top -->
   <div id="head">
     <!-- Center COntent -->
-    <div class="center">
+    <div class="center" style="width: 90%;">
       <!-- Logo -->
       <div class="logo">
         <img width=" 150px" ; height="150px" src="./App_Themes/abrasive/logo.PNG" alt="">
       </div>
       <!-- End Logo -->
       <!-- User Info -->
-      <div class="right">
+      <div class="right" style="width: 100%;">
         <b>Chào
           <span id="ctl00_lbUser" style="color: Red"><?php echo $_SESSION['name']; ?> (<?php
                                                                                         if (isset($_SESSION['msv'])) {
@@ -229,16 +228,16 @@
                                                                                         }
 
                                                                                         ?>)</span></b>
-        | <a style="text-decoration: none;color: #0f8c12" href="#">Nhân viên phòng đào tạo</a> 
+        | <a style="text-decoration: none;color: #0f8c12" href="#">Nhân viên phòng đào tạo</a>
         | <a style=" text-decoration: none;" href="?controller=login&action=doimk">Đổi mật khẩu</a> |
         <a style=" text-decoration: none;" href="?controller=login&action=logout">Đăng xuất</a><br />
 
         <!-- End User Info -->
         <!-- Menu -->
-        <div id="menu">
+        <div id="menu" style="width: 100%;">
           <ul>
             <li>
-              <a style=" text-decoration: none;" class="active" href="#">Trang chủ sinh viên</a>
+              <a style=" text-decoration: none;" class="active" href="#">Trang chủ </a>
             </li>
             <li><a style=" text-decoration: none;" href="http://thanglong.edu.vn/">Trang chủ nhà trường</a></li>
 
@@ -254,8 +253,8 @@
     </div>
     <!-- End Top -->
     <!-- Page -->
-    <div id="page">
-      <div id="left">
+    <div id="page" style="width: 90%; display: flex; left: 5%; margin-left: 0px;">
+      <div id="left" style="width: 250px">
         <ul>
           <li>
             <h3 class="title">Toàn trường</h3>
