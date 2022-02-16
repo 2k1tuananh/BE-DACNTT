@@ -84,7 +84,7 @@ class login_controller {
                 $mkm = $_POST['mkm'];
                 $nhaplaimk = $_POST['nhaplaimk'];
                 $check=$this->db->mkchecksinhvien($_SESSION['msv'],$mkc);
-                if(mysqli_num_rows($check)!=0){
+                if(mysqli_num_rows($check)!=[]){
                     if($mkm==$nhaplaimk){
                         $this->db->updatemksinhvien($_SESSION['msv'],$mkm);
                         $msg="Đổi lại mật khẩu thành công";
@@ -111,7 +111,7 @@ class login_controller {
                 $mkm = $_POST['mkm'];
                 $nhaplaimk = $_POST['nhaplaimk'];
                 $check=$this->db->mkcheckgiangvien($_SESSION['mgv'],$mkc);
-                if(mysqli_num_rows($check)!=0){
+                if(mysqli_num_rows($check)!=[]){
                     if($mkm==$nhaplaimk){
                         $this->db->updatemkgiangvien($_SESSION['mgv'],$mkm);
                         $msg="Đổi lại mật khẩu thành công";
