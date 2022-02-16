@@ -366,7 +366,7 @@
           <div id="bangdiem2"></div>
           <div class="modal-footer">
             <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
-            <button type="button" id="create1" class="btn btn-success" data-dismiss="modal">Xác nhận</button>
+            <button type="button" id="create1" class="btn btn-success" >Xác nhận</button>
           </div>
         </div>
         <script>

@@ -86,7 +86,7 @@ class point_controller {
             }
         }
     }
-
+    
     function updiem()
     {
 

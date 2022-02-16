@@ -254,7 +254,7 @@
 
             <ul class="sub-menu" style="display: block">
               <li>
-                <a style=" text-decoration: none;" href="?controller=login">
+                <a href="?controller=tkb">
                   Thời khóa biểu toàn trường</a>
               </li>
 
