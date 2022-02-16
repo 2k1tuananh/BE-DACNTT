@@ -351,6 +351,28 @@ class daotao_controller {
         require_once("./view/daotao/bangmonhoc.php");
     }
     //xeplichthi
+
+
+
+
+
+    function updatestudentdaotao()
+    {   
+        if(isset($_GET['masinhvien'])){
+            $svid=$this->db->getsinhvien($_GET['masinhvien']);
+            $listCN = $this->db->getAllData('chuyennganh');
+            $listLopCN = $this->db->getAllData('lopcn');
+            $listGVCN = $this->db->getAllData('giangvien');
+            require_once("./view/daotao/modal_sinhvien.php");
+        }
+    }
+    function capnhatsinhviendaotao()
+    {
+        $data = $this->db->updatestudentdaotao1($_GET['masinhvien'], $_GET['hovaten'], $_GET['gioitinh'], $_GET['CMND'], $_GET['ngaysinh'], $_GET['phone'], $_GET['email'], $_GET['chuyennganh'], $_GET['giaovien'], $_GET['diachi'], $_GET['lop'],$_GET['password']);
+        $listStudent=$this->db->selectlistsinhviendaotao();
+        require_once("./view/daotao/bangsinhvien.php");
+    }
+    //xeplichthi
     function xeplichthi()
     {
         $_SESSION['chuyennganh']="Tất cả";

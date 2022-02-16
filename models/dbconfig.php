@@ -829,6 +829,12 @@
             
             return $this->execute($sql);
         }
+        public function updatestudentdaotao1($masinhvien,$hovaten,$gioitinh,$CMND,$ngaysinh,$phone,$email,$chuyennganh,$giaovien,$diachi,$lop,$pass){
+            $sql="UPDATE `sinhvien` SET `masinhvien` = '$masinhvien', `hovaten` = '$hovaten', `gioitinh`= '$gioitinh', password = '$pass',`diachi` ='$diachi', `email`='$email', `dienthoai`= '$phone', 
+            `cmnd` ='$CMND', `ngaysinh` ='$ngaysinh', `GVCN` ='$giaovien', `chuyennganh`= '$chuyennganh' ,`lop`='$lop' WHERE masinhvien='$masinhvien'";
+            echo $sql;
+            return $this->execute($sql);
+        }
         public function editgiangvienid($id){
             $sql = "select * from giangvien where `id`='$id' ";
             $data=$this->execute($sql);
@@ -936,6 +942,21 @@
             }
             return $data;
         }
+        public function selectlistsinhviendaotao()
+        {
+            $sql = "select * from  `sinhvien`";
+           
+            $this->execute($sql);
+            if($this->dem()==0){
+                $data=0;
+            }
+            else{
+                while($datas = $this->getData()) {
+                    $data[] = $datas;
+                }
+            }
+            return $data;
+        }
         public function timkiemchuyennganh($timkiem)
         {
             $sql = "select * from  `chuyennganh`  where  (machuyennganh like '%$timkiem%' or tenchuyennganh like '%$timkiem%') ";
@@ -985,6 +1006,19 @@
         public function getinfomonhoc($mamonhoc)
         {
             $sql = "select * from monhoc where `mamon`='$mamonhoc' ";
+            $data=$this->execute($sql);
+            if($this->dem()!=0){
+                $data = mysqli_fetch_array($this->result);
+            }
+            else{
+                $data = [];
+            }
+            return $data;
+        }
+        public function getsinhvien($ma)
+        {
+            $sql = "select * from sinhvien where `masinhvien`='$ma' ";
+            echo $sql;
             $data=$this->execute($sql);
             if($this->dem()!=0){
                 $data = mysqli_fetch_array($this->result);
