@@ -563,7 +563,7 @@
         }
 
         public function timkiemmonhoctheomachuyennganh($machuyennganh){
-            $sql = "SELECT DISTINCT(giangvien.hovaten) as hovaten ,gv.mamon as mamon,giangvien.magiangvien as magiangvien ,monhoc.tenmon,monhoc.chuyennganh as chuyennganh FROM `giangvien` INNER JOIN chuyennganh on giangvien.chuyennganh=chuyennganh.machuyennganh INNER JOIN `gv-sv-lop` as gv on giangvien.magiangvien=gv.magiangvien INNER JOIN monhoc on gv.mamon=monhoc.mamon WHERE monhoc.chuyennganh  = '$machuyennganh' ";
+            $sql = "SELECT giangvienmonhoc.magiangvien as magiangvien,monhoc.mamon as mamon,monhoc.tenmon as tenmon,giangvien.hovaten as hovaten,giangvienmonhoc.lop as malop,giangvien.chuyennganh as chuyennganh FROM `giangvienmonhoc` inner join giangvien on giangvienmonhoc.magiangvien = giangvien.magiangvien inner join monhoc on monhoc.mamon = giangvienmonhoc.mamon WHERE monhoc.chuyennganh  = '$machuyennganh' ";
            
             $this->execute($sql);
             if($this->dem()==0){
@@ -577,10 +577,24 @@
             return $data;
         }
 
+        public function timkiemmonhoctheomamon($machuyennganh){
+            $sql = "select * from monhoc where chuyennganh = '$machuyennganh' ";
+           
+            $this->execute($sql);
+            if($this->dem()==0){
+                $data=0;
+            }
+            else{
+                while($datas = $this->getData()) {
+                    $data[] = $datas;
+                }
+            }
+            return $data;
+        }
 
         public function giaovienmonhoc()
         {
-            $sql="SELECT DISTINCT(giangvien.hovaten) FROM `giangvien` INNER JOIN chuyennganh on giangvien.chuyennganh=chuyennganh.machuyennganh INNER JOIN `gv-sv-lop` as gv on giangvien.magiangvien=gv.magiangvien INNER JOIN monhoc on gv.mamon=monhoc.mamon";
+            $sql="SELECT * FROM `giangvienmonhoc` inner join giangvien on giangvienmonhoc.magiangvien = giangvien.magiangvien";
             $this->execute($sql);
             if($this->dem()==0){
                 $data=0;
@@ -592,21 +606,90 @@
             }
             return $data;
         }
-        public function capnhatgiaovienmonhoc($mamon,$magiangvien)
+        public function listlop()
         {
-            $sql = "UPDATE `gv-sv-lop` SET `magiangvien`='$magiangvien' WHERE mamon = '$mamon'";
-            return $this->execute($sql);
-        }
-        public function timkiemmonhoc($timkiem)
-        {
-            $sql = "SELECT DISTINCT(giangvien.hovaten) as hovaten ,gv.mamon as mamon,giangvien.magiangvien as magiangvien ,monhoc.tenmon,monhoc.chuyennganh as chuyennganh FROM `giangvien` INNER JOIN chuyennganh on giangvien.chuyennganh=chuyennganh.machuyennganh INNER JOIN `gv-sv-lop` as gv on giangvien.magiangvien=gv.magiangvien INNER JOIN monhoc on gv.mamon=monhoc.mamon WHERE  (monhoc.mamon like '%$timkiem%' or monhoc.tenmon like '%$timkiem%') ";
-           
-            $data=$this->execute($sql);
-            if($this->dem() != 0){
-                $data = mysqli_fetch_array($this->result);
+            $sql="SELECT * FROM lop";
+            $this->execute($sql);
+            if($this->dem()==0){
+                $data=0;
             }
             else{
-                $data = [];
+                while($datas = $this->getData()) {
+                    $data[] = $datas;
+                }
+            }
+            return $data;
+        }
+        public function capnhatgiaovienmonhoc($mamon,$magiangvien,$malop)
+        {
+            $sqlcheck = "select * from giangvienmonhoc where mamon = '$mamon'";
+            $this->execute($sqlcheck);
+            if($this->dem()==0){
+                $data=0;
+            }
+            else{
+                while($datas = $this->getData()) {
+                    $data[] = $datas;
+                }
+            }
+            if($data == 0)
+            {
+                $insert = "INSERT INTO `giangvienmonhoc`(`magiangvien`, `mamon`, `lop`) VALUES ('$magiangvien','$mamon','$malop')";
+                return $this->execute($insert);
+            }
+            else
+            {
+                $sql = "UPDATE `gv-sv-lop` SET `magiangvien`='$magiangvien' WHERE mamon = '$mamon'";
+            
+                $this->execute($sql);
+                $sqlupdate = "UPDATE `giangvienmonhoc` SET `magiangvien`='$magiangvien',`lop`='$malop' WHERE mamon =  '$mamon'";
+                return $this->execute($sqlupdate);
+            }
+           
+        }
+
+        public function timkiemmonhoc($timkiem)
+        {
+            $sql = "SELECT giangvienmonhoc.magiangvien as magiangvien,monhoc.mamon as mamon,monhoc.tenmon as tenmon,giangvien.hovaten as hovaten,giangvienmonhoc.lop as malop,giangvien.chuyennganh as chuyennganh FROM `giangvienmonhoc` inner join giangvien on giangvienmonhoc.magiangvien = giangvien.magiangvien inner join monhoc on monhoc.mamon = giangvienmonhoc.mamon WHERE  (monhoc.mamon like '%$timkiem%' or monhoc.tenmon like '%$timkiem%') ";
+           
+            $this->execute($sql);
+            if($this->dem()==0){
+                $data=0;
+            }
+            else{
+                while($datas = $this->getData()) {
+                    $data[] = $datas;
+                }
+            }
+            return $data;
+        }
+        public function listmonhoc()
+        {
+            $sql = "SELECT * from monhoc  ";
+           
+            $this->execute($sql);
+            if($this->dem()==0){
+                $data=0;
+            }
+            else{
+                while($datas = $this->getData()) {
+                    $data[] = $datas;
+                }
+            }
+            return $data;
+        }
+        public function timkiemmonhocbangmonhoc($timkiem)
+        {
+            $sql = "SELECT * from monhoc WHERE  (monhoc.mamon like '%$timkiem%' or monhoc.tenmon like '%$timkiem%') ";
+           
+            $this->execute($sql);
+            if($this->dem()==0){
+                $data=0;
+            }
+            else{
+                while($datas = $this->getData()) {
+                    $data[] = $datas;
+                }
             }
             return $data;
         }
@@ -672,7 +755,7 @@
         }
         public function monhocgiangvien()
         {
-            $sql = "SELECT DISTINCT(giangvien.hovaten) as hovaten ,gv.mamon as mamon,giangvien.magiangvien as magiangvien ,monhoc.tenmon,monhoc.chuyennganh FROM `giangvien` INNER JOIN chuyennganh on giangvien.chuyennganh=chuyennganh.machuyennganh INNER JOIN `gv-sv-lop` as gv on giangvien.magiangvien=gv.magiangvien INNER JOIN monhoc on gv.mamon=monhoc.mamon";
+            $sql = "SELECT giangvienmonhoc.magiangvien as magiangvien,monhoc.mamon as mamon,monhoc.tenmon as tenmon,giangvien.hovaten as hovaten,giangvienmonhoc.lop as malop FROM `giangvienmonhoc` inner join giangvien on giangvienmonhoc.magiangvien = giangvien.magiangvien inner join monhoc on monhoc.mamon = giangvienmonhoc.mamon";
             $this->execute($sql);
             if($this->dem()==0){
                 $data=0;
@@ -684,6 +767,7 @@
             }
             return $data;
         }
+        
         public function creategiangvien($magiangvien,$hovaten,$gioitinh,$CMND,$ngaysinh,$phone,$email,$chuyennganh,$diachi,$lop){
             $sql="INSERT INTO `giangvien`(`magiangvien`, `hovaten`, `gioitinh`, `diachi`, `email`, `dienthoai`, `cmnd`, `ngaysinh`, `chuyennganh`,  `password`,`ChuNhiem`) 
             VALUES ('$magiangvien','$hovaten','$gioitinh','$diachi','$email','$phone','$CMND','$ngaysinh','$chuyennganh','$magiangvien','$lop')";
@@ -766,11 +850,12 @@
 
         ///tkb
         public function tkb(){
-            $sql=" SELECT DISTINCT(monhoc.mamon), monhoc.tenmon, monhoc.sotinchi, monhoc.thu, monhoc.ca, giangvien.hovaten FROM monhoc INNER JOIN `gv-sv-lop` as gv on monhoc.mamon=gv.mamon INNER JOIN giangvien on gv.magiangvien= giangvien.magiangvien ";
+            $sql=" SELECT giangvienmonhoc.magiangvien as magiangvien,monhoc.mamon as mamon,monhoc.tenmon as tenmon,giangvien.hovaten as hovaten,giangvienmonhoc.lop as malop,giangvien.chuyennganh as chuyennganh,monhoc.sotinchi as sotinchi,monhoc.thu as thu,monhoc.ca as ca FROM `giangvienmonhoc` inner join giangvien on giangvienmonhoc.magiangvien = giangvien.magiangvien inner join monhoc on monhoc.mamon = giangvienmonhoc.mamon
+            ";
             return $this->execute($sql);
         }
         public function tkb_loccn($machuyennganh){
-            $sql=" SELECT DISTINCT(monhoc.mamon), monhoc.tenmon, monhoc.sotinchi, monhoc.thu, monhoc.ca, giangvien.hovaten FROM monhoc INNER JOIN `gv-sv-lop` as gv on monhoc.mamon=gv.mamon INNER JOIN giangvien on gv.magiangvien= giangvien.magiangvien where monhoc.chuyennganh='$machuyennganh'";
+            $sql="SELECT giangvienmonhoc.magiangvien as magiangvien,monhoc.mamon as mamon,monhoc.tenmon as tenmon,giangvien.hovaten as hovaten,giangvienmonhoc.lop as malop,giangvien.chuyennganh as chuyennganh,monhoc.sotinchi as sotinchi,monhoc.thu as thu,monhoc.ca as ca FROM `giangvienmonhoc` inner join giangvien on giangvienmonhoc.magiangvien = giangvien.magiangvien inner join monhoc on monhoc.mamon = giangvienmonhoc.mamon where monhoc.chuyennganh='$machuyennganh'";
             return $this->execute($sql);
         }
         public function tkb_timkiem($key){

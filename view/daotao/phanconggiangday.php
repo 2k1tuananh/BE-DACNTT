@@ -271,30 +271,94 @@
                             <th scope="col">Mã Môn</th>
                             <th scope="col">Tên Môn</th>
                             <th scope="col">Giáo Viên</th>
+                            <th scope="col">Phòng học</th>
                             <th scope="col"></th>
                           </tr>
                           <tr>
-                          <?php $stt=0; foreach ($listMonHoc as $info){ $stt++;?>
-                            <td><?= $stt?></td>
-                            <td class="mamon<?= $stt ?>" id="<?= $info['mamon'] ?>" name="mamon"><?= $info['mamon']?></td>
-                            <td class="tenmon<?= $stt ?>" id="<?= $info['tenmon'] ?>" name="tenmon"><?= $info['tenmon']?></td>
-                            <td >
-                              <select class="form-control" style="width: 50%"  id="magiangvien<?= $stt?>"  >
-                              <option value="<?= $info['magiangvien'] ?>"><?= $info['hovaten']?></option>
-                                <?php
-                                  foreach($listGiangVien as $info1)
-                                  {
-                                    if($info['chuyennganh'] == $info1['chuyennganh'])
-                                    {
-                                      echo '<option value="'.$info1['magiangvien'].'">'.$info1['hovaten'].'</option>';
-
-                                    }
+                          <?php $stt=0; foreach ($listMonHoc1 as $info){ $check=0;$stt++;
+                              foreach($listMonHoc as $infomonhoc)
+                              {
+                                if($info['mamon'] == $infomonhoc['mamon'])
+                                {?>
+                                  <td><?= $stt?></td>
+                                  <td class="mamon<?= $stt ?>" id="<?= $infomonhoc['mamon'] ?>" name="mamon"><?= $infomonhoc['mamon']?></td>
+                                  <td class="tenmon<?= $stt ?>" id="<?= $infomonhoc['tenmon'] ?>" name="tenmon"><?= $infomonhoc['tenmon']?></td>
+                                  <td >
+                                    <select class="form-control" style="width: 50%"  id="magiangvien<?= $stt?>"  >
+                                    <option value="<?= $infomonhoc['magiangvien'] ?>"><?= $infomonhoc['hovaten']?></option>
+                                      <?php
+                                        foreach($listGiangVien as $info1)
+                                        {
+                                          if($info['chuyennganh'] == $info1['chuyennganh'])
+                                          {
+                                            echo '<option value="'.$info1['magiangvien'].'">'.$info1['hovaten'].'</option>';
+      
+                                          }
+                                          
+                                        }
+                                      ?>  
+                                    </select>
+                                  </td>
+                                  <td >
+                                    <select class="form-control" style="width: 50%"  id="malop<?= $stt?>"  >
+                                    <option value="<?= $infomonhoc['malop'] ?>"><?= $infomonhoc['malop']?></option>
+                                      <?php
+                                        foreach($listLop as $info2)
+                                        {
+                                          
+                                            echo '<option value="'.$info2['malop'].'">'.$info2['tenlop'].'</option>';
+      
+                                          
+                                          
+                                        }
+                                      ?>  
+                                    </select>
+                                  </td>
+                                  
+                                  <td><Button id="<?= $stt ?>" class="btnTimKiem">Cập nhập</Button></td>
+                                  <?php $check++; } 
+                                  ?><?php } if($check ==0 )
+                                  {?>
+                                    <td><?= $stt?></td>
+                                    <td class="mamon<?= $stt ?>" id="<?= $info['mamon'] ?>" name="mamon"><?= $info['mamon']?></td>
+                                    <td class="tenmon<?= $stt ?>" id="<?= $info['tenmon'] ?>" name="tenmon"><?= $info['tenmon']?></td>
+                                    <td >
+                                      <select class="form-control" style="width: 50%"  id="magiangvien<?= $stt?>"  >
+                                      <option value="">Hiện tại chưa có giáo viên nào</option>
+                                        <?php
+                                          foreach($listGiangVien as $info1)
+                                          {
+                                            if($info['chuyennganh'] == $info1['chuyennganh'])
+                                            {
+                                              echo '<option value="'.$info1['magiangvien'].'">'.$info1['hovaten'].'</option>';
+        
+                                            }
+                                            
+                                          }
+                                        ?>  
+                                      </select>
+                                    </td>
+                                    <td >
+                                    <select class="form-control" style="width: 50%"  id="malop<?= $stt?>"  >
+                                    <option value="">Không có lớp học nào</option>
+                                      <?php
+                                        foreach($listLop as $info2)
+                                        {
+                                          
+                                            echo '<option value="'.$info2['malop'].'">'.$info2['tenlop'].'</option>';
+      
+                                          
+                                          
+                                        }
+                                      ?>  
+                                    </select>
+                                  </td>
+                                    <td><Button id="<?= $stt ?>" class="btnTimKiem">Cập nhập</Button></td>
+                                   <?php } ?>
                                     
-                                  }
-                                ?>  
-                              </select>
-                            </td>
-                            <td><Button id="<?= $stt ?>" class="btnTimKiem">Cập nhập</Button></td>
+                                    
+                                
+                            
                           </tr>
                           <script>
                     $(document).ready(function() {
@@ -302,22 +366,35 @@
                             var mamon = ".mamon" + $(this).attr("id");
                             var tenmon = ".tenmon" + $(this).attr("id");
                             var magiangvien=$('#magiangvien<?= $stt?>').val();
-                           
+                            var malop=$('#malop<?= $stt?>').val();
                             var infomamon = $(`${mamon}`).attr('id');
                             var infotenmon = $(`${tenmon}`).attr('id');
                            
                             
+                            if(malop == null || malop == "")
+                            {
+                              alert("Lớp học không được để trống");
+                              return;
+                            }
+                            else if(magiangvien == null || magiangvien == "")
+                            {
+                              alert("Giáo viên không được để trống");
+                              return;
+                            }
+                            else{
+                              $.get("./index.php", {
+                                  controller: "daotao",
+                                  action: "capnhatmonhoc",
+                                  magiangvien: magiangvien,
+                                  mamon: infomamon,
+                                  tenmon: infotenmon,
+                                  malop: malop
+                              }, function(data) {
+                                  $("#bangdiem").html(data);
+                                  alert("Cập nhật thành công");
+                              })
+                            }
                             
-                            $.get("./index.php", {
-                                controller: "daotao",
-                                action: "capnhatmonhoc",
-                                magiangvien: magiangvien,
-                                mamon: infomamon,
-                                tenmon: infotenmon
-                            }, function(data) {
-                                $("#bangdiem").html(data);
-                                alert("Cập nhật thành công");
-                            })
                         });
                     });
                 </script>
