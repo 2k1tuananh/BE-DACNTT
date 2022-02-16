@@ -226,7 +226,8 @@
                                                                                           echo $_SESSION['mgv'];
                                                                                         }
 
-                                                                                        ?>)</span></b>
+                                                                                        ?>)</span></b>|
+        <a style="text-decoration: none;color: #0f8c12" href="#">Giáo viên</a>
         | <a style=" text-decoration: none;" href="?controller=login&action=doimk">Đổi mật khẩu</a> |
         <a style=" text-decoration: none;" href="?controller=login&action=logout">Đăng xuất</a><br />
 

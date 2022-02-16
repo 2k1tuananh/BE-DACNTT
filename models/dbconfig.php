@@ -77,6 +77,17 @@
             }
             return $data;
         }       
+        public function getinfoGVCN($msv){
+            $sql = "select * from sinhvien WHERE masinhvien='$msv'";
+            $this->execute($sql);
+            if($this->dem()!=0){
+                $data = mysqli_fetch_array($this->result);
+            }
+            else{
+                $data = [];
+            }
+            return $data;
+        }       
         public function updatesinhvien($msv,$img,$gioitinh,$cmnd,$dienthoai,$email,$diachi){
             $sql="UPDATE sinhvien SET `image`='$img', gioitinh='$gioitinh', cmnd='$cmnd', dienthoai='$dienthoai', email='$email', diachi='$diachi' WHERE masinhvien='$msv'";
             return $this->execute($sql);
@@ -86,7 +97,7 @@
             $sql = "select * from `sinhvien-diemmon` inner join `monhoc` on `sinhvien-diemmon`.mamon=`monhoc`.mamon WHERE masinhvien='$msv'";
             $this->execute($sql);
             if($this->dem()==0){
-                $data=0;
+                $data=[];
             }
             else{
                 while($datas = $this->getData()) {
@@ -470,6 +481,7 @@
             }
             return $data;
         }
+       
 
         //daotao
         public function masinhvien()
@@ -523,7 +535,7 @@
         }
 
         public function timkiemsinhvien($masinhvien){
-            $sql = "select * from  `sinhvien`  where  masinhvien LIKE '%$masinhvien%' ";
+            $sql = "select * from  `sinhvien`  where  masinhvien LIKE '%$masinhvien%' or hovaten like '%$masinhvien%";
             $this->execute($sql);
             if($this->dem()==0){
                 $data=0;
@@ -675,7 +687,6 @@
         public function creategiangvien($magiangvien,$hovaten,$gioitinh,$CMND,$ngaysinh,$phone,$email,$chuyennganh,$diachi,$lop){
             $sql="INSERT INTO `giangvien`(`magiangvien`, `hovaten`, `gioitinh`, `diachi`, `email`, `dienthoai`, `cmnd`, `ngaysinh`, `chuyennganh`,  `password`,`ChuNhiem`) 
             VALUES ('$magiangvien','$hovaten','$gioitinh','$diachi','$email','$phone','$CMND','$ngaysinh','$chuyennganh','$magiangvien','$lop')";
-           
             return $this->execute($sql);
         }
         
@@ -818,6 +829,12 @@
             
             return $this->execute($sql);
         }
+        public function updatestudentdaotao1($masinhvien,$hovaten,$gioitinh,$CMND,$ngaysinh,$phone,$email,$chuyennganh,$giaovien,$diachi,$lop,$pass){
+            $sql="UPDATE `sinhvien` SET `masinhvien` = '$masinhvien', `hovaten` = '$hovaten', `gioitinh`= '$gioitinh', password = '$pass',`diachi` ='$diachi', `email`='$email', `dienthoai`= '$phone', 
+            `cmnd` ='$CMND', `ngaysinh` ='$ngaysinh', `GVCN` ='$giaovien', `chuyennganh`= '$chuyennganh' ,`lop`='$lop' WHERE masinhvien='$masinhvien'";
+            echo $sql;
+            return $this->execute($sql);
+        }
         public function editgiangvienid($id){
             $sql = "select * from giangvien where `id`='$id' ";
             $data=$this->execute($sql);
@@ -910,6 +927,36 @@
             }
             return $data;
         }
+        public function selectlistmonhocdaotao()
+        {
+            $sql = "select * from  `monhoc`";
+           
+            $this->execute($sql);
+            if($this->dem()==0){
+                $data=0;
+            }
+            else{
+                while($datas = $this->getData()) {
+                    $data[] = $datas;
+                }
+            }
+            return $data;
+        }
+        public function selectlistsinhviendaotao()
+        {
+            $sql = "select * from  `sinhvien`";
+           
+            $this->execute($sql);
+            if($this->dem()==0){
+                $data=0;
+            }
+            else{
+                while($datas = $this->getData()) {
+                    $data[] = $datas;
+                }
+            }
+            return $data;
+        }
         public function timkiemchuyennganh($timkiem)
         {
             $sql = "select * from  `chuyennganh`  where  (machuyennganh like '%$timkiem%' or tenchuyennganh like '%$timkiem%') ";
@@ -944,10 +991,51 @@
             }
             return $data;
         }
-
+        public function checkchuyennganh($machuyennganh)
+        {
+            $sql = "select * from chuyennganh where `machuyennganh`='$machuyennganh' ";
+            $data=$this->execute($sql);
+            if($this->dem()!=0){
+                $data = mysqli_fetch_array($this->result);
+            }
+            else{
+                $data = [];
+            }
+            return $data;
+        }
+        public function getinfomonhoc($mamonhoc)
+        {
+            $sql = "select * from monhoc where `mamon`='$mamonhoc' ";
+            $data=$this->execute($sql);
+            if($this->dem()!=0){
+                $data = mysqli_fetch_array($this->result);
+            }
+            else{
+                $data = [];
+            }
+            return $data;
+        }
+        public function getsinhvien($ma)
+        {
+            $sql = "select * from sinhvien where `masinhvien`='$ma' ";
+            echo $sql;
+            $data=$this->execute($sql);
+            if($this->dem()!=0){
+                $data = mysqli_fetch_array($this->result);
+            }
+            else{
+                $data = [];
+            }
+            return $data;
+        }
         public function capnhatchuyennganh($machuyennganh,$tenchuyennganh)
         {
             $sql = "UPDATE `chuyennganh` SET `machuyennganh`='$machuyennganh',`tenchuyennganh`='$tenchuyennganh' WHERE machuyennganh = '$machuyennganh'";
+            return $this->execute($sql);
+        }
+        public function capnhatmonhoc($mamon,$tenmon,$st,$cn,$thu,$ca)
+        {
+            $sql = "UPDATE `monhoc` SET `mamon`='$mamon',`tenmon`='$tenmon',`sotinchi`='$st',`chuyennganh`='$cn' ,`thu`='$thu',`ca`='$ca' WHERE mamon = '$mamon'";
             return $this->execute($sql);
         }
     }

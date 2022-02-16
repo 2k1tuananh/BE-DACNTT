@@ -42,8 +42,8 @@
                             <td class="item-monhoc"><?= $info['ca'] ?></td>
                             
                             <td class="item-monhoc">
-                              <button class="btnTimKiem" type="button" data-toggle="modal" data-target="#SuaMonHoc">Update</button>
-                              <button type="button" id="xoa<?= $stt ?>" class="btnTimKiem" >Delete</button>
+                              <button class="btnTimKiem" type="button" data-toggle="modal" data-target="#SuaMonHoc">Cập nhập</button>
+                              <button type="button" id="xoa<?= $stt ?>" class="btnTimKiem" >Xóa</button>
                               <script>
                                 $(document).ready(function(){
                                     $("#xoa<?= $stt ?>").click(function(){

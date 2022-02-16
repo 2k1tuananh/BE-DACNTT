@@ -60,36 +60,38 @@ class point_controller {
     }
     function timkiem()
     {
-        if($_GET['info']==''){
-            if($_SESSION['sapxep']=='getinfo_thapcao')
-            {
-                $svl2=$this->db->getinfo_thapcao($_SESSION['mgv'],$_SESSION['mamon']);
-                require_once("./view/giangvien/qlbangdiemsinhvien.php");
-            }
-            else
-            {
-                $svl2=$this->db->getinfo_caothap($_SESSION['mgv'],$_SESSION['mamon']);
-                require_once("./view/giangvien/qlbangdiemsinhvien.php");
-            }
+        // if($_GET['info']==''){
+        //     if($_SESSION['sapxep']=='getinfo_thapcao')
+        //     {
+        //         $svl2=$this->db->getinfo_thapcao($_SESSION['mgv'],$_SESSION['mamon']);
+        //         require_once("./view/giangvien/qlbangdiemsinhvien.php");
+        //     }
+        //     else
+        //     {
+        //         $svl2=$this->db->getinfo_caothap($_SESSION['mgv'],$_SESSION['mamon']);
+        //         require_once("./view/giangvien/qlbangdiemsinhvien.php");
+        //     }
         
-        }
-        else{
-            if($_SESSION['sapxep']=='getinfo_thapcao')
-            {
-                $svl2=$this->db->getinfo_tkthapcao($_SESSION['mgv'],$_SESSION['mamon'], $_GET['info']);
-                require_once("./view/giangvien/qlbangdiemsinhvien.php");
-            }
-            else
-            {
-                $svl2=$this->db->getinfo_tkcaothap($_SESSION['mgv'],$_SESSION['mamon'], $_GET['info']);
-                require_once("./view/giangvien/qlbangdiemsinhvien.php");
-            }
-        }
+        // }
+        // else{
+        //     if($_SESSION['sapxep']=='getinfo_thapcao')
+        //     {
+        //         $svl2=$this->db->getinfo_tkthapcao($_SESSION['mgv'],$_SESSION['mamon'], $_GET['info']);
+        //         require_once("./view/giangvien/qlbangdiemsinhvien.php");
+        //     }
+        //     else
+        //     {
+        //         $svl2=$this->db->getinfo_tkcaothap($_SESSION['mgv'],$_SESSION['mamon'], $_GET['info']);
+        //         require_once("./view/giangvien/qlbangdiemsinhvien.php");
+        //     }
+        // }
+        $svl2=$this->db->getinfo_tk($_SESSION['mgv'],$_SESSION['mamon'],$_GET['info'],$_SESSION['trangthai']);
+        require_once("./view/giangvien/qlbangdiemsinhvien.php");
+       
     }
     
     function updiem()
     {
-
         $mamon=$this->db->getinfo_mamon($_GET['tenmon']);
         $data=$this->db->updiem($mamon['mamon'], $_GET['masinhvien'], $_GET['diemquatrinh'], $_GET['diemcuoiky'], $_GET['diemtongket']);
         if(!isset($_SESSION['sapxep']) || ($_SESSION['sapxep'])=='getinfo_thapcao')
@@ -110,7 +112,12 @@ class point_controller {
         $_SESSION['mamon']="Tất cả";
         $_SESSION['trangthai']="Tất cả";
         if(isset($_GET['msv'])){
-            $info=$this->db->getinfosinhvien($_GET['msv']);
+            $info = $this->db->getinfoGVCN($_GET['msv']);
+            $info['hvt']='';
+            if( $info['GVCN'] != null){
+                $info=$this->db->getinfosinhvien($_GET['msv']);
+            }
+           
             $data=$this->db->getinfopoint($_GET['msv']);
             $tongtin=$this->db->tongtin($_GET['msv']);
             $tongdiem=$this->db->tongdiem($_GET['msv']);

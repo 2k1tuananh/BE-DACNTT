@@ -205,7 +205,11 @@
 </style>
 
 <!-- Right -->
+<<<<<<< HEAD
 <div id="right" style="width: 100%;margin-left:10px; ">
+=======
+<div id="right">
+>>>>>>> d506eadcb5d4847862d94f14832af84b15986c06
   <div class="title">
     Quản lý môn học
 
@@ -254,6 +258,7 @@
                     <th scope="col" style="white-space: nowrap">
                       Số TC
                     </th>
+<<<<<<< HEAD
 
                     <th scope="col">Thứ</th>
                     <th scope="col">Ca học</th>
@@ -415,10 +420,94 @@
         <button type="button" class="close" data-dismiss="modal">&times;</button>
         <h4 class="modal-title">Cập nhập môn học</h4>
       </div>
+=======
+
+                    <th scope="col">Thứ</th>
+                    <th scope="col">Ca học</th>
+                    <th scope="col">Trạng thái</th>
+
+                  </tr>
+                  <?php $stt = 0;
+                  foreach ($mon as $info) {
+                    $stt++; ?>
+                    <tr>
+                      <td><?= $stt ?></td>
+                      <td><?= $info['mamon'] ?></td>
+                      <td><?= $info['tenmon'] ?></td>
+                      <td class="item-monhoc"><?= $info['sotinchi'] ?></td>
+
+                      <td class="item-monhoc"><?= $info['thu'] ?></td>
+                      <td class="item-monhoc"><?= $info['ca'] ?></td>
+
+                      <td class="item-monhoc">
+                      <button class="btnTimKiem capnhat" type="button" id="<?= $info['mamon'] ?>" data-toggle="modal" data-target="#SuaMonHoc">Cập nhật</button>
+                        <button type="button" id="xoa<?= $stt ?>" class="btnTimKiem">Xóa</button>
+                        <script>
+                          $(document).ready(function() {
+                            $("#xoa<?= $stt ?>").click(function() {
+                              var mamon = "<?= $info['mamon'] ?>";
+                              if (confirm("Bạn chắc chắn muốn xóa ???") == true) {
+                                $.get("./index.php", {
+                                  controller: "daotao",
+                                  action: "xoamon",
+                                  info: mamon
+                                }, function(data) {
+                                  $("#info").html(data);
+                                })
+                              }
+                            });
+                          });
+                        </script>
+                      </td>
+                    </tr>
+                  <?php } ?>
+                </tbody>
+              </table>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+</div>
+
+<script>
+        $(document).ready(function() {
+          $(".capnhat").click(function() {
+            var mamon = $(this).attr("id")
+
+            $.get("./index.php", {
+              controller: "daotao",
+              action: "updatemonhoc",
+              mamon: mamon
+            }, function(data) {
+              $("#SuaMonHoc").html(data);
+            })
+          });
+        });
+      </script>
+<!-- End Right -->
+</div>
+<!-- End Page -->
+<!-- Modal thêm môn học-->
+<div class="modal fade" id="ThemMonHoc" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Thêm Môn Học</h4>
+      </div>
+>>>>>>> d506eadcb5d4847862d94f14832af84b15986c06
 
       <div class="modal-body">
         <!-- <p>Some text in the modal.</p> -->
         <table width="100%">
+<<<<<<< HEAD
           <tbody id="" class="table">
             <tr>
               <td class="modal-td" width="30%">Mã Môn:</td>
@@ -431,6 +520,20 @@
             <tr>
               <td class="modal-td" width="30%">Số TC:</td>
               <td class="modal-td"><input type="text" class="form-control"></td>
+=======
+          <tbody class="table">
+            <tr>
+              <td class="modal-td" width="30%">Mã Môn:</td>
+              <td class="modal-td"><input id="mamon" type="text" class="form-control"></td>
+            </tr>
+            <tr>
+              <td class="modal-td" width="30%">Tên Môn</td>
+              <td class="modal-td"><input id="tenmon" type="text" class="form-control"></td>
+            </tr>
+            <tr>
+              <td class="modal-td" width="30%">Số TC:</td>
+              <td class="modal-td"><input id="sotinchi" type="text" class="form-control"></td>
+>>>>>>> d506eadcb5d4847862d94f14832af84b15986c06
             </tr>
 
             <tr>
@@ -456,7 +559,11 @@
             </tr>
             <tr>
               <td class="modal-td" width="30%">Ca:</td>
+<<<<<<< HEAD
               <td class="modal-td"><select id="thu" class="form-control">
+=======
+              <td class="modal-td"><select id="ca" class="form-control">
+>>>>>>> d506eadcb5d4847862d94f14832af84b15986c06
                   <option>1-2</option>
                   <option>1-3</option>
                   <option>1-5</option>
@@ -470,6 +577,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+<<<<<<< HEAD
         <button type="button" class="btn btn-success" data-dismiss="modal">Update</button>
       </div>
     </div>
@@ -477,6 +585,42 @@
 
   </div>
 </div>
+=======
+        <button type="button" id="themmon" class="btn btn-success" data-dismiss="modal">Xác nhận</button>
+      </div>
+    </div>
+    <script>
+      $(document).ready(function() {
+        $("#themmon").click(function() {
+          var mamon = $('#mamon').val();
+          var tenmon = $('#tenmon').val();
+          var sotinchi = $('#sotinchi').val();
+          var chuyennganh = $('#chuyennganh').val();
+          var thu = $('#thu').val();
+          var ca = $('#ca').val();
+          $.get("./index.php", {
+            controller: "daotao",
+            action: "themmon",
+            mamon: mamon,
+            tenmon: tenmon,
+            sotinchi: sotinchi,
+            chuyennganh: chuyennganh,
+            thu: thu,
+            ca: ca
+          }, function(data) {
+            $("#info").html(data);
+          })
+        });
+      });
+    </script>
+
+  </div>
+</div>
+<!-- Modal sửa môn học-->
+<div class="modal fade" id="SuaMonHoc" role="dialog">
+
+</div>
+>>>>>>> d506eadcb5d4847862d94f14832af84b15986c06
 <!-- Modal xóa môn học-->
 <div class="modal fade" id="XoaMonHoc" role="dialog">
   <div class="modal-dialog">

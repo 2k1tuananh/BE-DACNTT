@@ -24,6 +24,7 @@ if ($_SESSION['role_id'] == "3")
           theForm = document.aspnetForm;
         }
 
+<<<<<<< HEAD
         function __doPostBack(eventTarget, eventArgument) {
           if (!theForm.onsubmit || theForm.onsubmit() != false) {
             theForm.__EVENTTARGET.value = eventTarget;
@@ -109,6 +110,45 @@ if ($_SESSION['role_id'] == "3")
           </tbody>
         </table>
       </center>
+=======
+<?php if($_SESSION['role_id']=="2"){ require_once ('./view/layouts/headerGiaoVien.php');}
+if($_SESSION['role_id']=="1"){
+  require_once("./view/layouts/headerSinhVien.php");}
+  if($_SESSION['role_id']=="3"){
+  require_once ('./view/layouts/headerDaoTao.php');
+} ?>
+      <!-- Right -->
+      <div id="right">
+        <div class="title">Đổi mật khẩu</div>
+        <div class="entry">
+          <form
+          method="POST" role="form"
+          >
+            <div>
+              <input
+                type="hidden"
+                name="__EVENTTARGET"
+                id="__EVENTTARGET"
+                value=""
+              />
+              <input
+                type="hidden"
+                name="__EVENTARGUMENT"
+                id="__EVENTARGUMENT"
+                value=""
+              />
+              <input
+                type="hidden"
+                name="__VIEWSTATE"
+                id="__VIEWSTATE"
+                value="/wEPDwULLTIwOTQ3NDQ4NjUPZBYCZg9kFggCAQ8PFgIeBFRleHQFHU5HVVnhu4ROIFRJ4bq+TiBUw4BJIChBMzY2NDMpZGQCAg8PFgIfAAUPQsOsbmggdGjGsOG7nW5nZGQCBA8WAh8ABRRDw7MgMCB0aW4gYsOhbyBt4bubaWQCBQ8WAh4LXyFJdGVtQ291bnQCAhYEZg9kFgRmDxUBD1Rvw6BuIHRyxrDhu51uZ2QCAQ8WAh8BAgMWBgIBD2QWAmYPFQIeL1RvYW5UcnVvbmcvVEtCVG9hblRydW9uZy5hc3B4I1Ro4budaSBraMOzYSBiaeG7g3UgdG/DoG4gdHLGsOG7nW5nZAICD2QWAmYPFQIlL1RvYW5UcnVvbmcvTGljaFRoaUxhaVRvYW5UcnVvbmcuYXNweCBM4buLY2ggdGhpIGzhuqFpIHRvw6BuIHRyxrDhu51uZ2QCAw9kFgJmDxUCIi9Ub2FuVHJ1b25nL0NodW9uZ1RyaW5oRGFvVGFvLmFzcHgbQ2jGsMahbmcgdHLDrG5oIMSRw6BvIHThuqFvZAIBD2QWBGYPFQEPR8OzYyBzaW5oIHZpw6puZAIBDxYCHwECChYUAgEPZBYCZg8VAiIvU2luaFZpZW4vZnJtVGhvbmdUaW5TaW5oVmllbi5hc3B4FFRow7RuZyB0aW4gY8OhIG5ow6JuZAICD2QWAmYPFQIZL0RhbmdLeUhvYy9EYW5nS2lIb2MuYXNweBDEkMSDbmcga8O9IGjhu41jZAIDD2QWAmYPFQIcL0RhbmdLeUhvYy9EYW5nS2lUaGlMYWkuYXNweBTEkMSDbmcga8O9IHRoaSBs4bqhaWQCBA9kFgJmDxUCIy9TaW5oVmllbi9UaG9pS2hvYUJpZXVTaW5oVmllbi5hc3B4E1Ro4budaSBraMOzYSBiaeG7g3VkAgUPZBYCZg8VAh5odHRwOi8vaG9jcGhpLnRoYW5nbG9uZy5lZHUudm4XUGhp4bq/dSBiw6FvIHRodSB0aeG7gW5kAgYPZBYCZg8VAh8vU2luaFZpZW4vQmFuZ0RpZW1TaW5oVmllbi5hc3B4DkLhuqNuZyDEkWnhu4NtZAIHD2QWAmYPFQIYL1NpbmhWaWVuL0xpY2hUaGlTVi5hc3B4GEzhu4tjaCB0aGkgY2jDrW5oIHRo4bupY2QCCA9kFgJmDxUCHC9TaW5oVmllbi9MaWNoVGhpRHVLaWVuLmFzcHgWTOG7i2NoIHRoaSBk4buxIGtp4bq/bmQCCQ9kFgJmDxUCIWh0dHA6Ly9zaW5odmllbi50aGFuZ2xvbmcuZWR1LnZuLxRQaGnhur91IGLDoW8gxJFp4buDbWQCCg9kFgJmDxUCIGh0dHA6Ly9zaW5odmllbi50aGFuZ2xvbmcuZWR1LnZuFUzhu4tjaCBrw70gc+G7lSBn4buRY2QYAQULY3RsMDAkYyRjcDEPEGRmBQZhMzY2NDNkGkpgLbGXsp03hZ1cjzYNmzTdpfR5xTUaEIbDFO9Aqfg="
+              />
+            </div>
+
+           
+
+           
+>>>>>>> d506eadcb5d4847862d94f14832af84b15986c06
 
       <script type="text/javascript">
         //<![CDATA[

@@ -64,7 +64,7 @@
                                     action: "sxtheomon",
                                     info: data
                                 }, function(data) {
-                                    $("#bangdiem").html(data);
+                                    $("#bangdiem1").html(data);
                                 })
                             });
                         });
@@ -103,7 +103,7 @@
                             action: "timkiem1",
                             info: data
                         }, function(data) {
-                            $("#bangdiem").html(data);
+                            $("#bangdiem1").html(data);
                         })
                     });
                 });
@@ -116,7 +116,7 @@
                             action: "timkiem1",
                             info: data
                         }, function(data) {
-                            $("#bangdiem").html(data);
+                            $("#bangdiem1").html(data);
                         })
                     });
                 });
@@ -137,7 +137,7 @@
                                         action: "sxtheotrangthai",
                                         info1: data
                                     }, function(data) {
-                                        $("#bangdiem").html(data);
+                                        $("#bangdiem1").html(data);
                                     })
                                 });
                             });
@@ -191,7 +191,7 @@
             </div>
         </div>
 
-        <div id="bangdiem">
+        <div id="bangdiem1">
             <table style="
                 font-family: arial, sans-serif;
                 font-size: 14px;

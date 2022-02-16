@@ -49,6 +49,9 @@ class daotao_controller {
     function timkiem()
     {
         $listStudent=$this->db->timkiemsinhvien($_GET['info']);
+        if($listStudent==0){
+            $listStudent='';
+        }
         require_once("./view/daotao/PDTTimKiemSinhVien.php");
        
     }
@@ -217,6 +220,9 @@ class daotao_controller {
     {
         
         $listGiangVien = $this->db->timkiemgiangvien($_GET['info']);
+        if($listGiangVien==0){
+            $listGiangVien='';
+        }
         
         require_once("./view/daotao/banggiangvien.php");
     }
@@ -312,7 +318,7 @@ class daotao_controller {
     function themchuyennganh()
     {
         $data=$this->db->createchuyennganh($_GET['machuyennganh'], $_GET['tenchuyennganh']);
-        
+        $chuyennganh = $this->db->selectlistchuyennganh();
         require_once("./view/daotao/bangchuyennganh.php");
     }
     function updatechuyennganh()
@@ -329,6 +335,42 @@ class daotao_controller {
         $chuyennganh=$this->db->selectlistchuyennganh();
        
         require_once("./view/daotao/bangchuyennganh.php");
+    }
+    function updatemonhoc()
+    {
+        if(isset($_GET['mamon'])){
+            $info=$this->db->getinfomonhoc($_GET['mamon']);
+            $chuyennganh=$this->db->selectlistchuyennganh();
+            require_once("./view/daotao/modal_monhoc.php");
+        }
+    }
+    function capnhatmonhocdaotao()
+    {
+        $this->db->capnhatmonhoc($_GET['mamon'],$_GET['tenmon'],$_GET['sotinchi'],$_GET['chuyennganh'],$_GET['thu'],$_GET['ca']);
+        $monhoc=$this->db->selectlistmonhocdaotao();
+        require_once("./view/daotao/bangmonhoc.php");
+    }
+    //xeplichthi
+
+
+
+
+
+    function updatestudentdaotao()
+    {   
+        if(isset($_GET['masinhvien'])){
+            $svid=$this->db->getsinhvien($_GET['masinhvien']);
+            $listCN = $this->db->getAllData('chuyennganh');
+            $listLopCN = $this->db->getAllData('lopcn');
+            $listGVCN = $this->db->getAllData('giangvien');
+            require_once("./view/daotao/modal_sinhvien.php");
+        }
+    }
+    function capnhatsinhviendaotao()
+    {
+        $data = $this->db->updatestudentdaotao1($_GET['masinhvien'], $_GET['hovaten'], $_GET['gioitinh'], $_GET['CMND'], $_GET['ngaysinh'], $_GET['phone'], $_GET['email'], $_GET['chuyennganh'], $_GET['giaovien'], $_GET['diachi'], $_GET['lop'],$_GET['password']);
+        $listStudent=$this->db->selectlistsinhviendaotao();
+        require_once("./view/daotao/bangsinhvien.php");
     }
     //xeplichthi
     function xeplichthi()

@@ -24,7 +24,7 @@
                             <th scope="col">Tên chuyên ngành</th>
                             <th scope="col"></th>
                             <?php $stt=0; 
-                            if($chuyennganh != 0 )
+                            if($chuyennganh != '' )
                             {
                             foreach ($chuyennganh as $info){ $stt++;?>
                             <tr>
@@ -52,7 +52,7 @@
                 </tr>
                 <script>
                         $(document).ready(function(){
-                            $(".capnhat").click(function(){
+                            $("button.capnhat").click(function(){
                                     var machuyennganh=$(this).attr("id")
                                    
                                     $.get("./index.php",{controller:"daotao",action:"updatechuyennganh", machuyennganh:machuyennganh}, function(data) {

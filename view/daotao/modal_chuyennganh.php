@@ -13,7 +13,7 @@
               <tbody id="" class="table">
                 <tr>
                   <td class="modal-td" width="30%">Mã chuyên ngành:</td>
-                  <td class="modal-td"><input type="text" class="form-control" id="machuyennganh" name="machuyennganh" value="<?=$info['machuyennganh']?>"></td>
+                  <td class="modal-td"><input type="text" class="form-control" id="machuyennganh" name="machuyennganh" value="<?=$info['machuyennganh']?>" ></td>
                 </tr>
                 <tr>
                   <td class="modal-td" width="30%">Tên chuyên ngành</td>

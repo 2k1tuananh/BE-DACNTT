@@ -1,31 +1,14 @@
- <!-- Meta tag Keywords -->
- <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-    <link
-        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
-        rel="stylesheet">
+<div class="modal-dialog">
 
-    <!-- Custom styles for this template -->
-    <link href="css/sb-admin-2.min.css" rel="stylesheet">
+  <!-- Modal-->
+  <div class="modal-content">
+    <div class="modal-header">
+      <button type="button" class="close" data-dismiss="modal">&times;</button>
+      <h4 class="modal-title">Cập nhập sinh viên </h4>
+    </div>
 
-    <!-- Custom styles for this page -->
-    <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
-    <!-- Bootstrap core JavaScript-->
-<div id="wrapper">
-    <?php require_once("./view/admin/headeradminLeft.php"); ?>
-    <div id="content-wrapper" class="d-flex flex-column">
-        <div id="content">
-            <?php require_once("./view/admin/headeradminTop.php"); ?>
-            <div class="container-fluid">
-
-
-
-                <div class="modal-header">
-
-                    <h4 class="modal-title">Sửa Sinh Viên</h4>
-                    <a href="?controller=admin&action=danhsachsinhvien" type="button" class="close">&times;</a>
-                </div>
-                <form id="createStudent" method="POST">
-                    <table width="100%">
+    <div class="modal-body">
+    <table width="100%">
                         <tbody class="table">
                             <tr>
                             <tr>
@@ -129,48 +112,51 @@
 
                         </tbody>
                     </table>
-                    <div class="modal-footer">
-                        <a href="?controller=admin&action=danhsachsinhvien" type="button" class="btn btn-default">Close</a>
-                        <input type="submit" class="btn btn-success" name="suastudent" value="oke">
-                    </div>
-                </form>
-
-            </div>
-        </div>
-        <?php require_once("./view/admin/footeradmin.php"); ?>
     </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
+      <button type="button" id="capnhatsinhvien" class="btn btn-success" data-dismiss="modal">Cập Nhật</button>
+    </div>
+  </div>
+
+
 </div>
 
-<script src="vendor/jquery/jquery.min.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
-    <!-- Core plugin JavaScript-->
-    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
-
-    <!-- Custom scripts for all pages-->
-    <script src="js/sb-admin-2.min.js"></script>
-
-    <!-- Page level plugins -->
-    <script src="vendor/datatables/jquery.dataTables.min.js"></script>
-    <script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
-
-    <!-- Page level custom scripts -->
-    <script src="js/demo/datatables-demo.js"></script>
-    
-    
-    <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
-    <!-- Core plugin JavaScript-->
-    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
-
-    <!-- Custom scripts for all pages-->
-    <script src="js/sb-admin-2.min.js"></script>
-
-    <!-- Page level plugins -->
-    <script src="vendor/datatables/jquery.dataTables.min.js"></script>
-    <script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
-
-    <!-- Page level custom scripts -->
-    <script src="js/demo/datatables-demo.js"></script>
-    
+<script>
+  $(document).ready(function() {
+    $("#capnhatsinhvien").click(function() {
+      var masinhvien = $("input[name='masinhvien']").val();
+      var hovaten = $("input[name='hovaten']").val();
+      var gioitinh = $("select[name='gioitinh']").val();
+      var chuyennganh = $("select[name='chuyennganh']").val();
+      var lop = $("select[name='lop']").val();
+      var giaovien = $("select[name='giaovien']").val();
+      var CMND = $("input[name='CMND']").val();
+      var ngaysinh = $("input[name='ngaysinh']").val();
+      var phone = $("input[name='phone']").val();
+      var email = $("input[name='email']").val();
+      var password = $("input[name='password']").val();
+      var diachi = $("input[name='diachi']").val();
+      //alert(mamon+tenmon);
+      $.get("./index.php", {
+        controller: "daotao",
+        action: "capnhatsinhviendaotao",
+        masinhvien: masinhvien,
+        hovaten: hovaten,
+        gioitinh: gioitinh,
+        chuyennganh: chuyennganh,
+        lop:lop,
+        giaovien:giaovien,
+        CMND: CMND,
+        ngaysinh: ngaysinh,
+        phone:phone,
+        email:email,
+        password:password,
+        diachi:diachi
+      }, function(data) {
+        $("#info").html(data);
+        alert("Cập nhật thành công");
+      })
+    });
+  });
+</script>
