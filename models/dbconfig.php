@@ -921,6 +921,21 @@
             }
             return $data;
         }
+        public function selectlistmonhocdaotao()
+        {
+            $sql = "select * from  `monhoc`";
+           
+            $this->execute($sql);
+            if($this->dem()==0){
+                $data=0;
+            }
+            else{
+                while($datas = $this->getData()) {
+                    $data[] = $datas;
+                }
+            }
+            return $data;
+        }
         public function timkiemchuyennganh($timkiem)
         {
             $sql = "select * from  `chuyennganh`  where  (machuyennganh like '%$timkiem%' or tenchuyennganh like '%$timkiem%') ";
@@ -955,10 +970,38 @@
             }
             return $data;
         }
-
+        public function checkchuyennganh($machuyennganh)
+        {
+            $sql = "select * from chuyennganh where `machuyennganh`='$machuyennganh' ";
+            $data=$this->execute($sql);
+            if($this->dem()!=0){
+                $data = mysqli_fetch_array($this->result);
+            }
+            else{
+                $data = [];
+            }
+            return $data;
+        }
+        public function getinfomonhoc($mamonhoc)
+        {
+            $sql = "select * from monhoc where `mamon`='$mamonhoc' ";
+            $data=$this->execute($sql);
+            if($this->dem()!=0){
+                $data = mysqli_fetch_array($this->result);
+            }
+            else{
+                $data = [];
+            }
+            return $data;
+        }
         public function capnhatchuyennganh($machuyennganh,$tenchuyennganh)
         {
             $sql = "UPDATE `chuyennganh` SET `machuyennganh`='$machuyennganh',`tenchuyennganh`='$tenchuyennganh' WHERE machuyennganh = '$machuyennganh'";
+            return $this->execute($sql);
+        }
+        public function capnhatmonhoc($mamon,$tenmon,$st,$cn)
+        {
+            $sql = "UPDATE `monhoc` SET `mamon`='$mamon',`tenmon`='$tenmon',`sotinchi`='$st',`chuyennganh`='$cn' WHERE mamon = '$mamon'";
             return $this->execute($sql);
         }
     }

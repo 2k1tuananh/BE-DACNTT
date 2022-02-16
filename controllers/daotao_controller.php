@@ -336,6 +336,20 @@ class daotao_controller {
        
         require_once("./view/daotao/bangchuyennganh.php");
     }
+    function updatemonhoc()
+    {
+        if(isset($_GET['mamon'])){
+            $info=$this->db->getinfomonhoc($_GET['mamon']);
+            $chuyennganh=$this->db->selectlistchuyennganh();
+            require_once("./view/daotao/modal_monhoc.php");
+        }
+    }
+    function capnhatmonhocdaotao()
+    {
+        $this->db->capnhatmonhoc($_GET['mamon'],$_GET['tenmon'],$_GET['sotinchi'],$_GET['chuyennganh']);
+        $monhoc=$this->db->selectlistmonhocdaotao();
+        require_once("./view/daotao/bangmonhoc.php");
+    }
     //xeplichthi
     function xeplichthi()
     {

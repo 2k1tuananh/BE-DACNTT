@@ -19,22 +19,28 @@
                           <tr>
                             <th scope="col">STT</th>
                             <th scope="col" style="white-space: nowrap">
-                              Mã chuyên ngành
+                              Mã môn
                             </th>
-                            <th scope="col">Tên chuyên ngành</th>
-                            <th scope="col"></th>
+                            <th scope="col">Tên môn</th>
+                            <th scope="col">Số TC</th>
+                            <th scope="col">Thứ</th>
+                            <th scope="col">Ca học</th>
+                            <th scope="col">Trạng thái</th>
                             <?php $stt=0; 
-                            if($chuyennganh != '' )
+                            if($monhoc != '' )
                             {
-                            foreach ($chuyennganh as $info){ $stt++;?>
+                            foreach ($monhoc as $info){ $stt++;?>
                             <tr>
                            
                             <td><?= $stt?></td>
-                            <td ><?= $info['machuyennganh']?></td>
-                            <td><?= $info['tenchuyennganh']?></td>
+                            <td ><?= $info['mamon']?></td>
+                            <td><?= $info['tenmon']?></td>
+                            <td ><?= $info['sotinchi']?></td>
+                            <td><?= $info['thu']?></td>
+                            <td ><?= $info['ca']?></td>
 
                             <td class="item-monhoc">
-                            <button class="btnTimKiem capnhat" type="button" id="<?= $info['machuyennganh']?>" data-toggle="modal" data-target="#SuaMonHoc">Cập nhật</button>
+                            <button class="btnTimKiem capnhat" type="button" id="<?= $info['mamon']?>" data-toggle="modal" data-target="#SuaMonHoc">Cập nhật</button>
                               
                              
                             </td>
@@ -53,9 +59,9 @@
                 <script>
                         $(document).ready(function(){
                             $("button.capnhat").click(function(){
-                                    var machuyennganh=$(this).attr("id")
+                                    var mamon=$(this).attr("id")
                                    
-                                    $.get("./index.php",{controller:"daotao",action:"updatechuyennganh", machuyennganh:machuyennganh}, function(data) {
+                                    $.get("./index.php",{controller:"daotao",action:"updatechuyennganh", mamon:mamon}, function(data) {
                                     $("#SuaMonHoc").html(data);
                                 })                                                                                     
                             });
