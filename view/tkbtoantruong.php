@@ -1,6 +1,6 @@
 <?php if($_SESSION['role_id']=="2"){ require_once ('./view/layouts/headerGiaoVien.php');}
 if($_SESSION['role_id']=="1"){
-  require_once("./view/sinhvien/ThongTinCaNhan.php");}
+  require_once("./view/layouts/headerSinhVien.php");}
 else{
   require_once ('./view/layouts/headerDaoTao.php');
 } ?>

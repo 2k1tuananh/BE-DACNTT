@@ -60,10 +60,13 @@
                                     });
                                 });
                             </script>
+                            <?php if($mon!=0){ ?>
                             <option class="a" id="Tất cả">Tất cả</option>
                             <?php foreach ($mon as $monhoc) { ?>
                                 <option class="a" id="<?= $monhoc['tenmon'] ?>"><?php echo $monhoc['tenmon']; ?></option>
-                            <?php } ?>
+                            <?php } } else{ ?>
+                                <option class="a" id="">Chưa được phân môn</option>
+                            <?php }?>
                         </select>
                     </td>
                 </tr>

@@ -1,5 +1,10 @@
 
-<?php require_once ('./view/layouts/headerSinhVien.php');?>
+<?php if($_SESSION['role_id']=="2"){ require_once ('./view/layouts/headerGiaoVien.php');}
+if($_SESSION['role_id']=="1"){
+  require_once("./view/layouts/headerSinhVien.php");}
+  if($_SESSION['role_id']=="3"){
+  require_once ('./view/layouts/headerDaoTao.php');
+} ?>
       <!-- Right -->
       <div id="right">
         <div class="title">Đổi mật khẩu</div>
@@ -28,43 +33,9 @@
               />
             </div>
 
-            <script type="text/javascript">
-              //<![CDATA[
-              var theForm = document.forms['aspnetForm'];
-              if (!theForm) {
-                theForm = document.aspnetForm;
-              }
-              function __doPostBack(eventTarget, eventArgument) {
-                if (!theForm.onsubmit || theForm.onsubmit() != false) {
-                  theForm.__EVENTTARGET.value = eventTarget;
-                  theForm.__EVENTARGUMENT.value = eventArgument;
-                  theForm.submit();
-                }
-              }
-              //]]>
-            </script>
+           
 
-            <script
-              src="/WebResource.axd?d=L8t2y_VLHccfkGlq_xnr32ySrPP0A4rG5s0fd4Ly9dYkSYrCAn5ZbRYqkIohlIUeqM19QlP2W5nbZtN16-TPwYF96ddINXHbenVBY_DKR3E1&amp;t=636935137199995647"
-              type="text/javascript"
-            ></script>
-
-            <script
-              src="/WebResource.axd?d=QYfEkfSsBD2O-es6BKJQw7_e8YQbAv_gU03-B5Q83yZhkr0j5gDHaOYLcHzSwrVB4qpIneQi56I74CNG-Rc87SL8kspuwHzFaWoLZLDQJJg1&amp;t=636935137199995647"
-              type="text/javascript"
-            ></script>
-            <script type="text/javascript">
-              //<![CDATA[
-              function WebForm_OnSubmit() {
-                if (
-                  typeof ValidatorOnSubmit == 'function' &&
-                  ValidatorOnSubmit() == false
-                )
-                  return false;
-                return true;
-              }
-              //]]>
-            </script>
+           
 
             <div>
               <input

@@ -222,7 +222,7 @@
 
             $this->execute($sql);
             if($this->dem()==0){
-                $data=0;
+                $data=[];
             }
             else{
                 while($datas = $this->getData()) {
