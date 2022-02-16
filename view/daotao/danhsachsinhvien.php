@@ -401,12 +401,12 @@
               <tr>
                 <td class="modal-td" width="30%">Mã Sinh Viên:</td>
                 <td class="modal-td">
-                  <input  id="masinhvien" name="masinhvien" class="form-control" type="text" value="A<?=$getmasv+1?>" readonly/>
-                </td>
-              </tr>
-              <tr>
-                <td class="modal-td" width="30%">Họ và tên:</td>
-                <td class="modal-td">
+                <input id="masinhvien" name="masinhvien" class="form-control" type="text" value="A<?= $getmasv + 1 ?>" readonly />
+              </td>
+            </tr>
+            <tr>
+              <td class="modal-td" width="30%">Họ và tên:</td>
+              <td class="modal-td">
                   <input  id="hovaten" name="hovaten" class="form-control" type="text" />
                 </td>
               </tr>
