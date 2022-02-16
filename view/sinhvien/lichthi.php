@@ -1,22 +1,22 @@
 <?php require_once('./view/layouts/headerSinhVien.php'); ?>
 <!-- Right -->
-<div id="right">
+<div id="right" style="width: 100%; margin-left:10px;">
   <div class="title">Lịch thi sinh viên</div>
   <div class="entry">
     <div id="ctl00_c_start">
-      <table cellpadding="0" cellspacing="0" width="720px">
+      <table cellpadding="0" cellspacing="0" style="width: 100%;">
         <tbody>
           <tr>
             <td colspan="3" align="center">
-              <span style="font-weight: bold; font-size:15px;">PHIẾU DỰ THI</span>
+              <span style="font-weight: bold; font-size:18px;">PHIẾU DỰ THI</span>
             </td>
           </tr>
           <tr>
-            <td>Mã sinh viên: <span id="ctl00_c_lbMaSV"><?= $data['masinhvien'] ?></span></td>
-            <td>
+            <td style="font-size:18px;">Mã sinh viên: <span id="ctl00_c_lbMaSV"><?= $data['masinhvien'] ?></span></td>
+            <td style="font-size:18px;">
               Họ và tên: <span id="ctl00_c_lbTenSV"><?= $data['hovaten'] ?></span>
             </td>
-            <td>Lớp: <span id="ctl00_c_lbLop"><?= $data['lop'] ?></span></td>
+            <td style="font-size:18px;">Lớp: <span id="ctl00_c_lbLop"><?= $data['lop'] ?></span></td>
           </tr>
         </tbody>
       </table>
@@ -24,8 +24,9 @@
     <br />
 
     <table class="tablesv" cellpadding="0" cellspacing="0" style="
-              font-size: 14px;
+              font-size: 18px;
               font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+              width:100%
             ">
       <thead>
         <tr>
@@ -121,14 +122,8 @@
 <!-- End Right -->
 </div>
 <!-- End Page -->
-<!-- Footer -->
-<div id="footer">
-  Địa chỉ: Đường Nghiêm Xuân Yêm - Đại Kim - Hoàng Mai - Hà Nội<br />
-  Điện thoại hỗ trợ kỹ thuật:(04) 355 92 678 website
-  <a href="http://www.thanglong.edu.vn">http://www.thanglong.edu.vn</a>
-  mail:<a href="mailto:p.cntt@thanglong.edu.vn">p.cntt@thanglong.edu.vn</a><a href="http://atgo.vn/member/svgo/QTM2NjQzfDExLzEyLzIwMDF8TkdVWeG7hE4gVEnhur5OfFTDgEl8fGFuaHRhaWJudm4xMjExMjAwMUBnbWFpbC5jb218Q2jGsGEgY8OzfENoxrBhIGPDsw==">.</a>
-</div>
-<!-- End Footer -->
+
+
 </body>
 
 </html>

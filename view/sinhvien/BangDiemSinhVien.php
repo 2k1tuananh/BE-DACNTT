@@ -1,5 +1,5 @@
 <?php require_once('./view/layouts/headerSinhVien.php'); ?>
-<div id="right">
+<div id="right" style="width: 100%; margin-left:10px;">
   <div class="title">
     Bảng điểm sinh viên <?php echo $_SESSION['name']; ?> - <?php echo $_SESSION['msv']; ?> - <?php echo $_SESSION['ngaysinh']; ?> - <?php echo $_SESSION['lop']; ?>
   </div>

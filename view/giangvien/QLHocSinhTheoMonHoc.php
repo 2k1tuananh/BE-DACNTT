@@ -10,6 +10,8 @@
         outline: none;
         border: none;
         background-color: hsl(236, 32%, 26%);
+        border: 1px;
+        border-radius: 2px;
     }
 
     button::before {
@@ -45,7 +47,7 @@
     }
 </style>
 <!-- Right -->
-<div id="right" style="width: 75%">
+<div id="right" style="width: 100%; margin-left:10px;">
     <div class="title">Quản lý lớp học</div>
     <div class="entry">
         <div class="container_timkiem">
@@ -83,9 +85,8 @@
             </div>
 
             <div class="right_timkiem">
-                <i style="position: absolute;left: 4px;bottom: 6px;font-size: 15px;" class="fas fa-search"></i>
-                <input id="timkiem" style="padding-left: 20px" type="text" placeholder="Tìm kiếm" />
-                <button id="bttimkiem" style=" position: absolute;right: 0px; height: 25px;bottom: 0px;top: 0px;padding: 0 8px 0 8px;">
+                <input id="timkiem" style="padding-left: 20px; height: 35px;" type="text" placeholder="Tìm kiếm" />
+                <button id="bttimkiem" style=" position: absolute;right: 0px; height: 35px;bottom: 0px;top: 0px;padding: 0 10px 0 10px;">
                     Tìm
                 </button>
             </div>

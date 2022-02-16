@@ -198,6 +198,11 @@
       margin-left: 20px;
       flex: 2;
     }
+
+    body {
+      font-size: 16px;
+      font-family: 'Times New Roman', Times, serif;
+    }
   </style>
 </head>
 
@@ -205,14 +210,14 @@
   <!-- Top -->
   <div id="head">
     <!-- Center COntent -->
-    <div class="center">
+    <div class="center" style="width: 90%;">
       <!-- Logo -->
       <div class="logo">
         <img width=" 150px" ; height="150px" src="./App_Themes/abrasive/logo.PNG" alt="">
       </div>
       <!-- End Logo -->
       <!-- User Info -->
-      <div class="right">
+      <div class="right" style="width: 100%;">
         <b>Chào
           <span id="ctl00_lbUser" style="color: Red"><?php echo $_SESSION['name']; ?> (<?php
                                                                                         if (isset($_SESSION['msv'])) {
@@ -227,7 +232,7 @@
 
         <!-- End User Info -->
         <!-- Menu -->
-        <div id="menu">
+        <div id="menu" style="width: 100%;">
           <ul>
             <li>
               <a style=" text-decoration: none;" class="active" href="#">Trang chủ giáo viên</a>
@@ -246,8 +251,8 @@
     </div>
     <!-- End Top -->
     <!-- Page -->
-    <div id="page">
-      <div id="left">
+    <div id="page" style="width: 90%; display: flex; left: 5%; margin-left: 0px;">
+      <div id="left" style="width: 250px;">
         <ul>
           <li>
             <h3 class="title">Toàn trường</h3>

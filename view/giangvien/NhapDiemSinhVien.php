@@ -11,6 +11,8 @@
         outline: none;
         border: none;
         background-color: hsl(236, 32%, 26%);
+        border: 1px;
+        border-radius: 2px;
     }
 
     button::before {
@@ -47,7 +49,7 @@
 </style>
 
 <!-- Right -->
-<div id="right">
+<div id="right" style="width: 100%; margin-left:10px;">
     <div class="title">Nhập điểm sinh viên</div>
     <div class="entry">
         <div class="container_timkiem">
@@ -76,33 +78,18 @@
                 </select>
             </div>
 
-            <div>
-                <td>Chọn học kỳ:</td>
-                <td>
-                    <select style="width: 13rem;">
-                        <option>Kỳ 1 nhóm 1</option>
-                        <option>Kỳ 2 nhóm 2</option>
-                    </select>
-                </td>
-            </div>
 
             <div style="position: relative">
-                <i style="
-                  position: absolute;
-                  left: 4px;
-                  bottom: 6px;
-                  font-size: 15px;
-                " class="fas fa-search"></i>
                 <input id="timkiem" name="timkiem" style="padding-left: 20px;
-                                height: 25px;
+                                height: 35px;
                     " type="text" placeholder="Tìm kiếm">
                 <button id="bttimkiem" style="
                   position: absolute;
                   right: 0px;
-                  height: 25px;
+                  height: 35px;
                   bottom: 0px;
                   top: 0px;
-                  padding: 0 8px 0 8px;
+                  padding: 0 10px 0 10px;
                 ">
                     Tìm
                 </button>
