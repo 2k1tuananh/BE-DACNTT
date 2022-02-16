@@ -70,4 +70,15 @@
                   </td>
                 </tr>
               </tbody>
+              <script>
+                        $(document).ready(function(){
+                            $(".xemchitiet").click(function(){
+                                    var magiangvien=$(this).attr("id")
+                                    
+                                    $.get("./index.php",{controller:"daotao",action:"giangvien", mgv:magiangvien}, function(data) {
+                                    $("#myModal1").html(data);
+                                })                                                                                     
+                            });
+                        });
+                        </script>
             </table>

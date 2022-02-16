@@ -383,7 +383,7 @@
                     $('#ThemMonHoc').modal('hide');
                       $.get("./index.php",{controller:"daotao",action:"themchuyennganh", machuyennganh:machuyennganh, tenchuyennganh:tenchuyennganh}, function(data) {
                       $("#bangdiem1").html(data);
-                      location.reload();
+                      //location.reload();
                       })   
                   }
                  

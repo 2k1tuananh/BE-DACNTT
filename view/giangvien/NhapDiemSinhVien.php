@@ -112,8 +112,8 @@
 
         <script>
             $(function() {
-                $('#timkiem').trigger('change'); //This event will fire the change event. 
-                $('#timkiem').change(function() {
+                $('#bttimkiem').trigger('click'); //This event will fire the change event. 
+                $('#bttimkiem').click(function() {
                     var data = $(this).val();
                     $.get("./index.php", {
                         controller: "point",

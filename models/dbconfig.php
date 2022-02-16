@@ -534,7 +534,7 @@
         }
 
         public function timkiemsinhvien($masinhvien){
-            $sql = "select * from  `sinhvien`  where  masinhvien LIKE '%$masinhvien%' ";
+            $sql = "select * from  `sinhvien`  where  masinhvien LIKE '%$masinhvien%' or hovaten like '%$masinhvien%";
             $this->execute($sql);
             if($this->dem()==0){
                 $data=0;

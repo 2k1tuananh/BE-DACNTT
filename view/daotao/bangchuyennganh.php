@@ -24,7 +24,7 @@
                             <th scope="col">Tên chuyên ngành</th>
                             <th scope="col"></th>
                             <?php $stt=0; 
-                            if($chuyennganh != 0 )
+                            if($chuyennganh != '' )
                             {
                             foreach ($chuyennganh as $info){ $stt++;?>
                             <tr>
