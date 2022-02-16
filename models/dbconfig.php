@@ -841,4 +841,77 @@
             }
             return $data;
         }
+
+
+        //chuyennganh
+        public function selectchuyennganh($timkiem)
+        {
+            $sql = "select * from  `chuyennganh`  where  machuyennganh = '$timkiem' ";
+           
+            $this->execute($sql);
+            if($this->dem()==0){
+                $data=0;
+            }
+            else{
+                while($datas = $this->getData()) {
+                    $data[] = $datas;
+                }
+            }
+            return $data;
+        }
+        public function selectlistchuyennganh()
+        {
+            $sql = "select * from  `chuyennganh`   ";
+           
+            $this->execute($sql);
+            if($this->dem()==0){
+                $data=0;
+            }
+            else{
+                while($datas = $this->getData()) {
+                    $data[] = $datas;
+                }
+            }
+            return $data;
+        }
+        public function timkiemchuyennganh($timkiem)
+        {
+            $sql = "select * from  `chuyennganh`  where  (machuyennganh like '%$timkiem%' or tenchuyennganh like '%$timkiem%') ";
+           
+            $this->execute($sql);
+            if($this->dem()==0){
+                $data=0;
+            }
+            else{
+                while($datas = $this->getData()) {
+                    $data[] = $datas;
+                }
+            }
+            return $data;
+        }
+
+        public function createchuyennganh($machuyennganh,$tenchuyennganh){
+            $sql="INSERT INTO `chuyennganh`(`machuyennganh`, `tenchuyennganh`) VALUES ('$machuyennganh','$tenchuyennganh')";
+           
+            return $this->execute($sql);
+        }
+
+        public function getinfochuyennganh($machuyennganh)
+        {
+            $sql = "select * from chuyennganh where `machuyennganh`='$machuyennganh' ";
+            $data=$this->execute($sql);
+            if($this->dem()!=0){
+                $data = mysqli_fetch_array($this->result);
+            }
+            else{
+                $data = [];
+            }
+            return $data;
+        }
+
+        public function capnhatchuyennganh($machuyennganh,$tenchuyennganh)
+        {
+            $sql = "UPDATE `chuyennganh` SET `machuyennganh`='$machuyennganh',`tenchuyennganh`='$tenchuyennganh' WHERE machuyennganh = '$machuyennganh'";
+            return $this->execute($sql);
+        }
     }

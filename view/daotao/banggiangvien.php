@@ -57,8 +57,8 @@
                                 </select>
                               </td>
                               <td class="text-center">
-                                <Button class="btn" type="btnTimKiem" data-toggle="modal"
-                                  data-target="#myModal1">Xem Chi Tiêt</Button>
+                              <Button  class="btn xemchitiet" id="<?= $info['magiangvien']?>" type="btnTimKiem" data-toggle="modal"
+                                data-target="#myModal1">Xem Chi Tiêt</Button>
                                   &nbsp;
                                 </td>
                             </tr><?php } ?>
