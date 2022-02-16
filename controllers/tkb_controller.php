@@ -18,7 +18,7 @@ class tkb_controller {
     {
         $_SESSION['chuyennganh']="Tất cả";
         $data=$this->db->tkb();
-        $datacn=$this->db->getAllData("chuyennganh");
+        $datacn=$this->db->selectlistchuyennganh();
         require_once("./view/tkbtoantruong.php");
     }
     function tkb_toantruong_loccn()

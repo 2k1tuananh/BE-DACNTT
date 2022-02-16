@@ -248,7 +248,7 @@
                   });
               });
         </script>
-        
+        <div id="capnhat">
             <table cellspacing="3" cellpadding="0" border="0px" width="100%">
               <tbody>
                 <tr valign="top">
@@ -284,8 +284,11 @@
                                 <?php
                                   foreach($listGiangVien as $info1)
                                   {
-                                    
+                                    if($info['chuyennganh'] == $info1['chuyennganh'])
+                                    {
                                       echo '<option value="'.$info1['magiangvien'].'">'.$info1['hovaten'].'</option>';
+
+                                    }
                                     
                                   }
                                 ?>  
@@ -304,18 +307,17 @@
                             var infotenmon = $(`${tenmon}`).attr('id');
                            
                             
-                            alert(infomamon+infotenmon+magiangvien);
-                            // $.get("./index.php", {
-                            //     controller: "point",
-                            //     action: "updiem",
-                            //     masinhvien: infomsv,
-                            //     diemquatrinh: infodqt,
-                            //     tenmon: infotm,
-                            //     diemcuoiky: infodck,
-                            //     diemtongket: infodtk
-                            // }, function(data) {
-                            //     $("#bangdiem").html(data);
-                            // })
+                            
+                            $.get("./index.php", {
+                                controller: "daotao",
+                                action: "capnhatmonhoc",
+                                magiangvien: magiangvien,
+                                mamon: infomamon,
+                                tenmon: infotenmon
+                            }, function(data) {
+                                $("#bangdiem").html(data);
+                                alert("Cập nhật thành công");
+                            })
                         });
                     });
                 </script>
@@ -328,7 +330,7 @@
                 </tr>
               </tbody>
             </table>
-            
+                  </div>  
         </div>
       </div>
 

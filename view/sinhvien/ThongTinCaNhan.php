@@ -123,7 +123,16 @@
               </tr>
               <tr>
                 <td class="modal-td" width="30%">Giới tính:</td>
-                <td class="modal-td"> <input class="form-control" value="<?= $data['gioitinh'] ?>" name="gioitinh" type="text" id="" placeholder="Giới tính"></td>
+                <td class="modal-td"> 
+                <select class="form-control" id="gioitinh" name="gioitinh">
+                                    <option value="Nam" <?php if ($data['gioitinh'] == 'Nam') {
+                                                            echo ' selected';
+                                                        } ?>>Nam</option>
+                                    <option value="Nữ" <?php if ($data['gioitinh'] == 'Nữ') {
+                                                            echo ' selected';
+                                                        } ?>>Nữ</option>
+                                </select>
+                </td>
               </tr>
               <tr>
                 <td class="modal-td" width="30%">Số CMND/CCCD:</td>

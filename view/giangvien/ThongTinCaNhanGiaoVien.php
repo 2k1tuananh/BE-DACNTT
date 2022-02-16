@@ -54,7 +54,12 @@ if ($_SESSION['role_id'] == "1") {
 <div id="right">
   <div class="title">Thông tin giáo viên</div>
   <div class="entry flex">
-    <img src="<?= $data['image']; ?>" class="avatar" alt="Girl in a jacket" width="200" height="200">
+  <?php if($data['image']) : ?>
+    <img src="<?= $data['image']; ?>" class="avatar" alt="Avatar" width="200" height="200">
+  <?php else : ?>
+    <img src="data:image/jpeg;base64,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" class="avatar" alt="Avatar" width="200" height="200">
+  <?php endif; ?>
+    
     <div class="information">
       <table width="100%">
         <tbody class="table">
@@ -129,7 +134,16 @@ if ($_SESSION['role_id'] == "1") {
               </tr>
               <tr>
                 <td class="modal-td" width="30%">Giới tính:</td>
-                <td class="modal-td"> <input class="form-control" value="<?= $data['gioitinh'] ?>" name="gioitinh" type="text" id="" placeholder="Giới tính"></td>
+                <td class="modal-td"> 
+                <select class="form-control" id="gioitinh" name="gioitinh">
+                                    <option value="Nam" <?php if ($data['gioitinh'] == 'Nam') {
+                                                            echo ' selected';
+                                                        } ?>>Nam</option>
+                                    <option value="Nữ" <?php if ($data['gioitinh'] == 'Nữ') {
+                                                            echo ' selected';
+                                                        } ?>>Nữ</option>
+                                </select>
+                </td>
               </tr>
               <tr>
                 <td class="modal-td" width="30%">Số CMND/CCCD:</td>

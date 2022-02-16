@@ -18,6 +18,22 @@ class login_controller {
             $tk = $_POST['tk'];
             $mk = $_POST['mk'];
             $check = $tk[0];
+            if(!empty($_POST)){
+                $reuslt = $this->db->login($tk,$mk);
+                if($reuslt)
+                {
+                    $info=$this->db->getinfoadmin($tk);
+                    $_SESSION['id']=$info['id'];
+                    $_SESSION['name']=$info['hovaten'];
+                    $_SESSION['admin']=$info['maadmin'];
+                    $_SESSION['ngaysinh']=$info['ngaysinh'];
+                    $_SESSION['email']=$info['email'];
+                    $_SESSION['start'] = time(); 
+                    $_SESSION['expire'] = $_SESSION['start'] + (30*60);
+                    $_SESSION['role_id'] = $info['role_id']; 
+                    header('location:index.php?controller=admin');;
+                }
+            }
             if($check == "A")
             {
                 $user =$this->db->mkchecksinhvien($tk,$mk);
@@ -62,13 +78,12 @@ class login_controller {
         if(isset($_SESSION['msv']))
         {
             $data=$this->db->getinfosinhvien($_SESSION['msv']);
-            require_once("./view/DoiMatKhau.php");
             if( isset($_POST['doimk']) ){
                 $mkc = $_POST['mkc'];
                 $mkm = $_POST['mkm'];
                 $nhaplaimk = $_POST['nhaplaimk'];
                 $check=$this->db->mkchecksinhvien($_SESSION['msv'],$mkc);
-                if(mysqli_num_rows($check)!=0){
+                if(mysqli_num_rows($check)!=[]){
                     if($mkm==$nhaplaimk){
                         $this->db->updatemksinhvien($_SESSION['msv'],$mkm);
                         $msg="Đổi lại mật khẩu thành công";
@@ -89,13 +104,13 @@ class login_controller {
         else
         {
             $data=$this->db->getinfogiangvien($_SESSION['mgv']);
-            require_once("./view/DoiMatKhau.php");
+          
             if( isset($_POST['doimk']) ){
                 $mkc = $_POST['mkc'];
                 $mkm = $_POST['mkm'];
                 $nhaplaimk = $_POST['nhaplaimk'];
                 $check=$this->db->mkcheckgiangvien($_SESSION['mgv'],$mkc);
-                if(mysqli_num_rows($check)!=0){
+                if(mysqli_num_rows($check)!=[]){
                     if($mkm==$nhaplaimk){
                         $this->db->updatemkgiangvien($_SESSION['mgv'],$mkm);
                         $msg="Đổi lại mật khẩu thành công";
@@ -113,6 +128,6 @@ class login_controller {
                 }
             }
         }
-       
+        require_once("./view/DoiMatKhau.php");
     }
 }

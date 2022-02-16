@@ -57,8 +57,8 @@
                                 </select>
                               </td>
                               <td class="text-center">
-                                <Button class="btn" type="btnTimKiem" data-toggle="modal"
-                                  data-target="#myModal1">Xem Chi Tiêt</Button>
+                              <Button  class="btn xemchitiet" id="<?= $info['magiangvien']?>" type="btnTimKiem" data-toggle="modal"
+                                data-target="#myModal1">Xem Chi Tiêt</Button>
                                   &nbsp;
                                 </td>
                             </tr><?php } ?>
@@ -70,4 +70,15 @@
                   </td>
                 </tr>
               </tbody>
+              <script>
+                        $(document).ready(function(){
+                            $(".xemchitiet").click(function(){
+                                    var magiangvien=$(this).attr("id")
+                                    
+                                    $.get("./index.php",{controller:"daotao",action:"giangvien", mgv:magiangvien}, function(data) {
+                                    $("#myModal1").html(data);
+                                })                                                                                     
+                            });
+                        });
+                        </script>
             </table>

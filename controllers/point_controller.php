@@ -86,7 +86,7 @@ class point_controller {
             }
         }
     }
-
+    
     function updiem()
     {
 
@@ -110,7 +110,12 @@ class point_controller {
         $_SESSION['mamon']="Tất cả";
         $_SESSION['trangthai']="Tất cả";
         if(isset($_GET['msv'])){
-            $info=$this->db->getinfosinhvien($_GET['msv']);
+            $info = $this->db->getinfoGVCN($_GET['msv']);
+            $info['hvt']='';
+            if( $info['GVCN'] != null){
+                $info=$this->db->getinfosinhvien($_GET['msv']);
+            }
+           
             $data=$this->db->getinfopoint($_GET['msv']);
             $tongtin=$this->db->tongtin($_GET['msv']);
             $tongdiem=$this->db->tongdiem($_GET['msv']);
@@ -122,6 +127,7 @@ class point_controller {
             require_once("./view/giangvien/QLHocSinhTheoMonHoc.php");
         }
     }
+
     function sxtheomon()
     {
         if( $_GET['info']=="Tất cả"){

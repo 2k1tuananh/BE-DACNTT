@@ -6,6 +6,7 @@
     
     <title>WebTruong</title>
     <!-- Meta tag Keywords -->
+    
 </head>
 
 <body>
@@ -32,5 +33,7 @@
 	$controllerObj = new $controller_name();
 	$controllerObj->run();
     ?>
+
+    
 </body>
 </html>
