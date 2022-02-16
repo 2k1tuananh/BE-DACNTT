@@ -199,6 +199,12 @@
       margin-left: 20px;
       flex: 2;
     }
+    .right span,b{
+      font-size:16px;
+    }
+    .right a{
+      font-size:14px;
+    }
   </style>
 </head>
 
@@ -223,6 +229,7 @@
                                                                                         }
 
                                                                                         ?>)</span></b>
+        | <a style="text-decoration: none;color: #0f8c12" href="#">Nhân viên phòng đào tạo</a> 
         | <a style=" text-decoration: none;" href="?controller=login&action=doimk">Đổi mật khẩu</a> |
         <a style=" text-decoration: none;" href="?controller=login&action=logout">Đăng xuất</a><br />
 

@@ -1,66 +1,67 @@
 <div class="modal-dialog" style="width: 60%;">
-    <!-- Modal content chi tiết-->
-    <div class="modal-content">
-        <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal">&times;</button>
-            <h4 class="modal-title">Chi Tiết Sinh Viên</h4>
-        </div>
-        <div class="modal-body">
-            <div class="entry flex">
-                <?php if ($info['image']) { ?>
-                    <img src="<?= $info['image']; ?>" class="avatar" alt="Avatar" width="100" height="200">
-                <?php } else { ?>
-                    <img src="https://img.wattpad.com/8f19b412f2223afe4288ed0904120a48b7a38ce1/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f776174747061642d6d656469612d736572766963652f53746f7279496d6167652f5650722d38464e2d744a515349673d3d2d3234323931353831302e313434336539633161633764383437652e6a7067?s=fit&w=720&h=720" class="avatar" alt="Avatar" width="150" height="150">
-                <?php } ?>
-                <table width="50%">
-                    <tbody class="table">
-                        <tr>
-                            <td class="modal-td" width="50%">Mã Sinh Viên:</td>
-                            <td class="modal-td">
-                                <p><?= $info['masinhvien'] ?></p>
-                            </td>
-                        </tr>
-                        <td class="modal-td" width="50%">Giới tính:</td>
-                        <td class="modal-td">
-                            <p><?= $info['gioitinh'] ?></p>
-                        </td>
-                        </tr>
-                        <tr>
-                            <td class="modal-td" width="50%">Số CMND/CCCD:</td>
-                            <td class="modal-td">
-                                <p><?= $info['cmnd'] ?></p>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="modal-td" width="50%">Ngày sinh:</td>
-                            <td class="modal-td">
-                                <p><?= $info['ngaysinh'] ?></p>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="modal-td">Điện thoại:</td>
-                            <td class="modal-td">
-                                <p><?= $info['dienthoai'] ?></p>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="modal-td">Email SV:</td>
-                            <td class="modal-td">
-                                <p><?= $info['email'] ?></p>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="modal-td">Chuyên Ngành:</td>
-                            <td class="modal-td">
-                                <p><?= $info['chuyennganh'] ?></p>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="modal-td">Giáo viên CN:</td>
-                            <td class="modal-td">
-                                <p><?= $info['hvt'] ?></p>
-                            </td>
-                        </tr>
+<!-- Modal content chi tiết-->
+<div class="modal-content">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Chi Tiết Sinh Viên</h4>
+    </div>
+    <div class="modal-body">
+  <div class="entry flex">
+  <?php if ($info['image']) { ?>
+    <img src="<?= $info['image']; ?>" class="avatar" alt="Avatar" width="50%" height="100%">
+<?php } else { ?>
+    <img src="https://img.wattpad.com/8f19b412f2223afe4288ed0904120a48b7a38ce1/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f776174747061642d6d656469612d736572766963652f53746f7279496d6167652f5650722d38464e2d744a515349673d3d2d3234323931353831302e313434336539633161633764383437652e6a7067?s=fit&w=720&h=720" class="avatar" alt="Avatar" width="100%" height="100%">
+    <?php } ?>
+        <table width="50%">
+
+            <tbody class="table">
+                <tr>
+                    <td class="modal-td" width="50%">Mã Sinh Viên:</td>
+                    <td class="modal-td">
+                        <p><?=$info['masinhvien']?></p>
+                    </td>
+                </tr>
+                <td class="modal-td" width="50%">Giới tính:</td>
+                <td class="modal-td">
+                    <p><?=$info['gioitinh']?></p>
+                </td>
+                </tr>
+                <tr>
+                    <td class="modal-td" width="50%">Số CMND/CCCD:</td>
+                    <td class="modal-td">
+                        <p><?=$info['cmnd']?></p>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="modal-td" width="50%">Ngày sinh:</td>
+                    <td class="modal-td">
+                        <p><?=$info['ngaysinh']?></p>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="modal-td">Điện thoại:</td>
+                    <td class="modal-td">
+                        <p><?=$info['dienthoai']?></p>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="modal-td">Email SV:</td>
+                    <td class="modal-td">
+                        <p><?=$info['email']?></p>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="modal-td">Chuyên Ngành:</td>
+                    <td class="modal-td">
+                        <p><?=$info['chuyennganh']?></p>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="modal-td">Giáo viên CN:</td>
+                    <td class="modal-td">
+                        <p><?=$info['hvt']?></p>
+                    </td>
+                </tr>
 
                         <tr>
                             <td class="modal-td">Địa chỉ :</td>
@@ -72,14 +73,15 @@
                     </tbody>
                 </table>
 
-            </div>
-            
-            <table cellspacing="3" cellpadding="0" border="0px" width="100%">
-                <tbody>
-                    <tr valign="top">
-                        <td style="width: 100%">
-                            <div>
-                                <table class="grid" cellspacing="0" border="0" id="ctl00_c_GridDC" style="
+</div>
+       
+        
+        <table cellspacing="3" cellpadding="0" border="0px" width="100%">
+            <tbody>
+                <tr valign="top">
+                    <td style="width: 100%">
+                        <div>
+                            <table class="grid" cellspacing="0" border="0" id="ctl00_c_GridDC" style="
                 border-style: None;
                 width: 100%;
                 border-collapse: collapse;

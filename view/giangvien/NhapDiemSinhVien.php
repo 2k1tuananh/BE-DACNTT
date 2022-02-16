@@ -77,13 +77,13 @@
             </div>
 
             <div>
-                <td>Chọn học kỳ:</td>
+                <!-- <td>Chọn học kỳ:</td>
                 <td>
                     <select style="width: 13rem;">
                         <option>Kỳ 1 nhóm 1</option>
                         <option>Kỳ 2 nhóm 2</option>
                     </select>
-                </td>
+                </td> -->
             </div>
 
             <div style="position: relative">
@@ -124,6 +124,20 @@
                     })
                 });
             });
+            
+                $(function() {
+                    $('#bttimkiem').trigger('click'); //This event will fire the change event. 
+                    $('#bttimkiem').click(function() {
+                        var data = $('#timkiem').val();
+                        $.get("./index.php", {
+                            controller: "point",
+                            action: "timkiem",
+                            info: data
+                        }, function(data) {
+                            $("#bangdiem").html(data);
+                        })
+                    });
+                });
         </script>
 
 
@@ -207,7 +221,7 @@
             </tr>
             <script>
                 $(document).ready(function() {
-                    $("button.capnhat").click(function() {
+                    $("button.btnCapNhat").click(function() {
                         var masinhvien = ".masinhvien" + $(this).attr("id");
                         var tenmon = ".tenmon" + $(this).attr("id");
                         var diemquatrinh = "#diemquatrinh" + $(this).attr("id");
@@ -271,7 +285,7 @@
                             <p class="text-center" style="background-color: #f3f6f7; border: none;"><?= $info['diemtongket'] ?></p>
                         </td>
                         <td name="">
-                            <button style="margin: 0 2px 0 2px;" class="btn capnhat" id="<?= $stt ?>"> Cập nhật</button>
+                            <button style="margin: 0 2px 0 2px;" class="btn btnCapNhat" id="<?= $stt ?>"> Cập nhật</button>
                         </td>
                     </tr>
             <?php }
@@ -287,26 +301,6 @@
 
 <!-- End Right -->
 </div>
-<!-- End Page -->
-<!-- Footer -->
-<div id="footer">
-    Địa chỉ: Đường Nghiêm Xuân Yêm - Đại Kim - Hoàng Mai - Hà Nội<br />
-    Điện thoại hỗ trợ kỹ thuật:(04) 355 92 678 website
-    <a href="http://www.thanglong.edu.vn">http://www.thanglong.edu.vn</a>
-    mail:<a href="mailto:p.cntt@thanglong.edu.vn">p.cntt@thanglong.edu.vn</a><a href="http://atgo.vn/member/svgo/QTM2NjQzfDExLzEyLzIwMDF8TkdVWeG7hE4gVEnhur5OfFTDgEl8fGFuaHRhaWJudm4xMjExMjAwMUBnbWFpbC5jb218Q2jGsGEgY8OzfENoxrBhIGPDsw==">.</a>
-</div>
-<!-- End Footer -->
-
-<div id="eJOY__extension_root" class="eJOY__extension_root_class" style="all: unset"></div>
-<iframe id="nr-ext-rsicon" style="
-position: absolute;
-display: none;
-width: 50px;
-height: 50px;
-z-index: 2147483647;
-border-style: none;
-background: transparent;
-"></iframe>
 
 </body>
 
