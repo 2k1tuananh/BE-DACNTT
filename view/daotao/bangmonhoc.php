@@ -41,7 +41,23 @@
 
                             <td class="item-monhoc">
                             <button class="btnTimKiem capnhat" type="button" id="<?= $info['mamon']?>" data-toggle="modal" data-target="#SuaMonHoc">Cập nhật</button>
-                              
+                            <button type="button" id="xoa<?= $stt ?>" class="btnTimKiem">Xóa</button>
+                            <script>
+                              $(document).ready(function() {
+                                $("#xoa<?= $stt ?>").click(function() {
+                                  var mamon = "<?= $info['mamon'] ?>";
+                                  if (confirm("Bạn chắc chắn muốn xóa ???") == true) {
+                                    $.get("./index.php", {
+                                      controller: "daotao",
+                                      action: "xoamon",
+                                      info: mamon
+                                    }, function(data) {
+                                      $("#info").html(data);
+                                    })
+                                  }
+                                });
+                              });
+                            </script>
                              
                             </td>
                             
@@ -61,7 +77,7 @@
                             $("button.capnhat").click(function(){
                                     var mamon=$(this).attr("id")
                                    
-                                    $.get("./index.php",{controller:"daotao",action:"updatechuyennganh", mamon:mamon}, function(data) {
+                                    $.get("./index.php",{controller:"daotao",action:"updatemonhoc", mamon:mamon}, function(data) {
                                     $("#SuaMonHoc").html(data);
                                 })                                                                                     
                             });

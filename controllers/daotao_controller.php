@@ -346,7 +346,7 @@ class daotao_controller {
     }
     function capnhatmonhocdaotao()
     {
-        $this->db->capnhatmonhoc($_GET['mamon'],$_GET['tenmon'],$_GET['sotinchi'],$_GET['chuyennganh']);
+        $this->db->capnhatmonhoc($_GET['mamon'],$_GET['tenmon'],$_GET['sotinchi'],$_GET['chuyennganh'],$_GET['thu'],$_GET['ca']);
         $monhoc=$this->db->selectlistmonhocdaotao();
         require_once("./view/daotao/bangmonhoc.php");
     }

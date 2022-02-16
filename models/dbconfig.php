@@ -1000,9 +1000,9 @@
             $sql = "UPDATE `chuyennganh` SET `machuyennganh`='$machuyennganh',`tenchuyennganh`='$tenchuyennganh' WHERE machuyennganh = '$machuyennganh'";
             return $this->execute($sql);
         }
-        public function capnhatmonhoc($mamon,$tenmon,$st,$cn)
+        public function capnhatmonhoc($mamon,$tenmon,$st,$cn,$thu,$ca)
         {
-            $sql = "UPDATE `monhoc` SET `mamon`='$mamon',`tenmon`='$tenmon',`sotinchi`='$st',`chuyennganh`='$cn' WHERE mamon = '$mamon'";
+            $sql = "UPDATE `monhoc` SET `mamon`='$mamon',`tenmon`='$tenmon',`sotinchi`='$st',`chuyennganh`='$cn' ,`thu`='$thu',`ca`='$ca' WHERE mamon = '$mamon'";
             return $this->execute($sql);
         }
     }
