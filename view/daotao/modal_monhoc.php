@@ -42,7 +42,7 @@
                 <option value="Thứ 4">Thứ 4</option>
                 <option value="Thứ 5">Thứ 5</option>
                 <option value="Thứ 6">Thứ 6</option>
-                <option value="Thứ 6">Thứ 7</option>
+                <option value="Thứ 7">Thứ 7</option>
               </select></td>
           </tr>
           <tr>
