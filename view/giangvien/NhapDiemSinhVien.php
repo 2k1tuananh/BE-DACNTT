@@ -112,8 +112,8 @@
 
         <script>
             $(function() {
-                $('#timkiem').trigger('change'); //This event will fire the change event. 
-                $('#timkiem').change(function() {
+                $('#bttimkiem').trigger('click'); //This event will fire the change event. 
+                $('#bttimkiem').click(function() {
                     var data = $(this).val();
                     $.get("./index.php", {
                         controller: "point",
@@ -207,7 +207,7 @@
             </tr>
             <script>
                 $(document).ready(function() {
-                    $("button").click(function() {
+                    $("button.capnhat").click(function() {
                         var masinhvien = ".masinhvien" + $(this).attr("id");
                         var tenmon = ".tenmon" + $(this).attr("id");
                         var diemquatrinh = "#diemquatrinh" + $(this).attr("id");
@@ -271,7 +271,7 @@
                             <p class="text-center" style="background-color: #f3f6f7; border: none;"><?= $info['diemtongket'] ?></p>
                         </td>
                         <td name="">
-                            <button style="margin: 0 2px 0 2px;" class="btn" id="<?= $stt ?>"> Cập nhật</button>
+                            <button style="margin: 0 2px 0 2px;" class="btn capnhat" id="<?= $stt ?>"> Cập nhật</button>
                         </td>
                     </tr>
             <?php }

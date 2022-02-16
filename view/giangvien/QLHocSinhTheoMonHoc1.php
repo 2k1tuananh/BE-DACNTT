@@ -94,15 +94,13 @@
                                     <span style="padding: 5px; ">Chi Tiêt</span>
                                 </Button>
 
-                                <button style="margin-left: 5px;">
-                                    <span style="padding: 5px; "><i class="fas fa-trash-alt"></i>&ensp;Xóa</span>
-                                </button>
+
                             </td>
                         </tr>
                         <?php }}?>
                         <script>
                         $(document).ready(function(){
-                            $("button").click(function(){
+                            $("button.chitiet").click(function(){
                                     var masinhvien=$(this).attr("id")
                                     $.get("./index.php",{controller:"point",action:"QLHocSinhTheoMonHoc", msv:masinhvien}, function(data) {
                                     $("#myModal1").html(data);

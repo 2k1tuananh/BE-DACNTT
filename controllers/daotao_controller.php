@@ -49,6 +49,9 @@ class daotao_controller {
     function timkiem()
     {
         $listStudent=$this->db->timkiemsinhvien($_GET['info']);
+        if($listStudent==0){
+            $listStudent='';
+        }
         require_once("./view/daotao/PDTTimKiemSinhVien.php");
        
     }
@@ -217,6 +220,9 @@ class daotao_controller {
     {
         
         $listGiangVien = $this->db->timkiemgiangvien($_GET['info']);
+        if($listGiangVien==0){
+            $listGiangVien='';
+        }
         
         require_once("./view/daotao/banggiangvien.php");
     }
@@ -312,7 +318,7 @@ class daotao_controller {
     function themchuyennganh()
     {
         $data=$this->db->createchuyennganh($_GET['machuyennganh'], $_GET['tenchuyennganh']);
-        
+        $chuyennganh = $this->db->selectlistchuyennganh();
         require_once("./view/daotao/bangchuyennganh.php");
     }
     function updatechuyennganh()
