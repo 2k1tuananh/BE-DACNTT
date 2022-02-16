@@ -67,6 +67,10 @@
                                 <td class="modal-td"><input type="text" class="form-control" value=" <?= $gvid['magiangvien'] ?>@thanglong.edu.vn" name="email" id="email" readonly></td>
                             </tr>
                             <tr>
+                                <td class="modal-td">Mật khẩu:</td>
+                                <td class="modal-td"><input type="text" class="form-control" value=" <?= $gvid['password'] ?>" name="password" id="password"></td>
+                            </tr>
+                            <tr>
                                 <td class="modal-td">Địa chỉ hộ khẩu:</td>
                                 <td class="modal-td">
                                     <input type="text" class="form-control" value="<?= $gvid['diachi'] ?>"  name="diachi" id="diachi">
@@ -101,8 +105,24 @@
         <?php require_once("./view/admin/footeradmin.php"); ?>
     </div>
 </div>
- <!-- Meta tag Keywords -->
 
+<script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Core plugin JavaScript-->
+    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
+    <!-- Custom scripts for all pages-->
+    <script src="js/sb-admin-2.min.js"></script>
+
+    <!-- Page level plugins -->
+    <script src="vendor/datatables/jquery.dataTables.min.js"></script>
+    <script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
+
+    <!-- Page level custom scripts -->
+    <script src="js/demo/datatables-demo.js"></script>
+    
+    
     <script src="vendor/jquery/jquery.min.js"></script>
     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
@@ -118,3 +138,4 @@
 
     <!-- Page level custom scripts -->
     <script src="js/demo/datatables-demo.js"></script>
+    

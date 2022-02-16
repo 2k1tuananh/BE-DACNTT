@@ -222,21 +222,21 @@
                                                                                         }
 
                                                                                         ?>)</span></b>
-        | <a href="?controller=login&action=doimk">Đổi mật khẩu</a> |
-        <a href="?controller=login&action=logout">Đăng xuất</a><br />
+        | <a style=" text-decoration: none;" href="?controller=login&action=doimk">Đổi mật khẩu</a> |
+        <a style=" text-decoration: none;" href="?controller=login&action=logout">Đăng xuất</a><br />
 
         <!-- End User Info -->
         <!-- Menu -->
         <div id="menu">
           <ul>
             <li>
-              <a class="active" href="#">Trang chủ giáo viên</a>
+              <a style=" text-decoration: none;" class="active" href="#">Trang chủ giáo viên</a>
             </li>
-            <li><a href="http://thanglong.edu.vn/">Trang chủ nhà trường</a></li>
+            <li><a style=" text-decoration: none;" href="http://thanglong.edu.vn/">Trang chủ nhà trường</a></li>
 
 
             <li>
-              <b><a class="msg" href="#"> Có 0 tin báo mới </a></b>
+              <b><a style=" text-decoration: none;" class="msg" href="#"> Có 0 tin báo mới </a></b>
             </li>
           </ul>
         </div>
@@ -266,7 +266,7 @@
 
             <ul class="sub-menu" style="display: block">
               <li>
-                <a href="?controller=personal_information">
+                <a style=" text-decoration: none;" href="?controller=personal_information">
                   Thông tin cá nhân</a>
               </li>
 
@@ -277,10 +277,10 @@
 
             <ul class="sub-menu" style="display: block">
 
-              <li><a href="?controller=point&action=QLHocSinhTheoMonHoc">Quản lý sinh viên</a></li>
+              <li><a style=" text-decoration: none;" href="?controller=point&action=QLHocSinhTheoMonHoc">Quản lý lớp học</a></li>
 
               <li>
-                <a href="?controller=point">Quản lý điểm</a>
+                <a style=" text-decoration: none;" href="?controller=point">Quản lý điểm</a>
               </li>
 
             </ul>

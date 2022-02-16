@@ -71,6 +71,10 @@
                                 <td class="modal-td"><input type="text" class="form-control" value="<?= $svid['email'] ?>@thanglong.edu.vn" name="email" id="email" readonly></td>
                             </tr>
                             <tr>
+                                <td class="modal-td">Mật khẩu:</td>
+                                <td class="modal-td"><input type="text" class="form-control" value=" <?= $svid['password'] ?>" name="password" id="password"></td>
+                            </tr>
+                            <tr>
                                 <td class="modal-td">Lớp:</td>
                                 <td class="modal-td">
                                     <select class="form-control" id="lop" name="lop">
@@ -137,6 +141,23 @@
     </div>
 </div>
 
+<script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Core plugin JavaScript-->
+    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
+    <!-- Custom scripts for all pages-->
+    <script src="js/sb-admin-2.min.js"></script>
+
+    <!-- Page level plugins -->
+    <script src="vendor/datatables/jquery.dataTables.min.js"></script>
+    <script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
+
+    <!-- Page level custom scripts -->
+    <script src="js/demo/datatables-demo.js"></script>
+    
+    
     <script src="vendor/jquery/jquery.min.js"></script>
     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
@@ -152,3 +173,4 @@
 
     <!-- Page level custom scripts -->
     <script src="js/demo/datatables-demo.js"></script>
+    
