@@ -77,13 +77,13 @@
             </div>
 
             <div>
-                <td>Chọn học kỳ:</td>
+                <!-- <td>Chọn học kỳ:</td>
                 <td>
                     <select style="width: 13rem;">
                         <option>Kỳ 1 nhóm 1</option>
                         <option>Kỳ 2 nhóm 2</option>
                     </select>
-                </td>
+                </td> -->
             </div>
 
             <div style="position: relative">
@@ -124,6 +124,20 @@
                     })
                 });
             });
+            
+                $(function() {
+                    $('#bttimkiem').trigger('click'); //This event will fire the change event. 
+                    $('#bttimkiem').click(function() {
+                        var data = $('#timkiem').val();
+                        $.get("./index.php", {
+                            controller: "point",
+                            action: "timkiem",
+                            info: data
+                        }, function(data) {
+                            $("#bangdiem").html(data);
+                        })
+                    });
+                });
         </script>
 
 
@@ -207,7 +221,7 @@
             </tr>
             <script>
                 $(document).ready(function() {
-                    $("button").click(function() {
+                    $("button.btnCapNhat").click(function() {
                         var masinhvien = ".masinhvien" + $(this).attr("id");
                         var tenmon = ".tenmon" + $(this).attr("id");
                         var diemquatrinh = "#diemquatrinh" + $(this).attr("id");
@@ -271,7 +285,7 @@
                             <p class="text-center" style="background-color: #f3f6f7; border: none;"><?= $info['diemtongket'] ?></p>
                         </td>
                         <td name="">
-                            <button style="margin: 0 2px 0 2px;" class="btn" id="<?= $stt ?>"> Cập nhật</button>
+                            <button style="margin: 0 2px 0 2px;" class="btn btnCapNhat" id="<?= $stt ?>"> Cập nhật</button>
                         </td>
                     </tr>
             <?php }

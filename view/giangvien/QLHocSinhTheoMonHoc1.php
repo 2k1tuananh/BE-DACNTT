@@ -94,9 +94,7 @@
                                     <span style="padding: 5px; ">Chi Tiêt</span>
                                 </Button>
 
-                                <button style="margin-left: 5px;">
-                                    <span style="padding: 5px; "><i class="fas fa-trash-alt"></i>&ensp;Xóa</span>
-                                </button>
+                               
                             </td>
                         </tr>
                         <?php }}?>
