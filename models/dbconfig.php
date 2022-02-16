@@ -149,7 +149,7 @@
         }
 
         public function updatemksinhvien($msv,$mk){
-            $sql="UPDATE dangnhap SET matkhau='$mk' WHERE taikhoan='$msv'";
+            $sql="UPDATE sinhvien SET password='$mk' WHERE masinhvien='$msv'";
             return $this->execute($sql);
         }
 
