@@ -149,7 +149,7 @@
         }
 
         public function updatemksinhvien($msv,$mk){
-            $sql="UPDATE sinhvien SET password ='$mk' WHERE masinhvien='$msv'";
+            $sql="UPDATE sinhvien SET password='$mk' WHERE masinhvien='$msv'";
             return $this->execute($sql);
         }
 
@@ -194,6 +194,7 @@
        
         public function updatemkgiangvien($mgv,$mk){
             $sql="UPDATE giangvien SET password='$mk' WHERE magiangvien='$mgv'";
+            echo $sql;
             return $this->execute($sql);
         }
         public function getinfo_mon($mgv){

@@ -78,7 +78,6 @@ class login_controller {
         if(isset($_SESSION['msv']))
         {
             $data=$this->db->getinfosinhvien($_SESSION['msv']);
-            require_once("./view/DoiMatKhau.php");
             if( isset($_POST['doimk']) ){
                 $mkc = $_POST['mkc'];
                 $mkm = $_POST['mkm'];
@@ -105,7 +104,7 @@ class login_controller {
         else
         {
             $data=$this->db->getinfogiangvien($_SESSION['mgv']);
-            require_once("./view/DoiMatKhau.php");
+          
             if( isset($_POST['doimk']) ){
                 $mkc = $_POST['mkc'];
                 $mkm = $_POST['mkm'];
@@ -129,6 +128,6 @@ class login_controller {
                 }
             }
         }
-       
+        require_once("./view/DoiMatKhau.php");
     }
 }
