@@ -200,56 +200,28 @@
                 margin-top: 10px;
               ">
                 <tr style="background-color: #e4e8e9">
-                    <th style="
-                    border: 1px solid #dddddd;
-                    text-align: left;
-                    padding: 8px;
-                  ">
+                    <th  class="text-center">
                         Mã sinh viên
                     </th>
-                    <th style="
-                    border: 1px solid #dddddd;
-                    text-align: left;
-                    padding: 8px;
-                  ">
+                    <th  class="text-center">
                         Họ tên
                     </th>
-                    <th style="
-                    border: 1px solid #dddddd;
-                    text-align: left;
-                    padding: 8px;
-                  ">
+                    <th  class="text-center">
                         Tình trạng
                     </th>
-                    <th style="
-                    border: 1px solid #dddddd;
-                    text-align: left;
-                    padding: 8px;
-                  "></th>
+                    <th  class="text-center"></th>
                 </tr>
                 <?php $i = 0;
                 foreach ($data as $value) {
                     $i++; ?>
                     <tr>
-                        <td style="
-                    border: 1px solid #dddddd;
-                    text-align: left;
-                    padding: 8px;
-                  ">
+                        <td  class="text-center">
                             <?= $value['masinhvien'] ?>
                         </td>
-                        <td style="
-                    border: 1px solid #dddddd;
-                    text-align: left;
-                    padding: 8px;
-                  ">
+                        <td  class="text-center">
                             <?= $value['hovaten'] ?>
                         </td>
-                        <td style="
-                    border: 1px solid #dddddd;
-                    text-align: left;
-                    padding: 8px;
-                  ">
+                        <td  class="text-center">
                             <script>
                                 $(function() {
                                     $('#sapxep<?= $i ?>').trigger('change'); //This event will fire the change event. 

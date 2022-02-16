@@ -294,12 +294,12 @@
                         ">
                 <tbody>
                   <tr>
-                    <th scope="col">STT</th>
-                    <th scope="col" style="white-space: nowrap">
+                    <th  class="text-center">STT</th>
+                    <th  class="text-center" style="white-space: nowrap">
                       Mã chuyên ngành
                     </th>
-                    <th scope="col">Tên chuyên ngành</th>
-                    <th scope="col"></th>
+                    <th  class="text-center">Tên chuyên ngành</th>
+                    <th  class="text-center"></th>
                   <tr>
                     <?php $stt = 0;
                     foreach ($chuyennganh as $info) {

@@ -18,11 +18,11 @@
                       >
                         <tbody>
                           <tr>
-                            <th scope="col">STT</th>
-                            <th scope="col">Mã Môn</th>
-                            <th scope="col">Tên Môn</th>
-                            <th scope="col">Giáo Viên</th>
-                            <th scope="col"></th>
+                            <th  class="text-center">STT</th>
+                            <th  class="text-center">Mã Môn</th>
+                            <th  class="text-center">Tên Môn</th>
+                            <th  class="text-center">Giáo Viên</th>
+                            <th  class="text-center"></th>
                           </tr>
                           <tr>
                           <?php $stt=0; 

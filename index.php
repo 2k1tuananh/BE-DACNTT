@@ -6,7 +6,11 @@
     
     <title>WebTruong</title>
     <!-- Meta tag Keywords -->
-    
+    <style>
+        th {
+            text-align: center;
+        }
+    </style>
 </head>
 
 <body>

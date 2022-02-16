@@ -290,7 +290,7 @@
               <tbody>
 
                 <tr>
-                  <th scope="col" style="
+                  <th  class="text-center" style="
                       
                       font-size: 15px;
                       
@@ -299,24 +299,24 @@
                       
                       font-size: 15px;
                       
-                    " scope="col">Mã SV</th>
+                    "  class="text-center">Mã SV</th>
                   <th style="
                       
                       font-size: 15px;
                       
-                    " scope="col">Tên Sinh Viên</th>
+                    "  class="text-center">Tên Sinh Viên</th>
                   <th style="
                       
                       font-size: 15px;
                       
                     
                       
-                    " scope="col">Trạng thái</th>
+                    "  class="text-center">Trạng thái</th>
                   <th style="
                       
                       font-size: 15px;
                       
-                    " scope="col"></th>
+                    "  class="text-center"></th>
 
                 </tr>
                 <?php $stt = 0;

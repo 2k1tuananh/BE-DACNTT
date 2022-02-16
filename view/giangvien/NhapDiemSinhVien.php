@@ -78,8 +78,6 @@
                 </select>
             </div>
 
-<<<<<<< HEAD
-=======
             <div>
                 <!-- <td>Chọn học kỳ:</td>
                 <td>
@@ -89,7 +87,6 @@
                     </select>
                 </td> -->
             </div>
->>>>>>> d506eadcb5d4847862d94f14832af84b15986c06
 
             <div style="position: relative">
                 <input id="timkiem" name="timkiem" style="padding-left: 20px;
@@ -182,39 +179,25 @@
         margin-top: 20px;">
 
             <tr style="background-color: #e4e8e9;">
-                <th style="border: 1px solid #dddddd;
-                text-align: left;
-                padding: 8px;">
+                <th  class="text-center">
                     Họ tên
                 </th>
-                <th style="border: 1px solid #dddddd;
-                text-align: left;
-                padding: 8px;">
+                <th  class="text-center">
                     Mã sinh viên
                 </th>
-                <th style="border: 1px solid #dddddd;
-                text-align: left;
-                padding: 8px;">
+                <th  class="text-center">
                     Môn học
                 </th>
-                <th style="border: 1px solid #dddddd;
-                text-align: left;
-                padding: 8px;">
+                <th  class="text-center">
                     Điểm quá trình
                 </th>
-                <th style="border: 1px solid #dddddd;
-                text-align: left;
-                padding: 8px;">
+                <th  class="text-center">
                     Điểm cuối kỳ
                 </th>
-                <th style="border: 1px solid #dddddd;
-                text-align: left;
-                padding: 8px;">
+                <th  class="text-center">
                     Điểm tổng kết
                 </th>
-                <th style="border: 1px solid #dddddd;
-                text-align: left;
-                padding: 8px;">
+                <th  class="text-center">
 
                 </th>
             </tr>
@@ -253,34 +236,22 @@
                 foreach ($svl as $info) {
                     $stt++; ?>
                     <tr>
-                        <td class="hovaten<?= $stt ?>" id="<?= $info['hovaten'] ?>" name="hovaten" style="border: 1px solid #dddddd;
-                text-align: left;
-                padding: 8px;">
+                        <td class="hovaten<?= $stt ?>" id="<?= $info['hovaten'] ?>" name="hovaten"  class="text-center">
                             <?= $info['hovaten'] ?>
                         </td>
-                        <td class="masinhvien<?= $stt ?>" id="<?= $info['masinhvien'] ?>" name="masinhvien" style="border: 1px solid #dddddd;
-                text-align: left;
-                padding: 8px;">
+                        <td class="masinhvien<?= $stt ?>" id="<?= $info['masinhvien'] ?>" name="masinhvien"  class="text-center">
                             <?= $info['masinhvien'] ?>
                         </td>
-                        <td class="tenmon<?= $stt ?>" id="<?= $info['tenmon'] ?>" name="tenmon" style="border: 1px solid #dddddd;
-                text-align: left;
-                padding: 8px;">
+                        <td class="tenmon<?= $stt ?>" id="<?= $info['tenmon'] ?>" name="tenmon"  class="text-center">
                             <?= $info['tenmon'] ?>
                         </td>
-                        <td style="border: 1px solid #dddddd;
-                text-align: left;
-                padding: 8px;">
+                        <td  class="text-center">
                             <input id="diemquatrinh<?= $stt ?>" name="diemquatrinh<?= $stt ?>" style="background-color: #f3f6f7; border: none;" value="<?= $info['diemquatrinh'] ?>" type="number" step="0.01" min="0" max="10">
                         </td>
-                        <td style="border: 1px solid #dddddd;
-                text-align: left;
-                padding: 8px;">
+                        <td  class="text-center">
                             <input id="diemcuoiky<?= $stt ?>" name="diemcuoiky<?= $stt ?>" t style="background-color: #f3f6f7; border: none;" value="<?= $info['diemcuoiky'] ?>" type="number" step="0.01" min="0" max="10">
                         </td>
-                        <td name="diemtongket" style="border: 1px solid #dddddd;
-                text-align: left;
-                padding: 8px;">
+                        <td name="diemtongket"  class="text-center">
                             <p class="text-center" style="background-color: #f3f6f7; border: none;"><?= $info['diemtongket'] ?></p>
                         </td>
                         <td name="">

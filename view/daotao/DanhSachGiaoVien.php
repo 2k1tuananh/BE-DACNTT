@@ -192,12 +192,12 @@
                         ">
               <tbody>
                 <tr class="text-center">
-                  <th scope="col">STT</th>
-                  <th scope="col">Mã Giáo Viên</th>
-                  <th scope="col">Tên Giáo Viên</th>
-                  <th scope="col">Trạng thái</th>
+                  <th class="text-center">STT</th>
+                  <th class="text-center">Mã Giáo Viên</th>
+                  <th class="text-center">Tên Giáo Viên</th>
+                  <th class="text-center">Trạng thái</th>
 
-                  <th scope="col">Hành động</th>
+                  <th class="text-center">Hành động</th>
 
                 </tr>
                 <tr>

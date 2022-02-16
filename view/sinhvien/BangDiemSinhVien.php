@@ -16,17 +16,17 @@
                         ">
               <tbody>
                 <tr>
-                  <th scope="col">STT</th>
-                  <th scope="col" style="white-space: nowrap">
+                  <th class="text-center">STT</th>
+                  <th class="text-center" style="white-space: nowrap">
                     Mã HP
                   </th>
-                  <th scope="col">Tên HP</th>
-                  <th scope="col" style="white-space: nowrap">
+                  <th class="text-center">Tên HP</th>
+                  <th class="text-center" style="white-space: nowrap">
                     Số TC
                   </th>
-                  <th scope="col">Điểm quá trình</th>
-                  <th scope="col">Điểm thi</th>
-                  <th scope="col">Điểm tổng</th>
+                  <th class="text-center">Điểm quá trình</th>
+                  <th class="text-center">Điểm thi</th>
+                  <th class="text-center">Điểm tổng</th>
                 </tr>
                 <?php
                 $stt = 1;

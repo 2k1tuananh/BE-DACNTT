@@ -17,18 +17,18 @@
                       >
                         <tbody>
                           <tr>
-                            <th scope="col">STT</th>
-                            <th scope="col" style="white-space: nowrap">
+                            <th  class="text-center">STT</th>
+                            <th  class="text-center" style="white-space: nowrap">
                               Mã Môn
                             </th>
-                            <th scope="col">Tên Môn</th>
-                            <th scope="col" style="white-space: nowrap">
+                            <th  class="text-center">Tên Môn</th>
+                            <th  class="text-center" style="white-space: nowrap">
                               Số TC
                             </th>
                             
-                            <th scope="col">Thứ</th>
-                            <th scope="col">Ca học</th>
-                            <th scope="col">Trạng thái</th>
+                            <th  class="text-center">Thứ</th>
+                            <th  class="text-center">Ca học</th>
+                            <th  class="text-center">Trạng thái</th>
 
                           </tr>
                           <?php $stt=0; foreach($mon as $info){ $stt++; ?>
