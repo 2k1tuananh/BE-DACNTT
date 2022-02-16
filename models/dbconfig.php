@@ -77,6 +77,17 @@
             }
             return $data;
         }       
+        public function getinfoGVCN($msv){
+            $sql = "select * from sinhvien WHERE masinhvien='$msv'";
+            $this->execute($sql);
+            if($this->dem()!=0){
+                $data = mysqli_fetch_array($this->result);
+            }
+            else{
+                $data = [];
+            }
+            return $data;
+        }       
         public function updatesinhvien($msv,$img,$gioitinh,$cmnd,$dienthoai,$email,$diachi){
             $sql="UPDATE sinhvien SET `image`='$img', gioitinh='$gioitinh', cmnd='$cmnd', dienthoai='$dienthoai', email='$email', diachi='$diachi' WHERE masinhvien='$msv'";
             return $this->execute($sql);
@@ -86,7 +97,7 @@
             $sql = "select * from `sinhvien-diemmon` inner join `monhoc` on `sinhvien-diemmon`.mamon=`monhoc`.mamon WHERE masinhvien='$msv'";
             $this->execute($sql);
             if($this->dem()==0){
-                $data=0;
+                $data=[];
             }
             else{
                 while($datas = $this->getData()) {
