@@ -78,18 +78,6 @@
                 </select>
             </div>
 
-<<<<<<< HEAD
-=======
-            <div>
-                <!-- <td>Chọn học kỳ:</td>
-                <td>
-                    <select style="width: 13rem;">
-                        <option>Kỳ 1 nhóm 1</option>
-                        <option>Kỳ 2 nhóm 2</option>
-                    </select>
-                </td> -->
-            </div>
->>>>>>> d506eadcb5d4847862d94f14832af84b15986c06
 
             <div style="position: relative">
                 <input id="timkiem" name="timkiem" style="padding-left: 20px;
