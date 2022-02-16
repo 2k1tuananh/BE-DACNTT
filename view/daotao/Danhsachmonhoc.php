@@ -356,7 +356,7 @@
             <tr>
               <td class="modal-td" width="30%">Chuyên ngành:</td>
               <td class="modal-td">
-                <select id="chuyennganh" class="form-control">
+                <select  id="chuyennganh" class="form-control">
                   <?php foreach ($chuyennganh as $info) { ?>
                     <option><?= $info['tenchuyennganh'] ?></option>
                   <?php } ?>

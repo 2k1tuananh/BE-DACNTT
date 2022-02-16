@@ -53,9 +53,9 @@
     <div class="title">Nhập điểm sinh viên</div>
     <div class="entry">
         <div class="container_timkiem">
-            <div>
-                <span>Chọn môn học:</span>
-                <select id="mamon" style="width: 13rem;">
+            <div style="display: flex;">
+                <p>Chọn môn học:</p>
+                <select class="form-control" style="width:130px;margin-left:-100px" id="mamon" style="width: 13rem;">
                     <script>
                         $(function() {
                             $('#mamon').trigger('change'); //This event will fire the change event. 

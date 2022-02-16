@@ -86,7 +86,7 @@
     <div class="form-tkb">
       <div class="chuyen-nganh">
         <p>Chọn chuyên ngành:</p>
-        <select id="sapxep">
+        <select class="form-control" id="sapxep">
           <script>
             $(function() {
               $('#sapxep').trigger('change'); //This event will fire the change event. 

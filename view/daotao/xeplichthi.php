@@ -77,7 +77,7 @@
   <div class="form form-tkb">
     <div class="chuyen-nganh">
       <p>Chọn chuyên ngành:</p>
-      <select id="sapxep_loclt">
+      <select class="form-control" id="sapxep_loclt">
         <script>
           $(function() {
             $('#sapxep_loclt').trigger('change'); //This event will fire the change event. 

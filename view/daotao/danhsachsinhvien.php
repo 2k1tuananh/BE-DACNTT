@@ -244,7 +244,7 @@
     </script>
     <div class="chuyen-nganh">
       <p>Chọn chuyên ngành:</p>
-      <select id="chuyennganh1">
+      <select class="form-control" id="chuyennganh1">
         <option class="a" id="Tất cả">Tất cả</option>
         <?php
 

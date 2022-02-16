@@ -108,7 +108,7 @@
   <div class="form">
     <div class="chuyen-nganh">
       <p>Chọn chuyên ngành:</p>
-      <select id="chuyennganh1">
+      <select class="form-control" id="chuyennganh1">
         <option class="a" id="Tất cả">Tất cả</option>
         <?php
 
@@ -173,7 +173,7 @@
   </script>
   <div class="trang-thai">
     <p>Chọn trạng thái:</p>
-    <select id="chontrangthai">
+    <select class="form-control" style="width:10%; margin-left:-100px" id="chontrangthai">
       <option>Tất cả</option>
       <option>Đang dạy</option>
       <option>Đã nghỉ</option>

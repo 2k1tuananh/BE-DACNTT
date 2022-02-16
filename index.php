@@ -10,6 +10,12 @@
         th {
             text-align: center;
         }
+        td {
+            text-align: center;
+        }
+        p {
+            width: 250px;
+        }
     </style>
 </head>
 

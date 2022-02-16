@@ -51,9 +51,9 @@
     <div class="title">Quản lý lớp học</div>
     <div class="entry">
         <div class="container_timkiem">
-            <div>
-                <span>Chọn môn học:</span>
-                <select id="mamon">
+            <div style="display: flex;">
+                <p>Chọn môn học:</p>
+                <select  style="width:200px" class="form-control" id="mamon">
                     <script>
                         $(function() {
                             $('#mamon').trigger('change'); //This event will fire the change event. 
@@ -124,9 +124,9 @@
 
 
             <div style="margin-top: 10px;" class="container_timkiem">
-                <div>
-                    <span>Chọn tình trạng:</span>
-                    <select id="sapxep">
+                <div style="display: flex;">
+                    <p>Chọn tình trạng:</p>
+                    <select style="width:200px" class="form-control" id="sapxep">
                         <script>
                             $(function() {
                                 $('#sapxep').trigger('change'); //This event will fire the change event. 
@@ -243,7 +243,7 @@
                                     });
                                 });
                             </script>
-                            <select id="sapxep<?= $i ?>">
+                            <select  class="form-control" style="width:130px" id="sapxep<?= $i ?>">
                                 <?php if ($value['trangthai'] == 1) { ?>
                                     <option>Đang học</option>
                                     <option>Cấm thi</option>
