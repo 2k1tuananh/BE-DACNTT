@@ -1,5 +1,4 @@
 <?php require_once('./view/layouts/headerGiaoVien.php'); ?>
-
 <style>
     button {
         z-index: 1;
@@ -47,15 +46,14 @@
         position: relative;
     }
 </style>
-
 <!-- Right -->
 <div id="right" style="width: 100%; margin-left:10px;">
-    <div class="title">Nhập điểm sinh viên</div>
+    <div class="title">Quản lý lớp học</div>
     <div class="entry">
         <div class="container_timkiem">
-            <div>
-                <span>Chọn môn học:</span>
-                <select id="mamon" style="width: 13rem;">
+            <div style="display: flex;">
+                <p>Chọn môn học:</p>
+                <select  style="width:200px" class="form-control" id="mamon">
                     <script>
                         $(function() {
                             $('#mamon').trigger('change'); //This event will fire the change event. 
@@ -63,232 +61,303 @@
                                 var data = $(this).val();
                                 $.get("./index.php", {
                                     controller: "point",
-                                    Ajax_action: "bangdiem",
+                                    action: "sxtheomon",
                                     info: data
                                 }, function(data) {
-                                    $("#bangdiem").html(data);
+                                    $("#bangdiem1").html(data);
                                 })
                             });
                         });
                     </script>
-                    <option class="a" id="Tất cả">Tất cả</option>
+                    <?php
+                    if ($mon == []) {
+                        echo '<option class="a" id="">Chưa được phân công</option>';
+                    } else {
+                        echo '<option class="a" id="Tất cả">Tất cả</option>';
+                    }
+                    ?>
+
+
                     <?php foreach ($mon as $monhoc) { ?>
-                        <option class="a"><?php echo $monhoc['tenmon']; ?></option>
+                        <option class="a" id="<?= $monhoc['tenmon'] ?>"><?php echo $monhoc['tenmon']; ?></option>
                     <?php } ?>
                 </select>
             </div>
 
-
-            <div style="position: relative">
-                <input id="timkiem" name="timkiem" style="padding-left: 20px;
-                                height: 35px;
-                    " type="text" placeholder="Tìm kiếm">
-                <button id="bttimkiem" style="
-                  position: absolute;
-                  right: 0px;
-                  height: 35px;
-                  bottom: 0px;
-                  top: 0px;
-                  padding: 0 10px 0 10px;
-                ">
+            <div class="right_timkiem">
+                <input id="timkiem" style="padding-left: 20px; height: 35px;" type="text" placeholder="Tìm kiếm" />
+                <button id="bttimkiem" style=" position: absolute;right: 0px; height: 35px;bottom: 0px;top: 0px;padding: 0 10px 0 10px;">
                     Tìm
                 </button>
             </div>
+
         </div>
-
-
-        <script>
-            $(function() {
-                $('#bttimkiem').trigger('click'); //This event will fire the change event. 
-                $('#bttimkiem').click(function() {
-                    var data = $(this).val();
-                    $.get("./index.php", {
-                        controller: "point",
-                        action: "timkiem",
-                        info: data
-                    }, function(data) {
-                        $("#bangdiem").html(data);
-                    })
+        <div>
+            <script>
+                $(function() {
+                    $('#timkiem').trigger('change'); //This event will fire the change event. 
+                    $('#timkiem').change(function() {
+                        var data = $(this).val();
+                        $.get("./index.php", {
+                            controller: "point",
+                            action: "timkiem1",
+                            info: data
+                        }, function(data) {
+                            $("#bangdiem1").html(data);
+                        })
+                    });
                 });
-            });
-            
                 $(function() {
                     $('#bttimkiem').trigger('click'); //This event will fire the change event. 
                     $('#bttimkiem').click(function() {
                         var data = $('#timkiem').val();
                         $.get("./index.php", {
                             controller: "point",
-                            action: "timkiem",
+                            action: "timkiem1",
                             info: data
                         }, function(data) {
-                            $("#bangdiem").html(data);
-                        })
-                    });
-                });
-        </script>
-
-
-        <div style="margin-top: 20px; align-items: flex-end;" class="container_timkiem">
-            <div style="background-color: #e4e8e9; 
-                        border:1px solid #545454; 
-                        border-radius: 2px; 
-                        width: 110px;
-                        height:25px;
-                        ">
-                <i style="padding-left: 5px;" class="fas fa-sort"></i>
-                <select id="sapxep" style="border: none; background-color: #e4e8e9;">
-                    <script>
-                        $(function() {
-                            $('#sapxep').trigger('change'); //This event will fire the change event. 
-                            $('#sapxep').change(function() {
-                                var data = $(this).val();
-                                $.get("./index.php", {
-                                    controller: "point",
-                                    action: "sapxep",
-                                    info: data
-                                }, function(data) {
-                                    $("#bangdiem").html(data);
-                                })
-                            });
-                        });
-                    </script>
-                    <option>Thấp -> cao</option>
-                    <option>Cao -> thấp</option>
-                </select>
-            </div>
-
-            <button>Xuất file</button>
-        </div>
-
-
-    </div>
-    <div id="bangdiem">
-        <table style="font-family: arial, sans-serif;
-        font-size: 14px;
-        border-collapse: collapse;
-        width: 100%;
-        margin-top: 20px;">
-
-            <tr style="background-color: #e4e8e9;">
-                <th style="border: 1px solid #dddddd;
-                text-align: left;
-                padding: 8px;">
-                    Họ tên
-                </th>
-                <th style="border: 1px solid #dddddd;
-                text-align: left;
-                padding: 8px;">
-                    Mã sinh viên
-                </th>
-                <th style="border: 1px solid #dddddd;
-                text-align: left;
-                padding: 8px;">
-                    Môn học
-                </th>
-                <th style="border: 1px solid #dddddd;
-                text-align: left;
-                padding: 8px;">
-                    Điểm quá trình
-                </th>
-                <th style="border: 1px solid #dddddd;
-                text-align: left;
-                padding: 8px;">
-                    Điểm cuối kỳ
-                </th>
-                <th style="border: 1px solid #dddddd;
-                text-align: left;
-                padding: 8px;">
-                    Điểm tổng kết
-                </th>
-                <th style="border: 1px solid #dddddd;
-                text-align: left;
-                padding: 8px;">
-
-                </th>
-            </tr>
-            <script>
-                $(document).ready(function() {
-                    $("button.btnCapNhat").click(function() {
-                        var masinhvien = ".masinhvien" + $(this).attr("id");
-                        var tenmon = ".tenmon" + $(this).attr("id");
-                        var diemquatrinh = "#diemquatrinh" + $(this).attr("id");
-                        var diemcuoiky = "#diemcuoiky" + $(this).attr("id");
-                        var infomsv = $(`${masinhvien}`).attr('id');
-                        var infotm = $(`${tenmon}`).attr('id');
-                        var infodqt = $(`${diemquatrinh}`).val();
-                        var infodck = $(`${diemcuoiky}`).val();
-                        if (parseFloat(infodqt) >= 7 && parseFloat(infodck) > parseFloat(infodqt)) {
-                            var infodtk = infodck;
-                        } else {
-                            var infodtk = infodqt * 0.4 + infodck * 0.6;
-                        }
-                        $.get("./index.php", {
-                            controller: "point",
-                            action: "updiem",
-                            masinhvien: infomsv,
-                            diemquatrinh: infodqt,
-                            tenmon: infotm,
-                            diemcuoiky: infodck,
-                            diemtongket: infodtk
-                        }, function(data) {
-                            $("#bangdiem").html(data);
+                            $("#bangdiem1").html(data);
                         })
                     });
                 });
             </script>
-            <?php if ($svl != "0") {
-                $stt = 0;
-                foreach ($svl as $info) {
-                    $stt++; ?>
+
+
+            <div style="margin-top: 10px;" class="container_timkiem">
+                <div style="display: flex;">
+                    <p>Chọn tình trạng:</p>
+                    <select style="width:200px" class="form-control" id="sapxep">
+                        <script>
+                            $(function() {
+                                $('#sapxep').trigger('change'); //This event will fire the change event. 
+                                $('#sapxep').change(function() {
+                                    var data = $(this).val();
+                                    $.get("./index.php", {
+                                        controller: "point",
+                                        action: "sxtheotrangthai",
+                                        info1: data
+                                    }, function(data) {
+                                        $("#bangdiem1").html(data);
+                                    })
+                                });
+                            });
+                        </script>
+                        <option>Tất cả</option>
+                        <option>Đang Học</option>
+                        <option>Cấm thi</option>
+                    </select>
+                </div>
+                <button>
+                    Xuất file
+                </button>
+            </div>
+
+
+        </div>
+        <div class="modal fade" id="myModal" role="dialog">
+            <div class="modal-dialog">
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">
+                            &times;
+                        </button>
+                        <h4 class="modal-title">Thêm sinh viên</h4>
+                    </div>
+                    <div class="modal-body">
+                        <!-- <p>Some text in the modal.</p> -->
+                        <table width="100%">
+                            <tbody class="table">
+                                <tr>
+                                    <td width="30%">Họ tên:</td>
+                                    <td><input type="text" /></td>
+                                </tr>
+                                <tr>
+                                    <td width="30%">Mã SV:</td>
+                                    <td><input type="text" /></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">
+                            Close
+                        </button>
+                        <button type="button" class="btn btn-success" data-dismiss="modal">
+                            OK
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="bangdiem1">
+            <table style="
+                font-family: arial, sans-serif;
+                font-size: 14px;
+                border-collapse: collapse;
+                width: 100%;
+                margin-top: 10px;
+              ">
+                <tr style="background-color: #e4e8e9">
+                    <th  class="text-center">
+                        Mã sinh viên
+                    </th>
+                    <th  class="text-center">
+                        Họ tên
+                    </th>
+                    <th  class="text-center">
+                        Tình trạng
+                    </th>
+                    <th  class="text-center"></th>
+                </tr>
+                <?php $i = 0;
+                foreach ($data as $value) {
+                    $i++; ?>
                     <tr>
-                        <td class="hovaten<?= $stt ?>" id="<?= $info['hovaten'] ?>" name="hovaten" style="border: 1px solid #dddddd;
-                text-align: left;
-                padding: 8px;">
-                            <?= $info['hovaten'] ?>
+                        <td  class="text-center">
+                            <?= $value['masinhvien'] ?>
                         </td>
-                        <td class="masinhvien<?= $stt ?>" id="<?= $info['masinhvien'] ?>" name="masinhvien" style="border: 1px solid #dddddd;
-                text-align: left;
-                padding: 8px;">
-                            <?= $info['masinhvien'] ?>
+                        <td  class="text-center">
+                            <?= $value['hovaten'] ?>
                         </td>
-                        <td class="tenmon<?= $stt ?>" id="<?= $info['tenmon'] ?>" name="tenmon" style="border: 1px solid #dddddd;
-                text-align: left;
-                padding: 8px;">
-                            <?= $info['tenmon'] ?>
+                        <td  class="text-center">
+                            <script>
+                                $(function() {
+                                    $('#sapxep<?= $i ?>').trigger('change'); //This event will fire the change event. 
+                                    $('#sapxep<?= $i ?>').change(function() {
+                                        var data = "<?= $value['masinhvien'] ?>";
+                                        var data1 = "<?= $value['mamon'] ?>";
+                                        var data2 = $(this).val();
+                                        var thongbao = "Cập nhật thành công";
+                                        alert(thongbao);
+                                        $.get("./index.php", {
+                                            controller: "point",
+                                            action: "capnhattheotrangthai",
+                                            masinhvien: data,
+                                            mamon: data1,
+                                            trangthai: data2
+                                        }, function(data) {
+
+                                        })
+                                    });
+                                });
+                            </script>
+                            <select  class="form-control" style="width:130px" id="sapxep<?= $i ?>">
+                                <?php if ($value['trangthai'] == 1) { ?>
+                                    <option>Đang học</option>
+                                    <option>Cấm thi</option>
+                                <?php } else { ?>
+                                    <option>Cấm thi</option>
+                                    <option>Đang học</option>
+                                <?php } ?>
+                            </select>
                         </td>
-                        <td style="border: 1px solid #dddddd;
-                text-align: left;
-                padding: 8px;">
-                            <input id="diemquatrinh<?= $stt ?>" name="diemquatrinh<?= $stt ?>" style="background-color: #f3f6f7; border: none;" value="<?= $info['diemquatrinh'] ?>" type="number" step="0.01" min="0" max="10">
-                        </td>
-                        <td style="border: 1px solid #dddddd;
-                text-align: left;
-                padding: 8px;">
-                            <input id="diemcuoiky<?= $stt ?>" name="diemcuoiky<?= $stt ?>" t style="background-color: #f3f6f7; border: none;" value="<?= $info['diemcuoiky'] ?>" type="number" step="0.01" min="0" max="10">
-                        </td>
-                        <td name="diemtongket" style="border: 1px solid #dddddd;
-                text-align: left;
-                padding: 8px;">
-                            <p class="text-center" style="background-color: #f3f6f7; border: none;"><?= $info['diemtongket'] ?></p>
-                        </td>
-                        <td name="">
-                            <button style="margin: 0 2px 0 2px;" class="btn btnCapNhat" id="<?= $stt ?>"> Cập nhật</button>
+                        <td style="
+                                 border: 1px solid #dddddd;
+                                 text-align: center;
+                                 padding: 8px;
+                                ">
+
+                            <Button type="button" data-toggle="modal" data-target="#myModal2">
+                                <span">Đánh Giá</span>
+                            </Button>
+
+                            <Button class="chitiet" id="<?= $value['masinhvien'] ?>" style="margin-left: 5px;" type="button" data-toggle="modal" data-target="#myModal1">
+                                <span">Chi Tiêt</span>
+                            </Button>
+
+
                         </td>
                     </tr>
-            <?php }
-            } else {
-                echo "<td >Dữ liệu Rỗng </td> ";
-            } ?>
-    </div>
+                <?php } ?>
+                <script>
+                    $(document).ready(function() {
+                        $("button.chitiet").click(function() {
+                            var masinhvien = $(this).attr("id")
+                            $.get("./index.php", {
+                                controller: "point",
+                                action: "QLHocSinhTheoMonHoc",
+                                msv: masinhvien
+                            }, function(data) {
+                                $("#myModal1").html(data);
+                            })
+                        });
+                    });
+                </script>
+            </table>
+        </div>
+        <?php if ($data == []) : ?>
+            <div>Chưa có sinh viên<div>
+                <?php endif; ?>
 
-    </table>
-</div>
-</div>
-</div>
+                </div>
 
-<!-- End Right -->
-</div>
+                <!-- End Right -->
+            </div>
+            <!-- End Page -->
 
-</body>
+            <!-- Modal chi tiết -->
+            <div class="modal fade" id="myModal1" role="dialog">
+            </div>
 
-</html>
+
+
+            <!-- Modal đánh giá -->
+            <div class="modal fade" id="myModal2" role="dialog">
+                <div class="modal-dialog">
+
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h4 class="modal-title">Đánh Giá Sinh Viên</h4>
+                        </div>
+                        <div class="modal-body">
+                            <!-- <p>Some text in the modal.</p> -->
+                            <table width="100%">
+                                <tbody class="table">
+                                    <tr>
+                                        <td class="modal-td">Điểm rèn luyện</td>
+                                        <td class="modal-td">
+                                            <select class="form-control">
+                                                <option value="">Giỏi</option>
+                                                <option value="">Khá</option>
+                                                <option value="">Trung Bình</option>
+                                                <option value="">Kém</option>
+                                            </select>
+
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="modal-td">Ý Thức</td>
+                                        <td class="modal-td">
+                                            <select class="form-control">
+                                                <option value="">Giỏi</option>
+                                                <option value="">Khá</option>
+                                                <option value="">Trung Bình</option>
+                                                <option value="">Kém</option>
+                                            </select>
+
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="modal-td">Lời văn</td>
+                                        <td class="modal-td">
+                                            <textarea name="" id="" class="form-control"></textarea>
+
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-success" data-dismiss="modal">OK</button>
+                        </div>
+                    </div>
+
+
+                    </body>
+
+                    </html>
