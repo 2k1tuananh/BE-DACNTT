@@ -11,8 +11,6 @@
         outline: none;
         border: none;
         background-color: hsl(236, 32%, 26%);
-        border: 1px;
-        border-radius: 2px;
     }
 
     button::before {
@@ -49,13 +47,13 @@
 </style>
 
 <!-- Right -->
-<div id="right" style="width: 100%; margin-left:10px;">
+<div id="right">
     <div class="title">Nhập điểm sinh viên</div>
     <div class="entry">
         <div class="container_timkiem">
             <div style="display: flex;">
-                <p>Chọn môn học:</p>
-                <select class="form-control" style="width:130px;margin-left:-100px" id="mamon" style="width: 13rem;">
+                <span>Chọn môn học:</span>
+                <select class="form-control" id="mamon" style="width: 13rem;">
                     <script>
                         $(function() {
                             $('#mamon').trigger('change'); //This event will fire the change event. 
@@ -78,27 +76,33 @@
                 </select>
             </div>
 
-            <div>
-                <!-- <td>Chọn học kỳ:</td>
+            <div style="display: flex;">
+                <td>Chọn học kỳ:</td>
                 <td>
-                    <select style="width: 13rem;">
+                    <select class="form-control"  style="width: 13rem;">
                         <option>Kỳ 1 nhóm 1</option>
                         <option>Kỳ 2 nhóm 2</option>
                     </select>
-                </td> -->
+                </td>
             </div>
 
             <div style="position: relative">
-                <input id="timkiem" name="timkiem" style="padding-left: 20px;
-                                height: 35px;
+                <i style="
+                  position: absolute;
+                  left: 4px;
+                  bottom: 6px;
+                  font-size: 15px;
+                " class="fas fa-search"></i>
+                <input class="form-control"  id="timkiem" name="timkiem" style="padding-left: 20px;
+                                height: 25px;
                     " type="text" placeholder="Tìm kiếm">
                 <button id="bttimkiem" style="
                   position: absolute;
                   right: 0px;
-                  height: 35px;
+                  height: 25px;
                   bottom: 0px;
                   top: 0px;
-                  padding: 0 10px 0 10px;
+                  padding: 0 8px 0 8px;
                 ">
                     Tìm
                 </button>
@@ -120,32 +124,13 @@
                     })
                 });
             });
-            
-                $(function() {
-                    $('#bttimkiem').trigger('click'); //This event will fire the change event. 
-                    $('#bttimkiem').click(function() {
-                        var data = $('#timkiem').val();
-                        $.get("./index.php", {
-                            controller: "point",
-                            action: "timkiem",
-                            info: data
-                        }, function(data) {
-                            $("#bangdiem").html(data);
-                        })
-                    });
-                });
         </script>
 
 
         <div style="margin-top: 20px; align-items: flex-end;" class="container_timkiem">
-            <div style="background-color: #e4e8e9; 
-                        border:1px solid #545454; 
-                        border-radius: 2px; 
-                        width: 110px;
-                        height:25px;
-                        ">
-                <i style="padding-left: 5px;" class="fas fa-sort"></i>
-                <select id="sapxep" style="border: none; background-color: #e4e8e9;">
+            <div>
+            
+                <select class="form-control"  id="sapxep">
                     <script>
                         $(function() {
                             $('#sapxep').trigger('change'); //This event will fire the change event. 
@@ -179,31 +164,45 @@
         margin-top: 20px;">
 
             <tr style="background-color: #e4e8e9;">
-                <th  class="text-center">
+                <th style="border: 1px solid #dddddd;
+                text-align: left;
+                padding: 8px;">
                     Họ tên
                 </th>
-                <th  class="text-center">
+                <th style="border: 1px solid #dddddd;
+                text-align: left;
+                padding: 8px;">
                     Mã sinh viên
                 </th>
-                <th  class="text-center">
+                <th style="border: 1px solid #dddddd;
+                text-align: left;
+                padding: 8px;">
                     Môn học
                 </th>
-                <th  class="text-center">
+                <th style="border: 1px solid #dddddd;
+                text-align: left;
+                padding: 8px;">
                     Điểm quá trình
                 </th>
-                <th  class="text-center">
+                <th style="border: 1px solid #dddddd;
+                text-align: left;
+                padding: 8px;">
                     Điểm cuối kỳ
                 </th>
-                <th  class="text-center">
+                <th style="border: 1px solid #dddddd;
+                text-align: left;
+                padding: 8px;">
                     Điểm tổng kết
                 </th>
-                <th  class="text-center">
+                <th style="border: 1px solid #dddddd;
+                text-align: left;
+                padding: 8px;">
 
                 </th>
             </tr>
             <script>
                 $(document).ready(function() {
-                    $("button.btnCapNhat").click(function() {
+                    $("button.capnhat").click(function() {
                         var masinhvien = ".masinhvien" + $(this).attr("id");
                         var tenmon = ".tenmon" + $(this).attr("id");
                         var diemquatrinh = "#diemquatrinh" + $(this).attr("id");
@@ -236,26 +235,38 @@
                 foreach ($svl as $info) {
                     $stt++; ?>
                     <tr>
-                        <td class="hovaten<?= $stt ?>" id="<?= $info['hovaten'] ?>" name="hovaten"  class="text-center">
+                        <td class="hovaten<?= $stt ?>" id="<?= $info['hovaten'] ?>" name="hovaten" style="border: 1px solid #dddddd;
+                text-align: left;
+                padding: 8px;">
                             <?= $info['hovaten'] ?>
                         </td>
-                        <td class="masinhvien<?= $stt ?>" id="<?= $info['masinhvien'] ?>" name="masinhvien"  class="text-center">
+                        <td class="masinhvien<?= $stt ?>" id="<?= $info['masinhvien'] ?>" name="masinhvien" style="border: 1px solid #dddddd;
+                text-align: left;
+                padding: 8px;">
                             <?= $info['masinhvien'] ?>
                         </td>
-                        <td class="tenmon<?= $stt ?>" id="<?= $info['tenmon'] ?>" name="tenmon"  class="text-center">
+                        <td class="tenmon<?= $stt ?>" id="<?= $info['tenmon'] ?>" name="tenmon" style="border: 1px solid #dddddd;
+                text-align: left;
+                padding: 8px;">
                             <?= $info['tenmon'] ?>
                         </td>
-                        <td  class="text-center">
+                        <td style="border: 1px solid #dddddd;
+                text-align: left;
+                padding: 8px;">
                             <input id="diemquatrinh<?= $stt ?>" name="diemquatrinh<?= $stt ?>" style="background-color: #f3f6f7; border: none;" value="<?= $info['diemquatrinh'] ?>" type="number" step="0.01" min="0" max="10">
                         </td>
-                        <td  class="text-center">
+                        <td style="border: 1px solid #dddddd;
+                text-align: left;
+                padding: 8px;">
                             <input id="diemcuoiky<?= $stt ?>" name="diemcuoiky<?= $stt ?>" t style="background-color: #f3f6f7; border: none;" value="<?= $info['diemcuoiky'] ?>" type="number" step="0.01" min="0" max="10">
                         </td>
-                        <td name="diemtongket"  class="text-center">
+                        <td name="diemtongket" style="border: 1px solid #dddddd;
+                text-align: left;
+                padding: 8px;">
                             <p class="text-center" style="background-color: #f3f6f7; border: none;"><?= $info['diemtongket'] ?></p>
                         </td>
                         <td name="">
-                            <button style="margin: 0 2px 0 2px;" class="btn btnCapNhat" id="<?= $stt ?>"> Cập nhật</button>
+                            <button style="margin: 0 2px 0 2px;" class="btn capnhat" id="<?= $stt ?>"> Cập nhật</button>
                         </td>
                     </tr>
             <?php }
@@ -271,6 +282,26 @@
 
 <!-- End Right -->
 </div>
+<!-- End Page -->
+<!-- Footer -->
+<div id="footer">
+    Địa chỉ: Đường Nghiêm Xuân Yêm - Đại Kim - Hoàng Mai - Hà Nội<br />
+    Điện thoại hỗ trợ kỹ thuật:(04) 355 92 678 website
+    <a href="http://www.thanglong.edu.vn">http://www.thanglong.edu.vn</a>
+    mail:<a href="mailto:p.cntt@thanglong.edu.vn">p.cntt@thanglong.edu.vn</a><a href="http://atgo.vn/member/svgo/QTM2NjQzfDExLzEyLzIwMDF8TkdVWeG7hE4gVEnhur5OfFTDgEl8fGFuaHRhaWJudm4xMjExMjAwMUBnbWFpbC5jb218Q2jGsGEgY8OzfENoxrBhIGPDsw==">.</a>
+</div>
+<!-- End Footer -->
+
+<div id="eJOY__extension_root" class="eJOY__extension_root_class" style="all: unset"></div>
+<iframe id="nr-ext-rsicon" style="
+position: absolute;
+display: none;
+width: 50px;
+height: 50px;
+z-index: 2147483647;
+border-style: none;
+background: transparent;
+"></iframe>
 
 </body>
 

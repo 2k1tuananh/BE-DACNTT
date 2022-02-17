@@ -46,7 +46,7 @@
                                     });
                                 });
                                 </script>
-                                <select id="trangthai<?= $stt?>">
+                                <select class="form-control" id="trangthai<?= $stt?>">
                                     <?php if($info['trangthai']==1){?>
                                     <option>Đang dạy</option>
                                     <option>Đã nghỉ</option>

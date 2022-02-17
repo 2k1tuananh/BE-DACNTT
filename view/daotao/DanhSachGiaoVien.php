@@ -226,7 +226,7 @@
                           });
                         });
                       </script>
-                      <select id="sapxep<?= $stt ?>">
+                      <select class="form-control" id="sapxep<?= $stt ?>">
                         <?php if ($info['trangthai'] == 1) { ?>
                           <option>Đang dạy</option>
                           <option>Đã nghỉ</option>

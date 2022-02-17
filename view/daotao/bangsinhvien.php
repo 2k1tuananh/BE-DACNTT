@@ -71,7 +71,7 @@
                           });
                         });
                       </script>
-                      <select id="sapxep<?= $stt ?>">
+                      <select class="form-control" id="sapxep<?= $stt ?>">
                         <option><?= $info['trangthai_sv'] ?></option>
                         <option>Đang học</option>
                         <option>Đã tốt nghiệp</option>
