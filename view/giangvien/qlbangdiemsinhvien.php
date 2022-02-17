@@ -1,4 +1,11 @@
-
+<style>
+      td {
+            text-align: center;
+        }
+        th {
+            text-align: center;
+        }
+</style>
 <table style="font-family: arial, sans-serif;
         font-size: 14px;
         border-collapse: collapse;

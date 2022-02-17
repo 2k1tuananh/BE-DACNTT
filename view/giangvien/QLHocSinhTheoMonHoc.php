@@ -1,5 +1,13 @@
 <?php require_once('./view/layouts/headerGiaoVien.php'); ?>
 <style>
+      td {
+            text-align: center;
+        }
+        th {
+            text-align: center;
+        }
+</style>
+<style>
     button {
         z-index: 1;
         position: relative;
