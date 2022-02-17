@@ -146,8 +146,8 @@
                             });
                         });
                     </script>
-                    <option>Thấp -> cao</option>
-                    <option>Cao -> thấp</option>
+                    <option>Thấp >> cao</option>
+                    <option>Cao >> thấp</option>
                 </select>
             </div>
 

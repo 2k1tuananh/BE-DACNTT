@@ -217,7 +217,7 @@
 
 
 <!-- Right -->
-<div id="right">
+<div id="right" style="width: 100%;">
   <div class="title">
     Quản lý sinh viên
 
@@ -244,7 +244,7 @@
     </script>
     <div class="chuyen-nganh">
       <p>Chọn chuyên ngành:</p>
-      <select  class="form-control"  id="chuyennganh1">
+      <select class="form-control" id="chuyennganh1">
         <option class="a" id="Tất cả">Tất cả</option>
         <?php
 
@@ -368,19 +368,19 @@
                     </tr>
                   <?php } ?>
                   <script>
-                  $(document).ready(function() {
-                    $(".capnhapsinhvien").click(function() {
-                      var masinhvien = $(this).attr("id")
-                      $.get("./index.php", {
-                        controller: "daotao",
-                        action: "updatestudentdaotao",
-                        masinhvien: masinhvien
-                      }, function(data) {
-                        $("#suasinhvien").html(data);
-                      })
+                    $(document).ready(function() {
+                      $(".capnhapsinhvien").click(function() {
+                        var masinhvien = $(this).attr("id")
+                        $.get("./index.php", {
+                          controller: "daotao",
+                          action: "updatestudentdaotao",
+                          masinhvien: masinhvien
+                        }, function(data) {
+                          $("#suasinhvien").html(data);
+                        })
+                      });
                     });
-                  });
-                </script>
+                  </script>
                   <script>
                     $(document).ready(function() {
                       $("button.chitiet").click(function() {
