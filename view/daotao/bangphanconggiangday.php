@@ -1,5 +1,10 @@
 
-            <div id="capnhat">
+           <style>
+      td {
+            text-align: center;
+        }
+</style>
+           <div id="capnhat">
             <table cellspacing="3" cellpadding="0" border="0px" width="100%">
               <tbody>
                 <tr valign="top">
