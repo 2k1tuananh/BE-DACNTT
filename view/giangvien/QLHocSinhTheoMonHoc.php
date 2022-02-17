@@ -200,13 +200,11 @@
         </div>
 
         <div id="bangdiem1">
-            <table style="
-                font-family: arial, sans-serif;
-                font-size: 14px;
-                border-collapse: collapse;
-                width: 100%;
-                margin-top: 10px;
-              ">
+            <table class="grid" cellspacing="0" border="0" id="ctl00_c_GridDC" style="
+                          border-style: None;
+                          width: 100%;
+                          border-collapse: collapse;
+                        ">
                 <tr style="background-color: #e4e8e9">
                     <th  class="text-center">
                         Mã sinh viên
