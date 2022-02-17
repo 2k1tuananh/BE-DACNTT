@@ -26,7 +26,6 @@
         transform: scaleY(0);
         transition: transform 0.25s ease-in-out;
     }
-
     button:hover {
         cursor: pointer;
     }
@@ -47,7 +46,7 @@
 </style>
 
 <!-- Right -->
-<div id="right">
+<div id="right" style="width:100%; ">
     <div class="title">Nhập điểm sinh viên</div>
     <div class="entry">
         <div class="container_timkiem">
@@ -157,11 +156,12 @@
 
     </div>
     <div id="bangdiem">
-        <table style="font-family: arial, sans-serif;
-        font-size: 14px;
-        border-collapse: collapse;
-        width: 100%;
-        margin-top: 20px;">
+        <table class="grid" cellspacing="0" border="0" id="ctl00_c_GridDC" style="
+                          border-style: None;
+                          width: 100%;
+                          border-collapse: collapse;
+                          margin-top:10px
+                        ">
 
             <tr style="background-color: #e4e8e9;">
                 <th style="border: 1px solid #dddddd;
