@@ -86,7 +86,7 @@
     <div class="form-tkb">
       <div class="chuyen-nganh">
         <p>Chọn chuyên ngành:</p>
-        <select id="sapxep">
+        <select class="form-control" id="sapxep">
           <script>
             $(function() {
               $('#sapxep').trigger('change'); //This event will fire the change event. 
@@ -142,18 +142,18 @@
                         ">
               <tbody id="info">
                 <tr>
-                  <th scope="col">STT</th>
-                  <th scope="col" style="white-space: nowrap">
+                  <th  class="text-center">STT</th>
+                  <th  class="text-center" style="white-space: nowrap">
                     Mã Môn
                   </th>
-                  <th scope="col">Tên Môn</th>
-                  <th scope="col" style="white-space: nowrap">
+                  <th  class="text-center">Tên Môn</th>
+                  <th  class="text-center" style="white-space: nowrap">
                     Số TC
                   </th>
 
-                  <th scope="col">Thứ</th>
-                  <th scope="col">Ca</th>
-                  <th scope="col">Giáo viên</th>
+                  <th  class="text-center">Thứ</th>
+                  <th  class="text-center">Ca</th>
+                  <th  class="text-center">Giáo viên</th>
                 </tr>
                 <?php $i = 0;
                 foreach ($data as $info) {

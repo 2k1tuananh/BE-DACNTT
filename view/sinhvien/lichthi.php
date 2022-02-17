@@ -30,13 +30,13 @@
             ">
       <thead>
         <tr>
-          <th>STT</th>
-          <th>Mã học phần</th>
-          <th>Tên học phần</th>
-          <th>Hình thức thi</th>
-          <th>Ngày thi</th>
-          <th>Giờ thi</th>
-          <th>Tình trạng</th>
+          <th  class="text-center">STT</th>
+          <th  class="text-center">Mã học phần</th>
+          <th  class="text-center">Tên học phần</th>
+          <th  class="text-center">Hình thức thi</th>
+          <th  class="text-center">Ngày thi</th>
+          <th  class="text-center">Giờ thi</th>
+          <th  class="text-center">Tình trạng</th>
         </tr>
       </thead>
 

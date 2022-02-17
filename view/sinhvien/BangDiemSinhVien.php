@@ -1,4 +1,9 @@
 <?php require_once('./view/layouts/headerSinhVien.php'); ?>
+<style>
+    td {
+      text-align: center;
+    }
+</style>
 <div id="right" style="width: 100%; margin-left:10px;">
   <div class="title">
     Bảng điểm sinh viên <?php echo $_SESSION['name']; ?> - <?php echo $_SESSION['msv']; ?> - <?php echo $_SESSION['ngaysinh']; ?> - <?php echo $_SESSION['lop']; ?>
@@ -16,17 +21,17 @@
                         ">
               <tbody>
                 <tr>
-                  <th scope="col">STT</th>
-                  <th scope="col" style="white-space: nowrap">
+                  <th class="text-center">STT</th>
+                  <th class="text-center" style="white-space: nowrap">
                     Mã HP
                   </th>
-                  <th scope="col">Tên HP</th>
-                  <th scope="col" style="white-space: nowrap">
+                  <th class="text-center">Tên HP</th>
+                  <th class="text-center" style="white-space: nowrap">
                     Số TC
                   </th>
-                  <th scope="col">Điểm quá trình</th>
-                  <th scope="col">Điểm thi</th>
-                  <th scope="col">Điểm tổng</th>
+                  <th class="text-center">Điểm quá trình</th>
+                  <th class="text-center">Điểm thi</th>
+                  <th class="text-center">Điểm tổng</th>
                 </tr>
                 <?php
                 $stt = 1;
@@ -35,10 +40,10 @@
                     <td><?php echo $stt++; ?></td>
                     <td><?php echo $value['mamon']; ?></td>
                     <td><?php echo $value['tenmon']; ?></td>
-                    <td align="center"><?php echo $value['sotinchi']; ?></td>
-                    <td align="center"><?php echo $value['diemquatrinh']; ?></td>
-                    <td align="center"><?php echo $value['diemcuoiky']; ?></td>
-                    <td align="center"><?php echo $value['diemtongket']; ?></td>
+                    <td><?php echo $value['sotinchi']; ?></td>
+                    <td><?php echo $value['diemquatrinh']; ?></td>
+                    <td><?php echo $value['diemcuoiky']; ?></td>
+                    <td><?php echo $value['diemtongket']; ?></td>
                   </tr>
                 <?php } ?>
                 <tr>

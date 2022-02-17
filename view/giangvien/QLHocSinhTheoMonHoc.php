@@ -1,5 +1,13 @@
 <?php require_once('./view/layouts/headerGiaoVien.php'); ?>
 <style>
+      td {
+            text-align: center;
+        }
+        th {
+            text-align: center;
+        }
+</style>
+<style>
     button {
         z-index: 1;
         position: relative;
@@ -51,9 +59,9 @@
     <div class="title">Quản lý lớp học</div>
     <div class="entry">
         <div class="container_timkiem">
-            <div>
-                <span>Chọn môn học:</span>
-                <select id="mamon">
+            <div style="display: flex;">
+                <p>Chọn môn học:</p>
+                <select  style="width:200px" class="form-control" id="mamon">
                     <script>
                         $(function() {
                             $('#mamon').trigger('change'); //This event will fire the change event. 
@@ -124,9 +132,9 @@
 
 
             <div style="margin-top: 10px;" class="container_timkiem">
-                <div>
-                    <span>Chọn tình trạng:</span>
-                    <select id="sapxep">
+                <div style="display: flex;">
+                    <p>Chọn tình trạng:</p>
+                    <select style="width:200px" class="form-control" id="sapxep">
                         <script>
                             $(function() {
                                 $('#sapxep').trigger('change'); //This event will fire the change event. 
@@ -200,56 +208,28 @@
                 margin-top: 10px;
               ">
                 <tr style="background-color: #e4e8e9">
-                    <th style="
-                    border: 1px solid #dddddd;
-                    text-align: left;
-                    padding: 8px;
-                  ">
+                    <th  class="text-center">
                         Mã sinh viên
                     </th>
-                    <th style="
-                    border: 1px solid #dddddd;
-                    text-align: left;
-                    padding: 8px;
-                  ">
+                    <th  class="text-center">
                         Họ tên
                     </th>
-                    <th style="
-                    border: 1px solid #dddddd;
-                    text-align: left;
-                    padding: 8px;
-                  ">
+                    <th  class="text-center">
                         Tình trạng
                     </th>
-                    <th style="
-                    border: 1px solid #dddddd;
-                    text-align: left;
-                    padding: 8px;
-                  "></th>
+                    <th  class="text-center"></th>
                 </tr>
                 <?php $i = 0;
                 foreach ($data as $value) {
                     $i++; ?>
                     <tr>
-                        <td style="
-                    border: 1px solid #dddddd;
-                    text-align: left;
-                    padding: 8px;
-                  ">
+                        <td  class="text-center">
                             <?= $value['masinhvien'] ?>
                         </td>
-                        <td style="
-                    border: 1px solid #dddddd;
-                    text-align: left;
-                    padding: 8px;
-                  ">
+                        <td  class="text-center">
                             <?= $value['hovaten'] ?>
                         </td>
-                        <td style="
-                    border: 1px solid #dddddd;
-                    text-align: left;
-                    padding: 8px;
-                  ">
+                        <td  class="text-center">
                             <script>
                                 $(function() {
                                     $('#sapxep<?= $i ?>').trigger('change'); //This event will fire the change event. 
@@ -271,7 +251,7 @@
                                     });
                                 });
                             </script>
-                            <select id="sapxep<?= $i ?>">
+                            <select  class="form-control" style="width:130px" id="sapxep<?= $i ?>">
                                 <?php if ($value['trangthai'] == 1) { ?>
                                     <option>Đang học</option>
                                     <option>Cấm thi</option>

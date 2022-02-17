@@ -17,15 +17,15 @@
                       >
                         <tbody>
                           <tr>
-                            <th scope="col">STT</th>
-                            <th scope="col" style="white-space: nowrap">
+                            <th  class="text-center">STT</th>
+                            <th  class="text-center" style="white-space: nowrap">
                               Mã môn
                             </th>
-                            <th scope="col">Tên môn</th>
-                            <th scope="col">Số TC</th>
-                            <th scope="col">Thứ</th>
-                            <th scope="col">Ca học</th>
-                            <th scope="col">Trạng thái</th>
+                            <th  class="text-center">Tên môn</th>
+                            <th  class="text-center">Số TC</th>
+                            <th  class="text-center">Thứ</th>
+                            <th  class="text-center">Ca học</th>
+                            <th  class="text-center">Trạng thái</th>
                             <?php $stt=0; 
                             if($monhoc != '' )
                             {

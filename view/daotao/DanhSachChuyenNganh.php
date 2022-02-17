@@ -231,9 +231,10 @@
 
   </div>
   <div class="form-tkb">
-    <div class="chuyen-nganh">
-      <p>Chọn chuyên ngành:</p>
-      <select id="chuyennganh1">
+    <div class="chuyen-nganh" >
+      <div style="display: flex;">
+      <p >Chọn chuyên ngành:</p>
+      <select class="form-control" id="chuyennganh1">
         <option class="a" id="Tất cả">Tất cả</option>
         <?php
 
@@ -242,6 +243,8 @@
         }
         ?>
       </select>
+      </div>
+     
       <script>
         $(function() {
           $('#chuyennganh1').trigger('change'); //This event will fire the change event. 
@@ -294,12 +297,12 @@
                         ">
                 <tbody>
                   <tr>
-                    <th scope="col">STT</th>
-                    <th scope="col" style="white-space: nowrap">
+                    <th  class="text-center">STT</th>
+                    <th  class="text-center" style="white-space: nowrap">
                       Mã chuyên ngành
                     </th>
-                    <th scope="col">Tên chuyên ngành</th>
-                    <th scope="col"></th>
+                    <th  class="text-center">Tên chuyên ngành</th>
+                    <th  class="text-center"></th>
                   <tr>
                     <?php $stt = 0;
                     foreach ($chuyennganh as $info) {

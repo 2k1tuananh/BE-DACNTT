@@ -205,7 +205,11 @@
 </style>
 
 <!-- Right -->
+<<<<<<< HEAD
 <div id="right" style="width: 100%;margin-left:10px; ">
+=======
+<div id="right" style="width: 100%; margin-left:10px;">
+>>>>>>> 5a240794566a768afd0a7e23a662d50db6b699d1
   <div class="title">
     Quản lý môn học
 
@@ -246,18 +250,18 @@
                         ">
                 <tbody>
                   <tr>
-                    <th scope="col">STT</th>
-                    <th scope="col" style="white-space: nowrap">
+                    <th class="text-center">STT</th>
+                    <th class="text-center" style="white-space: nowrap">
                       Mã Môn
                     </th>
-                    <th scope="col">Tên Môn</th>
-                    <th scope="col" style="white-space: nowrap">
+                    <th class="text-center">Tên Môn</th>
+                    <th class="text-center" style="white-space: nowrap">
                       Số TC
                     </th>
 
-                    <th scope="col">Thứ</th>
-                    <th scope="col">Ca học</th>
-                    <th scope="col">Trạng thái</th>
+                    <th class="text-center">Thứ</th>
+                    <th class="text-center">Ca học</th>
+                    <th class="text-center">Trạng thái</th>
 
                   </tr>
                   <?php $stt = 0;
@@ -273,8 +277,13 @@
                       <td class="item-monhoc"><?= $info['ca'] ?></td>
 
                       <td class="item-monhoc">
+<<<<<<< HEAD
                         <button class="btnTimKiem" type="button" data-toggle="modal" data-target="#SuaMonHoc">Update</button>
                         <button type="button" id="xoa<?= $stt ?>" class="btnTimKiem">Delete</button>
+=======
+                        <button class="btnTimKiem capnhat" type="button" id="<?= $info['mamon'] ?>" data-toggle="modal" data-target="#SuaMonHoc">Cập nhật</button>
+                        <button type="button" id="xoa<?= $stt ?>" class="btnTimKiem">Xóa</button>
+>>>>>>> 5a240794566a768afd0a7e23a662d50db6b699d1
                         <script>
                           $(document).ready(function() {
                             $("#xoa<?= $stt ?>").click(function() {
@@ -307,6 +316,24 @@
 </div>
 </div>
 
+<<<<<<< HEAD
+=======
+<script>
+  $(document).ready(function() {
+    $(".capnhat").click(function() {
+      var mamon = $(this).attr("id")
+
+      $.get("./index.php", {
+        controller: "daotao",
+        action: "updatemonhoc",
+        mamon: mamon
+      }, function(data) {
+        $("#SuaMonHoc").html(data);
+      })
+    });
+  });
+</script>
+>>>>>>> 5a240794566a768afd0a7e23a662d50db6b699d1
 <!-- End Right -->
 </div>
 <!-- End Page -->
@@ -320,6 +347,7 @@
         <button type="button" class="close" data-dismiss="modal">&times;</button>
         <h4 class="modal-title">Thêm Môn Học</h4>
       </div>
+<<<<<<< HEAD
 
       <div class="modal-body">
         <!-- <p>Some text in the modal.</p> -->
@@ -415,10 +443,13 @@
         <button type="button" class="close" data-dismiss="modal">&times;</button>
         <h4 class="modal-title">Cập nhập môn học</h4>
       </div>
+=======
+>>>>>>> 5a240794566a768afd0a7e23a662d50db6b699d1
 
       <div class="modal-body">
         <!-- <p>Some text in the modal.</p> -->
         <table width="100%">
+<<<<<<< HEAD
           <tbody id="" class="table">
             <tr>
               <td class="modal-td" width="30%">Mã Môn:</td>
@@ -431,6 +462,20 @@
             <tr>
               <td class="modal-td" width="30%">Số TC:</td>
               <td class="modal-td"><input type="text" class="form-control"></td>
+=======
+          <tbody class="table">
+            <tr>
+              <td class="modal-td" width="30%">Mã Môn:</td>
+              <td class="modal-td"><input id="mamon" type="text" class="form-control"></td>
+            </tr>
+            <tr>
+              <td class="modal-td" width="30%">Tên Môn</td>
+              <td class="modal-td"><input id="tenmon" type="text" class="form-control"></td>
+            </tr>
+            <tr>
+              <td class="modal-td" width="30%">Số TC:</td>
+              <td class="modal-td"><input id="sotinchi" type="text" class="form-control"></td>
+>>>>>>> 5a240794566a768afd0a7e23a662d50db6b699d1
             </tr>
 
             <tr>
@@ -456,7 +501,11 @@
             </tr>
             <tr>
               <td class="modal-td" width="30%">Ca:</td>
+<<<<<<< HEAD
               <td class="modal-td"><select id="thu" class="form-control">
+=======
+              <td class="modal-td"><select id="ca" class="form-control">
+>>>>>>> 5a240794566a768afd0a7e23a662d50db6b699d1
                   <option>1-2</option>
                   <option>1-3</option>
                   <option>1-5</option>
