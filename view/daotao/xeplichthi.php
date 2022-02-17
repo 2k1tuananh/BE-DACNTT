@@ -68,6 +68,10 @@
     transition: transform 0.45s ease-in-out;
     transform: translate3d(200%, 0, 0) rotate(35deg);
   }
+
+  td {
+    text-align: center;
+  }
 </style>
 <div id="right" style="width: 100%;margin-left:10px;">
   <div class="title">
@@ -132,14 +136,14 @@
                         ">
               <tbody>
                 <tr>
-                  <th  class="text-center">STT</th>
-                  <th  class="text-center" style="white-space: nowrap">
+                  <th class="text-center">STT</th>
+                  <th class="text-center" style="white-space: nowrap">
                     Mã Môn
                   </th>
-                  <th  class="text-center">Tên Môn</th>
-                  <th  class="text-center">Ngày Thi</th>
-                  <th  class="text-center">Ca Thi</th>
-                  <th  class="text-center">Trạng Thái</th>
+                  <th class="text-center">Tên Môn</th>
+                  <th class="text-center">Ngày Thi</th>
+                  <th class="text-center">Ca Thi</th>
+                  <th class="text-center">Trạng Thái</th>
                 </tr>
                 <?php $i = 0;
                 foreach ($mon as $value) {
