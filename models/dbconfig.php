@@ -1012,6 +1012,24 @@
             }
             return $data;
         }
+        public function themvaolichdkhoc($mm,$nbd,$nkt){
+            $sql="INSERT INTO `lickdkhoc`(`mamon`, `ngaybatdau`, `ngayketthuc`) 
+            VALUES ('$mm','$nbd','$nkt')";
+            return $this->execute($sql);
+        }
+        public function getdatalichdk($tg){
+            $sql = "SELECT * FROM `lickdkhoc` INNER JOIN monhoc on lickdkhoc.mamon=monhoc.mamon INNER JOIN giangvienmonhoc on giangvienmonhoc.mamon=lickdkhoc.mamon WHERE lickdkhoc.ngaybatdau<'$tg' AND lickdkhoc.ngayketthuc>'$tg'";
+            return $this->execute($sql);
+        }
+        public function getdatamondk($msv){
+            $sql = "SELECT * FROM `gv-sv-lop` as gv INNER JOIN monhoc on gv.mamon= monhoc.mamon WHERE gv.masinhvien='$msv'";
+            return $this->execute($sql);
+        }
+        public function dangkyhoc($mm,$mgv,$mlop,$msv){
+            $sql = "INSERT INTO `gv-sv-lop`( `magiangvien`, `mamon`, `malop`, `masinhvien`) VALUES ('$mgv','$mm','$mlop','$msv')";
+            return $this->execute($sql);
+        }
+
         public function selectlistmonhocdaotao()
         {
             $sql = "select * from  `monhoc`";
