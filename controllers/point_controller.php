@@ -26,7 +26,7 @@ class point_controller {
         }
         else{
             if( isset($_GET['Ajax_action'])&& $_GET['info']=="Tất cả"){
-                $svl2=$this->db->getinfo_svl($_SESSION['mgv']);
+                $svl2=$this->db->getinfo_svmon($_SESSION['mgv'],$mamon['mamon']);
                 require_once("./view/giangvien/qlbangdiemsinhvien.php");
             }
             else{

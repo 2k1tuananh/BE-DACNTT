@@ -394,7 +394,6 @@
       </div>
     </div>
     <script>
-      alert('haha')
       $(document).ready(function() {
         $("#themmon").click(function() {
           var mamon = $('#mamon').val();
