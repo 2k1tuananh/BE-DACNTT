@@ -14,7 +14,7 @@
               <tbody>
 
                 <tr>
-                  <th  class="text-center" style="
+                  <th scope="col" style="
                       
                       font-size: 15px;
                       
@@ -23,24 +23,24 @@
                       
                       font-size: 15px;
                       
-                    "  class="text-center">Mã SV</th>
+                    " scope="col">Mã SV</th>
                   <th style="
                       
                       font-size: 15px;
                       
-                    "  class="text-center">Tên Sinh Viên</th>
+                    " scope="col">Tên Sinh Viên</th>
                   <th style="
                       
                       font-size: 15px;
                       
                     
                       
-                    "  class="text-center">Trạng thái</th>
+                    " scope="col">Trạng thái</th>
                   <th style="
                       
                       font-size: 15px;
                       
-                    "  class="text-center"></th>
+                    " scope="col"></th>
 
                 </tr>
                 <?php $stt = 0;
@@ -87,13 +87,13 @@
                       </Button>
                       &nbsp;
                       <Button id="<?= $info['masinhvien'] ?>" class="btnTimKiem" type="button" data-toggle="modal" data-target="#myModal2">Đánh Giá</Button>
-                      <Button class="btnTimKiem capnhap" id="<?= $info['masinhvien'] ?>" type="button" data-toggle="modal" data-target="#suasinhvien">Cập Nhật</Button>
+                      <Button class="btnTimKiem capnhapsinhvien" id="<?= $info['masinhvien'] ?>" type="button" data-toggle="modal" data-target="#suasinhvien">Cập Nhật</Button>
                     </td>
                   </tr>
                 <?php } ?>
                 <script>
                   $(document).ready(function() {
-                    $("button.capnhap").click(function() {
+                    $(".capnhapsinhvien").click(function() {
                       var masinhvien = $(this).attr("id")
                       $.get("./index.php", {
                         controller: "daotao",
