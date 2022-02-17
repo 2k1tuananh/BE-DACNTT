@@ -568,9 +568,6 @@
           var lop = $('#lop').val();
           var chuyennganh = $('#chuyennganh').val();
           var giaovien = $('#giaovien').val();
-
-
-
           if (hovaten == null || hovaten == "") {
             $("#alert").html('<strong class="text-danger">Họ và tên không được để trống</strong>');
             $("input[name='hovaten']").focus();
@@ -616,7 +613,12 @@
             $("#alert").html('<strong class="text-danger">Lớp không được để trống</strong>');
             $("select[name='lop']").focus();
             return;
-          } else if (chuyennganh == null || chuyennganh == "") {
+          }else if (diachi == null || diachi == "") {
+            $("#alert").html('<strong class="text-danger">Địa chỉ không được để trống</strong>');
+            $("select[name='diachi']").focus();
+            return;
+          } 
+          else if (chuyennganh == null || chuyennganh == "") {
             $("#alert").html('<strong class="text-danger">Chuyên ngành không được để trống</strong>');
             $("select[name='chuyennganh']").focus();
             return;

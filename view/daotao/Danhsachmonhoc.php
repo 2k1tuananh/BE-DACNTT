@@ -344,21 +344,21 @@
           <tbody class="table">
             <tr>
               <td class="modal-td" width="30%">Mã Môn:</td>
-              <td class="modal-td"><input id="mamon" type="text" class="form-control"></td>
+              <td class="modal-td"><input id="mamon" name="mamon" type="text" class="form-control"></td>
             </tr>
             <tr>
               <td class="modal-td" width="30%">Tên Môn</td>
-              <td class="modal-td"><input id="tenmon" type="text" class="form-control"></td>
+              <td class="modal-td"><input id="tenmon" name="tenmon" type="text" class="form-control"></td>
             </tr>
             <tr>
               <td class="modal-td" width="30%">Số TC:</td>
-              <td class="modal-td"><input id="sotinchi" type="text" class="form-control"></td>
+              <td class="modal-td"><input id="sotinchi" name="sotinchi" type="text" class="form-control"></td>
             </tr>
 
             <tr>
               <td class="modal-td" width="30%">Chuyên ngành:</td>
               <td class="modal-td">
-                <select id="chuyennganh" class="form-control">
+                <select id="chuyennganh" name="chuyennganh" class="form-control">
                   <?php foreach ($chuyennganh as $info) { ?>
                     <option><?= $info['tenchuyennganh'] ?></option>
                   <?php } ?>
@@ -367,7 +367,7 @@
             </tr>
             <tr>
               <td class="modal-td" width="30%">Thứ:</td>
-              <td class="modal-td"><select id="thu" class="form-control">
+              <td class="modal-td"><select id="thu" name="thu" class="form-control">
                   <option>Thứ 2</option>
                   <option>Thứ 3</option>
                   <option>Thứ 4</option>
@@ -378,7 +378,7 @@
             </tr>
             <tr>
               <td class="modal-td" width="30%">Ca:</td>
-              <td class="modal-td"><select id="ca" class="form-control">
+              <td class="modal-td"><select id="ca" name="ca" class="form-control">
                   <option>1-2</option>
                   <option>1-3</option>
                   <option>1-5</option>
@@ -390,9 +390,10 @@
           </tbody>
         </table>
       </div>
+      <div id="alert"></div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" id="themmon" class="btn btn-success" data-dismiss="modal">Xác nhận</button>
+        <button type="button" id="themmon" class="btn btn-success" >Xác nhận</button>
       </div>
     </div>
     <script>
@@ -404,7 +405,64 @@
           var chuyennganh = $('#chuyennganh').val();
           var thu = $('#thu').val();
           var ca = $('#ca').val();
-          $.get("./index.php", {
+          if(mamon == null || mamon == "")
+          {
+            $("#alert").html('<strong class="text-danger">Mã môn học không được để trống</strong>');
+            $("input[name='mamon']").focus();
+            return;
+          }
+          else if (mamon.length < 5 || mamon.length > 5)
+          {
+            $("#alert").html('<strong class="text-danger">Mã môn học gồm 5 kí tự</strong>');
+            $("input[name='mamon']").focus();
+            return;
+          }
+          else if(tenmon == null || tenmon == "")
+          {
+            $("#alert").html('<strong class="text-danger">Mã môn học không được để trống</strong>');
+            $("input[name='tenmon']").focus();
+            return;
+          }
+          else if(tenmon.length < 5 || tenmon.length > 5)
+          {
+            $("#alert").html('<strong class="text-danger">Tên môn học tối thiểu 6 kí tự</strong>');
+            $("input[name='tenmon']").focus();
+            return;
+          }
+          else if(sotinchi == null || sotinchi == "")
+          {
+            $("#alert").html('<strong class="text-danger">Số tín chỉ không được để trống</strong>');
+            $("input[name='sotinchi']").focus();
+            return;
+          }
+          else if (isNaN(sotinchi))
+          {
+            $("#alert").html('<strong class="text-danger">Số tín chỉ là dạng số</strong>');
+            $("input[name='sotinchi']").focus();
+            return;
+          }
+          else if(chuyennganh == null || chuyennganh == "")
+          {
+            $("#alert").html('<strong class="text-danger">Chuyên ngành không được để trống</strong>');
+            $("select[name='chuyennganh']").focus();
+            return;
+          }
+          else if(thu == null || thu == "")
+          {
+            $("#alert").html('<strong class="text-danger">Thứ không được để trống</strong>');
+            $("select[name='thu']").focus();
+            return;
+          }
+          else if(ca == null || ca == "")
+          {
+            $("#alert").html('<strong class="text-danger">Ca không được để trống</strong>');
+            $("select[name='ca']").focus();
+            return;
+          }
+          else
+          {
+            $('#ThemMonHoc').modal('hide');
+            $.get("./index.php", {
             controller: "daotao",
             action: "themmon",
             mamon: mamon,
@@ -413,9 +471,11 @@
             chuyennganh: chuyennganh,
             thu: thu,
             ca: ca
-          }, function(data) {
-            $("#info").html(data);
-          })
+            }, function(data) {
+              $("#info").html(data);
+            })
+          }
+          
         });
       });
     </script>

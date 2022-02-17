@@ -62,6 +62,9 @@ class daotao_controller {
         {
             
             $listStudent=$this->db->timkiemsinhvientheochuyennganh($_GET['info']);
+            if($listStudent==0){
+                $listStudent='';
+            }
             require_once("./view/daotao/PDTTimKiemSinhVien.php");
         }
         else{

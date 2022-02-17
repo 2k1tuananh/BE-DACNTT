@@ -37,6 +37,13 @@
                             var machuyennganh = $("input[name='machuyennganh']").val();
                             var tenchuyennganh = $("input[name='tenchuyennganh']").val();
                             //alert(machuyennganh+tenchuyennganh);
+                            if (machuyennganh == null || machuyennganh == "") {
+                                alert("Mã chuyên ngành không được để trống");
+                                return;
+                              } else if (tenchuyennganh == null || tenchuyennganh == "") {
+                                alert("Tên chuyên nganh không được để trống");
+                                return;
+                              }
                             $.get("./index.php", {
                                 controller: "daotao",
                                 action: "capnhatchuyennganh",

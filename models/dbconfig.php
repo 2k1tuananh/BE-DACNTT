@@ -148,7 +148,7 @@
 
         public function getinfosinhvien1($tk){
             $sql = "select * from sinhvien where `masinhvien`='$tk' ";
-            echo $sql;
+            
             $data=$this->execute($sql);
             if($this->dem()!=0){
                 $data = mysqli_fetch_array($this->result);
@@ -205,7 +205,7 @@
        
         public function updatemkgiangvien($mgv,$mk){
             $sql="UPDATE giangvien SET password='$mk' WHERE magiangvien='$mgv'";
-            echo $sql;
+          
             return $this->execute($sql);
         }
         public function getinfo_mon($mgv){
@@ -639,7 +639,7 @@
             }
             else
             {
-                $sql = "UPDATE `gv-sv-lop` SET `magiangvien`='$magiangvien' WHERE mamon = '$mamon'";
+                $sql = "UPDATE `gv-sv-lop` SET `magiangvien`='$magiangvien',`malop` = '$malop' WHERE mamon = '$mamon'";
             
                 $this->execute($sql);
                 $sqlupdate = "UPDATE `giangvienmonhoc` SET `magiangvien`='$magiangvien',`lop`='$malop' WHERE mamon =  '$mamon'";
@@ -917,7 +917,7 @@
         public function updatestudentdaotao1($masinhvien,$hovaten,$gioitinh,$CMND,$ngaysinh,$phone,$email,$chuyennganh,$giaovien,$diachi,$lop,$pass){
             $sql="UPDATE `sinhvien` SET `masinhvien` = '$masinhvien', `hovaten` = '$hovaten', `gioitinh`= '$gioitinh', password = '$pass',`diachi` ='$diachi', `email`='$email', `dienthoai`= '$phone', 
             `cmnd` ='$CMND', `ngaysinh` ='$ngaysinh', `GVCN` ='$giaovien', `chuyennganh`= '$chuyennganh' ,`lop`='$lop' WHERE masinhvien='$masinhvien'";
-            echo $sql;
+            
             return $this->execute($sql);
         }
         public function editgiangvienid($id){
@@ -1103,7 +1103,7 @@
         public function getsinhvien($ma)
         {
             $sql = "select * from sinhvien where `masinhvien`='$ma' ";
-            echo $sql;
+            
             $data=$this->execute($sql);
             if($this->dem()!=0){
                 $data = mysqli_fetch_array($this->result);
