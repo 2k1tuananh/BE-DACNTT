@@ -109,7 +109,7 @@
       }
       else if(chuyennganh == null || chuyennganh == "")
       {
-        alert(Chuyên ngành không được để trống);
+        alert("Chuyên ngành không được để trống");
         return;
       }
       else if(thu == null || thu == "")
