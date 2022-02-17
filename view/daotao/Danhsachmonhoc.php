@@ -207,11 +207,7 @@
 </style>
 
 <!-- Right -->
-<<<<<<< HEAD
-<div id="right" style="width: 100%;margin-left:10px; ">
-=======
 <div id="right" style="width: 100%; margin-left:10px;">
->>>>>>> 5a240794566a768afd0a7e23a662d50db6b699d1
   <div class="title">
     Quản lý môn học
 
@@ -240,12 +236,12 @@
     </div>
   </div>
   <div id="info">
-    <table cellspacing="3" cellpadding="0"  width="100%">
+    <table cellspacing="3" cellpadding="0" border="0px" width="100%">
       <tbody>
         <tr valign="top">
           <td style="width: 100%">
             <div>
-              <table class="grid" cellspacing="0"  id="ctl00_c_GridDC" style="
+              <table class="grid" cellspacing="0" border="0" id="ctl00_c_GridDC" style="
                           border-style: None;
                           width: 100%;
                           border-collapse: collapse;
@@ -279,13 +275,8 @@
                       <td class="item-monhoc"><?= $info['ca'] ?></td>
 
                       <td class="item-monhoc">
-<<<<<<< HEAD
-                        <button class="btnTimKiem" type="button" data-toggle="modal" data-target="#SuaMonHoc">Update</button>
-                        <button type="button" id="xoa<?= $stt ?>" class="btnTimKiem">Delete</button>
-=======
                         <button class="btnTimKiem capnhat" type="button" id="<?= $info['mamon'] ?>" data-toggle="modal" data-target="#SuaMonHoc">Cập nhật</button>
                         <button type="button" id="xoa<?= $stt ?>" class="btnTimKiem">Xóa</button>
->>>>>>> 5a240794566a768afd0a7e23a662d50db6b699d1
                         <script>
                           $(document).ready(function() {
                             $("#xoa<?= $stt ?>").click(function() {
@@ -318,8 +309,6 @@
 </div>
 </div>
 
-<<<<<<< HEAD
-=======
 <script>
   $(document).ready(function() {
     $(".capnhat").click(function() {
@@ -335,7 +324,6 @@
     });
   });
 </script>
->>>>>>> 5a240794566a768afd0a7e23a662d50db6b699d1
 <!-- End Right -->
 </div>
 <!-- End Page -->
@@ -349,7 +337,6 @@
         <button type="button" class="close" data-dismiss="modal">&times;</button>
         <h4 class="modal-title">Thêm Môn Học</h4>
       </div>
-<<<<<<< HEAD
 
       <div class="modal-body">
         <!-- <p>Some text in the modal.</p> -->
@@ -392,122 +379,6 @@
             <tr>
               <td class="modal-td" width="30%">Ca:</td>
               <td class="modal-td"><select id="ca" class="form-control">
-                  <option>1-2</option>
-                  <option>1-3</option>
-                  <option>1-5</option>
-                  <option>6-7</option>
-                  <option>6-9</option>
-                  <option>6-10</option>
-                </select></td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" id="themmon" class="btn btn-success" data-dismiss="modal">Xác nhận</button>
-      </div>
-    </div>
-    <script>
-      $(document).ready(function() {
-        $("#themmon").click(function() {
-          var mamon = $('#mamon').val();
-          var tenmon = $('#tenmon').val();
-          var sotinchi = $('#sotinchi').val();
-          var chuyennganh = $('#chuyennganh').val();
-          var thu = $('#thu').val();
-          var ca = $('#ca').val();
-          $.get("./index.php", {
-            controller: "daotao",
-            action: "themmon",
-            mamon: mamon,
-            tenmon: tenmon,
-            sotinchi: sotinchi,
-            chuyennganh: chuyennganh,
-            thu: thu,
-            ca: ca
-          }, function(data) {
-            $("#info").html(data);
-          })
-        });
-      });
-    </script>
-
-  </div>
-</div>
-<!-- Modal sửa môn học-->
-<div class="modal fade" id="SuaMonHoc" role="dialog">
-  <div class="modal-dialog">
-
-    <!-- Modal-->
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">Cập nhập môn học</h4>
-      </div>
-=======
->>>>>>> 5a240794566a768afd0a7e23a662d50db6b699d1
-
-      <div class="modal-body">
-        <!-- <p>Some text in the modal.</p> -->
-        <table width="100%">
-<<<<<<< HEAD
-          <tbody id="" class="table">
-            <tr>
-              <td class="modal-td" width="30%">Mã Môn:</td>
-              <td class="modal-td"><input type="text" class="form-control"></td>
-            </tr>
-            <tr>
-              <td class="modal-td" width="30%">Tên Môn</td>
-              <td class="modal-td"><input type="text" class="form-control"></td>
-            </tr>
-            <tr>
-              <td class="modal-td" width="30%">Số TC:</td>
-              <td class="modal-td"><input type="text" class="form-control"></td>
-=======
-          <tbody class="table">
-            <tr>
-              <td class="modal-td" width="30%">Mã Môn:</td>
-              <td class="modal-td"><input id="mamon" type="text" class="form-control"></td>
-            </tr>
-            <tr>
-              <td class="modal-td" width="30%">Tên Môn</td>
-              <td class="modal-td"><input id="tenmon" type="text" class="form-control"></td>
-            </tr>
-            <tr>
-              <td class="modal-td" width="30%">Số TC:</td>
-              <td class="modal-td"><input id="sotinchi" type="text" class="form-control"></td>
->>>>>>> 5a240794566a768afd0a7e23a662d50db6b699d1
-            </tr>
-
-            <tr>
-              <td class="modal-td" width="30%">Chuyên ngành:</td>
-              <td class="modal-td">
-                <select id="chuyennganh" class="form-control">
-                  <?php foreach ($chuyennganh as $info) { ?>
-                    <option><?= $info['tenchuyennganh'] ?></option>
-                  <?php } ?>
-                </select>
-              </td>
-            </tr>
-            <tr>
-              <td class="modal-td" width="30%">Thứ:</td>
-              <td class="modal-td"><select id="thu" class="form-control">
-                  <option>Thứ 2</option>
-                  <option>Thứ 3</option>
-                  <option>Thứ 4</option>
-                  <option>Thứ 5</option>
-                  <option>Thứ 6</option>
-                  <option>Thứ 7</option>
-                </select></td>
-            </tr>
-            <tr>
-              <td class="modal-td" width="30%">Ca:</td>
-<<<<<<< HEAD
-              <td class="modal-td"><select id="thu" class="form-control">
-=======
-              <td class="modal-td"><select id="ca" class="form-control">
->>>>>>> 5a240794566a768afd0a7e23a662d50db6b699d1
                   <option>1-2</option>
                   <option>1-3</option>
                   <option>1-5</option>
