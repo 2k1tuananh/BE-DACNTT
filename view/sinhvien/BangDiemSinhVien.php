@@ -9,12 +9,12 @@
     Bảng điểm sinh viên <?php echo $_SESSION['name']; ?> - <?php echo $_SESSION['msv']; ?> - <?php echo $_SESSION['ngaysinh']; ?> - <?php echo $_SESSION['lop']; ?>
   </div>
 
-  <table cellspacing="3" cellpadding="0" border="0px" width="100%">
+  <table cellspacing="3" cellpadding="0" width="100%">
     <tbody>
       <tr valign="top">
         <td style="width: 100%">
           <div>
-            <table class="grid" cellspacing="0" border="0" id="ctl00_c_GridDC" style="
+            <table class="grid" cellspacing="0" id="ctl00_c_GridDC" style="
                           border-style: None;
                           width: 100%;
                           border-collapse: collapse;
@@ -46,10 +46,7 @@
                     <td><?php echo $value['diemtongket']; ?></td>
                   </tr>
                 <?php } ?>
-                <tr>
-                  <td colspan="3"></td>
-                  <td colspan="2"></td>
-                </tr>
+                
               </tbody>
             </table>
           </div>

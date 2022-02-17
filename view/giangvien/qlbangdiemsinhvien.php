@@ -1,5 +1,5 @@
 
-<table class="grid" cellspacing="0" border="0" id="ctl00_c_GridDC" style="
+<table class="grid" cellspacing="0" id="ctl00_c_GridDC" style="
                           border-style: None;
                           width: 100%;
                           border-collapse: collapse;

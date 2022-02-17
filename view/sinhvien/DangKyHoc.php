@@ -1,24 +1,28 @@
 <?php require_once('./view/layouts/headerSinhVien.php'); ?>
 <!-- Right -->
+<style>
+    .tabletkb{
+        font-size:16px;
+    }
+    </style>
 <div id="right"  style="width: 100%; margin-left:10px;">
     <div class="title">Danh sách các môn học được đăng kí</div>
     <div class="entry">
         <div id="ctl00_c_ThongbaoPanel" class="thongbao">
-            <h3>Thông báo thời gian đăng ký học:</h3>
+            <h2>Thông báo thời gian đăng ký học:</h2>
             Nếu được đăng ký sẽ hiển thị thời gian đăng ký học ở đây.Còn nếu ko
             thì hiển thị Bạn không thuộc đối tượng đăng ký kì này
         </div>
         <div class="big-notice">
             Bạn chưa được đăng ký học
-
             <br />
         </div>
-        <p style="text-align: center; font-weight: bold">
+        <h2 style="text-align: center; font-weight: bold;">
             Danh sách môn được đăng ký
-        </p>
+        </h3>
         <div style="margin-bottom:30px;">
             <!-- style="width: 730px; height: 430px" -->
-            <table class="tabletkb" cellpadding="0" cellspacing="0">
+            <table class="tabletkb" cellpadding="0" cellspacing="0" width="100%">
                 <thead>
                 
                     <tr>
@@ -40,13 +44,13 @@
                       text-align: center;
                       border-left: 1px solid #ccc;
                     ">
-                            1
+                            <?= $i?>
                         </td>
                         <td style="text-align: center">
                             <input id="check<?= $i?>" style="
                         font-size: 20px;
-                        width: 20px;
-                        height: 20px;
+                        width: 30px;
+                        height: 30px;
                       " type="checkbox" />
                         </td>
                         <td style="text-align: center" ><?= $info['tenmon']?></td>
@@ -81,11 +85,11 @@
         <div id="LopHocPhan"></div>
         <div id="TKB">
             <div id="dkh_msg"></div>
-            <p style="text-align: center; font-weight: bold">
+            <h2 style="text-align: center; font-weight: bold">
                 Danh sách môn đã đăng ký
-            </p>
-            <div style="width: 730px; height: 430px;margin-bottom:50px;">
-                <table class="tabletkb" cellpadding="0" cellspacing="0">
+            </h2>
+            <div style="width: 700px; height: 430px;margin-bottom:50px;">
+                <table class="tabletkb" cellpadding="0" cellspacing="0" width="100%">
                     <thead>
                         <tr>
 

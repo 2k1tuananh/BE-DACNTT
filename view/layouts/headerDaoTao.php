@@ -10,6 +10,7 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <!-- ////////////////////////////////// -->
   <script type="text/javascript" src="./view/js/tooltip.js"></script>
   <script type="text/javascript" src="./view/js/thickbox-compressed.js"></script>
   <script src="./view/js/java.js" type="text/javascript"></script>
@@ -29,139 +30,11 @@
   <link href="./App_Themes/abrasive/style.css" type="text/css" rel="stylesheet" />
   <link href="./App_Themes/abrasive/thickbox.css" type="text/css" rel="stylesheet" />
 
-  <script src="chrome-extension://mooikfkahbdckldjjndioackbalphokd/assets/prompt.js"></script>
+  
   <style>
     .flex {
       display: flex;
       justify-content: space-between;
-    }
-
-    .glot-sub-active {
-      color: #1296ba !important;
-    }
-
-    .glot-sub-hovered {
-      color: #1296ba !important;
-    }
-
-    .glot-sub-clzz {
-      cursor: pointer;
-
-      line-height: 1.2;
-      font-size: 28px;
-      color: #ffcc00;
-      background: rgba(17, 17, 17, 0.7);
-    }
-
-    .glot-sub-clzz:hover {
-      color: #1296ba !important;
-    }
-
-    .ej-trans-sub {
-      position: absolute;
-      width: 100%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      z-index: 9999999;
-      cursor: move;
-    }
-
-    .ej-trans-sub>span {
-      color: #3cf9ed;
-      font-size: 18px;
-      text-align: center;
-      padding: 0 16px;
-      line-height: 1.5;
-      background: rgba(32, 26, 25, 0.8);
-      text-shadow: 0px 1px 4px black;
-      padding: 0 8px;
-
-      line-height: 1.2;
-      font-size: 16px;
-      color: #0cb1c7;
-      background: rgba(67, 65, 65, 0.7);
-    }
-
-    .ej-main-sub {
-      position: absolute;
-      width: 100%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      z-index: 99999999;
-      cursor: move;
-      padding: 0 8px;
-    }
-
-    .ej-main-sub>span {
-      color: white;
-      font-size: 20px;
-      line-height: 1.5;
-      text-align: center;
-      background: rgba(32, 26, 25, 0.8);
-      text-shadow: 0px 1px 4px black;
-      padding: 2px 8px;
-
-      line-height: 1.2;
-      font-size: 28px;
-      color: #ffcc00;
-      background: rgba(17, 17, 17, 0.7);
-    }
-
-    .ej-main-sub .glot-sub-clzz {
-      background: transparent !important;
-    }
-
-    .tran-subtitle>span {
-      cursor: pointer;
-      padding-left: 10px;
-      top: 2px;
-      position: relative;
-    }
-
-    .tran-subtitle>span>span {
-      position: absolute;
-      top: -170%;
-      background: rgba(0, 0, 0, 0.5);
-      font-size: 13px;
-      line-height: 20px;
-      padding: 2px 8px;
-      color: white;
-      display: none;
-      border-radius: 4px;
-      white-space: nowrap;
-      left: -50%;
-      font-weight: normal;
-    }
-
-    .view-icon-copy-main-sub:hover>span,
-    .view-icon-edit-sub:hover>span,
-    .view-icon-copy-tran-sub:hover>span {
-      display: block;
-    }
-
-    .tran-subtitle>span>svg {
-      width: 16px;
-      height: 16px;
-      pointer-events: none;
-      display: inline-flex !important;
-      vertical-align: baseline !important;
-    }
-
-    .view-icon-copy-main-sub>svg {
-      pointer-events: none;
-      color: #ffcc00;
-    }
-
-    .view-icon-copy-tran-sub {
-      padding-left: 0 !important;
-      padding-right: 8px !important;
-    }
-
-    .view-icon-copy-tran-sub>svg {
-      pointer-events: none;
-      color: #0cb1c7;
     }
 
     .table {
@@ -204,6 +77,7 @@
       font-size: 16px;
       font-family: 'Times New Roman', Times, serif;
     }
+    
   </style>
 </head>
 

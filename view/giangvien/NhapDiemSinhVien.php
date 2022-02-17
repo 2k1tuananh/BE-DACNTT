@@ -1,5 +1,4 @@
 <?php require_once('./view/layouts/headerGiaoVien.php'); ?>
-
 <style>
     button {
         z-index: 1;
@@ -284,24 +283,6 @@
 </div>
 <!-- End Page -->
 <!-- Footer -->
-<div id="footer">
-    Địa chỉ: Đường Nghiêm Xuân Yêm - Đại Kim - Hoàng Mai - Hà Nội<br />
-    Điện thoại hỗ trợ kỹ thuật:(04) 355 92 678 website
-    <a href="http://www.thanglong.edu.vn">http://www.thanglong.edu.vn</a>
-    mail:<a href="mailto:p.cntt@thanglong.edu.vn">p.cntt@thanglong.edu.vn</a><a href="http://atgo.vn/member/svgo/QTM2NjQzfDExLzEyLzIwMDF8TkdVWeG7hE4gVEnhur5OfFTDgEl8fGFuaHRhaWJudm4xMjExMjAwMUBnbWFpbC5jb218Q2jGsGEgY8OzfENoxrBhIGPDsw==">.</a>
-</div>
-<!-- End Footer -->
-
-<div id="eJOY__extension_root" class="eJOY__extension_root_class" style="all: unset"></div>
-<iframe id="nr-ext-rsicon" style="
-position: absolute;
-display: none;
-width: 50px;
-height: 50px;
-z-index: 2147483647;
-border-style: none;
-background: transparent;
-"></iframe>
 
 </body>
 

@@ -1,13 +1,11 @@
 <?php require_once('./view/layouts/headerGiaoVien.php'); ?>
 <style>
-      td {
+        #bangdiem1 td{
             text-align: center;
         }
-        th {
+        #bangdiem1 th{
             text-align: center;
         }
-</style>
-<style>
     button {
         z-index: 1;
         position: relative;
@@ -53,6 +51,9 @@
     .right_timkiem {
         position: relative;
     }
+    .chitiet tr{
+        font-size: 18px;
+    }
 </style>
 <!-- Right -->
 <div id="right" style="width: 100%; margin-left:10px;">
@@ -60,7 +61,9 @@
     <div class="entry">
         <div class="container_timkiem">
             <div style="display: flex;">
-                <p>Chọn môn học:</p>
+            
+
+                <p style="width:120px;font-size:18px;">Chọn môn học:</p>
                 <select class="form-control" style="width:200px" class="form-control" id="mamon">
                     <script>
                         $(function() {
@@ -91,6 +94,7 @@
                     <?php } ?>
                 </select>
             </div>
+            
 
             <div class="right_timkiem">
                 <input id="timkiem" style="padding-left: 20px; height: 35px;" type="text" placeholder="Tìm kiếm" />
@@ -133,7 +137,7 @@
 
             <div style="margin-top: 10px;" class="container_timkiem">
                 <div style="display: flex;">
-                    <p>Chọn tình trạng:</p>
+                    <p style="width:120px;font-size:18px;">Chọn tình trạng:</p>
                     <select class="form-control" style="width:200px" class="form-control" id="sapxep">
                         <script>
                             $(function() {
@@ -162,42 +166,7 @@
 
 
         </div>
-        <div class="modal fade" id="myModal" role="dialog">
-            <div class="modal-dialog">
-                <!-- Modal content-->
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal">
-                            &times;
-                        </button>
-                        <h4 class="modal-title">Thêm sinh viên</h4>
-                    </div>
-                    <div class="modal-body">
-                        <!-- <p>Some text in the modal.</p> -->
-                        <table width="100%">
-                            <tbody class="table">
-                                <tr>
-                                    <td width="30%">Họ tên:</td>
-                                    <td><input type="text" /></td>
-                                </tr>
-                                <tr>
-                                    <td width="30%">Mã SV:</td>
-                                    <td><input type="text" /></td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">
-                            Close
-                        </button>
-                        <button type="button" class="btn btn-success" data-dismiss="modal">
-                            OK
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </div>
+        
 
         <div id="bangdiem1">
             <table class="grid" cellspacing="0" id="ctl00_c_GridDC" style="

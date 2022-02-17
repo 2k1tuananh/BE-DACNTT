@@ -8,15 +8,15 @@
         <tbody>
           <tr>
             <td colspan="3" align="center">
-              <span style="font-weight: bold; font-size:18px;">PHIẾU DỰ THI</span>
+              <span style="font-weight: bold; font-size:24px;">PHIẾU DỰ THI</span>
             </td>
           </tr>
           <tr>
-            <td style="font-size:18px;">Mã sinh viên: <span id="ctl00_c_lbMaSV"><?= $data['masinhvien'] ?></span></td>
-            <td style="font-size:18px;">
+            <td style="font-size:20px;">Mã sinh viên: <span id="ctl00_c_lbMaSV"><?= $data['masinhvien'] ?></span></td>
+            <td style="font-size:20px;">
               Họ và tên: <span id="ctl00_c_lbTenSV"><?= $data['hovaten'] ?></span>
             </td>
-            <td style="font-size:18px;">Lớp: <span id="ctl00_c_lbLop"><?= $data['lop'] ?></span></td>
+            <td style="font-size:20px;">Lớp: <span id="ctl00_c_lbLop"><?= $data['lop'] ?></span></td>
           </tr>
         </tbody>
       </table>
@@ -31,8 +31,8 @@
       <thead>
         <tr>
           <th  class="text-center">STT</th>
-          <th  class="text-center">Mã học phần</th>
-          <th  class="text-center">Tên học phần</th>
+          <th  class="text-center">Mã HP</th>
+          <th  class="text-center">Tên HP</th>
           <th  class="text-center">Hình thức thi</th>
           <th  class="text-center">Ngày thi</th>
           <th  class="text-center">Giờ thi</th>
