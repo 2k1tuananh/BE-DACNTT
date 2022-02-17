@@ -120,30 +120,25 @@
                     })
                 });
             });
-            
-                $(function() {
-                    $('#bttimkiem').trigger('click'); //This event will fire the change event. 
-                    $('#bttimkiem').click(function() {
-                        var data = $('#timkiem').val();
-                        $.get("./index.php", {
-                            controller: "point",
-                            action: "timkiem",
-                            info: data
-                        }, function(data) {
-                            $("#bangdiem").html(data);
-                        })
-                    });
+
+            $(function() {
+                $('#bttimkiem').trigger('click'); //This event will fire the change event. 
+                $('#bttimkiem').click(function() {
+                    var data = $('#timkiem').val();
+                    $.get("./index.php", {
+                        controller: "point",
+                        action: "timkiem",
+                        info: data
+                    }, function(data) {
+                        $("#bangdiem").html(data);
+                    })
                 });
+            });
         </script>
 
 
         <div style="margin-top: 20px; align-items: flex-end;" class="container_timkiem">
-            <div style="background-color: #e4e8e9; 
-                        border:1px solid #545454; 
-                        border-radius: 2px; 
-                        width: 110px;
-                        height:25px;
-                        ">
+            <div style="border: 2px solid #827e7e;border-radius: 2px;background-color: #e4e8e9;">
                 <i style="padding-left: 5px;" class="fas fa-sort"></i>
                 <select id="sapxep" style="border: none; background-color: #e4e8e9;">
                     <script>
@@ -161,8 +156,8 @@
                             });
                         });
                     </script>
-                    <option>Thấp -> cao</option>
-                    <option>Cao -> thấp</option>
+                    <option>Thấp >> cao</option>
+                    <option>Cao >> thấp</option>
                 </select>
             </div>
 
@@ -179,25 +174,25 @@
         margin-top: 20px;">
 
             <tr style="background-color: #e4e8e9;">
-                <th  class="text-center">
+                <th class="text-center">
                     Họ tên
                 </th>
-                <th  class="text-center">
+                <th class="text-center">
                     Mã sinh viên
                 </th>
-                <th  class="text-center">
+                <th class="text-center">
                     Môn học
                 </th>
-                <th  class="text-center">
+                <th class="text-center">
                     Điểm quá trình
                 </th>
-                <th  class="text-center">
+                <th class="text-center">
                     Điểm cuối kỳ
                 </th>
-                <th  class="text-center">
+                <th class="text-center">
                     Điểm tổng kết
                 </th>
-                <th  class="text-center">
+                <th class="text-center">
 
                 </th>
             </tr>
@@ -236,22 +231,22 @@
                 foreach ($svl as $info) {
                     $stt++; ?>
                     <tr>
-                        <td class="hovaten<?= $stt ?>" id="<?= $info['hovaten'] ?>" name="hovaten"  class="text-center">
+                        <td class="hovaten<?= $stt ?>" id="<?= $info['hovaten'] ?>" name="hovaten" class="text-center">
                             <?= $info['hovaten'] ?>
                         </td>
-                        <td class="masinhvien<?= $stt ?>" id="<?= $info['masinhvien'] ?>" name="masinhvien"  class="text-center">
+                        <td class="masinhvien<?= $stt ?>" id="<?= $info['masinhvien'] ?>" name="masinhvien" class="text-center">
                             <?= $info['masinhvien'] ?>
                         </td>
-                        <td class="tenmon<?= $stt ?>" id="<?= $info['tenmon'] ?>" name="tenmon"  class="text-center">
+                        <td class="tenmon<?= $stt ?>" id="<?= $info['tenmon'] ?>" name="tenmon" class="text-center">
                             <?= $info['tenmon'] ?>
                         </td>
-                        <td  class="text-center">
+                        <td class="text-center">
                             <input id="diemquatrinh<?= $stt ?>" name="diemquatrinh<?= $stt ?>" style="background-color: #f3f6f7; border: none;" value="<?= $info['diemquatrinh'] ?>" type="number" step="0.01" min="0" max="10">
                         </td>
-                        <td  class="text-center">
+                        <td class="text-center">
                             <input id="diemcuoiky<?= $stt ?>" name="diemcuoiky<?= $stt ?>" t style="background-color: #f3f6f7; border: none;" value="<?= $info['diemcuoiky'] ?>" type="number" step="0.01" min="0" max="10">
                         </td>
-                        <td name="diemtongket"  class="text-center">
+                        <td name="diemtongket" class="text-center">
                             <p class="text-center" style="background-color: #f3f6f7; border: none;"><?= $info['diemtongket'] ?></p>
                         </td>
                         <td name="">

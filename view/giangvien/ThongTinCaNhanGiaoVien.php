@@ -65,7 +65,7 @@ if ($_SESSION['role_id'] == "1") {
     <?php endif; ?>
 
     <div class="information">
-      <table width="100%">
+      <table style="text-align: left;" width="100%">
         <tbody class="table">
           <tr>
             <td width="30%">Mã giáo viên:</td>

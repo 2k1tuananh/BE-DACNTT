@@ -205,7 +205,7 @@
 </style>
 
 <!-- Right -->
-<div id="right">
+<div id="right" style="width: 100%; margin-left:10px;">
   <div class="title">
     Quản lý môn học
 
@@ -246,18 +246,18 @@
                         ">
                 <tbody>
                   <tr>
-                    <th  class="text-center">STT</th>
-                    <th  class="text-center" style="white-space: nowrap">
+                    <th class="text-center">STT</th>
+                    <th class="text-center" style="white-space: nowrap">
                       Mã Môn
                     </th>
-                    <th  class="text-center">Tên Môn</th>
-                    <th  class="text-center" style="white-space: nowrap">
+                    <th class="text-center">Tên Môn</th>
+                    <th class="text-center" style="white-space: nowrap">
                       Số TC
                     </th>
 
-                    <th  class="text-center">Thứ</th>
-                    <th  class="text-center">Ca học</th>
-                    <th  class="text-center">Trạng thái</th>
+                    <th class="text-center">Thứ</th>
+                    <th class="text-center">Ca học</th>
+                    <th class="text-center">Trạng thái</th>
 
                   </tr>
                   <?php $stt = 0;
@@ -273,7 +273,7 @@
                       <td class="item-monhoc"><?= $info['ca'] ?></td>
 
                       <td class="item-monhoc">
-                      <button class="btnTimKiem capnhat" type="button" id="<?= $info['mamon'] ?>" data-toggle="modal" data-target="#SuaMonHoc">Cập nhật</button>
+                        <button class="btnTimKiem capnhat" type="button" id="<?= $info['mamon'] ?>" data-toggle="modal" data-target="#SuaMonHoc">Cập nhật</button>
                         <button type="button" id="xoa<?= $stt ?>" class="btnTimKiem">Xóa</button>
                         <script>
                           $(document).ready(function() {
@@ -308,20 +308,20 @@
 </div>
 
 <script>
-        $(document).ready(function() {
-          $(".capnhat").click(function() {
-            var mamon = $(this).attr("id")
+  $(document).ready(function() {
+    $(".capnhat").click(function() {
+      var mamon = $(this).attr("id")
 
-            $.get("./index.php", {
-              controller: "daotao",
-              action: "updatemonhoc",
-              mamon: mamon
-            }, function(data) {
-              $("#SuaMonHoc").html(data);
-            })
-          });
-        });
-      </script>
+      $.get("./index.php", {
+        controller: "daotao",
+        action: "updatemonhoc",
+        mamon: mamon
+      }, function(data) {
+        $("#SuaMonHoc").html(data);
+      })
+    });
+  });
+</script>
 <!-- End Right -->
 </div>
 <!-- End Page -->
@@ -356,7 +356,7 @@
             <tr>
               <td class="modal-td" width="30%">Chuyên ngành:</td>
               <td class="modal-td">
-                <select  id="chuyennganh" class="form-control">
+                <select id="chuyennganh" class="form-control">
                   <?php foreach ($chuyennganh as $info) { ?>
                     <option><?= $info['tenchuyennganh'] ?></option>
                   <?php } ?>
