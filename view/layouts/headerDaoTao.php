@@ -101,7 +101,7 @@
       <!-- User Info -->
       <div class="right" style="width: 100%;">
         <b>Chào
-          <span id="ctl00_lbUser" style="color: Red"><?php echo $_SESSION['name']; ?> (<?php
+          <span id="ctl00_lbUser" style="color: Red;text-transform: uppercase;"><?php echo $_SESSION['name']; ?> (<?php
                                                                                         if (isset($_SESSION['msv'])) {
                                                                                           echo $_SESSION['msv'];
                                                                                         } else {

@@ -130,8 +130,8 @@
                             });
                         });
                     </script>
-                    <option>Thấp >> cao</option>
-                    <option>Cao >> thấp</option>
+                    <option value="thapcao">Thấp >> cao</option>
+                    <option value="caothap">Cao >> thấp</option>
                 </select>
             </div>
 

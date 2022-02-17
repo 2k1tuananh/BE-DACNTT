@@ -40,7 +40,7 @@ class point_controller {
 
     function sapxep()
     {
-        if($_GET['info']=="Thấp -> cao"){
+        if($_GET['info']=="thapcao"){
             $_SESSION['sapxep']='getinfo_thapcao';
             $svl2=$this->db->getinfo_thapcao($_SESSION['mgv'],$_SESSION['mamon']);
             require_once("./view/giangvien/qlbangdiemsinhvien.php");
