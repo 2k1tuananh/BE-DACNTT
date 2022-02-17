@@ -3,12 +3,15 @@
   .glot-sub-active {
     color: #1296ba !important;
   }
-  td{
+
+  td {
     text-align: center;
   }
+
   th {
     text-align: center;
   }
+
   .glot-sub-hovered {
     color: #1296ba !important;
   }
@@ -228,7 +231,7 @@
 
   </div>
   <div>
-    <button type="button" data-toggle="modal" data-target="#myModal" class="btnUpdate btn" style="margin-bottom: 10px">Thêm Sinh Viên &nbsp;<span class="glyphicon glyphicon-plus"></span></button>
+    <button type="button" data-toggle="modal" data-target="#myModal" class="btnTimKiem btn" style="margin-bottom: 10px">Thêm Sinh Viên &nbsp;<span class="glyphicon glyphicon-plus"></span></button>
   </div>
   <div class="form">
     <script>
@@ -613,12 +616,11 @@
             $("#alert").html('<strong class="text-danger">Lớp không được để trống</strong>');
             $("select[name='lop']").focus();
             return;
-          }else if (diachi == null || diachi == "") {
+          } else if (diachi == null || diachi == "") {
             $("#alert").html('<strong class="text-danger">Địa chỉ không được để trống</strong>');
             $("select[name='diachi']").focus();
             return;
-          } 
-          else if (chuyennganh == null || chuyennganh == "") {
+          } else if (chuyennganh == null || chuyennganh == "") {
             $("#alert").html('<strong class="text-danger">Chuyên ngành không được để trống</strong>');
             $("select[name='chuyennganh']").focus();
             return;

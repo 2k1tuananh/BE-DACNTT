@@ -4,9 +4,11 @@
   .glot-sub-active {
     color: #1296ba !important;
   }
-  td{
+
+  td {
     text-align: center;
   }
+
   .modal-td {
     padding: 10px;
   }
@@ -214,7 +216,7 @@
   </div>
   <div class="form">
 
-    <button type="button" data-toggle="modal" data-target="#ThemMonHoc" class="btnUpdate btn" style="margin-bottom: 10px;">Thêm môn Học &nbsp;<span class="glyphicon glyphicon-plus"></span></button>
+    <button type="button" data-toggle="modal" data-target="#ThemMonHoc" class="btnTimKiem btn" style="margin-bottom: 10px;">Thêm môn Học &nbsp;<span class="glyphicon glyphicon-plus"></span></button>
     <div class="tim-kiem">
       <input id="timkiem" type="text" placeholder="Nhập mã môn,tên môn">
       <button id="tntimkiem" class="btnTimKiem">Tìm kiếm</button>
@@ -393,7 +395,7 @@
       <div id="alert"></div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" id="themmon" class="btn btn-success" >Xác nhận</button>
+        <button type="button" id="themmon" class="btn btn-success">Xác nhận</button>
       </div>
     </div>
     <script>
@@ -405,77 +407,58 @@
           var chuyennganh = $('#chuyennganh').val();
           var thu = $('#thu').val();
           var ca = $('#ca').val();
-          if(mamon == null || mamon == "")
-          {
+          if (mamon == null || mamon == "") {
             $("#alert").html('<strong class="text-danger">Mã môn học không được để trống</strong>');
             $("input[name='mamon']").focus();
             return;
-          }
-          else if (mamon.length < 5 || mamon.length > 5)
-          {
+          } else if (mamon.length < 5 || mamon.length > 5) {
             $("#alert").html('<strong class="text-danger">Mã môn học gồm 5 kí tự</strong>');
             $("input[name='mamon']").focus();
             return;
-          }
-          else if(tenmon == null || tenmon == "")
-          {
+          } else if (tenmon == null || tenmon == "") {
             $("#alert").html('<strong class="text-danger">Mã môn học không được để trống</strong>');
             $("input[name='tenmon']").focus();
             return;
-          }
-          else if(tenmon.length < 5 || tenmon.length > 5)
-          {
+          } else if (tenmon.length < 5 || tenmon.length > 5) {
             $("#alert").html('<strong class="text-danger">Tên môn học tối thiểu 6 kí tự</strong>');
             $("input[name='tenmon']").focus();
             return;
-          }
-          else if(sotinchi == null || sotinchi == "")
-          {
+          } else if (sotinchi == null || sotinchi == "") {
             $("#alert").html('<strong class="text-danger">Số tín chỉ không được để trống</strong>');
             $("input[name='sotinchi']").focus();
             return;
-          }
-          else if (isNaN(sotinchi))
-          {
+          } else if (isNaN(sotinchi)) {
             $("#alert").html('<strong class="text-danger">Số tín chỉ là dạng số</strong>');
             $("input[name='sotinchi']").focus();
             return;
-          }
-          else if(chuyennganh == null || chuyennganh == "")
-          {
+          } else if (chuyennganh == null || chuyennganh == "") {
             $("#alert").html('<strong class="text-danger">Chuyên ngành không được để trống</strong>');
             $("select[name='chuyennganh']").focus();
             return;
-          }
-          else if(thu == null || thu == "")
-          {
+          } else if (thu == null || thu == "") {
             $("#alert").html('<strong class="text-danger">Thứ không được để trống</strong>');
             $("select[name='thu']").focus();
             return;
-          }
-          else if(ca == null || ca == "")
-          {
+          } else if (ca == null || ca == "") {
             $("#alert").html('<strong class="text-danger">Ca không được để trống</strong>');
             $("select[name='ca']").focus();
             return;
-          }
-          else
-          {
+          } else {
             $('#ThemMonHoc').modal('hide');
             $.get("./index.php", {
-            controller: "daotao",
-            action: "themmon",
-            mamon: mamon,
-            tenmon: tenmon,
-            sotinchi: sotinchi,
-            chuyennganh: chuyennganh,
-            thu: thu,
-            ca: ca
+              controller: "daotao",
+              action: "themmon",
+              mamon: mamon,
+              tenmon: tenmon,
+              sotinchi: sotinchi,
+              chuyennganh: chuyennganh,
+              thu: thu,
+              ca: ca
             }, function(data) {
               $("#info").html(data);
             })
           }
-          
+
         });
       });
     </script>

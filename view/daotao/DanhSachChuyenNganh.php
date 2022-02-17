@@ -193,9 +193,11 @@
     overflow: hidden;
     transition: color 0.4s ease-in-out;
   }
+
   td {
     text-align: center;
   }
+
   .btnTimKiem::before {
     content: '';
     z-index: -1;
@@ -229,24 +231,24 @@
   </div>
   <div class="form">
 
-    <button type="button" data-toggle="modal" data-target="#ThemMonHoc" class="btnUpdate btn" style="margin-bottom: 10px;">Thêm chuyên ngành &nbsp;<span class="glyphicon glyphicon-plus"></span></button>
+    <button type="button" data-toggle="modal" data-target="#ThemMonHoc" class="btnTimKiem btn" style="margin-bottom: 10px;">Thêm chuyên ngành &nbsp;<span class="glyphicon glyphicon-plus"></span></button>
 
   </div>
   <div class="form-tkb">
-    <div class="chuyen-nganh" >
+    <div class="chuyen-nganh">
       <div style="display: flex;">
-      <p >Chọn chuyên ngành:</p>
-      <select class="form-control" id="chuyennganh1">
-        <option class="a" id="Tất cả">Tất cả</option>
-        <?php
+        <p>Chọn chuyên ngành:</p>
+        <select class="form-control" id="chuyennganh1">
+          <option class="a" id="Tất cả">Tất cả</option>
+          <?php
 
-        foreach ($chuyennganh as $CN) {
-          echo '<option value="' . $CN['machuyennganh'] . '">' . $CN['tenchuyennganh'] . '</option>';
-        }
-        ?>
-      </select>
+          foreach ($chuyennganh as $CN) {
+            echo '<option value="' . $CN['machuyennganh'] . '">' . $CN['tenchuyennganh'] . '</option>';
+          }
+          ?>
+        </select>
       </div>
-     
+
       <script>
         $(function() {
           $('#chuyennganh1').trigger('change'); //This event will fire the change event. 
@@ -299,12 +301,12 @@
                         ">
                 <tbody>
                   <tr>
-                    <th  class="text-center">STT</th>
-                    <th  class="text-center" style="white-space: nowrap">
+                    <th class="text-center">STT</th>
+                    <th class="text-center" style="white-space: nowrap">
                       Mã chuyên ngành
                     </th>
-                    <th  class="text-center">Tên chuyên ngành</th>
-                    <th  class="text-center"></th>
+                    <th class="text-center">Tên chuyên ngành</th>
+                    <th class="text-center"></th>
                   <tr>
                     <?php $stt = 0;
                     foreach ($chuyennganh as $info) {
