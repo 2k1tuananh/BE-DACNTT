@@ -15,35 +15,7 @@ class admin_controller
     }
     function main()
     {
-        // if (isset($_SESSION['msv'])) {
-        //     $data = $this->db->getinfosinhvien($_SESSION['msv']);
-        //     if (isset($_POST['edit_sv'])) {
-        //         $image = $_POST['image'];
-        //         $gioitinh = $_POST['gioitinh'];
-        //         $cmnd = $_POST['cmnd'];
-        //         $dienthoai = $_POST['dienthoai'];
-        //         $email = $_POST['email'];
-        //         $diachi = $_POST['diachi'];
-        //         $this->db->updatesinhvien($_SESSION['msv'], $image, $gioitinh, $cmnd, $dienthoai, $email, $diachi);
-        //         header("Refresh:0");
-        //     }
-
-        //     require_once("./view/sinhvien/ThongTinCaNhan.php");
-        // } else {
-        //     $data = $this->db->getinfogiangvien($_SESSION['mgv']);
-        //     if (isset($_POST['edit_gv'])) {
-        //         $image = $_POST['image'];
-        //         $gioitinh = $_POST['gioitinh'];
-        //         $cmnd = $_POST['cmnd'];
-        //         $dienthoai = $_POST['dienthoai'];
-        //         $email = $_POST['email'];
-        //         $diachi = $_POST['diachi'];
-        //         $this->db->updategiangvien($_SESSION['mgv'], $image, $gioitinh, $cmnd, $dienthoai, $email, $diachi);
-        //         header("Refresh:0");
-        //     }
-
-        //     require_once("./view/giangvien/ThongTinCaNhanGiaoVien.php");
-        // }
+       
         $countsSV =$this->db->countsSV();
         $countsGV =$this->db->countsGV();
         $countsNV =$this->db->countsNV();
@@ -100,6 +72,16 @@ class admin_controller
     }
     function themsinhvien()
     {   
+        if(!empty($_POST["machuyennganh"])){ 
+
+            $listGVCN = $this->db->getGiaoVienCN($_POST['machuyennganh']);
+            foreach ($listGVCN as $infoCN)
+            {
+              echo '<option value="'.$infoCN['magiangvien'].'">'.$infoCN['hovaten'].'</option>'; 
+
+            }
+            require_once("./view/admin/themsinhvien.php");
+        }
         $masinhvien=$this->db->masinhvien();
         $getmasv = substr($masinhvien['masinhvien'], 1); 
         $listCN = $this->db->getAllData('chuyennganh');
@@ -118,6 +100,16 @@ class admin_controller
     }
     function suasinhvien()
     {   
+        if(!empty($_POST["machuyennganh"])){ 
+
+            $listGVCN = $this->db->getGiaoVienCN($_POST['machuyennganh']);
+            foreach ($listGVCN as $infoCN)
+            {
+              echo '<option value="'.$infoCN['magiangvien'].'">'.$infoCN['hovaten'].'</option>'; 
+
+            }
+            require_once("./view/admin/themsinhvien.php");
+        }
         if(isset($_GET['id'])){
             $id = $_GET['id'];
             $svid = $this->db->editsvid($id);
@@ -136,6 +128,16 @@ class admin_controller
     }
     function suagiangvien()
     {   
+        if(!empty($_POST["machuyennganh"])){ 
+
+            $listGVCN = $this->db->getGiaoVienCN($_POST['machuyennganh']);
+            foreach ($listGVCN as $infoCN)
+            {
+              echo '<option value="'.$infoCN['magiangvien'].'">'.$infoCN['hovaten'].'</option>'; 
+
+            }
+            require_once("./view/admin/themsinhvien.php");
+        }
         if(isset($_GET['id'])){
             $id = $_GET['id'];
             $gvid = $this->db->editgiangvienid($id);
@@ -169,6 +171,7 @@ class admin_controller
     }
     function suanhanvien()
     {   
+
         if(isset($_GET['id'])){
             $id = $_GET['id'];
             $gvid = $this->db->editgiangvienid($id);
@@ -195,6 +198,16 @@ class admin_controller
 
     function themgiangvien()
     {   
+        if(!empty($_POST["machuyennganh"])){ 
+
+            $listGVCN = $this->db->getGiaoVienCN($_POST['machuyennganh']);
+            foreach ($listGVCN as $infoCN)
+            {
+              echo '<option value="'.$infoCN['magiangvien'].'">'.$infoCN['hovaten'].'</option>'; 
+
+            }
+            require_once("./view/admin/themsinhvien.php");
+        }
         $magiangvien=$this->db->magiangvien();
         $getmgv = substr($magiangvien['magiangvien'], 2); 
         $listChuyenNganh = $this->db->getAllData('chuyennganh');

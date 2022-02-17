@@ -94,13 +94,8 @@
                                 <td class="modal-td">Giáo viên CN:</td>
                                 <td class="modal-td">
                                     <select class="form-control" id="giaovien" name="giaovien">
-                                    <option value="">Chọn giáo viên</option>
 
-<?php foreach ($listGVCN as $infoCN) {
-        if ($svid['GVCN'] == $infoCN['magiangvien'])
-            echo '<option value="' . $infoCN['magiangvien'] . '" selected>' . $infoCN['hovaten'] . '</option>';
-    }
-    ?>
+            
 
                                     </select>
                                 </td>
