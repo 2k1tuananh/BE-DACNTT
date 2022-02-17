@@ -20,6 +20,7 @@
             <!-- style="width: 730px; height: 430px" -->
             <table class="tabletkb" cellpadding="0" cellspacing="0">
                 <thead>
+                
                     <tr>
                         <th style="width: 40px">STT</th>
                         <th style="width: 40px"></th>
@@ -32,6 +33,7 @@
                     </tr>
                 </thead>
                 <tbody>
+                <?php $i=0; foreach($data as $info){$i++; ?>
                     <tr>
                         <td style="
                       width: 30px;
@@ -41,36 +43,37 @@
                             1
                         </td>
                         <td style="text-align: center">
-                            <input id="check" style="
+                            <input id="check<?= $i?>" style="
                         font-size: 20px;
                         width: 20px;
                         height: 20px;
                       " type="checkbox" />
                         </td>
-                        <td id="tenmon1111" style="text-align: center" ><p id="tenmon1111"> tin</p></td>
-                        <td style="text-align: center">2</td>
-                        <td style="text-align: center">2</td>
-                        <td style="text-align: center">3</td>
-                        <td style="text-align: center">1.200.000</td>
+                        <td style="text-align: center" ><?= $info['tenmon']?></td>
+                        <td style="text-align: center"><?= $info['thu']?></td>
+                        <td style="text-align: center"><?= $info['ca']?></td>
+                        <td style="text-align: center"><?= $info['sotinchi']?></td>
+                        <td style="text-align: center"><?= $info['giatien']?></td>
                         <td style="text-align: center">Chưa đăng ký</td>
                         <script>
                         $(function(){
-                        $('#check').trigger('change'); //This event will fire the change event. 
-                            $('#check').change(function(){
-                                var data= "$(this).val()";
-                                alert(data);
-                                if(check.checked == true){
-                                    var machuyennganh=$('#tenmon1111').val();
-                                    alert(machuyennganh);
+                        $('#check<?= $i?>').trigger('change'); //This event will fire the change event. 
+                            $('#check<?= $i?>').change(function(){
+
+                                if(check<?= $i?>.checked == true){
+                                    var mamon="<?= $info['mamon']?>";
+                                    var magv="<?= $info['magiangvien']?>";
+                                    var malop="<?= $info['lop']?>";
+                                    alert("Đăng ký thành công");
                                 }
-                                $.get("./index.php",{controller:"daotao",action:"bangchuyennganh", info:data}, function(data) {
-                                $("#bangdiem1").html(data);
+                                $.get("./index.php",{controller:"personal_information",action:"dangkyhoc1", mamon:mamon, magv:magv, malop:malop}, function(data) {
+                                $("#TKB").html(data);
                             })                                                                                     
                         });
                     });
                         </script>
                     </tr>
-                    
+                    <?php }?>
                 </tbody>
             </table>
         </div>
@@ -96,32 +99,21 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <td style="
-                      width: 30px;
-                      text-align: center;
-                      border-left: 1px solid #ccc;
-                    ">
-                            1
-                        </td>
-
-                        <td style="text-align: center">Tin đại cương</td>
-                        <td style="text-align: center">2</td>
-                        <td style="text-align: center">3</td>
-                        </tr>
+                        <?php $i=0; foreach($data1 as $info){$i++; ?>
                         <tr>
                             <td style="
                       width: 30px;
                       text-align: center;
                       border-left: 1px solid #ccc;
                     ">
-                                2
+                                <?= $i?>
                             </td>
 
-                            <td style="text-align: center">PHP</td>
-                            <td style="text-align: center">2</td>
-                            <td style="text-align: center">3</td>
+                            <td style="text-align: center"><?= $info['tenmon']?></td>
+                            <td style="text-align: center"><?= $info['thu']?></td>
+                            <td style="text-align: center"><?=$info['ca']?></td>
                         </tr>
-
+                        <?php }?>
                     </tbody>
                 </table>
             </div>

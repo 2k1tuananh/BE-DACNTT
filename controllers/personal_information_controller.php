@@ -67,7 +67,15 @@ class personal_information_controller
     }
     function dangkyhoc()
     {
-        $data=$this->db->getdatalichdk();
+        $giohientai=date('Y-m-d H:s:i');
+        $data=$this->db->getdatalichdk($giohientai);
+        $data1=$this->db->getdatamondk($_SESSION['msv']);
         require_once("./view/sinhvien/DangKyHoc.php");
+    }
+    function dangkyhoc1()
+    {
+        $this->db->dangkyhoc($_GET['mamon'],$_GET['magv'],$_GET['malop'],$_SESSION['msv']);
+        $data1=$this->db->getdatamondk($_SESSION['msv']);
+        require_once("./view/sinhvien/DangKyHoc1.php");
     }
 }
