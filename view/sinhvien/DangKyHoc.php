@@ -41,85 +41,36 @@
                             1
                         </td>
                         <td style="text-align: center">
-                            <input style="
+                            <input id="check" style="
                         font-size: 20px;
                         width: 20px;
                         height: 20px;
                       " type="checkbox" />
                         </td>
-                        <td style="text-align: center">Tin đại cương</td>
+                        <td id="tenmon1111" style="text-align: center" ><p id="tenmon1111"> tin</p></td>
                         <td style="text-align: center">2</td>
                         <td style="text-align: center">2</td>
                         <td style="text-align: center">3</td>
                         <td style="text-align: center">1.200.000</td>
                         <td style="text-align: center">Chưa đăng ký</td>
+                        <script>
+                        $(function(){
+                        $('#check').trigger('change'); //This event will fire the change event. 
+                            $('#check').change(function(){
+                                var data= "$(this).val()";
+                                alert(data);
+                                if(check.checked == true){
+                                    var machuyennganh=$('#tenmon1111').val();
+                                    alert(machuyennganh);
+                                }
+                                $.get("./index.php",{controller:"daotao",action:"bangchuyennganh", info:data}, function(data) {
+                                $("#bangdiem1").html(data);
+                            })                                                                                     
+                        });
+                    });
+                        </script>
                     </tr>
-                    <tr>
-                        <td style="
-                      width: 30px;
-                      text-align: center;
-                      border-left: 1px solid #ccc;
-                    ">
-                            2
-                        </td>
-                        <td style="text-align: center">
-                            <input style="
-                        font-size: 20px;
-                        width: 20px;
-                        height: 20px;
-                      " type="checkbox" />
-                        </td>
-                        <td style="text-align: center">Cấu trúc dữ liệu</td>
-                        <td style="text-align: center">4</td>
-                        <td style="text-align: center">4</td>
-                        <td style="text-align: center">1</td>
-                        <td style="text-align: center">400.000</td>
-                        <td style="text-align: center">Chưa đăng ký</td>
-                    </tr>
-                    <tr>
-                        <td style="
-                      width: 30px;
-                      text-align: center;
-                      border-left: 1px solid #ccc;
-                    ">
-                            3
-                        </td>
-                        <td style="text-align: center">
-                            <input style="
-                        font-size: 20px;
-                        width: 20px;
-                        height: 20px;
-                      " type="checkbox" />
-                        </td>
-                        <td style="text-align: center">PHP</td>
-                        <td style="text-align: center">6</td>
-                        <td style="text-align: center">6</td>
-                        <td style="text-align: center">2</td>
-                        <td style="text-align: center">800.000</td>
-                        <td style="text-align: center">Chưa đăng ký</td>
-                    </tr>
-                    <tr>
-                        <td style="
-                      width: 30px;
-                      text-align: center;
-                      border-left: 1px solid #ccc;
-                    ">
-                            4
-                        </td>
-                        <td style="text-align: center">
-                            <input style="
-                        font-size: 20px;
-                        width: 20px;
-                        height: 20px;
-                      " type="checkbox" />
-                        </td>
-                        <td style="text-align: center">Công nghệ web</td>
-                        <td style="text-align: center">7</td>
-                        <td style="text-align: center">7</td>
-                        <td style="text-align: center">4</td>
-                        <td style="text-align: center">1.600.000</td>
-                        <td style="text-align: center">Chưa đăng ký</td>
-                    </tr>
+                    
                 </tbody>
             </table>
         </div>

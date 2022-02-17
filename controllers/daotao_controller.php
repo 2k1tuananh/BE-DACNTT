@@ -95,8 +95,16 @@ class daotao_controller {
     //tochuclichdangkyhoc
     function lichdangkyhoc()
     {
-        
+        if (isset($_POST['check']) && $_POST['check']!="") {
+            
+            foreach($_POST['check'] as $value) {
+               //Xử lý các phần tử được chọn
+               $this->db->themvaolichdkhoc($value,$_POST['ngaybatdau'],$_POST['ngayketthuc']);
+            }
+      }
+        $data=$this->db->getAllData("monhoc");
         require_once("./view/daotao/ToChucLichDangKyHoc.php");
+        exit();
     }
 
     function banggiangday()

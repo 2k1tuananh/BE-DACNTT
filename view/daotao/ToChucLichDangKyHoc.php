@@ -205,42 +205,32 @@
                 <option>Khoa học máy tính</option>
             </select>
         </div>
-            
+        <form action="" method="POST">
         <div class="list-monhoc">
             <p>Chọn môn học:</p>
             
             <ul>
+              <?php $i=0; foreach($data as $value){ ?>
                 <li>
-                    <input type="checkbox">
-                    Tin đại cương
+                    <input name="check[]" value="<?= $value['mamon']?>" type="checkbox">
+                    <?= $value['tenmon']?>
                 </li>
-                <li>
-                    <input type="checkbox">
-                    Giải tích 1
-                </li>
-                <li>
-                    <input type="checkbox">
-                    Giải tích 2
-                </li>
-                <li>
-                    <input type="checkbox">
-                    Công nghệ web
-                </li>
+              <?php }?>
             </ul>
         </div>
         <div class="ngay-dky">
             <div class="ngay-bdau">
                 <p>Ngày bắt đầu:</p>
-                <input class="form-control" type="datetime-local"/>
+                <input name="ngaybatdau" class="form-control" type="datetime-local"/>
             </div>
             <div class="ngay-ketthuc">
                 <p>Ngày kết thúc:</p>
-                <input class="form-control" type="datetime-local"/>
+                <input name="ngayketthuc" class="form-control" type="datetime-local"/>
             </div>
            
         </div>
-        <button class="btn-xacnhan">Xác nhận</button>    
-            
+        <button name="xacnhanlich" class="btn-xacnhan">Xác nhận</button>    
+        </form>
 
         </div>
       </div>

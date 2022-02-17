@@ -130,7 +130,11 @@
             }
             return $data;
         }
-
+        public function getinfopoint1($msv){
+            $sql = "select * from `sinhvien-diemmon` inner join `monhoc` on `sinhvien-diemmon`.mamon=`monhoc`.mamon WHERE masinhvien='$msv'";
+            $this->execute($sql);
+            return $data;
+        }
 
         
         ///// LOGIN
@@ -760,6 +764,12 @@
             
             return $this->execute($sql);
         }
+        public function themvaolichdkhoc($mm,$nbd,$nkt){
+            $sql="INSERT INTO `lickdkhoc`(`mamon`, `ngaybatdau`, `ngayketthuc`) 
+            VALUES ('$mm','$nbd','$nkt')";
+            return $this->execute($sql);
+        }
+
 
 
 

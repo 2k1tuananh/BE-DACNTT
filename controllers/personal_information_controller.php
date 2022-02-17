@@ -67,6 +67,7 @@ class personal_information_controller
     }
     function dangkyhoc()
     {
+        $data=$this->db->getdatalichdk();
         require_once("./view/sinhvien/DangKyHoc.php");
     }
 }
