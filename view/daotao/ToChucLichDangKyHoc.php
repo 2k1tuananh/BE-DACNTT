@@ -192,7 +192,7 @@
  
 
       <!-- Right -->
-      <div id="right">
+      <div id="right"  style="width: 100%; margin-left:10px;">
         <div class="title">
           Tổ chức lịch đăng ký học cho sinh viên
         </div>
@@ -229,7 +229,7 @@
             </div>
            
         </div>
-        <button name="xacnhanlich" class="btn-xacnhan">Xác nhận</button>    
+        <button name="xacnhanlich" class="btn-xacnhan btnTimKiem">Xác nhận</button>    
         </form>
 
         </div>

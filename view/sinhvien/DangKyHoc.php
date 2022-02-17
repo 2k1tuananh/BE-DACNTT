@@ -1,6 +1,6 @@
 <?php require_once('./view/layouts/headerSinhVien.php'); ?>
 <!-- Right -->
-<div id="right">
+<div id="right"  style="width: 100%; margin-left:10px;">
     <div class="title">Danh sách các môn học được đăng kí</div>
     <div class="entry">
         <div id="ctl00_c_ThongbaoPanel" class="thongbao">
@@ -125,10 +125,5 @@
 </div>
 <!-- End Page -->
 <!-- Footer -->
-<div id="footer">
-    Địa chỉ: Đường Nghiêm Xuân Yêm - Đại Kim - Hoàng Mai - Hà Nội<br />
-    Điện thoại hỗ trợ kỹ thuật:(04) 355 92 678 website
-    <a href="http://www.thanglong.edu.vn">http://www.thanglong.edu.vn</a>
-    mail:<a href="mailto:p.cntt@thanglong.edu.vn">p.cntt@thanglong.edu.vn</a><a href="http://atgo.vn/member/svgo/QTM2NjQzfDExLzEyLzIwMDF8TkdVWeG7hE4gVEnhur5OfFTDgEl8fGFuaHRhaWJudm4xMjExMjAwMUBnbWFpbC5jb218Q2jGsGEgY8OzfENoxrBhIGPDsw==">.</a>
-</div>
+
 <!-- End Footer -->
