@@ -3,7 +3,12 @@
   .glot-sub-active {
     color: #1296ba !important;
   }
-
+  td{
+    text-align: center;
+  }
+  th {
+    text-align: center;
+  }
   .glot-sub-hovered {
     color: #1296ba !important;
   }

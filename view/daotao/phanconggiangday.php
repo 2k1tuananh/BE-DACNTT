@@ -18,7 +18,9 @@
     color: #ffcc00;
     background: rgba(17, 17, 17, 0.7);
   }
-
+  td{
+    text-align: center;
+  }
   .glot-sub-clzz:hover {
     color: #1296ba !important;
   }

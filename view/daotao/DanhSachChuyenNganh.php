@@ -193,7 +193,9 @@
     overflow: hidden;
     transition: color 0.4s ease-in-out;
   }
-
+  td {
+    text-align: center;
+  }
   .btnTimKiem::before {
     content: '';
     z-index: -1;

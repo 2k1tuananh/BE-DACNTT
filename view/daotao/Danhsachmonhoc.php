@@ -4,7 +4,9 @@
   .glot-sub-active {
     color: #1296ba !important;
   }
-
+  td{
+    text-align: center;
+  }
   .modal-td {
     padding: 10px;
   }
