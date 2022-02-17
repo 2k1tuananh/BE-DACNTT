@@ -1,4 +1,9 @@
 <?php require_once('./view/layouts/headerSinhVien.php'); ?>
+<style>
+    td {
+      text-align: center;
+    }
+</style>
 <div id="right" style="width: 100%; margin-left:10px;">
   <div class="title">
     Bảng điểm sinh viên <?php echo $_SESSION['name']; ?> - <?php echo $_SESSION['msv']; ?> - <?php echo $_SESSION['ngaysinh']; ?> - <?php echo $_SESSION['lop']; ?>
@@ -35,10 +40,10 @@
                     <td><?php echo $stt++; ?></td>
                     <td><?php echo $value['mamon']; ?></td>
                     <td><?php echo $value['tenmon']; ?></td>
-                    <td align="center"><?php echo $value['sotinchi']; ?></td>
-                    <td align="center"><?php echo $value['diemquatrinh']; ?></td>
-                    <td align="center"><?php echo $value['diemcuoiky']; ?></td>
-                    <td align="center"><?php echo $value['diemtongket']; ?></td>
+                    <td><?php echo $value['sotinchi']; ?></td>
+                    <td><?php echo $value['diemquatrinh']; ?></td>
+                    <td><?php echo $value['diemcuoiky']; ?></td>
+                    <td><?php echo $value['diemtongket']; ?></td>
                   </tr>
                 <?php } ?>
                 <tr>

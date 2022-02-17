@@ -137,7 +137,7 @@
       var email = $("input[name='email']").val();
       var password = $("input[name='password']").val();
       var diachi = $("input[name='diachi']").val();
-      //alert(mamon+tenmon);
+      alert(masinhvien);
       $.get("./index.php", {
         controller: "daotao",
         action: "capnhatsinhviendaotao",
@@ -155,6 +155,7 @@
         diachi:diachi
       }, function(data) {
         $("#info").html(data);
+        alert(data)
         alert("Cập nhật thành công");
       })
     });

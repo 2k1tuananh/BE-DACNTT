@@ -87,13 +87,13 @@
                       </Button>
                       &nbsp;
                       <Button id="<?= $info['masinhvien'] ?>" class="btnTimKiem" type="button" data-toggle="modal" data-target="#myModal2">Đánh Giá</Button>
-                      <Button class="btnTimKiem capnhapsinhvien" id="<?= $info['masinhvien'] ?>" type="button" data-toggle="modal" data-target="#suasinhvien">Cập Nhật</Button>
+                      <Button class="btnTimKiem capnhap" id="<?= $info['masinhvien'] ?>" type="button" data-toggle="modal" data-target="#suasinhvien">Cập Nhật</Button>
                     </td>
                   </tr>
                 <?php } ?>
                 <script>
                   $(document).ready(function() {
-                    $(".capnhapsinhvien").click(function() {
+                    $("button.capnhap").click(function() {
                       var masinhvien = $(this).attr("id")
                       $.get("./index.php", {
                         controller: "daotao",

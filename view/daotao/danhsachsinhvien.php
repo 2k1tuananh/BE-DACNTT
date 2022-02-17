@@ -290,7 +290,7 @@
               <tbody>
 
                 <tr>
-                  <th  class="text-center" style="
+                  <th class="text-center" style="
                       
                       font-size: 15px;
                       
@@ -299,24 +299,24 @@
                       
                       font-size: 15px;
                       
-                    "  class="text-center">Mã SV</th>
+                    " class="text-center">Mã SV</th>
                   <th style="
                       
                       font-size: 15px;
                       
-                    "  class="text-center">Tên Sinh Viên</th>
+                    " class="text-center">Tên Sinh Viên</th>
                   <th style="
                       
                       font-size: 15px;
                       
                     
                       
-                    "  class="text-center">Trạng thái</th>
+                    " class="text-center">Trạng thái</th>
                   <th style="
                       
                       font-size: 15px;
                       
-                    "  class="text-center"></th>
+                    " class="text-center"></th>
 
                 </tr>
                 <?php $stt = 0;
@@ -347,7 +347,7 @@
                           });
                         });
                       </script>
-                      <select id="sapxep<?= $stt ?>">
+                      <select class="form-control" id="sapxep<?= $stt ?>">
                         <option><?= $info['trangthai_sv'] ?></option>
                         <option>Đang học</option>
                         <option>Đã tốt nghiệp</option>
@@ -362,11 +362,25 @@
                         <span">Chi Tiêt</span>
                       </Button>
                       &nbsp;
-                      <Button id="<?= $value['masinhvien'] ?>" class="btnTimKiem" type="button" data-toggle="modal" data-target="#myModal2">Đánh Giá</Button>
-                      <Button class="btnTimKiem" type="button" data-toggle="modal" data-target="#myModal2">Cập Nhật</Button>
+                      <Button id="<?= $info['masinhvien'] ?>" class="btnTimKiem" type="button" data-toggle="modal" data-target="#myModal2">Đánh Giá</Button>
+                      <button class="btnTimKiem capnhatsv" id="<?= $info['masinhvien'] ?>" type="button" data-toggle="modal" data-target="#suasinhvien">Cập Nhật</button>
                     </td>
                   </tr>
                 <?php } ?>
+                <script>
+                  $(document).ready(function() {
+                    $("button.capnhapsv").click(function() {
+                      var masinhvien = $(this).attr("id")
+                      $.get("./index.php", {
+                        controller: "daotao",
+                        action: "updatestudentdaotao",
+                        masinhvien: masinhvien
+                      }, function(data) {
+                        $("#suasinhvien").html(data);
+                      })
+                    });
+                  });
+                </script>
                 <script>
                   $(document).ready(function() {
                     $("button.chitiet").click(function() {
@@ -635,6 +649,9 @@
 
 
 <div class="modal fade" id="myModal1" role="dialog">
+
+</div>
+<div class="modal fade" id="suasinhvien" role="dialog">
 
 </div>
 </body>

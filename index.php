@@ -7,12 +7,6 @@
     <title>WebTruong</title>
     <!-- Meta tag Keywords -->
     <style>
-        th {
-            text-align: center;
-        }
-        td {
-            text-align: center;
-        }
         p {
             width: 250px;
         }
