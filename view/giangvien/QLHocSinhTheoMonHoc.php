@@ -61,7 +61,7 @@
         <div class="container_timkiem">
             <div style="display: flex;">
                 <p>Chọn môn học:</p>
-                <select  style="width:200px" class="form-control" id="mamon">
+                <select class="form-control" style="width:200px" class="form-control" id="mamon">
                     <script>
                         $(function() {
                             $('#mamon').trigger('change'); //This event will fire the change event. 
@@ -134,7 +134,7 @@
             <div style="margin-top: 10px;" class="container_timkiem">
                 <div style="display: flex;">
                     <p>Chọn tình trạng:</p>
-                    <select style="width:200px" class="form-control" id="sapxep">
+                    <select class="form-control" style="width:200px" class="form-control" id="sapxep">
                         <script>
                             $(function() {
                                 $('#sapxep').trigger('change'); //This event will fire the change event. 

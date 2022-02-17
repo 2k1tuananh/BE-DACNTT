@@ -41,7 +41,7 @@
                                     });
                                 });
                                 </script>
-                                <select id="sapxep<?= $i?>">
+                                <select class="form-control" id="sapxep<?= $i?>">
                                     <?php if($value['trangthai']==1){?>
                                     <option>Đang học</option>
                                     <option>Cấm thi</option>
