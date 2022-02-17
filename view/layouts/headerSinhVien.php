@@ -94,6 +94,14 @@
       font-size: 16px;
       font-family: 'Times New Roman', Times, serif;
     }
+    .title{
+      font-size: 16px;
+      font-family: 'Times New Roman', Times, serif;
+    }
+    li a {
+      font-size: 14px;
+      font-family: 'Times New Roman', Times, serif;
+    }
   </style>
 
 </head>
