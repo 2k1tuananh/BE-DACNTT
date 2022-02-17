@@ -31,7 +31,8 @@
                             <th  class="text-center">Trạng thái</th>
 
                           </tr>
-                          <?php $stt=0; foreach($mon as $info){ $stt++; ?>
+                          <?php $stt=0; 
+                          foreach($mon as $info){ $stt++; ?>
                           <tr>
                             <td><?= $stt ?></td>
                             <td ><?= $info['mamon'] ?></td>

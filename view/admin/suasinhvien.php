@@ -108,11 +108,11 @@
                                 <td class="modal-td">Giáo viên CN:</td>
                                 <td class="modal-td">
                                     <select class="form-control" id="giaovien" name="giaovien">
+                                    <option value="">Chọn giáo viên</option>
+
                                     <?php foreach ($listGVCN as $infoCN) {
                                             if ($svid['GVCN'] == $infoCN['magiangvien'])
                                                 echo '<option value="' . $infoCN['magiangvien'] . '" selected>' . $infoCN['hovaten'] . '</option>';
-                                            else
-                                                echo '<option value="' . $infoCN['magiangvien'] . '">' . $infoCN['hovaten'] . '</option>';
                                         }
                                         ?>
 
@@ -140,7 +140,29 @@
         <?php require_once("./view/admin/footeradmin.php"); ?>
     </div>
 </div>
+<script>
+              $(document).ready(function() {
+                $('#chuyennganh').on('change', function() {
+                  var machuyennganh = $(this).val();
+                  const url = $(this).attr("action");
+                  if (machuyennganh) {
+                    $.ajax({
+                      type: 'POST',
+                      url,
+                      data: 'machuyennganh=' + machuyennganh,
+                      success: function(html) {
+                        $('#giaovien').html(html);
+                      }
+                    });
+                  } else {
+                    $('#giaovien').html('<option value="">Chọn giáo viên </option>');
 
+                  }
+                });
+
+
+              });
+            </script>
 <script src="vendor/jquery/jquery.min.js"></script>
     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 

@@ -157,7 +157,15 @@
 
                     </td>
                     <td><select id="ca<?= $i ?>" class="form-control">
-                        <option><?= $value['cathi'] ?></option>
+                        <?php if($value['cathi'] == '')
+                        {
+                          
+                          echo '<option >Chưa có ca thi</option>'; 
+                        }
+                        else{
+                          echo '<option >'.$value['cathi'].'</option>'; 
+                        }?>
+                        
                         <option>1-2</option>
                         <option>1-3</option>
                         <option>1-5</option>
@@ -172,7 +180,24 @@
                           var data = "<?= $value['mamon'] ?>";
                           var data1 = $(ngaythi<?= $i ?>).val();
                           var data2 = $(ca<?= $i ?>).val();
-                          var thongbao = "Cập nhật thành công";
+                          if(data == null || data == "")
+                          {
+                            alert("Môn học không được để trống");
+                            return;
+                          }
+                          else if(data1 == null || data1 == "")
+                          {
+                            alert("Ngày thi không được để trống");
+                            return;
+                          }
+                          else if(data2 == null || data2 == "")
+                          {
+                            alert("Ca thi không được để trống");
+                            return;
+                          }
+                          else
+                          {
+                            var thongbao = "Cập nhật thành công";
                           alert(thongbao);
                           $.get("./index.php", {
                             controller: "daotao",
@@ -181,6 +206,8 @@
                             ngaythi: data1,
                             cathi: data2
                           }, function(data) {})
+                          }
+                         
                         });
                       });
                     </script>

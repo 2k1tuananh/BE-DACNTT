@@ -91,11 +91,11 @@
                                 <td class="modal-td">Giáo viên CN:</td>
                                 <td class="modal-td">
                                     <select class="form-control" id="giaovien" name="giaovien">
+                                    <option value="">Chọn giáo viên</option>
+
                                     <?php foreach ($listGVCN as $infoCN) {
                                             if ($svid['GVCN'] == $infoCN['magiangvien'])
                                                 echo '<option value="' . $infoCN['magiangvien'] . '" selected>' . $infoCN['hovaten'] . '</option>';
-                                            else
-                                                echo '<option value="' . $infoCN['magiangvien'] . '">' . $infoCN['hovaten'] . '</option>';
                                         }
                                         ?>
 
@@ -113,16 +113,40 @@
                         </tbody>
                     </table>
     </div>
+    <div id="alert"></div>
     <div class="modal-footer">
       <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
-      <button type="button" id="capnhatsinhvien" class="btn btn-success" data-dismiss="modal">Cập Nhật</button>
+      <button type="button" id="capnhatsinhvien" class="btn btn-success" >Cập Nhật</button>
     </div>
   </div>
 
 
 </div>
-
 <script>
+              $(document).ready(function() {
+                $('#chuyennganh').on('change', function() {
+                  var machuyennganh = $(this).val();
+                  const url = $(this).attr("action");
+                  if (machuyennganh) {
+                    $.ajax({
+                      type: 'POST',
+                      url,
+                      data: 'machuyennganh=' + machuyennganh,
+                      success: function(html) {
+                        $('#giaovien').html(html);
+                      }
+                    });
+                  } else {
+                    $('#giaovien').html('<option value="">Chọn giáo viên </option>');
+
+                  }
+                });
+
+
+              });
+            </script>
+<script>
+    
   $(document).ready(function() {
     $("#capnhatsinhvien").click(function() {
       var masinhvien = $("input[name='masinhvien']").val();
@@ -137,8 +161,68 @@
       var email = $("input[name='email']").val();
       var password = $("input[name='password']").val();
       var diachi = $("input[name='diachi']").val();
-      //alert(mamon+tenmon);
-      $.get("./index.php", {
+      if (hovaten == null || hovaten == "") {
+            $("#alert").html('<strong class="text-danger">Họ và tên không được để trống</strong>');
+            $("input[name='hovaten']").focus();
+            return;
+          } else if (hovaten.length < 6) {
+            $("#alert").html('<strong class="text-danger">Tối thiểu là 6 kí tự</strong>');
+            $("input[name='hovaten']").focus();
+            return;
+          } else if (CMND == null || CMND == "") {
+            $("#alert").html('<strong class="text-danger">CMND không được để trống</strong>');
+            $("input[name='CMND']").focus();
+            return;
+          } else if (CMND.length < 12 || CMND.length > 12) {
+            $("#alert").html('<strong class="text-danger">CMND bao gồm 12 kí tự</strong>');
+            $("input[name='CMND']").focus();
+            return;
+          } else if (isNaN(CMND)) {
+            $("#alert").html('<strong class="text-danger">CMND phải là số</strong>');
+            $("input[name='CMND']").focus();
+            return;
+          } else if (ngaysinh == null || ngaysinh == "") {
+            $("#alert").html('<strong class="text-danger">Ngày sinh không được để trống</strong>');
+            $("input[name='ngaysinh']").focus();
+            return;
+          } else if (ngaysinh == null || ngaysinh == "") {
+            $("#alert").html('<strong class="text-danger">CMND không được để trống</strong>');
+            $("input[name='ngaysinh']").focus();
+            return;
+          } else if (phone == null || phone == "") {
+            $("#alert").html('<strong class="text-danger">Số điện thoại không được để trống</strong>');
+            $("input[name='phone']").focus();
+            return;
+
+          } else if (phone.length != 10) {
+            $("#alert").html('<strong class="text-danger">Độ dài của số điện thoại là 10 ký tự</strong>');
+            $("input[name='phone']").focus();
+            return;
+          } else if (isNaN(phone)) {
+            $("#alert").html('<strong class="text-danger">Số điện thoại phải là số</strong>');
+            $("input[name='phone']").focus();
+            return;
+          } else if (lop == null || lop == "") {
+            $("#alert").html('<strong class="text-danger">Lớp không được để trống</strong>');
+            $("select[name='lop']").focus();
+            return;
+          }else if (diachi == null || diachi == "") {
+            $("#alert").html('<strong class="text-danger">Địa chỉ không được để trống</strong>');
+            $("select[name='diachi']").focus();
+            return;
+          } 
+          else if (chuyennganh == null || chuyennganh == "") {
+            $("#alert").html('<strong class="text-danger">Chuyên ngành không được để trống</strong>');
+            $("select[name='chuyennganh']").focus();
+            return;
+          } else if (giaovien == null || giaovien == "") {
+            $("#alert").html('<strong class="text-danger">Giáo viên không được để trống</strong>');
+            $("select[name='giaovien']").focus();
+            return;
+          }
+          else{
+            $('#suasinhvien').modal('hide');
+            $.get("./index.php", {
         controller: "daotao",
         action: "capnhatsinhviendaotao",
         masinhvien: masinhvien,
@@ -157,6 +241,8 @@
         $("#info").html(data);
         alert("Cập nhật thành công");
       })
+          }
+     
     });
   });
 </script>

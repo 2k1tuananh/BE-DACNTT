@@ -148,7 +148,7 @@
 
         public function getinfosinhvien1($tk){
             $sql = "select * from sinhvien where `masinhvien`='$tk' ";
-            echo $sql;
+            
             $data=$this->execute($sql);
             if($this->dem()!=0){
                 $data = mysqli_fetch_array($this->result);
@@ -205,7 +205,7 @@
        
         public function updatemkgiangvien($mgv,$mk){
             $sql="UPDATE giangvien SET password='$mk' WHERE magiangvien='$mgv'";
-            echo $sql;
+          
             return $this->execute($sql);
         }
         public function getinfo_mon($mgv){
@@ -639,7 +639,7 @@
             }
             else
             {
-                $sql = "UPDATE `gv-sv-lop` SET `magiangvien`='$magiangvien' WHERE mamon = '$mamon'";
+                $sql = "UPDATE `gv-sv-lop` SET `magiangvien`='$magiangvien',`malop` = '$malop' WHERE mamon = '$mamon'";
             
                 $this->execute($sql);
                 $sqlupdate = "UPDATE `giangvienmonhoc` SET `magiangvien`='$magiangvien',`lop`='$malop' WHERE mamon =  '$mamon'";
@@ -917,7 +917,7 @@
         public function updatestudentdaotao1($masinhvien,$hovaten,$gioitinh,$CMND,$ngaysinh,$phone,$email,$chuyennganh,$giaovien,$diachi,$lop,$pass){
             $sql="UPDATE `sinhvien` SET `masinhvien` = '$masinhvien', `hovaten` = '$hovaten', `gioitinh`= '$gioitinh', password = '$pass',`diachi` ='$diachi', `email`='$email', `dienthoai`= '$phone', 
             `cmnd` ='$CMND', `ngaysinh` ='$ngaysinh', `GVCN` ='$giaovien', `chuyennganh`= '$chuyennganh' ,`lop`='$lop' WHERE masinhvien='$masinhvien'";
-            echo $sql;
+            
             return $this->execute($sql);
         }
         public function editgiangvienid($id){
@@ -1012,6 +1012,24 @@
             }
             return $data;
         }
+        public function themvaolichdkhoc($mm,$nbd,$nkt){
+            $sql="INSERT INTO `lickdkhoc`(`mamon`, `ngaybatdau`, `ngayketthuc`) 
+            VALUES ('$mm','$nbd','$nkt')";
+            return $this->execute($sql);
+        }
+        public function getdatalichdk($tg){
+            $sql = "SELECT * FROM `lickdkhoc` INNER JOIN monhoc on lickdkhoc.mamon=monhoc.mamon INNER JOIN giangvienmonhoc on giangvienmonhoc.mamon=lickdkhoc.mamon WHERE lickdkhoc.ngaybatdau<'$tg' AND lickdkhoc.ngayketthuc>'$tg'";
+            return $this->execute($sql);
+        }
+        public function getdatamondk($msv){
+            $sql = "SELECT * FROM `gv-sv-lop` as gv INNER JOIN monhoc on gv.mamon= monhoc.mamon WHERE gv.masinhvien='$msv'";
+            return $this->execute($sql);
+        }
+        public function dangkyhoc($mm,$mgv,$mlop,$msv){
+            $sql = "INSERT INTO `gv-sv-lop`( `magiangvien`, `mamon`, `malop`, `masinhvien`) VALUES ('$mgv','$mm','$mlop','$msv')";
+            return $this->execute($sql);
+        }
+
         public function selectlistmonhocdaotao()
         {
             $sql = "select * from  `monhoc`";
@@ -1103,7 +1121,7 @@
         public function getsinhvien($ma)
         {
             $sql = "select * from sinhvien where `masinhvien`='$ma' ";
-            echo $sql;
+            
             $data=$this->execute($sql);
             if($this->dem()!=0){
                 $data = mysqli_fetch_array($this->result);
