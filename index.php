@@ -23,7 +23,9 @@
 <body>
     <?php
     session_start();
-    include 'models/dbconfig.php';
+    use models\DatabaseConnection;
+
+    include('models/DatabaseConnection.php');
     // if(isset($_SESSION['expire']))
     // {
     //     $now = time(); 
@@ -33,8 +35,12 @@
 
     //     }
     // }
-    $db = new database;
-    $db->connect();
+    DatabaseConnection::connect('localhost', 'pointmanagement', 'root', '');
+    $dbh = DatabaseConnection::getInstance();
+    $dbc = $dbh->getConnection();
+    
+    // $db = new database;
+    // $db->connect();
     if (isset($_GET['controller'])) {
         $controller = $_GET['controller'];
     }
