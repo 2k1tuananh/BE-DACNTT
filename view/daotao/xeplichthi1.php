@@ -1,5 +1,5 @@
 <div id="info">
-<table id="info" cellspacing="3" cellpadding="0" border="0px" width="100%">
+<table id="info" cellspacing="3" cellpadding="0" width="100%">
               <tbody>
                 <tr valign="top">
                   <td style="width: 100%">
@@ -7,7 +7,7 @@
                       <table
                         class="grid"
                         cellspacing="0"
-                        border="0"
+                       
                         id="ctl00_c_GridDC"
                         style="
                           border-style: None;

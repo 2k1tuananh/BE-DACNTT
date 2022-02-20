@@ -1,6 +1,4 @@
 <?php require_once('./view/layouts/headerDaoTao.php'); ?>
-
-<script src="chrome-extension://mooikfkahbdckldjjndioackbalphokd/assets/prompt.js"></script>
 <style>
   a {
     text-decoration: none;
