@@ -58,7 +58,7 @@
                             $('#mamon').change(function() {
                                 var data = $(this).val();
                                 $.get("./index.php", {
-                                    controller: "point",
+                                    controller: "giangvien",
                                     Ajax_action: "bangdiem",
                                     info: data
                                 }, function(data) {
@@ -114,7 +114,7 @@
                 $('#bttimkiem').click(function() {
                     var data = $(this).val();
                     $.get("./index.php", {
-                        controller: "point",
+                        controller: "giangvien",
                         action: "timkiem",
                         info: data
                     }, function(data) {
@@ -135,7 +135,7 @@
                             $('#sapxep').change(function() {
                                 var data = $(this).val();
                                 $.get("./index.php", {
-                                    controller: "point",
+                                    controller: "giangvien",
                                     action: "sapxep",
                                     info: data
                                 }, function(data) {
@@ -216,7 +216,7 @@
                             var infodtk = infodqt * 0.4 + infodck * 0.6;
                         }
                         $.get("./index.php", {
-                            controller: "point",
+                            controller: "giangvien",
                             action: "updiem",
                             masinhvien: infomsv,
                             diemquatrinh: infodqt,

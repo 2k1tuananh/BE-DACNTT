@@ -1,12 +1,16 @@
 <?php
-require_once("./models/dbconfig.php");
+require_once("./models/sinhvien.php");
 require_once("./models/giangvien.php");
+use models\DatabaseConnection;
 class giangvien_controller {
     public function run(){
-        $this->giangvien=new database();
-        $this->giangvien->connect();
-        $this->giangvien=new giangvien();
-        $this->giangvien->connect();
+        // $this->giangvien=new database();
+        // $this->giangvien->connect();
+        // $this->giangvien=new giangvien();
+        // $this->giangvien->connect();
+        $dbh = DatabaseConnection::getInstance();
+        $dbc = $dbh->getConnection();
+        $this->giangvien = new giangvien($dbc);
         $action= filter_input(INPUT_GET,"action");
         if(method_exists($this,$action))
         {

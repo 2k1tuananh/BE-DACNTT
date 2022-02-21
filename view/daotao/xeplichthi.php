@@ -180,6 +180,7 @@
                           var data = "<?= $value['mamon'] ?>";
                           var data1 = $(ngaythi<?= $i ?>).val();
                           var data2 = $(ca<?= $i ?>).val();
+                          
                           if(data == null || data == "")
                           {
                             alert("Môn học không được để trống");
@@ -190,7 +191,7 @@
                             alert("Ngày thi không được để trống");
                             return;
                           }
-                          else if(data2 == null || data2 == "")
+                          else if(data2 == "Chưa có ca thi" )
                           {
                             alert("Ca thi không được để trống");
                             return;

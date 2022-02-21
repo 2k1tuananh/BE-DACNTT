@@ -5,8 +5,12 @@
         private $pass = '';
         private $dbname = 'pointmanagement';
 
-        private $conn = null;
+        private $conn ;
         private $result = null;
+        
+        public function __construct($conn) {
+            $this->conn = $conn;
+        }
 
         function executeResult($sql){
             $conn = mysqli_connect($this->hostname, $this->username, $this->pass, $this->dbname);
@@ -20,19 +24,64 @@
             
             return $list;
         }
-
-        public function connect()
-        {
-           $this->conn = new mysqli($this->hostname, $this->username, $this->pass, $this->dbname);
-           if(!$this->conn){
-               echo "Kết nối thất bại";
-                exit();
-           }else{
-               mysqli_set_charset($this->conn,'utf8');
-           }
-           return $this->conn;
+        public function getinfoGVCN($msv){
+            $sql = "select * from sinhvien WHERE masinhvien='$msv'";
+            $this->execute($sql);
+            if($this->dem()!=0){
+                $data = mysqli_fetch_array($this->result);
+            }
+            else{
+                $data = [];
+            }
+            return $data;
+        }      
+        public function getinfosinhvien($msv){
+            $sql = "select `sinhvien`.*, `giangvien`.hovaten as `hvt` from `sinhvien` inner join `giangvien` on `sinhvien`.GVCN=`giangvien`.magiangvien WHERE masinhvien='$msv'";
+            $this->execute($sql);
+            if($this->dem()!=0){
+                $data = mysqli_fetch_array($this->result);
+            }
+            else{
+                $data = [];
+            }
+            return $data;
+        }       
+        public function getinfopoint($msv){
+            $sql = "select * from `sinhvien-diemmon` inner join `monhoc` on `sinhvien-diemmon`.mamon=`monhoc`.mamon WHERE masinhvien='$msv'";
+            $this->execute($sql);
+            if($this->dem()==0){
+                $data=[];
+            }
+            else{
+                while($datas = $this->getData()) {
+                    $data[] = $datas;
+                }
+            }
+            return $data;
+        } 
+        public function tongtin($msv){
+            $sql = "select SUM(sotinchi) as tongtin from `sinhvien-diemmon` inner join `monhoc` on `sinhvien-diemmon`.mamon=`monhoc`.mamon WHERE masinhvien='$msv'";
+            $this->execute($sql);
+            if($this->dem()!=0){
+                $data = mysqli_fetch_array($this->result);
+            }
+            else{
+                $data = [];
+            }
+            return $data;
         }
-
+        
+        public function tongdiem($msv){
+            $sql = "select sum(sotinchi*diemtongket) as tongdiem from `sinhvien-diemmon` inner join `monhoc` on `sinhvien-diemmon`.mamon=`monhoc`.mamon WHERE masinhvien='$msv'";
+            $this->execute($sql);
+            if($this->dem()!=0){
+                $data = mysqli_fetch_array($this->result);
+            }
+            else{
+                $data = [];
+            }
+            return $data;
+        }
         //thực hiện truy vấn
         public function execute($sql){
             $this->result = $this->conn->query($sql);

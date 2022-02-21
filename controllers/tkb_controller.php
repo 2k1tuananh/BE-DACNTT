@@ -1,13 +1,14 @@
 <?php
-require_once("./models/dbconfig.php");
+require_once("./models/sinhvien.php");
 require_once("./models/daotao.php");
+use models\DatabaseConnection;
 class tkb_controller {
     public function run(){
-        $this->db=new database();
-        $this->db->connect();
-        $this->daotao=new daotao();
-        $this->daotao->connect();
         
+        $dbh = DatabaseConnection::getInstance();
+        $dbc = $dbh->getConnection();
+        $this->daotao = new daotao($dbc);
+        $this->db = new sinhvien($dbc);
         $action= filter_input(INPUT_GET,"action");
         if(method_exists($this,$action))
         {

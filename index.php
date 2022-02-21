@@ -24,7 +24,7 @@
     <?php
     session_start();
     use models\DatabaseConnection;
-
+    
     include('models/DatabaseConnection.php');
     // if(isset($_SESSION['expire']))
     // {
@@ -36,8 +36,6 @@
     //     }
     // }
     DatabaseConnection::connect('localhost', 'pointmanagement', 'root', '');
-    $dbh = DatabaseConnection::getInstance();
-    $dbc = $dbh->getConnection();
     
     // $db = new database;
     // $db->connect();

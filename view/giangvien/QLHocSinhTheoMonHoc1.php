@@ -33,7 +33,7 @@
                                             var data2= $(this).val();
                                             var thongbao="Cập nhật thành công";
                                             alert(thongbao);
-                                            $.get("./index.php",{controller:"point",action:"capnhattheotrangthai", masinhvien:data, mamon:data1, trangthai:data2}, function(data) {
+                                            $.get("./index.php",{controller:"giangvien",action:"capnhattheotrangthai", masinhvien:data, mamon:data1, trangthai:data2}, function(data) {
                                             
                                         })                                                                                     
                                     });
@@ -72,7 +72,7 @@
                         $(document).ready(function(){
                             $("button.chitiet").click(function(){
                                     var masinhvien=$(this).attr("id")
-                                    $.get("./index.php",{controller:"point",action:"QLHocSinhTheoMonHoc", msv:masinhvien}, function(data) {
+                                    $.get("./index.php",{controller:"giangvien",action:"QLHocSinhTheoMonHoc", msv:masinhvien}, function(data) {
                                     $("#myModal1").html(data);
                                 })                                                                                     
                             });

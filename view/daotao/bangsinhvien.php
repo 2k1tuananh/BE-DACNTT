@@ -110,7 +110,7 @@
                     $("button.chitiet").click(function() {
                       var masinhvien = $(this).attr("id")
                       $.get("./index.php", {
-                        controller: "point",
+                        controller: "giangvien",
                         action: "QLHocSinhTheoMonHoc",
                         msv: masinhvien
                       }, function(data) {

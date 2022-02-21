@@ -1,13 +1,12 @@
 <?php
     class daotao{
-        private $hostname = 'localhost';
-        private $username = 'root';
-        private $pass = '';
-        private $dbname = 'pointmanagement';
-
-        private $conn = null;
+        private $conn;
         private $result = null;
 
+        public function __construct($conn) {
+            $this->conn = $conn;
+        }
+        
         function executeResult($sql){
             $conn = mysqli_connect($this->hostname, $this->username, $this->pass, $this->dbname);
             
@@ -20,19 +19,6 @@
             
             return $list;
         }
-
-        public function connect()
-        {
-           $this->conn = new mysqli($this->hostname, $this->username, $this->pass, $this->dbname);
-           if(!$this->conn){
-               echo "Kết nối thất bại";
-                exit();
-           }else{
-               mysqli_set_charset($this->conn,'utf8');
-           }
-           return $this->conn;
-        }
-
         //thực hiện truy vấn
         public function execute($sql){
             $this->result = $this->conn->query($sql);

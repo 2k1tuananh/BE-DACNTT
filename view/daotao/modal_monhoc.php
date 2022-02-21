@@ -77,53 +77,7 @@
       var chuyennganh = $("select[name='chuyennganh']").val();
       var thu = $("select[name='thu']").val();
       var ca = $("select[name='ca']").val();
-      if(mamon == null || mamon == "")
-      {
-        alert("Mã môn học không được để trống");
-        return;
-      }
-      else if (mamon.length < 5 || mamon.length > 5)
-      {
-        alert("Mã môn học gồm 5 kí tự");
-        return;
-      }
-      else if(tenmon == null || tenmon == "")
-      {
-        alert("Mã môn học không được để trống");
-        return;
-      }
-      else if(tenmon.length < 5 || tenmon.length > 5)
-      {
-        alert("Tên môn học tối thiểu 6 kí tự");
-        return;
-      }
-      else if(sotinchi == null || sotinchi == "")
-      {
-        alert("Số tín chỉ không được để trống");
-        return;
-      }
-      else if (isNaN(sotinchi))
-      {
-        alert("Số tín chỉ là dạng số");
-        return;
-      }
-      else if(chuyennganh == null || chuyennganh == "")
-      {
-        alert("Chuyên ngành không được để trống");
-        return;
-      }
-      else if(thu == null || thu == "")
-      {
-        alert("Thứ không được để trống");
-        return;
-      }
-      else if(ca == null || ca == "")
-      {
-        alert("Ca không được để trống");
-        return;
-      }
-      else
-      {
+     
           $.get("./index.php", {
           controller: "daotao",
           action: "capnhatmonhocdaotao",
@@ -137,7 +91,7 @@
           $("#info").html(data);
           alert("Cập nhật thành công");
         })
-      }
+      
       
     });
   });

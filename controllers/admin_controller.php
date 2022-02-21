@@ -1,11 +1,14 @@
 <?php
-require_once("./models/dbconfig.php");
+require_once("./models/sinhvien.php");
+use models\DatabaseConnection;
 class admin_controller
 {
     public function run()
     {
-        $this->db = new database();
-        $this->db->connect();
+       
+        $dbh = DatabaseConnection::getInstance();
+        $dbc = $dbh->getConnection();
+        $this->db = new database($dbc);
         $action = filter_input(INPUT_GET, "action");
         if (method_exists($this, $action)) {
             $this->$action();
