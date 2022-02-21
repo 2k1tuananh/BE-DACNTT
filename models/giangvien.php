@@ -1,9 +1,5 @@
 <?php
     class giangvien{
-        private $hostname = 'localhost';
-        private $username = 'root';
-        private $pass = '';
-        private $dbname = 'pointmanagement';
 
         private $conn ;
         private $result = null;
@@ -12,18 +8,6 @@
             $this->conn = $conn;
         }
 
-        function executeResult($sql){
-            $conn = mysqli_connect($this->hostname, $this->username, $this->pass, $this->dbname);
-            
-            $result = mysqli_query($conn, $sql);
-            $list = [];
-            while ($row = mysqli_fetch_array($result, 1)) {
-                $list[] = $row;
-            }
-            mysqli_close($conn);
-            
-            return $list;
-        }
         public function getinfoGVCN($msv){
             $sql = "select * from sinhvien WHERE masinhvien='$msv'";
             $this->execute($sql);

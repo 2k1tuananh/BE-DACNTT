@@ -156,39 +156,6 @@
             return $this->execute($sql);
         }
 
-
-
-        //GV
-       
-       
-
-        //daotao
-       
-
-        // public function listKQSV()
-        // {
-        //     $sql = "SELECT sv.masinhvien as masinhvien,sv.hovaten as hovaten,sum(mh.sotinchi) as sotinchi,ROUND(AVG(svdm.diemtongket),2) as diemtongket FROM `sinhvien` sv INNER join `sinhvien-diemmon` svdm on sv.masinhvien = svdm.masinhvien INNER join monhoc mh on mh.mamon = svdm.mamon GROUP BY sv.masinhvien";
-        //     $this->execute($sql);
-        //     if($this->dem()==0){
-        //         $data=0;
-        //     }
-        //     else{
-        //         while($datas = $this->getData()) {
-        //             $data[] = $datas;
-        //         }
-        //     }
-        //     return $data;
-        // }
-
-        
-
-       
-        
-       
-
-
-
-
         ///tkb
         public function tkb(){
             $sql=" SELECT giangvienmonhoc.magiangvien as magiangvien,monhoc.mamon as mamon,monhoc.tenmon as tenmon,giangvien.hovaten as hovaten,giangvienmonhoc.lop as malop,giangvien.chuyennganh as chuyennganh,monhoc.sotinchi as sotinchi,monhoc.thu as thu,monhoc.ca as ca FROM `giangvienmonhoc` inner join giangvien on giangvienmonhoc.magiangvien = giangvien.magiangvien inner join monhoc on monhoc.mamon = giangvienmonhoc.mamon

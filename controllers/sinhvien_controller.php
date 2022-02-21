@@ -6,10 +6,6 @@ class sinhvien_controller
 {
     public function run()
     {
-        // $this->db = new database();
-        // $this->db->connect();
-        // $this->giangvien = new giangvien();
-        // $this->giangvien->connect();
 
         $dbh = DatabaseConnection::getInstance();
         $dbc = $dbh->getConnection();

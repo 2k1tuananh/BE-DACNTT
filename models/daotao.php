@@ -7,18 +7,7 @@
             $this->conn = $conn;
         }
         
-        function executeResult($sql){
-            $conn = mysqli_connect($this->hostname, $this->username, $this->pass, $this->dbname);
-            
-            $result = mysqli_query($conn, $sql);
-            $list = [];
-            while ($row = mysqli_fetch_array($result, 1)) {
-                $list[] = $row;
-            }
-            mysqli_close($conn);
-            
-            return $list;
-        }
+        
         //thực hiện truy vấn
         public function execute($sql){
             $this->result = $this->conn->query($sql);

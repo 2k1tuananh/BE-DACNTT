@@ -8,7 +8,7 @@ class admin_controller
        
         $dbh = DatabaseConnection::getInstance();
         $dbc = $dbh->getConnection();
-        $this->db = new database($dbc);
+        $this->db = new sinhvien($dbc);
         $action = filter_input(INPUT_GET, "action");
         if (method_exists($this, $action)) {
             $this->$action();
@@ -26,9 +26,6 @@ class admin_controller
         $countsGVNam =$this->db->countsGVNam();
         $countsGVNu =$this->db->countsGVNu();
         $countsSVNu =$this->db->countsSVNu();
-        
-
-
         $giangvienSL =$this->db->giangvienSL();
         $chuyennganhSL =$this->db->chuyennganhSL();
         $monhocSL =$this->db->monhocSL();

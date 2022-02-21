@@ -5,10 +5,7 @@ require_once("./models/sinhvien.php");
 require_once("./models/daotao.php");
 class daotao_controller {
     public function run(){
-        // $this->daotao=new database();
-        // $this->daotao->connect();
-        // $this->daotao=new daotao();
-        // $this->daotao->connect();
+
         $dbh = DatabaseConnection::getInstance();
         $dbc = $dbh->getConnection();
         $this->daotao = new daotao($dbc);
