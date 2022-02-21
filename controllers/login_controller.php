@@ -4,7 +4,6 @@ require_once("./models/giangvien.php");
 use models\DatabaseConnection;
 class login_controller {
     public function run(){
-
         $dbh = DatabaseConnection::getInstance();
         $dbc = $dbh->getConnection();
         $this->giangvien = new giangvien($dbc);
@@ -25,6 +24,7 @@ class login_controller {
             $check = $tk[0];
             if(!empty($_POST)){
                 $reuslt = $this->db->login($tk,$mk);
+                
                 if($reuslt)
                 {
                     $info=$this->db->getinfoadmin($tk);
@@ -43,6 +43,8 @@ class login_controller {
             {
                 $user =$this->db->mkchecksinhvien($tk,$mk);
                 if(mysqli_num_rows($user)>0){
+                    
+
                         $info=$this->db->getinfosinhvien1($tk);
                         $_SESSION['name']=$info['hovaten'];
                         $_SESSION['msv']=$info['masinhvien'];
@@ -57,8 +59,11 @@ class login_controller {
             else
             {
                 $user =$this->giangvien->mkcheckgiangvien($tk,$mk);
+                
                 if(mysqli_num_rows($user)>0){
+                        
                         $info=$this->giangvien->getinfogiangvien($tk);
+                        var_dump($info);
                         $_SESSION['name']=$info['hovaten'];
                         $_SESSION['mgv']=$info['magiangvien'];
                         $_SESSION['ngaysinh']=$info['ngaysinh'];
@@ -67,6 +72,7 @@ class login_controller {
                         $_SESSION['expire'] = $_SESSION['start'] + (30*60);
                         $_SESSION['role_id'] = $info['role_id']; 
                         header('location:index.php?controller=sinhvien');
+                        
                 }
                
             }

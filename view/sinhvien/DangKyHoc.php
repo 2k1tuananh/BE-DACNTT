@@ -45,7 +45,7 @@
                     ">
                             <?= $i?>
                         </td>
-                    <?php  foreach($data2 as $info2){
+                    <?php $check=""; foreach($data2 as $info2){
                         if( $info['mamon']==$info2['mamon']){
                             $check="checked";
                         } 

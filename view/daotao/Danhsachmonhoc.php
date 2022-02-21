@@ -299,7 +299,7 @@
             $("input[name='tenmon']").focus();
             return;
           }
-          else if(tenmon.length < 5 || tenmon.length > 5)
+          else if(tenmon.length < 5)
           {
             $("#alert").html('<strong class="text-danger">Tên môn học tối thiểu 6 kí tự</strong>');
             $("input[name='tenmon']").focus();
