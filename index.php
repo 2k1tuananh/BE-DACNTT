@@ -23,8 +23,10 @@
 <body>
     <?php
     session_start();
+    // define('ROOT_PATH', dirname(__FILE__) . DIRECTORY_SEPARATOR);
     use models\DatabaseConnection;
-
+    // require_once ROOT_PATH . 'models/DatabaseConnection.php';
+    // require_once('./models/DatabaseConnection.php');
     include('models/DatabaseConnection.php');
     // if(isset($_SESSION['expire']))
     // {
@@ -36,8 +38,8 @@
     //     }
     // }
     DatabaseConnection::connect('localhost', 'pointmanagement', 'root', '');
-    $dbh = DatabaseConnection::getInstance();
-    $dbc = $dbh->getConnection();
+    // $dbh = DatabaseConnection::getInstance();
+    // $dbc = $dbh->getConnection();
     
     // $db = new database;
     // $db->connect();

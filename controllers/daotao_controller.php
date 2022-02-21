@@ -1,12 +1,17 @@
 <?php
+// require_once("./models/DatabaseConnection.php");
+use models\DatabaseConnection;
 require_once("./models/dbconfig.php");
 require_once("./models/daotao.php");
 class daotao_controller {
     public function run(){
-        $this->daotao=new database();
-        $this->daotao->connect();
-        $this->daotao=new daotao();
-        $this->daotao->connect();
+        // $this->daotao=new database();
+        // $this->daotao->connect();
+        // $this->daotao=new daotao();
+        // $this->daotao->connect();
+        $dbh = DatabaseConnection::getInstance();
+        $dbc = $dbh->getConnection();
+        $this->daotao = new daotao($dbc);
         $action= filter_input(INPUT_GET,"action");
         if(method_exists($this,$action))
         {

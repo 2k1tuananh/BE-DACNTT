@@ -34,8 +34,13 @@ final class DatabaseConnection {
     
     
     public static function connect($host, $dbName, $user, $password){
-        self::$connection = new \PDO("mysql:dbname=$dbName;host=$host", $user, $password);
+        // self::$connection = new \PDO("mysql:dbname=$dbName;host=$host", $user, $password);
+        self::$connection = mysqli_connect('localhost', 'root', '', 'pointmanagement');
+        // 'localhost', 'pointmanagement', 'root', ''
+
         // $this->conn = new mysqli($this->hostname, $this->username, $this->pass, $this->dbname);
+
+        
     //    if(!self::$connection){
     //        echo "Kết nối thất bại";
     //         exit();
