@@ -40,7 +40,7 @@ final class DatabaseConnection {
            echo "Kết nối thất bại";
             exit();
        }else{
-            echo "Kết nối thanh cong";
+            
 
         //    mysqli_set_charset(self::$connection,'utf8');
        }

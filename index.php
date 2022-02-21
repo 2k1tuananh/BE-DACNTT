@@ -35,6 +35,7 @@
 
     //     }
     // }
+    
     DatabaseConnection::connect('localhost', 'pointmanagement', 'root', '');
     $dbh = DatabaseConnection::getInstance();
     $dbc = $dbh->getConnection();
