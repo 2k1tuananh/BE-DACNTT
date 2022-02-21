@@ -1,11 +1,11 @@
 
         <div id="TKB">
             <div id="dkh_msg"></div>
-            <h2 style="text-align: center; font-weight: bold">
+            <p style="text-align: center; font-weight: bold">
                 Danh sách môn đã đăng ký
-            </h2>
-            <div class="tabledanhsachdangkihoc">
-                <table class="tabletkb"  style="width: 700px;margin-bottom:50px; margin-top: 20px" cellpadding="0" cellspacing="0" width="100%">
+            </p>
+            <div style="width: 730px; height: 430px;margin-bottom:50px;">
+                <table class="tabletkb" cellpadding="0" cellspacing="0">
                     <thead>
                         <tr>
 

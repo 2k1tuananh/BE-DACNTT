@@ -1,141 +1,15 @@
 <?php require_once('./view/layouts/headerDaoTao.php'); ?>
 <script src="chrome-extension://mooikfkahbdckldjjndioackbalphokd/assets/prompt.js"></script>
 <style>
-  .glot-sub-active {
-    color: #1296ba !important;
-  }
-
-  td {
+  
+  td{
     text-align: center;
   }
-
   .modal-td {
     padding: 10px;
   }
 
-  .glot-sub-hovered {
-    color: #1296ba !important;
-  }
-
-  .glot-sub-clzz {
-    cursor: pointer;
-
-    lineheight: 1.2;
-    font-size: 28px;
-    color: #ffcc00;
-    background: rgba(17, 17, 17, 0.7);
-  }
-
-  .glot-sub-clzz:hover {
-    color: #1296ba !important;
-  }
-
-  .ej-trans-sub {
-    position: absolute;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 9999999;
-    cursor: move;
-  }
-
-  .ej-trans-sub>span {
-    color: #3cf9ed;
-    font-size: 18px;
-    text-align: center;
-    padding: 0 16px;
-    line-height: 1.5;
-    background: rgba(32, 26, 25, 0.8);
-    /* // text-shadow: 0px 1px 4px black; */
-    padding: 0 8px;
-
-    /* lineheight: 1.2; */
-    font-size: 16px;
-    color: #0cb1c7;
-    background: rgba(67, 65, 65, 0.7);
-  }
-
-  .ej-main-sub {
-    position: absolute;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 99999999;
-    cursor: move;
-    padding: 0 8px;
-  }
-
-  .ej-main-sub>span {
-    color: white;
-    font-size: 20px;
-    line-height: 1.5;
-    text-align: center;
-    background: rgba(32, 26, 25, 0.8);
-    /* // text-shadow: 0px 1px 4px black; */
-    padding: 2px 8px;
-
-    /* lineheight: 1.2; */
-    font-size: 28px;
-    color: #ffcc00;
-    background: rgba(17, 17, 17, 0.7);
-  }
-
-  .ej-main-sub .glot-sub-clzz {
-    background: transparent !important;
-  }
-
-  .tran-subtitle>span {
-    cursor: pointer;
-    padding-left: 10px;
-    top: 2px;
-    position: relative;
-  }
-
-  .tran-subtitle>span>span {
-    position: absolute;
-    top: -170%;
-    background: rgba(0, 0, 0, 0.5);
-    font-size: 13px;
-    line-height: 20px;
-    padding: 2px 8px;
-    color: white;
-    display: none;
-    border-radius: 4px;
-    white-space: nowrap;
-    left: -50%;
-    font-weight: normal;
-  }
-
-  .view-icon-copy-main-sub:hover>span,
-  .view-icon-edit-sub:hover>span,
-  .view-icon-copy-tran-sub:hover>span {
-    display: block;
-  }
-
-  .tran-subtitle>span>svg {
-    width: 16px;
-    height: 16px;
-    pointer-events: none;
-    display: inline-flex !important;
-    vertical-align: baseline !important;
-  }
-
-  .view-icon-copy-main-sub>svg {
-    pointer-events: none;
-    color: #ffcc00;
-  }
-
-  .view-icon-copy-tran-sub {
-    padding-left: 0 !important;
-    padding-right: 8px !important;
-  }
-
-  .view-icon-copy-tran-sub>svg {
-    pointer-events: none;
-    color: #0cb1c7;
-  }
+  
 
   a {
     text-decoration: none;
@@ -216,7 +90,7 @@
   </div>
   <div class="form">
 
-    <button type="button" data-toggle="modal" data-target="#ThemMonHoc" class="btnTimKiem btn" style="margin-bottom: 10px;">Thêm môn Học &nbsp;<span class="glyphicon glyphicon-plus"></span></button>
+    <button type="button" data-toggle="modal" data-target="#ThemMonHoc" class="btnUpdate btn" style="margin-bottom: 10px;">Thêm môn Học &nbsp;<span class="glyphicon glyphicon-plus"></span></button>
     <div class="tim-kiem">
       <input id="timkiem" type="text" placeholder="Nhập mã môn,tên môn">
       <button id="tntimkiem" class="btnTimKiem">Tìm kiếm</button>
@@ -395,7 +269,7 @@
       <div id="alert"></div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" id="themmon" class="btn btn-success">Xác nhận</button>
+        <button type="button" id="themmon" class="btn btn-success" >Xác nhận</button>
       </div>
     </div>
     <script>
@@ -407,58 +281,77 @@
           var chuyennganh = $('#chuyennganh').val();
           var thu = $('#thu').val();
           var ca = $('#ca').val();
-          if (mamon == null || mamon == "") {
+          if(mamon == null || mamon == "")
+          {
             $("#alert").html('<strong class="text-danger">Mã môn học không được để trống</strong>');
             $("input[name='mamon']").focus();
             return;
-          } else if (mamon.length < 5 || mamon.length > 5) {
+          }
+          else if (mamon.length < 5 || mamon.length > 5)
+          {
             $("#alert").html('<strong class="text-danger">Mã môn học gồm 5 kí tự</strong>');
             $("input[name='mamon']").focus();
             return;
-          } else if (tenmon == null || tenmon == "") {
+          }
+          else if(tenmon == null || tenmon == "")
+          {
             $("#alert").html('<strong class="text-danger">Mã môn học không được để trống</strong>');
             $("input[name='tenmon']").focus();
             return;
-          } else if (tenmon.length < 5 || tenmon.length > 5) {
+          }
+          else if(tenmon.length < 5 || tenmon.length > 5)
+          {
             $("#alert").html('<strong class="text-danger">Tên môn học tối thiểu 6 kí tự</strong>');
             $("input[name='tenmon']").focus();
             return;
-          } else if (sotinchi == null || sotinchi == "") {
+          }
+          else if(sotinchi == null || sotinchi == "")
+          {
             $("#alert").html('<strong class="text-danger">Số tín chỉ không được để trống</strong>');
             $("input[name='sotinchi']").focus();
             return;
-          } else if (isNaN(sotinchi)) {
+          }
+          else if (isNaN(sotinchi))
+          {
             $("#alert").html('<strong class="text-danger">Số tín chỉ là dạng số</strong>');
             $("input[name='sotinchi']").focus();
             return;
-          } else if (chuyennganh == null || chuyennganh == "") {
+          }
+          else if(chuyennganh == null || chuyennganh == "")
+          {
             $("#alert").html('<strong class="text-danger">Chuyên ngành không được để trống</strong>');
             $("select[name='chuyennganh']").focus();
             return;
-          } else if (thu == null || thu == "") {
+          }
+          else if(thu == null || thu == "")
+          {
             $("#alert").html('<strong class="text-danger">Thứ không được để trống</strong>');
             $("select[name='thu']").focus();
             return;
-          } else if (ca == null || ca == "") {
+          }
+          else if(ca == null || ca == "")
+          {
             $("#alert").html('<strong class="text-danger">Ca không được để trống</strong>');
             $("select[name='ca']").focus();
             return;
-          } else {
+          }
+          else
+          {
             $('#ThemMonHoc').modal('hide');
             $.get("./index.php", {
-              controller: "daotao",
-              action: "themmon",
-              mamon: mamon,
-              tenmon: tenmon,
-              sotinchi: sotinchi,
-              chuyennganh: chuyennganh,
-              thu: thu,
-              ca: ca
+            controller: "daotao",
+            action: "themmon",
+            mamon: mamon,
+            tenmon: tenmon,
+            sotinchi: sotinchi,
+            chuyennganh: chuyennganh,
+            thu: thu,
+            ca: ca
             }, function(data) {
               $("#info").html(data);
             })
           }
-
+          
         });
       });
     </script>

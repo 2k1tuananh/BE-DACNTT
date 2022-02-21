@@ -1,9 +1,13 @@
 <?php
 require_once("./models/dbconfig.php");
+require_once("./models/giangvien.php");
+
 class login_controller {
     public function run(){
         $this->db=new database();
         $this->db->connect();
+        $this->giangvien = new giangvien();
+        $this->giangvien->connect();
         $action= filter_input(INPUT_GET,"action");
         if(method_exists($this,$action))
         {
@@ -46,14 +50,14 @@ class login_controller {
                         $_SESSION['role_id'] = $info['role_id'];
                         $_SESSION['start'] = time(); 
                         $_SESSION['expire'] = $_SESSION['start'] + (30*60);
-                        header('location:index.php?controller=personal_information');
+                        header('location:index.php?controller=sinhvien');
                 }
             }
             else
             {
-                $user =$this->db->mkcheckgiangvien($tk,$mk);
+                $user =$this->giangvien->mkcheckgiangvien($tk,$mk);
                 if(mysqli_num_rows($user)>0){
-                        $info=$this->db->getinfogiangvien($tk);
+                        $info=$this->giangvien->getinfogiangvien($tk);
                         $_SESSION['name']=$info['hovaten'];
                         $_SESSION['mgv']=$info['magiangvien'];
                         $_SESSION['ngaysinh']=$info['ngaysinh'];
@@ -61,7 +65,7 @@ class login_controller {
                         $_SESSION['start'] = time(); 
                         $_SESSION['expire'] = $_SESSION['start'] + (30*60);
                         $_SESSION['role_id'] = $info['role_id']; 
-                        header('location:index.php?controller=personal_information');
+                        header('location:index.php?controller=sinhvien');
                 }
                
             }

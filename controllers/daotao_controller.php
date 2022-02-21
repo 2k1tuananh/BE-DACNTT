@@ -1,9 +1,12 @@
 <?php
 require_once("./models/dbconfig.php");
+require_once("./models/daotao.php");
 class daotao_controller {
     public function run(){
-        $this->db=new database();
-        $this->db->connect();
+        $this->daotao=new database();
+        $this->daotao->connect();
+        $this->daotao=new daotao();
+        $this->daotao->connect();
         $action= filter_input(INPUT_GET,"action");
         if(method_exists($this,$action))
         {
@@ -18,7 +21,7 @@ class daotao_controller {
     {
         if(!empty($_POST["machuyennganh"])){ 
 
-            $listGVCN = $this->db->getGiaoVienCN($_POST['machuyennganh']);
+            $listGVCN = $this->daotao->getGiaoVienCN($_POST['machuyennganh']);
             foreach ($listGVCN as $infoCN)
             {
               echo '<option value="'.$infoCN['magiangvien'].'">'.$infoCN['hovaten'].'</option>'; 
@@ -26,29 +29,29 @@ class daotao_controller {
             }
             require_once("./view/daotao/danhsachsinhvien.php");
         }
-        $masinhvien=$this->db->masinhvien();
+        $masinhvien=$this->daotao->masinhvien();
         $getmasv = substr($masinhvien['masinhvien'], 1); 
-        $listStudent = $this->db->getAllData('sinhvien');
-        $listCN = $this->db->getAllData('chuyennganh');
-        $listLopCN = $this->db->getAllData('lopcn');
+        $listStudent = $this->daotao->getAllData('sinhvien');
+        $listCN = $this->daotao->getAllData('chuyennganh');
+        $listLopCN = $this->daotao->getAllData('lopcn');
         require_once("./view/daotao/danhsachsinhvien.php");
     }
     function uptrangththai()
     {
-        $listStudent=$this->db->uptrangthai($_GET['masinhvien'],$_GET['trangthai']);
+        $listStudent=$this->daotao->uptrangthai($_GET['masinhvien'],$_GET['trangthai']);
         // require_once("./view/daotao/PDTTimKiemSinhVien.php");
     }
     function createstudent()
     {
        
-        $data=$this->db->createstudent($_GET['masinhvien'], $_GET['hovaten'], $_GET['gioitinh'], $_GET['CMND'], $_GET['ngaysinh'], $_GET['phone'], $_GET['email'], $_GET['chuyennganh'], $_GET['giaovien'], $_GET['diachi'], $_GET['lop']);
+        $data=$this->daotao->createstudent($_GET['masinhvien'], $_GET['hovaten'], $_GET['gioitinh'], $_GET['CMND'], $_GET['ngaysinh'], $_GET['phone'], $_GET['email'], $_GET['chuyennganh'], $_GET['giaovien'], $_GET['diachi'], $_GET['lop']);
         require_once("./view/daotao/danhsachsinhvien.php");
 
     }
     
     function timkiem()
     {
-        $listStudent=$this->db->timkiemsinhvien($_GET['info']);
+        $listStudent=$this->daotao->timkiemsinhvien($_GET['info']);
         if($listStudent==0){
             $listStudent='';
         }
@@ -61,7 +64,7 @@ class daotao_controller {
         if($_GET['info'] != "Tất cả")
         {
             
-            $listStudent=$this->db->timkiemsinhvientheochuyennganh($_GET['info']);
+            $listStudent=$this->daotao->timkiemsinhvientheochuyennganh($_GET['info']);
             if($listStudent==0){
                 $listStudent='';
             }
@@ -70,14 +73,14 @@ class daotao_controller {
         else{
             if( $_GET['info'] == "Tất cả"){
                 
-                $listStudent = $this->db->getAllData('sinhvien');
+                $listStudent = $this->daotao->getAllData('sinhvien');
                 require_once("./view/daotao/PDTTimKiemSinhVien.php");
             }
             else{
-                // $masinhvien=$this->db->masinhvien();
+                // $masinhvien=$this->daotao->masinhvien();
                 // $getmasv = substr($masinhvien['masinhvien'], 1); 
-                // $listStudent = $this->db->getAllData('sinhvien');
-                // $listCN = $this->db->getAllData('chuyennganh');
+                // $listStudent = $this->daotao->getAllData('sinhvien');
+                // $listCN = $this->daotao->getAllData('chuyennganh');
                 // require_once("./view/daotao/danhsachsinhvien.php");
             }
         }
@@ -86,13 +89,13 @@ class daotao_controller {
     //phanconggiangdayy
     function giangday()
     {
-        $listMonHoc = $this->db->monhocgiangvien();
-        $listMonHoc1 = $this->db->getAllData('monhoc');
-        $listChuyenNganh = $this->db->getAllData('chuyennganh');
-        $listGiangVien = $this->db->getAllData('giangvien');
-        $listLop = $this->db->listlop();
-        //$listGiangVien = $this->db->giaovienmonhoc();
-        //$listGiangVienMonHoc = $this->db->getAllData('gv-monhoc');
+        $listMonHoc = $this->daotao->monhocgiangvien();
+        $listMonHoc1 = $this->daotao->getAllData('monhoc');
+        $listChuyenNganh = $this->daotao->getAllData('chuyennganh');
+        $listGiangVien = $this->daotao->getAllData('giangvien');
+        $listLop = $this->daotao->listlop();
+        //$listGiangVien = $this->daotao->giaovienmonhoc();
+        //$listGiangVienMonHoc = $this->daotao->getAllData('gv-monhoc');
         
         require_once("./view/daotao/phanconggiangday.php");
     }
@@ -104,10 +107,10 @@ class daotao_controller {
             
             foreach($_POST['check'] as $value) {
                //Xử lý các phần tử được chọn
-               $this->db->themvaolichdkhoc($value,$_POST['ngaybatdau'],$_POST['ngayketthuc']);
+               $this->daotao->themvaolichdkhoc($value,$_POST['ngaybatdau'],$_POST['ngayketthuc']);
             }
       }
-        $data=$this->db->getAllData("monhoc");
+        $data=$this->daotao->getAllData("monhoc");
         require_once("./view/daotao/ToChucLichDangKyHoc.php");
         exit();
     }
@@ -118,31 +121,31 @@ class daotao_controller {
         if($_GET['info'] != "Tất cả")
         {
            
-            $listMonHoc=$this->db->timkiemmonhoctheomachuyennganh($_GET['info']);
-            $listMonHoc1 = $this->db->timkiemmonhoctheomamon($_GET['info']);
-            $listLop = $this->db->listlop();
+            $listMonHoc=$this->daotao->timkiemmonhoctheomachuyennganh($_GET['info']);
+            $listMonHoc1 = $this->daotao->timkiemmonhoctheomamon($_GET['info']);
+            $listLop = $this->daotao->listlop();
             //var_dump($listMonHoc1);
             // if($listMonHoc ==0)
             // {
             //     $listMonHoc = $listMonHoc1;
             // }
-            $listGiangVien = $this->db->getAllData('giangvien');
+            $listGiangVien = $this->daotao->getAllData('giangvien');
             require_once("./view/daotao/bangphanconggiangday.php");
         }
         else{
             if( $_GET['info'] == "Tất cả"){
                 
-                $listMonHoc = $this->db->monhocgiangvien();
-                $listMonHoc1 = $this->db->listmonhoc();
-                $listGiangVien = $this->db->getAllData('giangvien');
-                $listLop = $this->db->listlop();
+                $listMonHoc = $this->daotao->monhocgiangvien();
+                $listMonHoc1 = $this->daotao->listmonhoc();
+                $listGiangVien = $this->daotao->getAllData('giangvien');
+                $listLop = $this->daotao->listlop();
                 require_once("./view/daotao/bangphanconggiangday.php");
             }
             else{
-                // $masinhvien=$this->db->masinhvien();
+                // $masinhvien=$this->daotao->masinhvien();
                 // $getmasv = substr($masinhvien['masinhvien'], 1); 
-                // $listStudent = $this->db->getAllData('sinhvien');
-                // $listCN = $this->db->getAllData('chuyennganh');
+                // $listStudent = $this->daotao->getAllData('sinhvien');
+                // $listCN = $this->daotao->getAllData('chuyennganh');
                 // require_once("./view/daotao/danhsachsinhvien.php");
             }
         }
@@ -151,24 +154,24 @@ class daotao_controller {
     }
     function timkiemmonhoc()
     {
-        $listMonHoc=$this->db->timkiemmonhoc($_GET['info']);
-        $listMonHoc1 = $this->db->timkiemmonhocbangmonhoc($_GET['info']);
-        $listLop = $this->db->listlop();
+        $listMonHoc=$this->daotao->timkiemmonhoc($_GET['info']);
+        $listMonHoc1 = $this->daotao->timkiemmonhocbangmonhoc($_GET['info']);
+        $listLop = $this->daotao->listlop();
         //var_dump($listMonHoc1);
-        $listGiangVien = $this->db->getAllData('giangvien');
+        $listGiangVien = $this->daotao->getAllData('giangvien');
         require_once("./view/daotao/bangphanconggiangday.php");
     }
 
     function capnhatmonhoc()
     {
-        $this->db->capnhatgiaovienmonhoc($_GET['mamon'],$_GET['magiangvien'],$_GET['malop']);
+        $this->daotao->capnhatgiaovienmonhoc($_GET['mamon'],$_GET['magiangvien'],$_GET['malop']);
     }
 
     //danhsachgiangvien
     function giangvien()
     {
         if(isset($_GET['mgv'])){
-            $info=$this->db->getinfogiangvien($_GET['mgv']);
+            $info=$this->daotao->getinfogiangvien($_GET['mgv']);
             
             require_once("./view/daotao/modal_giaovien.php");
         }
@@ -176,7 +179,7 @@ class daotao_controller {
         {
             if(!empty($_POST["machuyennganh"])){ 
 
-                $listGVCN = $this->db->getLop($_POST['machuyennganh']);
+                $listGVCN = $this->daotao->getLop($_POST['machuyennganh']);
                 if($listGVCN != 0)
                 {
                     foreach ($listGVCN as $infoCN)
@@ -193,23 +196,23 @@ class daotao_controller {
                
             }
             else{
-                $magiangvien=$this->db->magiangvien();
+                $magiangvien=$this->daotao->magiangvien();
                 $getmgv = substr($magiangvien['magiangvien'], 2); 
                 
-                $listChuyenNganh = $this->db->getAllData('chuyennganh');
-                $listGiangVien = $this->db->getAllData('giangvien');
-                $listlopCN = $this->db->getAllData('lopcn');
+                $listChuyenNganh = $this->daotao->getAllData('chuyennganh');
+                $listGiangVien = $this->daotao->getAllData('giangvien');
+                $listlopCN = $this->daotao->getAllData('lopcn');
                 require_once("./view/daotao/DanhSachGiaoVien.php");
             }
         }    
     }
     function capnhattheotrangthai1()
     {
-        $this->db->capnhattt_gv($_GET['magiangvien'],$_GET['trangthai']);
+        $this->daotao->capnhattt_gv($_GET['magiangvien'],$_GET['trangthai']);
     }
     function sxtheotrangthai()
     {
-        $listGiangVien =$this->db->getinfo_gvtt($_GET['info1']);
+        $listGiangVien =$this->daotao->getinfo_gvtt($_GET['info1']);
         require_once("./view/daotao/banggiangvien.php");
     }
     function banggiangvien()
@@ -217,22 +220,25 @@ class daotao_controller {
         if($_GET['info'] != "Tất cả")
         {
            
-            $listGiangVien=$this->db->timkiemgiangvientheochuyennganh($_GET['info']);
-            
+            $listGiangVien=$this->daotao->timkiemgiangvientheochuyennganh($_GET['info']);
+            if($listGiangVien ==0)
+            {
+                $listGiangVien = '';
+            }
             require_once("./view/daotao/banggiangvien.php");
         }
         else{
             if( $_GET['info'] == "Tất cả"){
                 
                 
-                $listGiangVien = $this->db->getAllData('giangvien');
+                $listGiangVien = $this->daotao->getAllData('giangvien');
                 require_once("./view/daotao/banggiangvien.php");
             }
             else{
-                // $masinhvien=$this->db->masinhvien();
+                // $masinhvien=$this->daotao->masinhvien();
                 // $getmasv = substr($masinhvien['masinhvien'], 1); 
-                // $listStudent = $this->db->getAllData('sinhvien');
-                // $listCN = $this->db->getAllData('chuyennganh');
+                // $listStudent = $this->daotao->getAllData('sinhvien');
+                // $listCN = $this->daotao->getAllData('chuyennganh');
                 // require_once("./view/daotao/danhsachsinhvien.php");
             }
         }
@@ -241,7 +247,7 @@ class daotao_controller {
     function timkiemgiangvien()
     {
         
-        $listGiangVien = $this->db->timkiemgiangvien($_GET['info']);
+        $listGiangVien = $this->daotao->timkiemgiangvien($_GET['info']);
         if($listGiangVien==0){
             $listGiangVien='';
         }
@@ -253,7 +259,7 @@ class daotao_controller {
 
     function creategiangvien()
     {
-        $data=$this->db->creategiangvien($_GET['magiangvien'], $_GET['hovaten'], $_GET['gioitinh'], $_GET['CMND'], $_GET['ngaysinh'], $_GET['phone'], $_GET['email'], $_GET['chuyennganh'], $_GET['diachi'], $_GET['lop']);
+        $data=$this->daotao->creategiangvien($_GET['magiangvien'], $_GET['hovaten'], $_GET['gioitinh'], $_GET['CMND'], $_GET['ngaysinh'], $_GET['phone'], $_GET['email'], $_GET['chuyennganh'], $_GET['diachi'], $_GET['lop']);
         
         require_once("./view/daotao/PDTTimKiemSinhVien.php");
         
@@ -262,13 +268,13 @@ class daotao_controller {
     // danhsachmonhoc
     function danhsachmonhoc()
     {
-        $chuyennganh=$this->db->getAllData("chuyennganh");
-        $mon=$this->db->getAllData("monhoc");
+        $chuyennganh=$this->daotao->getAllData("chuyennganh");
+        $mon=$this->daotao->getAllData("monhoc");
         require_once("./view/daotao/Danhsachmonhoc.php");
     }
     function timkiemmm()
     {
-        $mon=$this->db->tkb_timkiem($_GET['key']);
+        $mon=$this->daotao->tkb_timkiem($_GET['key']);
         require_once("./view/daotao/bangdssv.php");
     }
     function themmon()
@@ -280,24 +286,24 @@ class daotao_controller {
         //$machuyennganh=$_POST['machuyennganh'];
         $thu=$_GET['thu'];
         $ca=$_GET['ca'];
-        $macn=$this->db->getmcn($chuyennganh);
-        $this->db->themmon($mamon,$tenmon,$sotinchi,$ca,$thu,$macn['machuyennganh']);
-        $mon=$this->db->getAllData("monhoc");
+        $macn=$this->daotao->getmcn($chuyennganh);
+        $this->daotao->themmon($mamon,$tenmon,$sotinchi,$ca,$thu,$macn['machuyennganh']);
+        $mon=$this->daotao->getAllData("monhoc");
         require_once("./view/daotao/bangdssv.php");
     }
     function xoamon()
     {
         $mamon=$_GET['info'];
-        $this->db->xoamon($mamon);
-        $mon=$this->db->getAllData("monhoc");
+        $this->daotao->xoamon($mamon);
+        $mon=$this->daotao->getAllData("monhoc");
         require_once("./view/daotao/bangdssv.php");
         // header("Refresh:0");
     }
     // Quản lý chuyên ngành
     function danh_sach_chuyen_nganh()
     {
-       $chuyennganh=$this->db->getAllData("chuyennganh");
-        // $mon=$this->db->getAllData("monhoc");
+       $chuyennganh=$this->daotao->getAllData("chuyennganh");
+        // $mon=$this->daotao->getAllData("monhoc");
         require_once("./view/daotao/DanhSachChuyenNganh.php");
     }
     function bangchuyennganh()
@@ -305,7 +311,7 @@ class daotao_controller {
         if($_GET['info'] != "Tất cả")
         {
            
-            $chuyennganh=$this->db->selectchuyennganh($_GET['info']);
+            $chuyennganh=$this->daotao->selectchuyennganh($_GET['info']);
            
             require_once("./view/daotao/bangchuyennganh.php");
         }
@@ -313,21 +319,21 @@ class daotao_controller {
             if( $_GET['info'] == "Tất cả"){
                 
                 
-                $chuyennganh = $this->db->selectlistchuyennganh();
+                $chuyennganh = $this->daotao->selectlistchuyennganh();
                 require_once("./view/daotao/bangchuyennganh.php");
             }
             else{
-                // $masinhvien=$this->db->masinhvien();
+                // $masinhvien=$this->daotao->masinhvien();
                 // $getmasv = substr($masinhvien['masinhvien'], 1); 
-                // $listStudent = $this->db->getAllData('sinhvien');
-                // $listCN = $this->db->getAllData('chuyennganh');
+                // $listStudent = $this->daotao->getAllData('sinhvien');
+                // $listCN = $this->daotao->getAllData('chuyennganh');
                 // require_once("./view/daotao/danhsachsinhvien.php");
             }
         }
     }
     function timkiemchuyennganh()
     {
-        $chuyennganh = $this->db->timkiemchuyennganh($_GET['info']);
+        $chuyennganh = $this->daotao->timkiemchuyennganh($_GET['info']);
         if($chuyennganh == 0)
         {
             $chuyennganh = '';
@@ -339,37 +345,37 @@ class daotao_controller {
 
     function themchuyennganh()
     {
-        $data=$this->db->createchuyennganh($_GET['machuyennganh'], $_GET['tenchuyennganh']);
-        $chuyennganh = $this->db->selectlistchuyennganh();
+        $data=$this->daotao->createchuyennganh($_GET['machuyennganh'], $_GET['tenchuyennganh']);
+        $chuyennganh = $this->daotao->selectlistchuyennganh();
         require_once("./view/daotao/bangchuyennganh.php");
     }
     function updatechuyennganh()
     {
         if(isset($_GET['machuyennganh'])){
-            $info=$this->db->getinfochuyennganh($_GET['machuyennganh']);
+            $info=$this->daotao->getinfochuyennganh($_GET['machuyennganh']);
             
             require_once("./view/daotao/modal_chuyennganh.php");
         }
     }
     function capnhatchuyennganh()
     {
-        $this->db->capnhatchuyennganh($_GET['machuyennganh'],$_GET['tenchuyennganh']);
-        $chuyennganh=$this->db->selectlistchuyennganh();
+        $this->daotao->capnhatchuyennganh($_GET['machuyennganh'],$_GET['tenchuyennganh']);
+        $chuyennganh=$this->daotao->selectlistchuyennganh();
        
         require_once("./view/daotao/bangchuyennganh.php");
     }
     function updatemonhoc()
     {
         if(isset($_GET['mamon'])){
-            $info=$this->db->getinfomonhoc($_GET['mamon']);
-            $chuyennganh=$this->db->selectlistchuyennganh();
+            $info=$this->daotao->getinfomonhoc($_GET['mamon']);
+            $chuyennganh=$this->daotao->selectlistchuyennganh();
             require_once("./view/daotao/modal_monhoc.php");
         }
     }
     function capnhatmonhocdaotao()
     {
-        $this->db->capnhatmonhoc($_GET['mamon'],$_GET['tenmon'],$_GET['sotinchi'],$_GET['chuyennganh'],$_GET['thu'],$_GET['ca']);
-        $monhoc=$this->db->selectlistmonhocdaotao();
+        $this->daotao->capnhatmonhoc($_GET['mamon'],$_GET['tenmon'],$_GET['sotinchi'],$_GET['chuyennganh'],$_GET['thu'],$_GET['ca']);
+        $monhoc=$this->daotao->selectlistmonhocdaotao();
         require_once("./view/daotao/bangmonhoc.php");
     }
     //xeplichthi
@@ -381,52 +387,52 @@ class daotao_controller {
     function updatestudentdaotao()
     {   
         if(isset($_GET['masinhvien'])){
-            $svid=$this->db->getsinhvien($_GET['masinhvien']);
-            $listCN = $this->db->getAllData('chuyennganh');
-            $listLopCN = $this->db->getAllData('lopcn');
-            $listGVCN = $this->db->getAllData('giangvien');
+            $svid=$this->daotao->getsinhvien($_GET['masinhvien']);
+            $listCN = $this->daotao->getAllData('chuyennganh');
+            $listLopCN = $this->daotao->getAllData('lopcn');
+            $listGVCN = $this->daotao->getAllData('giangvien');
             require_once("./view/daotao/modal_sinhvien.php");
         }
     }
     function capnhatsinhviendaotao()
     {
-        $data = $this->db->updatestudentdaotao1($_GET['masinhvien'], $_GET['hovaten'], $_GET['gioitinh'], $_GET['CMND'], $_GET['ngaysinh'], $_GET['phone'], $_GET['email'], $_GET['chuyennganh'], $_GET['giaovien'], $_GET['diachi'], $_GET['lop'],$_GET['password']);
-        $listStudent=$this->db->selectlistsinhviendaotao();
+        $data = $this->daotao->updatestudentdaotao1($_GET['masinhvien'], $_GET['hovaten'], $_GET['gioitinh'], $_GET['CMND'], $_GET['ngaysinh'], $_GET['phone'], $_GET['email'], $_GET['chuyennganh'], $_GET['giaovien'], $_GET['diachi'], $_GET['lop'],$_GET['password']);
+        $listStudent=$this->daotao->selectlistsinhviendaotao();
         require_once("./view/daotao/bangsinhvien.php");
     }
     //xeplichthi
     function xeplichthi()
     {
         $_SESSION['chuyennganh']="Tất cả";
-        $mon=$this->db->getAllData("monhoc");
-        $datacn=$this->db->getAllData("chuyennganh");
+        $mon=$this->daotao->getAllData("monhoc");
+        $datacn=$this->daotao->getAllData("chuyennganh");
         require_once("./view/daotao/xeplichthi.php");
     }
     function xeplichthi_loccn()
     {
         $_SESSION['chuyennganh']=$_GET['info1'];
         if($_GET['info1']=="Tất cả"){
-            $mon=$this->db->getAllData("monhoc");
+            $mon=$this->daotao->getAllData("monhoc");
         }
         else{
-            $macn=$this->db->getmcn($_GET['info1']);
-            $mon=$this->db->xeplichthi_loccn($macn['machuyennganh']);
+            $macn=$this->daotao->getmcn($_GET['info1']);
+            $mon=$this->daotao->xeplichthi_loccn($macn['machuyennganh']);
         }
         require_once("./view/daotao/xeplichthi1.php");
     }
     function capnhatlichthi()
     {
-        $this->db->capnhatlichthi($_GET['mamon'],$_GET['ngaythi'],$_GET['cathi']);
+        $this->daotao->capnhatlichthi($_GET['mamon'],$_GET['ngaythi'],$_GET['cathi']);
     }
     function lichthi_timkiem()
     {
         if($_SESSION['chuyennganh']=="Tất cả"){
-            $mon=$this->db->timlichthi($_GET['key']);
+            $mon=$this->daotao->timlichthi($_GET['key']);
         }
         else{
             echo $_SESSION['chuyennganh'];
-            $macn=$this->db->getmcn($_SESSION['chuyennganh']);
-            $mon=$this->db->timlichthi_loccn($_GET['key'],$macn['machuyennganh']);
+            $macn=$this->daotao->getmcn($_SESSION['chuyennganh']);
+            $mon=$this->daotao->timlichthi_loccn($_GET['key'],$macn['machuyennganh']);
         }
         require_once("./view/daotao/xeplichthi1.php");
     }

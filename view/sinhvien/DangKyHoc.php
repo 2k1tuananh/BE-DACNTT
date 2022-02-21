@@ -4,10 +4,6 @@
     .tabletkb{
         font-size:16px;
     }
-    .tabledanhsachdangkihoc{
-        display: flex;
-        justify-content: center;
-    }
     </style>
 <div id="right"  style="width: 100%; margin-left:10px;">
     <div class="title">Danh sách các môn học được đăng kí</div>
@@ -24,7 +20,7 @@
         <h2 style="text-align: center; font-weight: bold;">
             Danh sách môn được đăng ký
         </h3>
-        <div style="margin-bottom:30px; margin-top:20px">
+        <div style="margin-bottom:30px;">
             <!-- style="width: 730px; height: 430px" -->
             <table class="tabletkb" cellpadding="0" cellspacing="0" width="100%">
                 <thead>
@@ -92,8 +88,8 @@
             <h2 style="text-align: center; font-weight: bold">
                 Danh sách môn đã đăng ký
             </h2>
-            <div class="tabledanhsachdangkihoc">
-                <table class="tabletkb"  style="width: 700px;margin-bottom:50px; margin-top: 20px" cellpadding="0" cellspacing="0" width="100%">
+            <div style="width: 700px; height: 430px;margin-bottom:50px;">
+                <table class="tabletkb" cellpadding="0" cellspacing="0" width="100%">
                     <thead>
                         <tr>
 

@@ -1,4 +1,5 @@
-﻿
+﻿<!DOCTYPE html>
+<html lang="en">
   <head>
     <title>Login page - Thang Long University</title>
     <meta charset="UTF-8" />
@@ -69,31 +70,12 @@
         window.location = url;
       }
     </script>
-        <style>
-
-.bodyBackground {
-     background-image: url("./img/background.jpg");
-     background-position: center;
-     background-size: cover;
-     position: absolute;
-     top: 0;
- }
- .wrap-login100{
-  background-color: #9152f8;
-    width: 450px;
-    border-radius: 10px;
-    overflow: hidden;
-    padding: 55px 55px 37px 55px;
-
-    border-radius: 2px;
-
-    box-shadow: 0px 2px 2px rgb(0 0 0 / 30%);
- }
-</style>
   </head>
-    <div class="limiter bodyBackground">
+  <body>
+    <div class="limiter">
       <div
-        class="container-login100 "
+        class="container-login100"
+        style="background-image: url('images/bg-01.jpg')"
       >
         <div class="wrap-login100">
           <form
@@ -213,4 +195,5 @@
     <script src="vendor/countdowntime/countdowntime.js"></script>
     <!--===============================================================================================-->
     <script src="js/main.js"></script>
-
+  </body>
+</html>

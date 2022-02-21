@@ -10,10 +10,6 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-  <!-- ////////////////////////////////// -->
-  <script type="text/javascript" src="./view/js/tooltip.js"></script>
-  <script type="text/javascript" src="./view/js/thickbox-compressed.js"></script>
-  <script src="./view/js/java.js" type="text/javascript"></script>
   <script type="text/javascript">
     $(document).ready(function() {
       $('input.number').keypress(function(e) {
@@ -24,11 +20,11 @@
     });
   </script>
 
-  <link href="./App_Themes/abrasive/a10777.css" type="text/css" rel="stylesheet" />
+  
   <link href="./App_Themes/abrasive/em.css" type="text/css" rel="stylesheet" />
-  <link href="./App_Themes/abrasive/jQuery.css" type="text/css" rel="stylesheet" />
+  
   <link href="./App_Themes/abrasive/style.css" type="text/css" rel="stylesheet" />
-  <link href="./App_Themes/abrasive/thickbox.css" type="text/css" rel="stylesheet" />
+ 
 
   
   <style>
@@ -77,14 +73,7 @@
       font-size: 16px;
       font-family: 'Times New Roman', Times, serif;
     }
-    .title{
-      font-size: 16px;
-      font-family: 'Times New Roman', Times, serif;
-    }
-    li a {
-      font-size: 14px;
-      font-family: 'Times New Roman', Times, serif;
-    }
+    
   </style>
 </head>
 
@@ -101,7 +90,7 @@
       <!-- User Info -->
       <div class="right" style="width: 100%;">
         <b>Chào
-          <span id="ctl00_lbUser" style="color: Red;text-transform: uppercase;"><?php echo $_SESSION['name']; ?> (<?php
+          <span id="ctl00_lbUser" style="color: Red"><?php echo $_SESSION['name']; ?> (<?php
                                                                                         if (isset($_SESSION['msv'])) {
                                                                                           echo $_SESSION['msv'];
                                                                                         } else {

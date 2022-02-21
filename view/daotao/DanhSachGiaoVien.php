@@ -1,6 +1,4 @@
 <?php require_once('./view/layouts/headerDaoTao.php'); ?>
-
-<script src="chrome-extension://mooikfkahbdckldjjndioackbalphokd/assets/prompt.js"></script>
 <style>
   a {
     text-decoration: none;
@@ -104,7 +102,7 @@
     Quản lý giáo viên
 
   </div>
-  <button type="button" data-toggle="modal" data-target="#myModal" class="btnTimKiem btn" style="margin-bottom: 10px">Thêm Giáo Viên &nbsp;<span class="glyphicon glyphicon-plus"></span></button>
+  <button type="button" data-toggle="modal" data-target="#myModal" class="btnUpdate btn " style="margin-bottom: 10px">Thêm Giáo Viên &nbsp;<span class="glyphicon glyphicon-plus"></span></button>
   <div class="form">
     <div class="chuyen-nganh">
       <p>Chọn chuyên ngành:</p>
@@ -441,7 +439,7 @@
             $("#alert").html('<strong class="text-danger">Số điện thoại phải là số</strong>');
             $("input[name='phone']").focus();
             return;
-          } else if (diachi == null || diachi == "") {
+          }else if (diachi == null || diachi == "") {
             $("#alert").html('<strong class="text-danger">Địa chỉ không được để trống</strong>');
             $("select[name='diachi']").focus();
             return;
@@ -449,31 +447,33 @@
             $("#alert").html('<strong class="text-danger">Chuyên ngành không được để trống</strong>');
             $("select[name='chuyennganh']").focus();
             return;
-          } else if (lop == null || lop == "") {
+          } 
+           else if (lop == null || lop == "") {
             $("#alert").html('<strong class="text-danger">Lớp không được để trống</strong>');
             $("select[name='lop']").focus();
             return;
-          } else {
+          } 
+          else{
             $('#myModal').modal('hide');
             $.get("./index.php", {
-              controller: "daotao",
-              action: "creategiangvien",
-              magiangvien: magiangvien,
-              hovaten: hovaten,
-              gioitinh: gioitinh,
-              CMND: CMND,
-              ngaysinh: ngaysinh,
-              phone: phone,
-              email: email,
-              chuyennganh: chuyennganh,
-              diachi: diachi,
-              lop: lop
-            }, function(data) {
-              $("#bangdiem2").html(data);
-              location.reload();
-            })
+            controller: "daotao",
+            action: "creategiangvien",
+            magiangvien: magiangvien,
+            hovaten: hovaten,
+            gioitinh: gioitinh,
+            CMND: CMND,
+            ngaysinh: ngaysinh,
+            phone: phone,
+            email: email,
+            chuyennganh: chuyennganh,
+            diachi: diachi,
+            lop: lop
+          }, function(data) {
+            $("#bangdiem2").html(data);
+            location.reload();
+          })
           }
-
+        
         });
       });
     </script>

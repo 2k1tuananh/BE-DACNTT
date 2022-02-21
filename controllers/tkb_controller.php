@@ -1,9 +1,13 @@
 <?php
 require_once("./models/dbconfig.php");
+require_once("./models/daotao.php");
 class tkb_controller {
     public function run(){
         $this->db=new database();
         $this->db->connect();
+        $this->daotao=new daotao();
+        $this->daotao->connect();
+        
         $action= filter_input(INPUT_GET,"action");
         if(method_exists($this,$action))
         {
@@ -18,7 +22,7 @@ class tkb_controller {
     {
         $_SESSION['chuyennganh']="Tất cả";
         $data=$this->db->tkb();
-        $datacn=$this->db->selectlistchuyennganh();
+        $datacn=$this->daotao->selectlistchuyennganh();
         require_once("./view/tkbtoantruong.php");
     }
     function tkb_toantruong_loccn()
@@ -28,7 +32,7 @@ class tkb_controller {
             $data=$this->db->tkb();
         }
         else{
-            $macn=$this->db->getmcn($_GET['info1']);
+            $macn=$this->daotao->getmcn($_GET['info1']);
             $data=$this->db->tkb_loccn($macn['machuyennganh']);
         }
         require_once("./view/tkbtoantruong1.php");
@@ -39,8 +43,8 @@ class tkb_controller {
             $data=$this->db->tkb_timkiem($_GET['key']);
         }
         else{
-            $macn=$this->db->getmcn($_SESSION['chuyennganh']);
-            $data=$this->db->tkb_timkiemtheocn($_GET['key'],$macn['machuyennganh']);
+            $macn=$this->daotao->getmcn($_SESSION['chuyennganh']);
+            $data=$this->daotao->tkb_timkiemtheocn($_GET['key'],$macn['machuyennganh']);
         }
         require_once("./view/tkbtoantruong1.php");
     }

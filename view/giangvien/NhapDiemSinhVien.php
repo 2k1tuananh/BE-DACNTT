@@ -25,7 +25,6 @@
         transform: scaleY(0);
         transition: transform 0.25s ease-in-out;
     }
-
     button:hover {
         cursor: pointer;
     }
@@ -78,7 +77,7 @@
             <div style="display: flex;">
                 <td>Chọn học kỳ:</td>
                 <td>
-                    <select class="form-control" style="width: 13rem;">
+                    <select class="form-control"  style="width: 13rem;">
                         <option>Kỳ 1 nhóm 1</option>
                         <option>Kỳ 2 nhóm 2</option>
                     </select>
@@ -86,8 +85,23 @@
             </div>
 
             <div style="position: relative">
-                <input class="form-control" id="timkiem" name="timkiem" style="padding-left: 20px; height: 35px;" type="text" placeholder="Tìm kiếm">
-                <button id="bttimkiem" style=" position: absolute;right: 0px; height: 35px;bottom: 0px;top: 0px;padding: 0 10px 0 10px;">
+                <i style="
+                  position: absolute;
+                  left: 4px;
+                  bottom: 6px;
+                  font-size: 15px;
+                " class="fas fa-search"></i>
+                <input class="form-control"  id="timkiem" name="timkiem" style="padding-left: 20px;
+                                height: 25px;
+                    " type="text" placeholder="Tìm kiếm">
+                <button id="bttimkiem" style="
+                  position: absolute;
+                  right: 0px;
+                  height: 25px;
+                  bottom: 0px;
+                  top: 0px;
+                  padding: 0 8px 0 8px;
+                ">
                     Tìm
                 </button>
             </div>
@@ -113,8 +127,8 @@
 
         <div style="margin-top: 20px; align-items: flex-end;" class="container_timkiem">
             <div>
-
-                <select class="form-control" id="sapxep">
+            
+                <select class="form-control"  id="sapxep">
                     <script>
                         $(function() {
                             $('#sapxep').trigger('change'); //This event will fire the change event. 
@@ -130,8 +144,8 @@
                             });
                         });
                     </script>
-                    <option value="thapcao">Thấp >> cao</option>
-                    <option value="caothap">Cao >> thấp</option>
+                    <option>Thấp >> cao</option>
+                    <option>Cao >> thấp</option>
                 </select>
             </div>
 
@@ -140,7 +154,7 @@
 
 
     </div>
-    <div style="margin-top: 10px;" id="bangdiem">
+    <div id="bangdiem">
         <table class="grid" cellspacing="0" border="0" id="ctl00_c_GridDC" style="
                           border-style: None;
                           width: 100%;
