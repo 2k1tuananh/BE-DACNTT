@@ -16,12 +16,12 @@
                       >
                         <tbody>
                           <tr class="text-center">
-                            <th scope="col">STT</th>
-                            <th scope="col">Mã Giáo Viên</th>
-                            <th scope="col">Tên Giáo Viên</th>
-                            <th scope="col">Trạng thái</th>
+                            <th  class="text-center">STT</th>
+                            <th  class="text-center">Mã Giáo Viên</th>
+                            <th  class="text-center">Tên Giáo Viên</th>
+                            <th  class="text-center">Trạng thái</th>
 
-                            <th scope="col">Hành động</th>
+                            <th  class="text-center">Hành động</th>
                            
                           </tr>
                           <tr>
@@ -46,7 +46,7 @@
                                     });
                                 });
                                 </script>
-                                <select id="trangthai<?= $stt?>">
+                                <select class="form-control" id="trangthai<?= $stt?>">
                                     <?php if($info['trangthai']==1){?>
                                     <option>Đang dạy</option>
                                     <option>Đã nghỉ</option>
@@ -57,8 +57,8 @@
                                 </select>
                               </td>
                               <td class="text-center">
-                                <Button class="btn" type="btnTimKiem" data-toggle="modal"
-                                  data-target="#myModal1">Xem Chi Tiêt</Button>
+                              <Button  class="btn xemchitiet" id="<?= $info['magiangvien']?>" type="btnTimKiem" data-toggle="modal"
+                                data-target="#myModal1">Xem Chi Tiêt</Button>
                                   &nbsp;
                                 </td>
                             </tr><?php } ?>
@@ -70,4 +70,15 @@
                   </td>
                 </tr>
               </tbody>
+              <script>
+                        $(document).ready(function(){
+                            $(".xemchitiet").click(function(){
+                                    var magiangvien=$(this).attr("id")
+                                    
+                                    $.get("./index.php",{controller:"daotao",action:"giangvien", mgv:magiangvien}, function(data) {
+                                    $("#myModal1").html(data);
+                                })                                                                                     
+                            });
+                        });
+                        </script>
             </table>

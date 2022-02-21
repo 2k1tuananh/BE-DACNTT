@@ -17,21 +17,22 @@
                       >
                         <tbody>
                           <tr>
-                            <th scope="col">STT</th>
-                            <th scope="col" style="white-space: nowrap">
+                            <th  class="text-center">STT</th>
+                            <th  class="text-center" style="white-space: nowrap">
                               Mã Môn
                             </th>
-                            <th scope="col">Tên Môn</th>
-                            <th scope="col" style="white-space: nowrap">
+                            <th  class="text-center">Tên Môn</th>
+                            <th  class="text-center" style="white-space: nowrap">
                               Số TC
                             </th>
                             
-                            <th scope="col">Thứ</th>
-                            <th scope="col">Ca học</th>
-                            <th scope="col">Trạng thái</th>
+                            <th  class="text-center">Thứ</th>
+                            <th  class="text-center">Ca học</th>
+                            <th  class="text-center">Trạng thái</th>
 
                           </tr>
-                          <?php $stt=0; foreach($mon as $info){ $stt++; ?>
+                          <?php $stt=0; 
+                          foreach($mon as $info){ $stt++; ?>
                           <tr>
                             <td><?= $stt ?></td>
                             <td ><?= $info['mamon'] ?></td>
@@ -42,8 +43,8 @@
                             <td class="item-monhoc"><?= $info['ca'] ?></td>
                             
                             <td class="item-monhoc">
-                              <button class="btnTimKiem" type="button" data-toggle="modal" data-target="#SuaMonHoc">Update</button>
-                              <button type="button" id="xoa<?= $stt ?>" class="btnTimKiem" >Delete</button>
+                              <button class="btnTimKiem" type="button" data-toggle="modal" data-target="#SuaMonHoc">Cập nhập</button>
+                              <button type="button" id="xoa<?= $stt ?>" class="btnTimKiem" >Xóa</button>
                               <script>
                                 $(document).ready(function(){
                                     $("#xoa<?= $stt ?>").click(function(){

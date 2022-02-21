@@ -76,12 +76,12 @@
 </div>
         <!-- <p>Some text in the modal.</p> -->
         
-        <table cellspacing="3" cellpadding="0" border="0px" width="100%">
+        <table cellspacing="3" cellpadding="0" width="100%">
             <tbody>
                 <tr valign="top">
                     <td style="width: 100%">
                         <div>
-                            <table class="grid" cellspacing="0" border="0" id="ctl00_c_GridDC" style="
+                            <table class="grid" cellspacing="0" id="ctl00_c_GridDC" style="
                 border-style: None;
                 width: 100%;
                 border-collapse: collapse;
@@ -102,6 +102,7 @@
                                     </tr>
                                     <<?php
                                     $stt=1;
+                                    if($data != []){
                                     foreach($data as $value){ ?>
                                         <tr>
                                         <td><?php echo $stt++;?></td>
@@ -112,7 +113,7 @@
                                         <td align="center"><?php echo $value['diemcuoiky'];?></td>
                                         <td align="center"><?php echo $value['diemtongket'];?></td>
                                         </tr>
-                                    <?php }?>
+                                    <?php }}?>
                                 </tbody>
                             </table>
                         </div>
@@ -120,9 +121,9 @@
                 </tr>
             </tbody>
         </table>
-        <b>Tổng số tín chỉ tích lũy: </b><span> <?php echo $tongtin['tongtin']; ?></span>
+        <b>Tổng số tín chỉ tích lũy: </b><span> <?php   if($data != []) echo  $tongtin['tongtin']; ?></span>
         <br/>
-        <b>Trung bình chung tích lũy: </b><span ><?php echo round($tongdiem['tongdiem']/$tongtin['tongtin'],2); ?></span>
+        <b>Trung bình chung tích lũy: </b><span ><?php if($data != [])  echo round($tongdiem['tongdiem']/$tongtin['tongtin'],2); ?></span>
         <br />
     </div>
     <div class="modal-footer">
