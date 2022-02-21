@@ -66,6 +66,7 @@ class sinhvien_controller
     function lichthisinhvien()
     {
         $data = $this->db->getinfosinhvien($_SESSION['msv']);
+        $data1 = $this->db->thongtinlich($_SESSION['msv']);
         require_once("./view/sinhvien/lichthi.php");
     }
     function dangkyhoc()

@@ -358,6 +358,10 @@
             return $this->execute($sql);
         }
 
-       
+        public function thongtinlich($msv){
+            $sql = "SELECT * FROM monhoc INNER JOIN `gv-sv-lop` as gv on monhoc.mamon =gv.mamon WHERE gv.masinhvien='$msv' and cathi !=''";
+            $this->execute($sql);
+            return $this->execute($sql);
+        }    
        
     }
