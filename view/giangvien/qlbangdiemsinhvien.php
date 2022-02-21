@@ -1,8 +1,9 @@
-<table style="font-family: arial, sans-serif;
-        font-size: 14px;
-        border-collapse: collapse;
-        width: 100%;
-        margin-top: 20px;">
+
+<table class="grid" cellspacing="0" id="ctl00_c_GridDC" style="
+                          border-style: None;
+                          width: 100%;
+                          border-collapse: collapse;
+                        ">
 
                 <tr style="background-color: #e4e8e9;">
                     <th style="border: 1px solid #dddddd;
@@ -42,7 +43,7 @@
                     </th>
                 </tr>
                 <script>
-                        $("button").click(function(){
+                        $("button.capnhat").click(function(){
                             var masinhvien=".masinhvien"+$(this).attr("id");
                             var tenmon=".tenmon"+$(this).attr("id");
                             var diemquatrinh="#diemquatrinh"+$(this).attr("id");
@@ -97,12 +98,9 @@
                 padding: 8px;">
                         <p class="text-center" style="background-color: #f3f6f7; border: none;" ><?= $info['diemtongket']?></p>
                     </td>
-                    <td name="" style="border: 1px solid #dddddd;
-                text-align: left;
-                padding: 8px;">
-                        <button class="up" id="<?= $stt++?>"><span style="padding: 5px;">
-                                <i class="fas fa-upload"></i>&ensp;Upload</span></button>
-                    </td>
+                    <td name="">
+                            <button style="margin: 0 2px 0 2px;" class="btn capnhat" id="<?= $stt ?>"> Cập nhật</button>
+                        </td>
                 </tr>      
                 <?php }} ?>
                 </div>

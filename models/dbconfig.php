@@ -1,15 +1,25 @@
 <?php
-// commment tesst git
-// Dương dang làm đào tạo
     class database{
-        private $hostname = 'localhostttt';
-        
+        private $hostname = 'localhost';
         private $username = 'root';
         private $pass = '';
         private $dbname = 'pointmanagement';
 
         private $conn = null;
         private $result = null;
+
+        function executeResult($sql){
+            $conn = mysqli_connect($this->hostname, $this->username, $this->pass, $this->dbname);
+            
+            $result = mysqli_query($conn, $sql);
+            $list = [];
+            while ($row = mysqli_fetch_array($result, 1)) {
+                $list[] = $row;
+            }
+            mysqli_close($conn);
+            
+            return $list;
+        }
 
         public function connect()
         {
@@ -35,7 +45,7 @@
                 $data = mysqli_fetch_array($this->result);
             }
             else{
-                $data = 0;
+                $data = [];
             }
             return $data;
         }
@@ -55,7 +65,7 @@
 
 
 
-        /// Sinh vien
+        // / Sinh vien
         public function getinfosinhvien($msv){
             $sql = "select `sinhvien`.*, `giangvien`.hovaten as `hvt` from `sinhvien` inner join `giangvien` on `sinhvien`.GVCN=`giangvien`.magiangvien WHERE masinhvien='$msv'";
             $this->execute($sql);
@@ -63,11 +73,21 @@
                 $data = mysqli_fetch_array($this->result);
             }
             else{
-                $data = 0;
+                $data = [];
             }
             return $data;
-        }
-        
+        }       
+        public function getinfoGVCN($msv){
+            $sql = "select * from sinhvien WHERE masinhvien='$msv'";
+            $this->execute($sql);
+            if($this->dem()!=0){
+                $data = mysqli_fetch_array($this->result);
+            }
+            else{
+                $data = [];
+            }
+            return $data;
+        }       
         public function updatesinhvien($msv,$img,$gioitinh,$cmnd,$dienthoai,$email,$diachi){
             $sql="UPDATE sinhvien SET `image`='$img', gioitinh='$gioitinh', cmnd='$cmnd', dienthoai='$dienthoai', email='$email', diachi='$diachi' WHERE masinhvien='$msv'";
             return $this->execute($sql);
@@ -77,7 +97,7 @@
             $sql = "select * from `sinhvien-diemmon` inner join `monhoc` on `sinhvien-diemmon`.mamon=`monhoc`.mamon WHERE masinhvien='$msv'";
             $this->execute($sql);
             if($this->dem()==0){
-                $data=0;
+                $data=[];
             }
             else{
                 while($datas = $this->getData()) {
@@ -94,7 +114,7 @@
                 $data = mysqli_fetch_array($this->result);
             }
             else{
-                $data = 0;
+                $data = [];
             }
             return $data;
         }
@@ -106,7 +126,7 @@
                 $data = mysqli_fetch_array($this->result);
             }
             else{
-                $data = 0;
+                $data = [];
             }
             return $data;
         }
@@ -114,6 +134,12 @@
 
         
         ///// LOGIN
+        public  function  login($tk,$password)
+        {
+            $sql = "select * from admin where maadmin = '$tk' and password = '$password'";
+            $ListUser = $this->executeResult($sql);    
+            return $ListUser;
+        }
         public function mkchecksinhvien($tk,$pass){
             $sql = "select * from `sinhvien` where `masinhvien`='$tk' and `password`='$pass'";
             $data=$this->execute($sql);
@@ -122,320 +148,30 @@
 
         public function getinfosinhvien1($tk){
             $sql = "select * from sinhvien where `masinhvien`='$tk' ";
-            echo $sql;
+            
             $data=$this->execute($sql);
             if($this->dem()!=0){
                 $data = mysqli_fetch_array($this->result);
             }
             else{
-                $data = 0;
+                $data = [];
             }
             return $data;
         }
 
         public function updatemksinhvien($msv,$mk){
-            $sql="UPDATE dangnhap SET matkhau='$mk' WHERE taikhoan='$msv'";
+            $sql="UPDATE sinhvien SET password='$mk' WHERE masinhvien='$msv'";
             return $this->execute($sql);
         }
 
 
 
         //GV
-        public function getinfogiangvien($tk){
-            $sql = "select * from giangvien where `magiangvien`='$tk' ";
-            $data=$this->execute($sql);
-            if($this->dem()!=0){
-                $data = mysqli_fetch_array($this->result);
-            }
-            else{
-                $data = 0;
-            }
-            return $data;
-        }
-
-        public function mkcheckgiangvien($tk,$pass){
-            $sql = "select * from `giangvien` where `magiangvien`='$tk' and `password`='$pass'";
-            $data=$this->execute($sql);
-            return $data;
-        }
-
-        public function updategiangvien($mgv,$img,$gioitinh,$cmnd,$dienthoai,$email,$diachi){
-            $sql="UPDATE giangvien SET `image`='$img', gioitinh='$gioitinh', cmnd='$cmnd', dienthoai='$dienthoai', email='$email', diachi='$diachi' WHERE magiangvien='$mgv'";
-            return $this->execute($sql);
-        }  
-
        
-        public function updatemkgiangvien($mgv,$mk){
-            $sql="UPDATE giangvien SET password='$mk' WHERE magiangvien='$mgv'";
-            return $this->execute($sql);
-        }
-        public function getinfo_mon($mgv){
-            $sql = "select DISTINCT tenmon from `gv-sv-lop` inner join monhoc on `gv-sv-lop`.mamon=monhoc.mamon where `magiangvien`='$mgv' ";
-            $this->execute($sql);
-            if($this->dem()==0){
-                $data=0;
-            }
-            else{
-                while($datas = $this->getData()) {
-                    $data[] = $datas;
-                }
-            }
-            return $data;
-        }
-        public function getinfo_svl($mgv){
-            $sql = "select DISTINCT * from  `gv-sv-lop` as gv INNER join sinhvien sv on gv.masinhvien = sv.masinhvien INNER join `sinhvien-diemmon` on `sinhvien-diemmon`.`mamon` = gv.mamon INNER JOIN monhoc on gv.mamon=monhoc.mamon where gv.`magiangvien`='$mgv' AND gv.masinhvien=`sinhvien-diemmon`.`masinhvien` AND gv.trangthai=1 ORDER BY diemtongket ASC ";
-            $this->execute($sql);
-            if($this->dem()==0){
-                $data=0;
-            }
-            else{
-                while($datas = $this->getData()) {
-                    $data[] = $datas;
-                }
-            }
-            return $data;
-        }
-        public function getinfo_svl_tt($mgv,$mm,$tt){
-            if($tt=="Tất cả" && $mm=="Tất cả")
-            {
-                $sql = "select DISTINCT * from  `gv-sv-lop` as gv INNER join sinhvien sv on gv.masinhvien = sv.masinhvien INNER JOIN monhoc on gv.mamon=monhoc.mamon where gv.`magiangvien`='$mgv' ";
-            }
-            else{
-                if($tt=="Đang Học"){
-                    echo "aa";
-                    $sql = "select DISTINCT * from  `gv-sv-lop` as gv INNER join sinhvien sv on gv.masinhvien = sv.masinhvien INNER JOIN monhoc on gv.mamon=monhoc.mamon where gv.`magiangvien`='$mgv' and gv.trangthai=1 and gv.mamon='$mm'";
-                }
-                else{
-                    if($tt=="Tất cả"){
-                        $sql = "select DISTINCT * from  `gv-sv-lop` as gv INNER join sinhvien sv on gv.masinhvien = sv.masinhvien INNER JOIN monhoc on gv.mamon=monhoc.mamon where gv.`magiangvien`='$mgv' and gv.mamon='$mm' ";
-                    }
-                    else{
-                        $sql = "select DISTINCT * from  `gv-sv-lop` as gv INNER join sinhvien sv on gv.masinhvien = sv.masinhvien INNER JOIN monhoc on gv.mamon=monhoc.mamon where gv.`magiangvien`='$mgv' and gv.trangthai=0 and gv.mamon='$mm' ";
-                    }
-                }
-            }
-            $this->execute($sql);
-            if($this->dem()==0){
-                $data=0;
-            }
-            else{
-                while($datas = $this->getData()) {
-                    $data[] = $datas;
-                }
-            }
-            return $data;
-        }
-        public function getinfo_svmon($mgv,$mamon){
-            $sql = "select * from  `gv-sv-lop` as gv INNER join sinhvien sv on gv.masinhvien = sv.masinhvien 
-            INNER JOIN monhoc on gv.mamon=monhoc.mamon where gv.`magiangvien`='$mgv'
-            and gv.mamon='$mamon' AND gv.masinhvien=`sinhvien-diemmon`.`masinhvien` AND gv.trangthai=1";
-            $this->execute($sql);
-            if($this->dem()==0){
-                $data=0;
-            }
-            else{
-                while($datas = $this->getData()) {
-                    $data[] = $datas;
-                }
-            }
-            return $data;
-        }
-        public function getinfo_svmon_tt($mgv,$mamon,$tt){
-            if($tt=="Tất cả")
-            {
-                $sql = "select * from  `gv-sv-lop` as gv INNER join sinhvien sv on gv.masinhvien = sv.masinhvien 
-            INNER JOIN monhoc on gv.mamon=monhoc.mamon where gv.`magiangvien`='$mgv'
-            and gv.mamon='$mamon' AND gv.masinhvien=`sinhvien-diemmon`.`masinhvien`";
-            }
-            else{
-                if($tt=="Đang Học"){
-                    $sql = "select * from  `gv-sv-lop` as gv INNER join sinhvien sv on gv.masinhvien = sv.masinhvien 
-                    INNER JOIN monhoc on gv.mamon=monhoc.mamon where gv.`magiangvien`='$mgv'
-                    and gv.mamon='$mamon' AND gv.masinhvien=`sinhvien-diemmon`.`masinhvien` AND gv.trangthai=1";
-                }
-                else{
-                    $sql = "select * from  `gv-sv-lop` as gv INNER join sinhvien sv on gv.masinhvien = sv.masinhvien 
-                    INNER JOIN monhoc on gv.mamon=monhoc.mamon where gv.`magiangvien`='$mgv'
-                    and gv.mamon='$mamon' AND gv.masinhvien=`sinhvien-diemmon`.`masinhvien` AND gv.trangthai=0";
-                }
-            }
-            $this->execute($sql);
-            if($this->dem()==0){
-                $data=0;
-            }
-            else{
-                while($datas = $this->getData()) {
-                    $data[] = $datas;
-                }
-            }
-            return $data;
-        }
-        public function getinfo_mamon($tm){
-            $sql = "select * from monhoc where `tenmon`='$tm' ";
-            $data=$this->execute($sql);
-            if($this->dem()!=0){
-                $data = mysqli_fetch_array($this->result);
-            }
-            else{
-                $data = 0;
-            }
-            return $data;
-        }
-
-        public function getinfo_thapcao($mgv,$mamon){
-            if($mamon=="Tất cả")
-            {
-                $sql = "select * from  `gv-sv-lop` as gv INNER join sinhvien sv on gv.masinhvien = sv.masinhvien INNER join `sinhvien-diemmon` on `sinhvien-diemmon`.`mamon` = gv.mamon INNER JOIN monhoc on gv.mamon=monhoc.mamon where gv.`magiangvien`='$mgv' AND gv.masinhvien=`sinhvien-diemmon`.`masinhvien` AND gv.trangthai=1 ORDER BY diemtongket ASC";
-            }
-            else{
-                $sql = "select * from  `gv-sv-lop` as gv INNER join sinhvien sv on gv.masinhvien = sv.masinhvien INNER join `sinhvien-diemmon` on `sinhvien-diemmon`.`mamon` = gv.mamon INNER JOIN monhoc on gv.mamon=monhoc.mamon where gv.`magiangvien`='$mgv' and gv.mamon='$mamon' AND gv.masinhvien=`sinhvien-diemmon`.`masinhvien` AND gv.trangthai=1 ORDER BY diemtongket ASC";
-            }
-            $this->execute($sql);
-            if($this->dem()==0){
-                $data=0;
-            }
-            else{
-                while($datas = $this->getData()) {
-                    $data[] = $datas;
-                }
-            }
-            return $data;
-        }
-        
-        public function getinfo_caothap($mgv,$mamon){
-            if($mamon=="Tất cả")
-            {
-                $sql = "select * from  `gv-sv-lop` as gv INNER join sinhvien sv on gv.masinhvien = sv.masinhvien INNER join `sinhvien-diemmon` on `sinhvien-diemmon`.`mamon` = gv.mamon INNER JOIN monhoc on gv.mamon=monhoc.mamon where gv.`magiangvien`='$mgv' AND gv.masinhvien=`sinhvien-diemmon`.`masinhvien` AND gv.trangthai=1 ORDER BY diemtongket DESC";
-            }
-            else{
-                $sql = "select * from  `gv-sv-lop` as gv INNER join sinhvien sv on gv.masinhvien = sv.masinhvien INNER join `sinhvien-diemmon` on `sinhvien-diemmon`.`mamon` = gv.mamon INNER JOIN monhoc on gv.mamon=monhoc.mamon where gv.`magiangvien`='$mgv' and gv.mamon='$mamon' AND gv.masinhvien=`sinhvien-diemmon`.`masinhvien` AND gv.trangthai=1 ORDER BY diemtongket DESC";
-            }
-            $this->execute($sql);
-            if($this->dem()==0){
-                $data=0;
-            }
-            else{
-                while($datas = $this->getData()) {
-                    $data[] = $datas;
-                }
-            }
-            return $data;
-        }
-        public function getinfo_tkcaothap($mgv,$mamon,$info){
-            $sql = "select * from  `gv-sv-lop` as gv INNER join sinhvien sv on gv.masinhvien = sv.masinhvien INNER join `sinhvien-diemmon` on `sinhvien-diemmon`.`mamon` = gv.mamon INNER JOIN monhoc on gv.mamon=monhoc.mamon where gv.`magiangvien`='$mgv' and gv.mamon='$mamon' AND gv.masinhvien=`sinhvien-diemmon`.`masinhvien` AND gv.trangthai=1 and (gv.masinhvien LIKE '%$info%' or sv.hovaten LIKE '%$info%') ORDER BY diemtongket DESC";
-            $this->execute($sql);
-            if($this->dem()==0){
-                $data=0;
-            }
-            else{
-                while($datas = $this->getData()) {
-                    $data[] = $datas;
-                }
-            }
-            return $data;
-        }
-
-        public function getinfo_tkthapcao($mgv,$mamon,$info){
-            $sql = "select * from  `gv-sv-lop` as gv INNER join sinhvien sv on gv.masinhvien = sv.masinhvien INNER join `sinhvien-diemmon` on `sinhvien-diemmon`.`mamon` = gv.mamon INNER JOIN monhoc on gv.mamon=monhoc.mamon where gv.`magiangvien`='$mgv' and gv.mamon='$mamon' AND gv.masinhvien=`sinhvien-diemmon`.`masinhvien` AND gv.trangthai=1 and (gv.masinhvien LIKE '%$info%' or sv.hovaten LIKE '%$info%')";
-            $this->execute($sql);
-            if($this->dem()==0){
-                $data=0;
-            }
-            else{
-                while($datas = $this->getData()) {
-                    $data[] = $datas;
-                }
-            }
-            return $data;
-        }
-
-        public function updiem($mm,$msv,$dqt,$dck,$dtk){
-            $sql="UPDATE `sinhvien-diemmon` SET `diemquatrinh`='$dqt',`diemcuoiky`='$dck',`diemtongket`='$dtk' WHERE `masinhvien`='$msv'and `mamon`='$mm'";
-            return $this->execute($sql);
-        }
-
-        public function getinfo_all($mgv,$mamon,$info){
-            if($info=="Tất cả" && $mamon=="Tất cả")
-            {
-                $sql = "select * from  `gv-sv-lop` as gv INNER join sinhvien sv on gv.masinhvien = sv.masinhvien INNER join `sinhvien-diemmon` on `sinhvien-diemmon`.`mamon` = gv.mamon INNER JOIN monhoc on gv.mamon=monhoc.mamon where gv.`magiangvien`='$mgv' AND gv.masinhvien=`sinhvien-diemmon`.`masinhvien`";
-            }
-            else{
-                if($mamon=="Tất cả"){
-                    if($info=="Đang Học"){
-                        $sql = "select * from  `gv-sv-lop` as gv INNER join sinhvien sv on gv.masinhvien = sv.masinhvien INNER join `sinhvien-diemmon` on `sinhvien-diemmon`.`mamon` = gv.mamon INNER JOIN monhoc on gv.mamon=monhoc.mamon where gv.`magiangvien`='$mgv' AND gv.masinhvien=`sinhvien-diemmon`.`masinhvien` AND gv.trangthai=1 ";
-                    }
-                    else{
-                        $sql = "select * from  `gv-sv-lop` as gv INNER join sinhvien sv on gv.masinhvien = sv.masinhvien INNER join `sinhvien-diemmon` on `sinhvien-diemmon`.`mamon` = gv.mamon INNER JOIN monhoc on gv.mamon=monhoc.mamon where gv.`magiangvien`='$mgv' AND gv.masinhvien=`sinhvien-diemmon`.`masinhvien` AND gv.trangthai=0 ";
-                    }
-                }
-                else{
-                    if($info=="Đang Học"){
-                        $sql = "select * from  `gv-sv-lop` as gv INNER join sinhvien sv on gv.masinhvien = sv.masinhvien INNER join `sinhvien-diemmon` on `sinhvien-diemmon`.`mamon` = gv.mamon INNER JOIN monhoc on gv.mamon=monhoc.mamon where gv.`magiangvien`='$mgv' and gv.mamon='$mamon' AND gv.masinhvien=`sinhvien-diemmon`.`masinhvien` AND gv.trangthai=1 ";
-                    }
-                    else{
-                        $sql = "select * from  `gv-sv-lop` as gv INNER join sinhvien sv on gv.masinhvien = sv.masinhvien INNER join `sinhvien-diemmon` on `sinhvien-diemmon`.`mamon` = gv.mamon INNER JOIN monhoc on gv.mamon=monhoc.mamon where gv.`magiangvien`='$mgv' and gv.mamon='$mamon' AND gv.masinhvien=`sinhvien-diemmon`.`masinhvien` AND gv.trangthai=0 ";
-                    }
-                }
-            }
-            $this->execute($sql);
-            if($this->dem()==0){
-                $data=0;
-            }
-            else{
-                while($datas = $this->getData()) {
-                    $data[] = $datas;
-                }
-            }
-            return $data;
-        }
-        public function getinfo_tk($mgv,$mamon,$info,$info_tt){
-            if($info_tt=="Tất cả" && $mamon=="Tất cả")
-            {
-                $sql = "select * from  `gv-sv-lop` as gv INNER join sinhvien sv on gv.masinhvien = sv.masinhvien INNER join `sinhvien-diemmon` on `sinhvien-diemmon`.`mamon` = gv.mamon INNER JOIN monhoc on gv.mamon=monhoc.mamon where gv.`magiangvien`='$mgv' AND gv.masinhvien=`sinhvien-diemmon`.`masinhvien` and (gv.masinhvien LIKE '%$info%' or sv.hovaten LIKE '%$info%')";
-            }
-            else{
-                if($mamon=="Tất cả"){
-                    if($info_tt=="Đang Học"){
-                        $sql = "select * from  `gv-sv-lop` as gv INNER join sinhvien sv on gv.masinhvien = sv.masinhvien INNER join `sinhvien-diemmon` on `sinhvien-diemmon`.`mamon` = gv.mamon INNER JOIN monhoc on gv.mamon=monhoc.mamon where gv.`magiangvien`='$mgv' AND gv.masinhvien=`sinhvien-diemmon`.`masinhvien` AND gv.trangthai=1 and (gv.masinhvien LIKE '%$info%' or sv.hovaten LIKE '%$info%')";
-                    }
-                    else{
-                        $sql = "select * from  `gv-sv-lop` as gv INNER join sinhvien sv on gv.masinhvien = sv.masinhvien INNER join `sinhvien-diemmon` on `sinhvien-diemmon`.`mamon` = gv.mamon INNER JOIN monhoc on gv.mamon=monhoc.mamon where gv.`magiangvien`='$mgv' AND gv.masinhvien=`sinhvien-diemmon`.`masinhvien` AND gv.trangthai=0 and (gv.masinhvien LIKE '%$info%' or sv.hovaten LIKE '%$info%')";
-                    }
-                }
-                else{
-                    if($info_tt=="Đang Học"){
-                        $sql = "select * from  `gv-sv-lop` as gv INNER join sinhvien sv on gv.masinhvien = sv.masinhvien INNER join `sinhvien-diemmon` on `sinhvien-diemmon`.`mamon` = gv.mamon INNER JOIN monhoc on gv.mamon=monhoc.mamon where gv.`magiangvien`='$mgv' and gv.mamon='$mamon' AND gv.masinhvien=`sinhvien-diemmon`.`masinhvien` AND gv.trangthai=1 and (gv.masinhvien LIKE '%$info%' or sv.hovaten LIKE '%$info%')";
-                    }
-                    else{
-                        $sql = "select * from  `gv-sv-lop` as gv INNER join sinhvien sv on gv.masinhvien = sv.masinhvien INNER join `sinhvien-diemmon` on `sinhvien-diemmon`.`mamon` = gv.mamon INNER JOIN monhoc on gv.mamon=monhoc.mamon where gv.`magiangvien`='$mgv' and gv.mamon='$mamon' AND gv.masinhvien=`sinhvien-diemmon`.`masinhvien` AND gv.trangthai=0 and (gv.masinhvien LIKE '%$info%' or sv.hovaten LIKE '%$info%')";
-                    }
-                }
-            }
-            $this->execute($sql);
-            if($this->dem()==0){
-                $data=0;
-            }
-            else{
-                while($datas = $this->getData()) {
-                    $data[] = $datas;
-                }
-            }
-            return $data;
-        }
+       
 
         //daotao
-        public function masinhvien()
-        {
-            $sql = "SELECT  masinhvien FROM `sinhvien` where id=(select MAX(id) from `sinhvien`)";
-            $data=$this->execute($sql);
-            if($this->dem()!=0){
-                $data = mysqli_fetch_array($this->result);
-            }
-            else{
-                $data = 0;
-            }
-            return $data;
-        }
+       
 
         // public function listKQSV()
         // {
@@ -452,68 +188,180 @@
         //     return $data;
         // }
 
-        public function getGiaoVienCN($machuyennganh)
-        {
-            $sql = "select magiangvien,hovaten from giangvien where machuyennganh = '$machuyennganh'";
-            $this->execute($sql);
-            if($this->dem()==0){
-                $data=0;
-            }
-            else{
-                while($datas = $this->getData()) {
-                    $data[] = $datas;
-                }
-            }
-            return $data;;
-        }
+        
 
-        public function createstudent($masinhvien,$hovaten,$gioitinh,$CMND,$ngaysinh,$phone,$email,$chuyennganh,$giaovien,$diachi){
-            $sql="INSERT INTO `sinhvien`(`masinhvien`, `hovaten`, `gioitinh`, `diachi`, `email`, `dienthoai`, `cmnd`, `ngaysinh`, `GVCN`, `chuyennganh`,  `password`) 
-            VALUES ('$masinhvien','$hovaten','$gioitinh','$diachi','$email','$phone','$CMND','$ngaysinh','$giaovien','$chuyennganh','$masinhvien')";
-            
+       
+        
+       
+
+
+
+
+        ///tkb
+        public function tkb(){
+            $sql=" SELECT giangvienmonhoc.magiangvien as magiangvien,monhoc.mamon as mamon,monhoc.tenmon as tenmon,giangvien.hovaten as hovaten,giangvienmonhoc.lop as malop,giangvien.chuyennganh as chuyennganh,monhoc.sotinchi as sotinchi,monhoc.thu as thu,monhoc.ca as ca FROM `giangvienmonhoc` inner join giangvien on giangvienmonhoc.magiangvien = giangvien.magiangvien inner join monhoc on monhoc.mamon = giangvienmonhoc.mamon
+            ";
+            return $this->execute($sql);
+        }
+        public function tkb_loccn($machuyennganh){
+            $sql="SELECT giangvienmonhoc.magiangvien as magiangvien,monhoc.mamon as mamon,monhoc.tenmon as tenmon,giangvien.hovaten as hovaten,giangvienmonhoc.lop as malop,giangvien.chuyennganh as chuyennganh,monhoc.sotinchi as sotinchi,monhoc.thu as thu,monhoc.ca as ca FROM `giangvienmonhoc` inner join giangvien on giangvienmonhoc.magiangvien = giangvien.magiangvien inner join monhoc on monhoc.mamon = giangvienmonhoc.mamon where monhoc.chuyennganh='$machuyennganh'";
+            return $this->execute($sql);
+        }
+        public function tkb_timkiem($key){
+            $sql=" SELECT DISTINCT(monhoc.mamon), monhoc.tenmon, monhoc.sotinchi, monhoc.thu, monhoc.ca, giangvien.hovaten FROM monhoc INNER JOIN `gv-sv-lop` as gv on monhoc.mamon=gv.mamon INNER JOIN giangvien on gv.magiangvien= giangvien.magiangvien where monhoc.tenmon like '%$key%' or monhoc.mamon like '%$key%' ";
+            return $this->execute($sql);
+        }
+        public function tkb_timkiemtheocn($key,$machuyennganh){
+            $sql=" SELECT DISTINCT(monhoc.mamon), monhoc.tenmon, monhoc.sotinchi, monhoc.thu, monhoc.ca, giangvien.hovaten FROM monhoc INNER JOIN `gv-sv-lop` as gv on monhoc.mamon=gv.mamon INNER JOIN giangvien on gv.magiangvien= giangvien.magiangvien where ( monhoc.tenmon like '%$key%' or monhoc.mamon like '%$key%' ) and monhoc.chuyennganh='$machuyennganh' ";
             return $this->execute($sql);
         }
 
-        public function timkiemsinhvien($masinhvien){
-            $sql = "select * from  `sinhvien`  where  masinhvien LIKE '%$masinhvien%' ";
-            $this->execute($sql);
-            if($this->dem()==0){
-                $data=0;
+        public function countsSV(){
+            $sql = 'SELECT count(*) as sl  from sinhvien';
+            return $this->executeResult($sql);
+        }
+        public function countsGV(){
+            $sql = 'SELECT count(*) as sl  from giangvien where role_id = 2';
+            return $this->executeResult($sql);
+        }
+        public function countsNV(){
+            $sql = 'SELECT count(*) as sl  from giangvien where role_id = 3';
+            return $this->executeResult($sql);
+        }
+        public function countsSVNam(){
+            $sql = 'SELECT count(*) as sl  from sinhvien  where gioitinh = "Nam"';
+            return $this->executeResult($sql);
+        }
+        public function countsGVNam(){
+            $sql = 'SELECT count(*) as sl  from giangvien where gioitinh = "Nam"';
+            return $this->executeResult($sql);
+        }
+        public function monhocSL(){
+            $sql = 'SELECT count(*) as sl  from monhoc';
+            return $this->executeResult($sql);
+        }
+        public function chuyennganhSL(){
+            $sql = 'SELECT count(*) as sl  from chuyennganh';
+            return $this->executeResult($sql);
+        }
+        public function giangvienSL(){
+            $sql = 'SELECT count(*) as sl  from giangvien';
+            return $this->executeResult($sql);
+        }
+        public function countsSVNu(){
+            $sql = 'SELECT count(*) as sl  from sinhvien  where gioitinh = "Nữ"';
+            return $this->executeResult($sql);
+        }
+        public function countsGVNu(){
+            $sql = 'SELECT count(*) as sl  from giangvien  where gioitinh = "Nữ"';
+            return $this->executeResult($sql);
+        }
+
+        public function updatestudent($masinhvien,$hovaten,$gioitinh,$CMND,$ngaysinh,$phone,$email,$chuyennganh,$giaovien,$diachi,$lop,$pass,$id){
+            $sql="UPDATE `sinhvien` SET `masinhvien` = '$masinhvien', `hovaten` = '$hovaten', `gioitinh`= '$gioitinh', password = $pass,`diachi` ='$diachi', `email`='$email', `dienthoai`= '$phone', 
+            `cmnd` ='$CMND', `ngaysinh` ='$ngaysinh', `GVCN` ='$giaovien', `chuyennganh`= '$chuyennganh' ,`lop`='$lop' WHERE id='$id'";
+            
+            return $this->execute($sql);
+        }
+        public function updatestudentdaotao1($masinhvien,$hovaten,$gioitinh,$CMND,$ngaysinh,$phone,$email,$chuyennganh,$giaovien,$diachi,$lop,$pass){
+            $sql="UPDATE `sinhvien` SET `masinhvien` = '$masinhvien', `hovaten` = '$hovaten', `gioitinh`= '$gioitinh', password = '$pass',`diachi` ='$diachi', `email`='$email', `dienthoai`= '$phone', 
+            `cmnd` ='$CMND', `ngaysinh` ='$ngaysinh', `GVCN` ='$giaovien', `chuyennganh`= '$chuyennganh' ,`lop`='$lop' WHERE masinhvien='$masinhvien'";
+            
+            return $this->execute($sql);
+        }
+        public function editgiangvienid($id){
+            $sql = "select * from giangvien where `id`='$id' ";
+            $data=$this->execute($sql);
+            if($this->dem()!=0){
+                $data = mysqli_fetch_array($this->result);
             }
             else{
-                while($datas = $this->getData()) {
-                    $data[] = $datas;
-                }
+                $data = [];
             }
             return $data;
         }
 
-        public function timkiemsinhvientheochuyennganh($machuyennganh){
-            $sql = "select * from  `sinhvien`  where  chuyennganh = '$machuyennganh' ";
-            $this->execute($sql);
-            if($this->dem()==0){
-                $data=0;
-            }
-            else{
-                while($datas = $this->getData()) {
-                    $data[] = $datas;
-                }
-            }
-            return $data;
+        public function editgiangvien($mgv,$hovaten,$gioitinh,$cmnd,$ngaysinh,$dienthoai,$email,$cn,$diachi,$pass,$id){
+            $sql="UPDATE `giangvien` SET `magiangvien` = '$mgv' ,`hovaten`='$hovaten' , gioitinh='$gioitinh',password = $pass, chuyennganh = '$cn' ,ngaysinh = '$ngaysinh', cmnd='$cmnd', dienthoai='$dienthoai', email='$email', diachi='$diachi' WHERE id='$id'";
+            return $this->execute($sql);
         }
 
-        public function timkiemmonhoctheomachuyennganh($machuyennganh){
-            $sql = "select * from  `monhoc`  where  chuyennganh = '$machuyennganh' ";
+        public function editadmin($mgv,$hovaten,$gioitinh,$cmnd,$ngaysinh,$dienthoai,$email,$diachi,$password,$id){
+            $sql="UPDATE `admin` SET `maadmin` = '$mgv' ,`hovaten`='$hovaten' , gioitinh='$gioitinh',password = $password ,ngaysinh = '$ngaysinh', cmnd='$cmnd', dienthoai='$dienthoai', email='$email', diachi='$diachi' WHERE id='$id'";
+            return $this->execute($sql);
+        }
+        public function deletestudent($id){
+            $sql="DELETE FROM sinhvien WHere id = '$id'";
+            
+            return $this->execute($sql);
+        }
+        public function deletegiangvien($id){
+            $sql="DELETE FROM giangvien WHere id = '$id'";
+            
+            return $this->execute($sql);
+        }
+        public function createnhanvien($magiangvien,$hovaten, $role_id,$gioitinh,$CMND,$ngaysinh,$phone,$email,$chuyennganh,$diachi,$lop){
+            $sql="INSERT INTO `giangvien`(`magiangvien`, `hovaten`,`role_id`, `gioitinh`, `diachi`, `email`, `dienthoai`, `cmnd`, `ngaysinh`, `chuyennganh`,  `password`,`ChuNhiem`) 
+            VALUES ('$magiangvien','$hovaten', $role_id,'$gioitinh','$diachi','$email','$phone','$CMND','$ngaysinh','$chuyennganh','$magiangvien','$lop')";
            
-            $this->execute($sql);
-            if($this->dem()==0){
-                $data=0;
+            return $this->execute($sql);
+        }
+        public function editadminid($id){
+            $sql = "select * from admin where `id`='$id' ";
+            $data=$this->execute($sql);
+            if($this->dem()!=0){
+                $data = mysqli_fetch_array($this->result);
             }
             else{
-                while($datas = $this->getData()) {
-                    $data[] = $datas;
-                }
+                $data = [];
             }
             return $data;
         }
+        public function editsvid($id){
+            $sql = "select * from sinhvien where `id`='$id' ";
+            $data=$this->execute($sql);
+            if($this->dem()!=0){
+                $data = mysqli_fetch_array($this->result);
+            }
+            else{
+                $data = [];
+            }
+            return $data;
+        }
+
+
+        
+        
+        public function themvaolichdkhoc($mm,$nbd,$nkt){
+            $sql="INSERT INTO `lickdkhoc`(`mamon`, `ngaybatdau`, `ngayketthuc`) 
+            VALUES ('$mm','$nbd','$nkt')";
+            return $this->execute($sql);
+        }
+        public function getdatalichdk($tg){
+            $sql = "SELECT * FROM `lickdkhoc` INNER JOIN monhoc on lickdkhoc.mamon=monhoc.mamon INNER JOIN giangvienmonhoc on giangvienmonhoc.mamon=lickdkhoc.mamon WHERE lickdkhoc.ngaybatdau<'$tg' AND lickdkhoc.ngayketthuc>'$tg'";
+            return $this->execute($sql);
+        }
+        public function getdatamondk($msv){
+            $sql = "SELECT * FROM `gv-sv-lop` as gv INNER JOIN monhoc on gv.mamon= monhoc.mamon WHERE gv.masinhvien='$msv'";
+            return $this->execute($sql);
+        }
+        public function getmamondk($msv){
+            $sql = "SELECT * FROM `gv-sv-lop` where masinhvien ='$msv' and trangthai=true";
+            return $this->execute($sql);
+        }
+        public function dangkyhoc($mm,$mgv,$mlop,$msv){
+            $sql = "INSERT INTO `gv-sv-lop`( `magiangvien`, `mamon`, `malop`, `masinhvien`) VALUES ('$mgv','$mm','$mlop','$msv')";
+            return $this->execute($sql);
+        }
+        public function huydangkyhoc($mm,$mgv,$mlop,$msv){
+            $sql = "DELETE FROM `gv-sv-lop` WHERE masinhvien='$msv'and magiangvien='$mgv'and malop='$mlop'and mamon='$mm'";
+            return $this->execute($sql);
+        }
+
+        public function thongtinlich($msv){
+            $sql = "SELECT * FROM monhoc INNER JOIN `gv-sv-lop` as gv on monhoc.mamon =gv.mamon WHERE gv.masinhvien='$msv' and cathi !=''";
+            $this->execute($sql);
+            return $this->execute($sql);
+        }    
+       
     }

@@ -1,127 +1,7 @@
-<?php require_once ('./view/layouts/header.php');?>
+<?php require_once ('./view/layouts/headerDaoTao.php');?>
 
-    <script src="chrome-extension://mooikfkahbdckldjjndioackbalphokd/assets/prompt.js"></script>
     <style>
-      .glot-sub-active {
-        color: #1296ba !important;
-      }
-
-      .glot-sub-hovered {
-        color: #1296ba !important;
-      }
-      .glot-sub-clzz {
-        cursor: pointer;
-
-        lineheight: 1.2;
-        font-size: 28px;
-        color: #ffcc00;
-        background: rgba(17, 17, 17, 0.7);
-      }
-      .glot-sub-clzz:hover {
-        color: #1296ba !important;
-      }
-      .ej-trans-sub {
-        position: absolute;
-        width: 100%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        z-index: 9999999;
-        cursor: move;
-      }
-      .ej-trans-sub > span {
-        color: #3cf9ed;
-        font-size: 18px;
-        text-align: center;
-        padding: 0 16px;
-        line-height: 1.5;
-        background: rgba(32, 26, 25, 0.8);
-        /* // text-shadow: 0px 1px 4px black; */
-        padding: 0 8px;
-
-        /* lineheight: 1.2; */
-        font-size: 16px;
-        color: #0cb1c7;
-        background: rgba(67, 65, 65, 0.7);
-      }
-      .ej-main-sub {
-        position: absolute;
-        width: 100%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        z-index: 99999999;
-        cursor: move;
-        padding: 0 8px;
-      }
-      .ej-main-sub > span {
-        color: white;
-        font-size: 20px;
-        line-height: 1.5;
-        text-align: center;
-        background: rgba(32, 26, 25, 0.8);
-        /* // text-shadow: 0px 1px 4px black; */
-        padding: 2px 8px;
-
-        /* lineheight: 1.2; */
-        font-size: 28px;
-        color: #ffcc00;
-        background: rgba(17, 17, 17, 0.7);
-      }
-
-      .ej-main-sub .glot-sub-clzz {
-        background: transparent !important;
-      }
-
-      .tran-subtitle > span {
-        cursor: pointer;
-        padding-left: 10px;
-        top: 2px;
-        position: relative;
-      }
-
-      .tran-subtitle > span > span {
-        position: absolute;
-        top: -170%;
-        background: rgba(0, 0, 0, 0.5);
-        font-size: 13px;
-        line-height: 20px;
-        padding: 2px 8px;
-        color: white;
-        display: none;
-        border-radius: 4px;
-        white-space: nowrap;
-        left: -50%;
-        font-weight: normal;
-      }
-
-      .view-icon-copy-main-sub:hover > span,
-      .view-icon-edit-sub:hover > span,
-      .view-icon-copy-tran-sub:hover > span {
-        display: block;
-      }
-
-      .tran-subtitle > span > svg {
-        width: 16px;
-        height: 16px;
-        pointer-events: none;
-        display: inline-flex !important;
-        vertical-align: baseline !important;
-      }
-
-      .view-icon-copy-main-sub > svg {
-        pointer-events: none;
-        color: #ffcc00;
-      }
-
-      .view-icon-copy-tran-sub {
-        padding-left: 0 !important;
-        padding-right: 8px !important;
-      }
-      .view-icon-copy-tran-sub > svg {
-        pointer-events: none;
-        color: #0cb1c7;
-      }
+      
       .chuyen-nganh{
           display: flex;
         font-size:16px;
@@ -192,55 +72,63 @@
  
 
       <!-- Right -->
-      <div id="right">
+      <div id="right"  style="width: 100%; margin-left:10px;">
         <div class="title">
           Tổ chức lịch đăng ký học cho sinh viên
         </div>
         <div class="chuyen-nganh">
             <p>Chọn chuyên ngành:</p>
             &nbsp;
-            <select class="form-control" style="width:30%">
-                <option>Công nghệ thông tin</option>
-                <option>Tài chính ngân hàng</option>
-                <option>Khoa học máy tính</option>
+            <select class="form-control" id="chuyennganh1">
+            <option class="a" id="Tất cả">Tất cả</option>
+            <?php
+              foreach ($data_cn as $CN) {
+                echo '<option value="' . $CN['machuyennganh'] . '">' . $CN['tenchuyennganh'] . '</option>';
+            }
+            ?>
             </select>
+            <script>
+              $(function() {
+                $('#chuyennganh1').trigger('change'); //This event will fire the change event. 
+                $('#chuyennganh1').change(function() {
+                  var data = $(this).val();
+                  $.get("./index.php", {
+                    controller:"daotao",
+                    action:"getmonhoc_cn",
+                    info: data
+                  }, function(data) {
+                    $("#ToChucLichDangKyHoc1").html(data);
+                  })
+                });
+              });
+            </script>
         </div>
-            
-        <div class="list-monhoc">
+        <form action="" method="POST">
+        <div id="ToChucLichDangKyHoc1" class="list-monhoc">
             <p>Chọn môn học:</p>
             
             <ul>
+              <?php $i=0; foreach($data as $value){ ?>
                 <li>
-                    <input type="checkbox">
-                    Tin đại cương
+                    <input name="check[]" value="<?= $value['mamon']?>" type="checkbox">
+                    <?= $value['tenmon']?>
                 </li>
-                <li>
-                    <input type="checkbox">
-                    Giải tích 1
-                </li>
-                <li>
-                    <input type="checkbox">
-                    Giải tích 2
-                </li>
-                <li>
-                    <input type="checkbox">
-                    Công nghệ web
-                </li>
+              <?php }?>
             </ul>
         </div>
         <div class="ngay-dky">
             <div class="ngay-bdau">
                 <p>Ngày bắt đầu:</p>
-                <input class="form-control" type="datetime-local"/>
+                <input name="ngaybatdau" class="form-control" type="datetime-local"/>
             </div>
             <div class="ngay-ketthuc">
                 <p>Ngày kết thúc:</p>
-                <input class="form-control" type="datetime-local"/>
+                <input name="ngayketthuc" class="form-control" type="datetime-local"/>
             </div>
            
         </div>
-        <button class="btn-xacnhan">Xác nhận</button>    
-            
+        <button name="xacnhanlich" class="btn-xacnhan btnTimKiem">Xác nhận</button>    
+        </form>
 
         </div>
       </div>

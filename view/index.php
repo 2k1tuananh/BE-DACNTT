@@ -149,7 +149,7 @@
                 class="input-checkbox100"
                 checked="checked"
               />
-              <label class="label-checkbox100" for="ckb1"> Remember me </label>
+              
             </div>
 
             <div class="container-login100-form-btn">
@@ -168,13 +168,7 @@
               >
             </div>
             <br />
-            <div class="container-login100-form-btn">
-              <img
-                src="./view/images/gglg.png"
-                width="350px"
-                onclick="OpenGoogleLoginPopup();"
-              />
-            </div>
+           
             <div class="text-center p-t-90">
               <span id="lbResult"></span>
             </div>
