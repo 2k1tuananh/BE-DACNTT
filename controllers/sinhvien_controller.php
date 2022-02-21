@@ -74,11 +74,18 @@ class sinhvien_controller
         $giohientai=date('Y-m-d H:i:s');
         $data=$this->db->getdatalichdk($giohientai);
         $data1=$this->db->getdatamondk($_SESSION['msv']);
+        $data2=$this->db->getmamondk($_SESSION['msv']);
         require_once("./view/sinhvien/DangKyHoc.php");
     }
     function dangkyhoc1()
     {
         $this->db->dangkyhoc($_GET['mamon'],$_GET['magv'],$_GET['malop'],$_SESSION['msv']);
+        $data1=$this->db->getdatamondk($_SESSION['msv']);
+        require_once("./view/sinhvien/DangKyHoc1.php");
+    }
+    function huydangkyhoc()
+    {
+        $this->db->huydangkyhoc($_GET['mamon'],$_GET['magv'],$_GET['malop'],$_SESSION['msv']);
         $data1=$this->db->getdatamondk($_SESSION['msv']);
         require_once("./view/sinhvien/DangKyHoc1.php");
     }

@@ -345,8 +345,16 @@
             $sql = "SELECT * FROM `gv-sv-lop` as gv INNER JOIN monhoc on gv.mamon= monhoc.mamon WHERE gv.masinhvien='$msv'";
             return $this->execute($sql);
         }
+        public function getmamondk($msv){
+            $sql = "SELECT * FROM `gv-sv-lop` where masinhvien ='$msv' and trangthai=true";
+            return $this->execute($sql);
+        }
         public function dangkyhoc($mm,$mgv,$mlop,$msv){
             $sql = "INSERT INTO `gv-sv-lop`( `magiangvien`, `mamon`, `malop`, `masinhvien`) VALUES ('$mgv','$mm','$mlop','$msv')";
+            return $this->execute($sql);
+        }
+        public function huydangkyhoc($mm,$mgv,$mlop,$msv){
+            $sql = "DELETE FROM `gv-sv-lop` WHERE masinhvien='$msv'and magiangvien='$mgv'and malop='$mlop'and mamon='$mm'";
             return $this->execute($sql);
         }
 

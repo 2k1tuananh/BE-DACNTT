@@ -570,5 +570,10 @@
             VALUES ('$mm','$nbd','$nkt')";
             return $this->execute($sql);
         }
+        public function getmonhoc_cn($cn){
+            $sql = "select * from monhoc where chuyennganh='$cn'";
+            return $this->execute($sql);
+        }
     }
+
     

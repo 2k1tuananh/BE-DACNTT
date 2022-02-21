@@ -109,12 +109,22 @@ class daotao_controller {
                //Xử lý các phần tử được chọn
                $this->daotao->themvaolichdkhoc($value,$_POST['ngaybatdau'],$_POST['ngayketthuc']);
             }
-      }
+        }
+        $data_cn=$this->daotao->getAllData("chuyennganh");
         $data=$this->daotao->getAllData("monhoc");
         require_once("./view/daotao/ToChucLichDangKyHoc.php");
         exit();
     }
-
+    function getmonhoc_cn()
+    {
+        if($_GET['info']=="Tất cả"){
+            $data_cn=$this->daotao->getAllData("monhoc");
+        }
+        else{
+            $data_cn=$this->daotao->getmonhoc_cn($_GET['info']);
+        }
+        require_once("./view/daotao/ToChucLichDangKyHoc1.php");
+    }
 
     function banggiangday()
     {

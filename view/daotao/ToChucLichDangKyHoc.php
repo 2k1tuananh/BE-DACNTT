@@ -79,14 +79,32 @@
         <div class="chuyen-nganh">
             <p>Chọn chuyên ngành:</p>
             &nbsp;
-            <select class="form-control" style="width:30%">
-                <option>Công nghệ thông tin</option>
-                <option>Tài chính ngân hàng</option>
-                <option>Khoa học máy tính</option>
+            <select class="form-control" id="chuyennganh1">
+            <option class="a" id="Tất cả">Tất cả</option>
+            <?php
+              foreach ($data_cn as $CN) {
+                echo '<option value="' . $CN['machuyennganh'] . '">' . $CN['tenchuyennganh'] . '</option>';
+            }
+            ?>
             </select>
+            <script>
+              $(function() {
+                $('#chuyennganh1').trigger('change'); //This event will fire the change event. 
+                $('#chuyennganh1').change(function() {
+                  var data = $(this).val();
+                  $.get("./index.php", {
+                    controller:"daotao",
+                    action:"getmonhoc_cn",
+                    info: data
+                  }, function(data) {
+                    $("#ToChucLichDangKyHoc1").html(data);
+                  })
+                });
+              });
+            </script>
         </div>
         <form action="" method="POST">
-        <div class="list-monhoc">
+        <div id="ToChucLichDangKyHoc1" class="list-monhoc">
             <p>Chọn môn học:</p>
             
             <ul>

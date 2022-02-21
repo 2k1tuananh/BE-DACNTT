@@ -71,7 +71,7 @@
                             $('#mamon').change(function() {
                                 var data = $(this).val();
                                 $.get("./index.php", {
-                                    controller: "point",
+                                    controller: "giangvien",
                                     action: "sxtheomon",
                                     info: data
                                 }, function(data) {
@@ -111,7 +111,7 @@
                     $('#timkiem').change(function() {
                         var data = $(this).val();
                         $.get("./index.php", {
-                            controller: "point",
+                            controller: "giangvien",
                             action: "timkiem1",
                             info: data
                         }, function(data) {
@@ -124,7 +124,7 @@
                     $('#bttimkiem').click(function() {
                         var data = $('#timkiem').val();
                         $.get("./index.php", {
-                            controller: "point",
+                            controller: "giangvien",
                             action: "timkiem1",
                             info: data
                         }, function(data) {
@@ -145,7 +145,7 @@
                                 $('#sapxep').change(function() {
                                     var data = $(this).val();
                                     $.get("./index.php", {
-                                        controller: "point",
+                                        controller: "giangvien",
                                         action: "sxtheotrangthai",
                                         info1: data
                                     }, function(data) {
@@ -207,7 +207,7 @@
                                         var thongbao = "Cập nhật thành công";
                                         alert(thongbao);
                                         $.get("./index.php", {
-                                            controller: "point",
+                                            controller: "giangvien",
                                             action: "capnhattheotrangthai",
                                             masinhvien: data,
                                             mamon: data1,
@@ -251,7 +251,7 @@
                         $("button.chitiet").click(function() {
                             var masinhvien = $(this).attr("id")
                             $.get("./index.php", {
-                                controller: "point",
+                                controller: "giangvien",
                                 action: "QLHocSinhTheoMonHoc",
                                 msv: masinhvien
                             }, function(data) {

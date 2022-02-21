@@ -33,7 +33,6 @@
                         <th style="width: 40px">Ca</th>
                         <th style="width: 80px">Số TC</th>
                         <th style="width: 80px">Giá tiền</th>
-                        <th>Trạng thái</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -46,33 +45,46 @@
                     ">
                             <?= $i?>
                         </td>
+                    <?php  foreach($data2 as $info2){
+                        if( $info['mamon']==$info2['mamon']){
+                            $check="checked";
+                        } 
+                        else{
+                            $check="";
+                        }}?>
                         <td style="text-align: center">
                             <input id="check<?= $i?>" style="
                         font-size: 20px;
                         width: 30px;
                         height: 30px;
-                      " type="checkbox" />
+                      " type="checkbox" <?= $check?>/>
                         </td>
                         <td style="text-align: center" ><?= $info['tenmon']?></td>
                         <td style="text-align: center"><?= $info['thu']?></td>
                         <td style="text-align: center"><?= $info['ca']?></td>
                         <td style="text-align: center"><?= $info['sotinchi']?></td>
                         <td style="text-align: center"><?= $info['giatien']?></td>
-                        <td style="text-align: center">Chưa đăng ký</td>
                         <script>
-                        $(function(){
-                        $('#check<?= $i?>').trigger('change'); //This event will fire the change event. 
-                            $('#check<?= $i?>').change(function(){
-
+                         $(document).ready(function(){
+                            $("#check<?= $i?>").click(function(){
                                 if(check<?= $i?>.checked == true){
                                     var mamon="<?= $info['mamon']?>";
                                     var magv="<?= $info['magiangvien']?>";
                                     var malop="<?= $info['lop']?>";
                                     alert("Đăng ký thành công");
-                                }
-                                $.get("./index.php",{controller:"personal_information",action:"dangkyhoc1", mamon:mamon, magv:magv, malop:malop}, function(data) {
-                                $("#TKB").html(data);
-                            })                                                                                     
+                                    $.get("./index.php",{controller:"sinhvien",action:"dangkyhoc1", mamon:mamon, magv:magv, malop:malop}, function(data) {
+                                        $("#TKB").html(data);
+                                    }) 
+                                } 
+                                else{
+                                    var mamon="<?= $info['mamon']?>";
+                                    var magv="<?= $info['magiangvien']?>";
+                                    var malop="<?= $info['lop']?>";
+                                    alert("Hủy môn thành công");
+                                    $.get("./index.php",{controller:"sinhvien",action:"huydangkyhoc", mamon:mamon, magv:magv, malop:malop}, function(data) {
+                                        $("#TKB").html(data);
+                                    })
+                                }                                                                                   
                         });
                     });
                         </script>
